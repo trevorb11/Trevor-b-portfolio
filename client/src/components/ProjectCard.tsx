@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { Link } from "wouter";
-import { ArrowRight } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { Project } from "@shared/schema";
 
 interface ProjectCardProps {
@@ -9,25 +8,25 @@ interface ProjectCardProps {
 
 // Map categories to their style classes
 const categoryStyles: Record<string, { bg: string; text: string; label: string }> = {
-  "business-systems": {
+  "automation": {
     bg: "bg-blue-100",
     text: "text-primary",
-    label: "Business System",
+    label: "Marketing Automation",
   },
-  "websites": {
-    bg: "bg-indigo-100",
-    text: "text-indigo-600",
-    label: "Website",
-  },
-  "software": {
-    bg: "bg-green-100",
-    text: "text-green-600",
-    label: "Software",
-  },
-  "blog": {
+  "ai-marketing": {
     bg: "bg-purple-100",
     text: "text-purple-600",
-    label: "Blog",
+    label: "AI Marketing",
+  },
+  "lead-generation": {
+    bg: "bg-green-100",
+    text: "text-green-600",
+    label: "Lead Generation",
+  },
+  "integration": {
+    bg: "bg-indigo-100",
+    text: "text-indigo-600",
+    label: "System Integration",
   },
 };
 
@@ -60,28 +59,18 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             {categoryStyle.label}
           </span>
         </div>
-        <p className="text-muted-foreground mb-4 text-sm h-16 overflow-hidden">
+        <p className="text-muted-foreground mb-6 text-sm h-16 overflow-hidden">
           {project.description}
         </p>
-        <div className="mb-4">
-          <div className="flex flex-wrap gap-1 text-xs">
-            {project.technologies.map((tech, index) => (
-              <span
-                key={index}
-                className="px-2 py-1 bg-gray-100 rounded font-mono"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-        <Link
-          href={`/projects/${project.id}`}
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center text-primary hover:text-secondary font-medium text-sm"
         >
-          View Details
-          <ArrowRight className="h-4 w-4 ml-1" />
-        </Link>
+          Visit Project
+          <ExternalLink className="h-4 w-4 ml-1" />
+        </a>
       </div>
     </motion.div>
   );

@@ -61,10 +61,10 @@ const ProjectDetail = () => {
           <div className="flex flex-wrap justify-between items-center mb-6">
             <h1 className="text-3xl md:text-4xl font-bold">{project.title}</h1>
             <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mt-2 md:mt-0">
-              {project.category === "business-systems" ? "Business System" : 
-               project.category === "websites" ? "Website" : 
-               project.category === "software" ? "Software" : 
-               project.category === "blog" ? "Blog" : "Project"}
+              {project.category === "automation" ? "Marketing Automation" : 
+               project.category === "ai-marketing" ? "AI Marketing" : 
+               project.category === "lead-generation" ? "Lead Generation" : 
+               project.category === "integration" ? "System Integration" : "Project"}
             </span>
           </div>
 
@@ -116,10 +116,10 @@ const ProjectDetail = () => {
                 <div className="mb-4">
                   <h4 className="text-sm font-medium text-muted-foreground mb-2">Project Type</h4>
                   <p className="text-sm">
-                    {project.category === "business-systems" ? "Business System" : 
-                     project.category === "websites" ? "Website" : 
-                     project.category === "software" ? "Software" : 
-                     project.category === "blog" ? "Blog" : "Project"}
+                    {project.category === "automation" ? "Marketing Automation" : 
+                     project.category === "ai-marketing" ? "AI Marketing" : 
+                     project.category === "lead-generation" ? "Lead Generation" : 
+                     project.category === "integration" ? "System Integration" : "Project"}
                   </p>
                 </div>
                 
