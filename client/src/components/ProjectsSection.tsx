@@ -36,7 +36,7 @@ const ProjectsSection = () => {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">My Projects</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Here's a selection of my work across various categories. Each project demonstrates my approach to problem-solving and technical implementation.
+            Explore my MarTech portfolio showcasing CRM integrations, automation workflows, lead generation solutions, and AI-powered marketing tools that drive measurable business results.
           </p>
           <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
         </motion.div>
@@ -51,32 +51,32 @@ const ProjectsSection = () => {
             All Projects
           </Button>
           <Button
-            variant={activeFilter === "business-systems" ? "default" : "outline"}
-            onClick={() => handleFilterClick("business-systems")}
+            variant={activeFilter === "crm-integration" ? "default" : "outline"}
+            onClick={() => handleFilterClick("crm-integration")}
             className="px-4 py-2 rounded-lg font-medium"
           >
-            Business Systems
+            CRM Integration
           </Button>
           <Button
-            variant={activeFilter === "websites" ? "default" : "outline"}
-            onClick={() => handleFilterClick("websites")}
+            variant={activeFilter === "automation" ? "default" : "outline"}
+            onClick={() => handleFilterClick("automation")}
             className="px-4 py-2 rounded-lg font-medium"
           >
-            Websites
+            Automation
           </Button>
           <Button
-            variant={activeFilter === "software" ? "default" : "outline"}
-            onClick={() => handleFilterClick("software")}
+            variant={activeFilter === "lead-generation" ? "default" : "outline"}
+            onClick={() => handleFilterClick("lead-generation")}
             className="px-4 py-2 rounded-lg font-medium"
           >
-            Software
+            Lead Generation
           </Button>
           <Button
-            variant={activeFilter === "blog" ? "default" : "outline"}
-            onClick={() => handleFilterClick("blog")}
+            variant={activeFilter === "ai-marketing" ? "default" : "outline"}
+            onClick={() => handleFilterClick("ai-marketing")}
             className="px-4 py-2 rounded-lg font-medium"
           >
-            Blog
+            AI Marketing
           </Button>
         </div>
 

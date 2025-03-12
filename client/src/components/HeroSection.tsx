@@ -17,7 +17,7 @@ const HeroSection = () => {
               Hi, I'm <span className="text-primary">Trevor Bosetti</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-              Building digital solutions that make a difference.
+              MarTech Expert & Strategic Consultant
             </p>
             <div className="flex flex-wrap gap-4">
               <Button 

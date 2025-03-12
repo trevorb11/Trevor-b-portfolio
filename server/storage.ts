@@ -97,7 +97,7 @@ export class MemStorage implements IStorage {
       ...project, 
       id,
       link: project.link ?? null,
-      featured: project.featured ?? false
+      featured: project.featured ?? 0
     };
     this.projects.set(id, newProject);
     return newProject;

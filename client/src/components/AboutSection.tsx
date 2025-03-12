@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 const technologies = [
-  "React", "Node.js", "Python", "AWS", 
-  "SQL", "MongoDB", "TypeScript", "Docker"
+  "HubSpot", "Salesforce", "Mailchimp", "Blackbaud", 
+  "Marketing Automation", "AI Integration", "CRM Systems", "Lead Generation"
 ];
 
 const AboutSection = () => {
@@ -44,17 +44,17 @@ const AboutSection = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <h3 className="text-2xl font-semibold mb-6">
-              Building Digital Solutions For Over <span className="text-primary">8 Years</span>
+              Optimizing Marketing Technology For Over <span className="text-primary">8 Years</span>
             </h3>
 
             <p className="mb-6 text-muted-foreground">
-              I'm a passionate developer and system architect with expertise in building complex business systems,
-              interactive websites, custom software solutions, and sharing knowledge through my blog. My approach combines
-              technical excellence with a focus on solving real business challenges.
+              I'm a MarTech specialist with expertise in designing and implementing marketing technology ecosystems that drive business growth.
+              I help organizations seamlessly integrate CRM systems, automation platforms, and data analytics tools to optimize
+              their marketing operations, enhance lead generation, and improve customer engagement through innovative technology solutions.
             </p>
 
             <div className="mb-8">
-              <h4 className="text-lg font-semibold mb-3">Core Technologies</h4>
+              <h4 className="text-lg font-semibold mb-3">MarTech Expertise</h4>
               <div className="flex flex-wrap gap-2">
                 {technologies.map((tech, index) => (
                   <span 
