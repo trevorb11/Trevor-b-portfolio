@@ -120,7 +120,11 @@ export class MemStorage implements IStorage {
   
   async createBlogPost(post: InsertBlogPost): Promise<BlogPost> {
     const id = this.blogPostCurrentId++;
-    const newPost: BlogPost = { ...post, id };
+    const newPost: BlogPost = { 
+      ...post, 
+      id,
+      publishedDate: post.publishedDate || new Date()
+    };
     this.blogPosts.set(id, newPost);
     return newPost;
   }
@@ -144,7 +148,7 @@ export class MemStorage implements IStorage {
       {
         title: "Impact Wrapped for Community Food Share",
         description: "An interactive Spotify-inspired 'Year in Review' experience for nonprofit donors, showcasing their impact through personalized data visualizations of their contributions.",
-        category: "martech",
+        category: "crm-integration",
         image: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["React", "Chart.js", "Node.js", "HubSpot Integration"],
         link: "https://community-food-share-impact-wrapped.replit.app/",
@@ -153,7 +157,7 @@ export class MemStorage implements IStorage {
       {
         title: "RankZone - Marketing Performance Tracker",
         description: "A comprehensive analytics dashboard for marketing teams to track KPIs, SEO rankings, and competitor analysis with AI-powered recommendations.",
-        category: "martech",
+        category: "ai-marketing",
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["Vue.js", "D3.js", "Express", "Google Analytics API", "SEMrush API"],
         link: "https://rank-zone.replit.app/",
@@ -162,7 +166,7 @@ export class MemStorage implements IStorage {
       {
         title: "Double the Donation Integration",
         description: "A custom donation matching platform that integrates with nonprofit CRMs to automatically identify matching gift opportunities and maximize fundraising potential.",
-        category: "martech",
+        category: "crm-integration",
         image: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["React", "Blackbaud Integration", "Stripe", "Double the Donation API"],
         link: "https://double-the-donation-cfs.replit.app/",
@@ -171,7 +175,7 @@ export class MemStorage implements IStorage {
       {
         title: "Marketing Content Calendar System",
         description: "An AI-powered content planning and scheduling platform that synchronizes across multiple marketing channels and integrates with major marketing automation systems.",
-        category: "martech",
+        category: "automation",
         image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["React", "Node.js", "Google Calendar API", "HubSpot", "Mailchimp", "OpenAI"],
         link: "https://marketing-calendar.replit.app/",
@@ -180,7 +184,7 @@ export class MemStorage implements IStorage {
       {
         title: "Asana Task Dashboard",
         description: "A specialized dashboard for marketing teams to visualize, prioritize and manage Asana tasks across campaigns, with custom reporting and automation capabilities.",
-        category: "marketing-tools",
+        category: "automation",
         image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["React", "TypeScript", "Asana API", "Chart.js"],
         link: "https://asana-tasks.replit.app/",
@@ -189,7 +193,7 @@ export class MemStorage implements IStorage {
       {
         title: "Lindy Chat - AI Customer Engagement",
         description: "A real-time chat solution enhanced with AI for marketing and sales teams to better engage with prospects, featuring smart response suggestions and lead scoring.",
-        category: "marketing-tools",
+        category: "ai-marketing",
         image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["React", "Socket.io", "Node.js", "OpenAI", "Salesforce Integration"],
         link: "https://web-chat-test.replit.app/",
@@ -198,7 +202,7 @@ export class MemStorage implements IStorage {
       {
         title: "AI Trivia Generator",
         description: "An engagement tool for marketers to create customized, industry-specific trivia games for lead generation and brand awareness campaigns.",
-        category: "marketing-tools",
+        category: "lead-generation",
         image: "https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["React", "TypeScript", "OpenAI", "Firebase"],
         link: "https://trivia-forge.replit.app/",
@@ -207,7 +211,7 @@ export class MemStorage implements IStorage {
       {
         title: "Corporate Challenge Campaign Platform",
         description: "A gamified corporate fundraising platform for nonprofit organizations to engage corporate partners in friendly competition while tracking donations and impact.",
-        category: "marketing-campaigns",
+        category: "lead-generation",
         image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["React", "Node.js", "MongoDB", "Stripe", "Blackbaud Integration"],
         link: "https://corporate-challenge.replit.app/",
