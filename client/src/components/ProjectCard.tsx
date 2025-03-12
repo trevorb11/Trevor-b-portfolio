@@ -63,7 +63,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           {project.description}
         </p>
         <a
-          href={project.link}
+          href={project.link !== null ? project.link : "#"}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center text-primary hover:text-secondary font-medium text-sm"
