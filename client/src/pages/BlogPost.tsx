@@ -86,25 +86,52 @@ const BlogPost = () => {
           <div className="prose prose-lg max-w-none">
             <p className="lead text-xl mb-6">{post.excerpt}</p>
             
-            <div className="mb-6">
-              <p>
-                {post.content}
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia, nisl nisl aliquam nisl, nec ultricies nisl nisl sit amet nisl. Sed euismod, nisl nec ultricies lacinia, nisl nisl aliquam nisl, nec ultricies nisl nisl sit amet nisl.
-              </p>
-              <h2>Key Insights</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia, nisl nisl aliquam nisl, nec ultricies nisl nisl sit amet nisl.
-              </p>
-              <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                <li>Sed euismod, nisl nec ultricies lacinia, nisl nisl aliquam nisl.</li>
-                <li>Nec ultricies nisl nisl sit amet nisl.</li>
-              </ul>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia, nisl nisl aliquam nisl, nec ultricies nisl nisl sit amet nisl.
-              </p>
+            <div className="mb-6 blog-content">
+              {post.content.split('\n\n').map((paragraph, index) => {
+                // For image placeholders in specific positions
+                if (index === 2 && post.slug === "the-skill-ai-forces-us-to-master") {
+                  return (
+                    <div key={index} className="my-8">
+                      <img 
+                        src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                        alt="AI and human interaction" 
+                        className="rounded-xl w-full h-auto mb-3"
+                      />
+                      <p className="text-sm text-center text-muted-foreground">
+                        Natural language has become the new interface for AI interaction
+                      </p>
+                      <p className="mt-4">{paragraph}</p>
+                    </div>
+                  );
+                }
+                
+                if (index === 6 && post.slug === "the-skill-ai-forces-us-to-master") {
+                  return (
+                    <div key={index} className="my-8">
+                      <p>{paragraph}</p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                        <img 
+                          src="https://images.unsplash.com/photo-1655720358399-55e6b836664a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                          alt="Prompt engineering visualization" 
+                          className="rounded-xl w-full h-auto"
+                        />
+                        <img 
+                          src="https://images.unsplash.com/photo-1693470928795-ba38169020be?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                          alt="Data curation visualization" 
+                          className="rounded-xl w-full h-auto"
+                        />
+                      </div>
+                    </div>
+                  );
+                }
+                
+                // Regular paragraphs - create h2 elements for paragraphs that look like headings
+                if (paragraph.length < 50 && !paragraph.endsWith('.')) {
+                  return <h2 key={index} className="mt-8 mb-4">{paragraph}</h2>;
+                }
+                
+                return <p key={index} className="mb-4">{paragraph}</p>;
+              })}
             </div>
           </div>
 
