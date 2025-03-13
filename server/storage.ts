@@ -2,7 +2,9 @@ import {
   users, type User, type InsertUser,
   projects, type Project, type InsertProject,
   blogPosts, type BlogPost, type InsertBlogPost,
-  contacts, type Contact, type InsertContact
+  contacts, type Contact, type InsertContact,
+  cmsContents, type CmsContent, type InsertCmsContent, type UpdateCmsContent,
+  adminLoginSchema
 } from "@shared/schema";
 
 export interface IStorage {
@@ -10,21 +12,36 @@ export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
+  validateAdminCredentials(username: string, password: string): Promise<User | null>;
   
   // Project methods
   getProjects(): Promise<Project[]>;
   getProjectById(id: number): Promise<Project | undefined>;
   getProjectsByCategory(category: string): Promise<Project[]>;
   createProject(project: InsertProject): Promise<Project>;
+  updateProject(id: number, project: Partial<InsertProject>): Promise<Project | null>;
+  deleteProject(id: number): Promise<boolean>;
   
   // Blog methods
   getBlogPosts(): Promise<BlogPost[]>;
   getBlogPostById(id: number): Promise<BlogPost | undefined>;
   getBlogPostBySlug(slug: string): Promise<BlogPost | undefined>;
   createBlogPost(post: InsertBlogPost): Promise<BlogPost>;
+  updateBlogPost(id: number, post: Partial<InsertBlogPost>): Promise<BlogPost | null>;
+  deleteBlogPost(id: number): Promise<boolean>;
   
   // Contact methods
   createContact(contact: InsertContact): Promise<Contact>;
+  getContacts(): Promise<Contact[]>;
+  
+  // CMS Content methods
+  getCmsContents(): Promise<CmsContent[]>;
+  getCmsContentsBySection(section: string): Promise<CmsContent[]>;
+  getCmsContent(id: number): Promise<CmsContent | undefined>;
+  getCmsContentBySectionAndKey(section: string, key: string): Promise<CmsContent | undefined>;
+  createCmsContent(content: InsertCmsContent): Promise<CmsContent>;
+  updateCmsContent(id: number, value: string): Promise<CmsContent | null>;
+  deleteCmsContent(id: number): Promise<boolean>;
 }
 
 export class MemStorage implements IStorage {
@@ -32,22 +49,26 @@ export class MemStorage implements IStorage {
   private projects: Map<number, Project>;
   private blogPosts: Map<number, BlogPost>;
   private contacts: Map<number, Contact>;
+  private cmsContents: Map<number, CmsContent>;
   
   private userCurrentId: number;
   private projectCurrentId: number;
   private blogPostCurrentId: number;
   private contactCurrentId: number;
+  private cmsContentCurrentId: number;
 
   constructor() {
     this.users = new Map();
     this.projects = new Map();
     this.blogPosts = new Map();
     this.contacts = new Map();
+    this.cmsContents = new Map();
     
     this.userCurrentId = 1;
     this.projectCurrentId = 1;
     this.blogPostCurrentId = 1;
     this.contactCurrentId = 1;
+    this.cmsContentCurrentId = 1;
     
     // Initialize with sample data
     this.initSampleData();
@@ -66,9 +87,21 @@ export class MemStorage implements IStorage {
 
   async createUser(insertUser: InsertUser): Promise<User> {
     const id = this.userCurrentId++;
-    const user: User = { ...insertUser, id };
+    const user: User = { 
+      ...insertUser, 
+      id,
+      isAdmin: insertUser.isAdmin !== undefined ? insertUser.isAdmin : false 
+    };
     this.users.set(id, user);
     return user;
+  }
+  
+  async validateAdminCredentials(username: string, password: string): Promise<User | null> {
+    const user = await this.getUserByUsername(username);
+    if (user && user.password === password && user.isAdmin) {
+      return user;
+    }
+    return null;
   }
   
   // Project methods
@@ -103,6 +136,26 @@ export class MemStorage implements IStorage {
     return newProject;
   }
   
+  async updateProject(id: number, project: Partial<InsertProject>): Promise<Project | null> {
+    const existingProject = this.projects.get(id);
+    if (!existingProject) {
+      return null;
+    }
+    
+    const updatedProject: Project = {
+      ...existingProject,
+      ...project,
+      id, // Ensure ID doesn't change
+    };
+    
+    this.projects.set(id, updatedProject);
+    return updatedProject;
+  }
+  
+  async deleteProject(id: number): Promise<boolean> {
+    return this.projects.delete(id);
+  }
+  
   // Blog methods
   async getBlogPosts(): Promise<BlogPost[]> {
     return Array.from(this.blogPosts.values());
@@ -129,6 +182,26 @@ export class MemStorage implements IStorage {
     return newPost;
   }
   
+  async updateBlogPost(id: number, post: Partial<InsertBlogPost>): Promise<BlogPost | null> {
+    const existingPost = this.blogPosts.get(id);
+    if (!existingPost) {
+      return null;
+    }
+    
+    const updatedPost: BlogPost = {
+      ...existingPost,
+      ...post,
+      id, // Ensure ID doesn't change
+    };
+    
+    this.blogPosts.set(id, updatedPost);
+    return updatedPost;
+  }
+  
+  async deleteBlogPost(id: number): Promise<boolean> {
+    return this.blogPosts.delete(id);
+  }
+  
   // Contact methods
   async createContact(contact: InsertContact): Promise<Contact> {
     const id = this.contactCurrentId++;
@@ -141,8 +214,147 @@ export class MemStorage implements IStorage {
     return newContact;
   }
   
+  async getContacts(): Promise<Contact[]> {
+    return Array.from(this.contacts.values());
+  }
+  
+  // CMS Content methods
+  async getCmsContents(): Promise<CmsContent[]> {
+    return Array.from(this.cmsContents.values());
+  }
+  
+  async getCmsContentsBySection(section: string): Promise<CmsContent[]> {
+    return Array.from(this.cmsContents.values()).filter(
+      (content) => content.section === section
+    );
+  }
+  
+  async getCmsContent(id: number): Promise<CmsContent | undefined> {
+    return this.cmsContents.get(id);
+  }
+  
+  async getCmsContentBySectionAndKey(section: string, key: string): Promise<CmsContent | undefined> {
+    return Array.from(this.cmsContents.values()).find(
+      (content) => content.section === section && content.key === key
+    );
+  }
+  
+  async createCmsContent(content: InsertCmsContent): Promise<CmsContent> {
+    const id = this.cmsContentCurrentId++;
+    const newContent: CmsContent = { 
+      ...content, 
+      id,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+    this.cmsContents.set(id, newContent);
+    return newContent;
+  }
+  
+  async updateCmsContent(id: number, value: string): Promise<CmsContent | null> {
+    const existingContent = this.cmsContents.get(id);
+    if (!existingContent) {
+      return null;
+    }
+    
+    const updatedContent: CmsContent = {
+      ...existingContent,
+      value,
+      updatedAt: new Date()
+    };
+    
+    this.cmsContents.set(id, updatedContent);
+    return updatedContent;
+  }
+  
+  async deleteCmsContent(id: number): Promise<boolean> {
+    return this.cmsContents.delete(id);
+  }
+  
   // Initialize with sample data
   private initSampleData() {
+    // Create admin user
+    const adminUser: InsertUser = {
+      username: "admin",
+      password: "password123", // This should be hashed in a real application
+      isAdmin: true
+    };
+    this.createUser(adminUser);
+
+    // Sample CMS content
+    const sampleCmsContents: InsertCmsContent[] = [
+      {
+        section: "hero",
+        key: "title",
+        value: "Trevor Bosetti",
+        type: "text",
+      },
+      {
+        section: "hero",
+        key: "subtitle",
+        value: "MarTech Expert & System Integrator",
+        type: "text",
+      },
+      {
+        section: "hero",
+        key: "description",
+        value: "Specializing in marketing technology solutions that bridge the gap between powerful tools and exceptional customer experiences.",
+        type: "text",
+      },
+      {
+        section: "about",
+        key: "title",
+        value: "About Me",
+        type: "text",
+      },
+      {
+        section: "about",
+        key: "content",
+        value: "With over a decade of experience in the marketing technology space, I've helped businesses of all sizes implement effective digital solutions. I specialize in CRM integrations, marketing automation, and building custom applications that solve unique business challenges. My approach combines technical expertise with a deep understanding of marketing principles to deliver systems that drive real results.",
+        type: "richtext",
+      },
+      {
+        section: "projects",
+        key: "title",
+        value: "Featured Projects",
+        type: "text",
+      },
+      {
+        section: "projects",
+        key: "description",
+        value: "A selection of my most impactful work across marketing automation, CRM integration, and custom applications.",
+        type: "text",
+      },
+      {
+        section: "blog",
+        key: "title",
+        value: "Latest Insights",
+        type: "text",
+      },
+      {
+        section: "blog",
+        key: "description",
+        value: "Thoughts, strategies, and discoveries from my work in the marketing technology field.",
+        type: "text",
+      },
+      {
+        section: "contact",
+        key: "title",
+        value: "Get In Touch",
+        type: "text",
+      },
+      {
+        section: "contact",
+        key: "description",
+        value: "Interested in working together? Have questions about marketing technology? I'd love to hear from you.",
+        type: "text",
+      }
+    ];
+    
+    for (const content of sampleCmsContents) {
+      this.createCmsContent(content);
+    }
+    
     // Sample projects
     const sampleProjects: InsertProject[] = [
       {
