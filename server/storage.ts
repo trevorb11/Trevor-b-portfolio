@@ -244,7 +244,6 @@ export class MemStorage implements IStorage {
     const newContent: CmsContent = { 
       ...content, 
       id,
-      createdAt: new Date(),
       updatedAt: new Date()
     };
     this.cmsContents.set(id, newContent);
