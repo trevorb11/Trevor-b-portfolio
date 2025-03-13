@@ -151,7 +151,7 @@ export class MemStorage implements IStorage {
         category: "crm-integration",
         image: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["React", "Chart.js", "Node.js", "HubSpot Integration"],
-        link: "https://community-food-share-impact-wrapped.replit.app/",
+        link: "https://cfs-impact.replit.app/",
         featured: 1
       },
       {
@@ -160,7 +160,7 @@ export class MemStorage implements IStorage {
         category: "ai-marketing",
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["Vue.js", "D3.js", "Express", "Google Analytics API", "SEMrush API"],
-        link: "https://rank-zone.replit.app/",
+        link: "https://league-ranker.replit.app/auth",
         featured: 1
       },
       {
@@ -215,6 +215,15 @@ export class MemStorage implements IStorage {
         image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["React", "Node.js", "MongoDB", "Stripe", "Blackbaud Integration"],
         link: "https://corporate-challenge.replit.app/",
+        featured: 1
+      },
+      {
+        title: "Community Food Share - 14 Tons",
+        description: "A specialized campaign microsite for Community Food Share's 14 Tons fundraising initiative, highlighting donor impact and facilitating online donations.",
+        category: "lead-generation",
+        image: "https://images.unsplash.com/photo-1590507621108-433608c97823?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        technologies: ["WordPress", "Blackbaud Integration", "Custom Donation Forms", "Impact Visualization"],
+        link: "https://communityfoodshare.org/14-tons",
         featured: 1
       }
     ];
