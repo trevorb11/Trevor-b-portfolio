@@ -93,7 +93,7 @@ const BlogPost = () => {
                   return (
                     <div key={index} className="my-8">
                       <img 
-                        src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                        src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
                         alt="AI and human interaction" 
                         className="rounded-xl w-full h-auto mb-3"
                       />
@@ -111,12 +111,12 @@ const BlogPost = () => {
                       <p>{paragraph}</p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
                         <img 
-                          src="https://images.unsplash.com/photo-1655720358399-55e6b836664a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                          src="https://images.unsplash.com/photo-1655720358399-55e6b836664a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                           alt="Prompt engineering visualization" 
                           className="rounded-xl w-full h-auto"
                         />
                         <img 
-                          src="https://images.unsplash.com/photo-1693470928795-ba38169020be?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                          src="https://images.unsplash.com/photo-1693470928795-ba38169020be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                           alt="Data curation visualization" 
                           className="rounded-xl w-full h-auto"
                         />
