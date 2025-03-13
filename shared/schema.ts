@@ -7,15 +7,25 @@ export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   username: text("username").notNull().unique(),
   password: text("password").notNull(),
+  isAdmin: boolean("is_admin").default(false),
 });
 
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
+  isAdmin: true,
 });
 
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
+
+// Admin login schema
+export const adminLoginSchema = z.object({
+  username: z.string().min(3, "Username must be at least 3 characters"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+});
+
+export type AdminLogin = z.infer<typeof adminLoginSchema>;
 
 // Project schema
 export const projects = pgTable("projects", {
@@ -82,3 +92,35 @@ export const contactFormSchema = z.object({
 });
 
 export type ContactForm = z.infer<typeof contactFormSchema>;
+
+// CMS Content schema for editable website content
+export const cmsContents = pgTable("cms_contents", {
+  id: serial("id").primaryKey(),
+  section: varchar("section", { length: 100 }).notNull(), // e.g., "hero", "about", "blog"
+  key: varchar("key", { length: 100 }).notNull(), // e.g., "title", "description", "image"
+  value: text("value").notNull(),
+  type: varchar("type", { length: 50 }).notNull(), // "text", "richtext", "image", "json"
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
+// Create a composite unique constraint on section and key
+// This ensures each section-key pair is unique
+export const uniqueSectionKey = pgTable("unique_section_key", {
+  sectionKey: varchar("section_key", { length: 210 }).primaryKey(),
+});
+
+export const insertCmsContentSchema = createInsertSchema(cmsContents).omit({ 
+  id: true,
+  updatedAt: true 
+});
+
+export type InsertCmsContent = z.infer<typeof insertCmsContentSchema>;
+export type CmsContent = typeof cmsContents.$inferSelect;
+
+// CMS content update schema
+export const updateCmsContentSchema = z.object({
+  id: z.number(),
+  value: z.string(),
+});
+
+export type UpdateCmsContent = z.infer<typeof updateCmsContentSchema>;
