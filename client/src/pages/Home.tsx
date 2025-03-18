@@ -3,6 +3,8 @@ import AboutSection from "@/components/AboutSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
+import MarketingIntegrationSection from "@/components/MarketingIntegrationSection";
+import AIExpertiseSection from "@/components/AIExpertiseSection";
 import { useEffect } from "react";
 import { useLocation } from "wouter";
 
@@ -33,6 +35,8 @@ const Home = () => {
     <main>
       <HeroSection />
       <AboutSection />
+      <MarketingIntegrationSection />
+      <AIExpertiseSection />
       <ProjectsSection />
       <BlogSection />
       <ContactSection />
