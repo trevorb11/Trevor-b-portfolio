@@ -347,6 +347,92 @@ export class MemStorage implements IStorage {
         key: "description",
         value: "Interested in working together? Have questions about marketing technology? I'd love to hear from you.",
         type: "text",
+      },
+      // Marketing Integrations Section
+      {
+        section: "integrations",
+        key: "title",
+        value: "Marketing Systems Integration",
+        type: "text",
+      },
+      {
+        section: "integrations",
+        key: "subtitle",
+        value: "Seamlessly connecting marketing systems to maximize your data value and audience engagement.",
+        type: "text",
+      },
+      {
+        section: "integrations",
+        key: "expertise",
+        value: "Whether your CRM is HubSpot, Salesforce, or Mailchimp, I specialize in getting the most value out of your marketing stack by creating seamless integrations that allow your systems to communicate effectively.",
+        type: "richtext",
+      },
+      {
+        section: "integrations",
+        key: "expertise_detail",
+        value: "From data synchronization to automated workflows, I'll help you build a connected marketing ecosystem that leverages your data to engage your audience more effectively and drive better results.",
+        type: "richtext",
+      },
+      {
+        section: "integrations",
+        key: "nonprofit",
+        value: "I bring extensive experience with nonprofit-specific technologies, helping organizations leverage tools like Blackbaud, Raiser's Edge, Classy, and Omatic to maximize their impact.",
+        type: "richtext",
+      },
+      {
+        section: "integrations",
+        key: "nonprofit_detail",
+        value: "Understanding the unique challenges nonprofits face, I provide specialized solutions that streamline operations, improve donor management, and enhance fundraising capabilities through strategic system integration.",
+        type: "richtext",
+      },
+      {
+        section: "integrations",
+        key: "approach_title",
+        value: "My Integration Approach",
+        type: "text",
+      },
+      {
+        section: "integrations",
+        key: "approach",
+        value: "I don't just connect systems—I build strategic integration architectures that align with your business goals, ensure data integrity, and create scalable solutions that grow with your organization.",
+        type: "richtext",
+      },
+      // AI Expertise Section
+      {
+        section: "ai",
+        key: "title",
+        value: "AI: The Essential Skill of Today",
+        type: "text",
+      },
+      {
+        section: "ai",
+        key: "subtitle",
+        value: "Artificial Intelligence isn't just the future—it's transforming marketing effectiveness right now.",
+        type: "text",
+      },
+      {
+        section: "ai",
+        key: "advantage",
+        value: "In today's rapidly evolving digital landscape, proficiency in AI isn't optional—it's essential. I view AI as the most valuable skill not just for the future, but starting today. Organizations that effectively leverage AI technologies gain significant advantages in efficiency, personalization, and market insights.",
+        type: "richtext",
+      },
+      {
+        section: "ai",
+        key: "strategy",
+        value: "My approach focuses on strategic AI implementation that aligns with your business objectives. Rather than adopting AI for its own sake, I help organizations identify specific areas where AI can solve real problems and drive measurable results, from customer experience to operational efficiency.",
+        type: "richtext",
+      },
+      {
+        section: "ai",
+        key: "vision_title",
+        value: "My AI Vision",
+        type: "text",
+      },
+      {
+        section: "ai",
+        key: "vision",
+        value: "AI is not replacing human creativity—it's augmenting it. My vision is to help organizations harness AI as a powerful tool that enhances human capabilities, enables more meaningful customer connections, and drives innovation. The organizations that thrive will be those that effectively blend human expertise with AI capabilities.",
+        type: "richtext",
       }
     ];
     
