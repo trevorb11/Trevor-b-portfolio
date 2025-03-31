@@ -1,9 +1,16 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { ArrowRight, RefreshCw, Link as LinkIcon, Database, Globe } from "lucide-react";
+import { ArrowRight, RefreshCw, Link as LinkIcon, Database, Globe, ChevronLeft, ChevronRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { CmsContent } from "@shared/schema";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const MarketingIntegrationSection = () => {
   const { data: cmsContents } = useQuery<CmsContent[]>({
@@ -116,15 +123,33 @@ const MarketingIntegrationSection = () => {
 
             <motion.div variants={itemVariants} className="mt-8">
               <h4 className="text-xl font-semibold mb-4">Integration Partners</h4>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {integrationTools.map((tool, index) => (
-                  <Card key={index} className="border border-gray-200 dark:border-gray-700">
-                    <CardContent className="p-4">
-                      <p className="font-medium">{tool.name}</p>
-                      <p className="text-xs text-gray-500">{tool.category}</p>
-                    </CardContent>
-                  </Card>
-                ))}
+              <div className="w-full relative">
+                <Carousel
+                  opts={{
+                    align: "start",
+                    loop: true,
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent>
+                    {integrationTools.map((tool, index) => (
+                      <CarouselItem key={index} className="basis-1/2 md:basis-1/3 lg:basis-1/4 pl-4">
+                        <div className="p-1">
+                          <Card className="border border-gray-200 dark:border-gray-700 h-full">
+                            <CardContent className="p-4 flex flex-col items-center justify-center h-full">
+                              <p className="font-medium text-center">{tool.name}</p>
+                              <p className="text-xs text-gray-500 text-center mt-1">{tool.category}</p>
+                            </CardContent>
+                          </Card>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <div className="absolute -top-12 right-0 flex space-x-2">
+                    <CarouselPrevious className="h-8 w-8" />
+                    <CarouselNext className="h-8 w-8" />
+                  </div>
+                </Carousel>
               </div>
             </motion.div>
           </motion.div>
@@ -153,15 +178,33 @@ const MarketingIntegrationSection = () => {
 
             <motion.div variants={itemVariants} className="mt-8">
               <h4 className="text-xl font-semibold mb-4">Nonprofit Technology Stack</h4>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {nonprofitTools.map((tool, index) => (
-                  <Card key={index} className="border border-gray-200 dark:border-gray-700">
-                    <CardContent className="p-4">
-                      <p className="font-medium">{tool.name}</p>
-                      <p className="text-xs text-gray-500">{tool.category}</p>
-                    </CardContent>
-                  </Card>
-                ))}
+              <div className="w-full relative">
+                <Carousel
+                  opts={{
+                    align: "start",
+                    loop: true,
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent>
+                    {nonprofitTools.map((tool, index) => (
+                      <CarouselItem key={index} className="basis-1/2 md:basis-1/3 lg:basis-1/4 pl-4">
+                        <div className="p-1">
+                          <Card className="border border-gray-200 dark:border-gray-700 h-full">
+                            <CardContent className="p-4 flex flex-col items-center justify-center h-full">
+                              <p className="font-medium text-center">{tool.name}</p>
+                              <p className="text-xs text-gray-500 text-center mt-1">{tool.category}</p>
+                            </CardContent>
+                          </Card>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <div className="absolute -top-12 right-0 flex space-x-2">
+                    <CarouselPrevious className="h-8 w-8" />
+                    <CarouselNext className="h-8 w-8" />
+                  </div>
+                </Carousel>
               </div>
             </motion.div>
           </motion.div>
