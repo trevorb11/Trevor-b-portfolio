@@ -15,12 +15,18 @@ const Home = () => {
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
-      const element = document.querySelector(hash);
+      // Remove the # symbol to get just the id
+      const id = hash.substring(1);
+      const element = document.getElementById(id);
       if (element) {
         // Add a slight delay to ensure the page is fully loaded
         setTimeout(() => {
+          const headerOffset = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
           window.scrollTo({
-            top: element.getBoundingClientRect().top + window.scrollY - 80,
+            top: offsetPosition,
             behavior: "smooth",
           });
         }, 100);

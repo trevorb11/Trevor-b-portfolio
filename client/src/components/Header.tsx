@@ -17,6 +17,22 @@ const Header = () => {
     }
   };
 
+  const scrollToSection = (id: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 80; // Header height offset
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+      closeMenu();
+    }
+  };
+
   const isActive = (path: string) => {
     if (path === "/") {
       return location === path;
@@ -25,13 +41,13 @@ const Header = () => {
   };
 
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/#about" },
-    { name: "Integrations", path: "/#integrations" },
-    { name: "AI Expertise", path: "/#ai-expertise" },
-    { name: "Projects", path: "/#projects" },
-    { name: "Blog", path: "/#blog" },
-    { name: "Contact", path: "/#contact" },
+    { name: "Home", path: "/", id: "" },
+    { name: "About", path: "/#about", id: "about" },
+    { name: "Integrations", path: "/#integrations", id: "integrations" },
+    { name: "AI Expertise", path: "/#ai-expertise", id: "ai-expertise" },
+    { name: "Projects", path: "/#projects", id: "projects" },
+    { name: "Blog", path: "/#blog", id: "blog" },
+    { name: "Contact", path: "/#contact", id: "contact" },
   ];
 
   return (
@@ -49,15 +65,27 @@ const Header = () => {
             <ul className="flex space-x-8">
               {navLinks.map((link) => (
                 <li key={link.path}>
-                  <Link 
-                    href={link.path} 
-                    onClick={closeMenu}
-                    className={`font-medium transition-colors ${
-                      isActive(link.path) ? "text-primary" : "hover:text-primary"
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
+                  {link.id ? (
+                    <a 
+                      href={link.path} 
+                      onClick={(e) => scrollToSection(link.id, e)}
+                      className={`font-medium transition-colors ${
+                        isActive(link.path) ? "text-primary" : "hover:text-primary"
+                      }`}
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link 
+                      href={link.path} 
+                      onClick={closeMenu}
+                      className={`font-medium transition-colors ${
+                        isActive(link.path) ? "text-primary" : "hover:text-primary"
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -81,15 +109,27 @@ const Header = () => {
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.path}>
-                  <Link
-                    href={link.path}
-                    onClick={closeMenu}
-                    className={`block py-2 transition-colors ${
-                      isActive(link.path) ? "text-primary" : "hover:text-primary"
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
+                  {link.id ? (
+                    <a
+                      href={link.path}
+                      onClick={(e) => scrollToSection(link.id, e)}
+                      className={`block py-2 transition-colors ${
+                        isActive(link.path) ? "text-primary" : "hover:text-primary"
+                      }`}
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.path}
+                      onClick={closeMenu}
+                      className={`block py-2 transition-colors ${
+                        isActive(link.path) ? "text-primary" : "hover:text-primary"
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
