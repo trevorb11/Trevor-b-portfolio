@@ -470,12 +470,12 @@ export class MemStorage implements IStorage {
         featured: 1
       },
       {
-        title: "Marketing Content Calendar System",
-        description: "An AI-powered content planning and scheduling platform that synchronizes across multiple marketing channels and integrates with major marketing automation systems.",
-        category: "automation",
-        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-        technologies: ["React", "Node.js", "Google Calendar API", "HubSpot", "Mailchimp", "OpenAI"],
-        link: "https://marketing-calendar.replit.app/",
+        title: "QR Code Generator & Analytics",
+        description: "A custom QR code generator with tracking and analytics capabilities, allowing marketers to create branded QR codes and monitor engagement across campaigns.",
+        category: "lead-generation",
+        image: "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        technologies: ["React", "Node.js", "MongoDB", "Chart.js", "QR Code API"],
+        link: "https://qr-code-tracker-march-25-th-2025-trevorbosetti.replit.app/",
         featured: 1
       },
       {
