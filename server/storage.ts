@@ -452,11 +452,11 @@ export class MemStorage implements IStorage {
         featured: 1
       },
       {
-        title: "RankZone - Marketing Performance Tracker",
-        description: "A comprehensive analytics dashboard for marketing teams to track KPIs, SEO rankings, and competitor analysis with AI-powered recommendations.",
-        category: "ai-marketing",
+        title: "RankZone - Competitive League Tracker",
+        description: "A platform for tracking wins, losses, and leaderboards in competitive games. Enables local groups like pool leagues to maintain Elo-based rankings, record match history, and create customized leaderboards for their community.",
+        category: "automation",
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-        technologies: ["Vue.js", "D3.js", "Express", "Google Analytics API", "SEMrush API"],
+        technologies: ["Vue.js", "Node.js", "Express", "MongoDB", "Elo Rating Algorithm"],
         link: "https://league-ranker.replit.app/auth",
         featured: 1
       },
