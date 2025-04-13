@@ -47,6 +47,7 @@ const Header = () => {
     { name: "AI Expertise", path: "/#ai-expertise", id: "ai-expertise" },
     { name: "Projects", path: "/#projects", id: "projects" },
     { name: "Blog", path: "/#blog", id: "blog" },
+    { name: "Fun AI", path: "/#fun-ai", id: "fun-ai" },
     { name: "Contact", path: "/#contact", id: "contact" },
   ];
 

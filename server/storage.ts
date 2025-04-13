@@ -433,6 +433,25 @@ export class MemStorage implements IStorage {
         key: "vision",
         value: "AI is not replacing human creativity—it's augmenting it. My vision is to help organizations harness AI as a powerful tool that enhances human capabilities, enables more meaningful customer connections, and drives innovation. The organizations that thrive will be those that effectively blend human expertise with AI capabilities.",
         type: "richtext",
+      },
+      // Fun AI Creations Section
+      {
+        section: "fun_ai",
+        key: "title",
+        value: "AI Creative Showcase",
+        type: "text",
+      },
+      {
+        section: "fun_ai",
+        key: "subtitle",
+        value: "Check out these fun AI-generated videos and music I've created",
+        type: "text",
+      },
+      {
+        section: "fun_ai",
+        key: "description",
+        value: "While my professional work focuses on marketing technology, I also enjoy exploring the creative possibilities of AI. Here are some of my experiments with AI-generated content.",
+        type: "richtext",
       }
     ];
     
