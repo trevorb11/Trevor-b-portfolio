@@ -6,6 +6,7 @@ import ContactSection from "@/components/ContactSection";
 import MarketingIntegrationSection from "@/components/MarketingIntegrationSection";
 import AIExpertiseSection from "@/components/AIExpertiseSection";
 import FunAISection from "@/components/FunAISection";
+import AuroraDivider from "@/components/AuroraDivider";
 import { useEffect } from "react";
 import { useLocation } from "wouter";
 
@@ -39,14 +40,21 @@ const Home = () => {
   }, [location]);
 
   return (
-    <main>
+    <main className="bg-[var(--c-bg)]">
       <HeroSection />
+      <AuroraDivider />
       <AboutSection />
+      <AuroraDivider />
       <MarketingIntegrationSection />
+      <AuroraDivider />
       <AIExpertiseSection />
+      <AuroraDivider />
       <ProjectsSection />
+      <AuroraDivider />
       <BlogSection />
+      <AuroraDivider />
       <FunAISection />
+      <AuroraDivider />
       <ContactSection />
     </main>
   );
