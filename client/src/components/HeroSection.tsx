@@ -5,56 +5,67 @@ import { ArrowRight } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section id="home" className="pt-32 pb-20 md:pt-40 md:pb-28 px-4">
-      <div className="container mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+    <section className="relative h-[80vh] overflow-hidden flex items-center justify-center text-center">
+      {/* Animated background */}
+      <motion.div
+        className="absolute inset-0"
+        style={{
+          background: `radial-gradient(circle at 20% 120%, var(--c-fx) 0%, transparent 60%), 
+                      radial-gradient(circle at 80% -20%, var(--c-hi) 0%, transparent 60%), 
+                      var(--c-bg)`,
+        }}
+        initial={{ scale: 1.2, rotate: 0 }}
+        animate={{ scale: 1, rotate: 360 }}
+        transition={{ repeat: Infinity, duration: 90, ease: "linear" }}
+      />
+      
+      {/* Foreground content */}
+      <div className="relative z-10 px-4 max-w-3xl">
+        <motion.h1 
+          className="text-5xl md:text-7xl font-extrabold leading-tight text-white drop-shadow-lg mb-6"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          I turn <span className="text-[var(--c-hi)]">messy data</span> into stories people <span className="text-[var(--c-fx)]">feel</span>.
+        </motion.h1>
+        
+        <motion.p 
+          className="mt-4 text-lg md:text-2xl text-white/80 mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          MarTech&nbsp;strategist · AI&nbsp;builder · relentless experimenter
+        </motion.p>
+        
+        <motion.div 
+          className="flex gap-4 justify-center flex-wrap"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <Button 
+            asChild
+            size="lg"
+            className="rounded-full bg-[var(--c-hi)] text-black font-semibold hover:scale-105 transition"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              Hi, I'm <span className="text-primary">Trevor Bosetti</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-              MarTech Expert & Strategic Consultant
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button 
-                asChild
-                size="lg"
-                className="inline-flex items-center"
-              >
-                <Link href="#projects">
-                  View My Work
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button 
-                asChild
-                variant="outline" 
-                size="lg"
-                className="inline-flex items-center"
-              >
-                <Link href="#contact">
-                  Contact Me
-                </Link>
-              </Button>
-            </div>
-          </motion.div>
-          <motion.div 
-            className="hidden md:block"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            <Link href="#work">
+              See the work <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+          
+          <Button 
+            asChild
+            variant="outline" 
+            size="lg"
+            className="rounded-full border border-white/70 text-white hover:bg-white/10 transition"
           >
-            <img
-              src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
-              alt="Trevor Bosetti"
-              className="rounded-2xl shadow-lg w-full h-auto max-w-md mx-auto"
-            />
-          </motion.div>
-        </div>
+            <Link href="#contact">
+              Book a brain-dump
+            </Link>
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

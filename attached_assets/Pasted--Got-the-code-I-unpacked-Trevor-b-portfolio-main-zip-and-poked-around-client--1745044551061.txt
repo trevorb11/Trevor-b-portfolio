@@ -1,0 +1,207 @@
+✅ Got the code
+
+I unpacked Trevor‑b‑portfolio‑main.zip and poked around:
+
+/
+├─ client/                   # Vite + React18 + TS
+│  ├─ index.html
+│  └─ src/
+│     ├─ App.tsx            # wouter router
+│     ├─ pages/             # Home, ProjectDetail, Blog, …
+│     ├─ components/        # HeroSection, AboutSection … (+ shadcn/ui)
+│     └─ lib/               # react‑query client etc.
+├─ server/                  # small Express API (Neon + drizzle)
+├─ tailwind.config.ts       # shadcn tokens
+└─ package.json             # monorepo scripts
+
+You’re already using Tailwind, Framer Motion, shadcn/ui, React Router (wouter)—perfect foundation.
+
+Below is a step‑by‑step patch plan to turn this into a Trevor‑first portfolio without ripping out the plumbing.
+
+⸻
+
+1. Branding layer
+
+‑ tailwind.config.ts
+
+extend: {
++ colors: {
++   brandBg:  "#150734",   // deep space violet
++   brandHi:  "#D2FF4C",   // aurora lime
++   brandFx:  "#3CFBFF",   // electric cyan
++ },
+  ...
+}
+
+Dark mode stays (dark: prefix) but now you’ve got three brand tokens to reuse in every component.
+
+Add to globals.css:
+
+:root {
+  --c-bg: theme(colors.brandBg);
+  --c-hi: theme(colors.brandHi);
+  --c-fx: theme(colors.brandFx);
+}
+
+
+
+⸻
+
+2. Copy & nav overhaul
+
+‑ client/src/components/Header.tsx
+
+- const nav = [
+-   { label: "About", to: "#about" },
+-   { label: "Projects", to: "#projects" },
+-   { label: "Contact", to: "#contact" },
+- ];
++ const nav = [
++   { label: "Work", to: "#work" },
++   { label: "Playground", to: "/playground" },
++   { label: "Writing", to: "/blog" },
++   { label: "About", to: "#about" },
++ ];
+
+Add route in App.tsx
+
+import Playground from "@/pages/Playground";
+...
+<Route path="/playground" component={Playground} />
+
+Create pages/Playground.tsx later (live demos grid).
+
+⸻
+
+3. New Hero (drop‑in replacement)
+
+client/src/components/HeroSection.tsx
+
+import { motion } from "framer-motion";
+import { Link } from "wouter";
+
+export default function Hero() {
+  return (
+    <section className="relative h-[70vh] overflow-hidden flex items-center justify-center text-center">
+      {/* animated background */}
+      <motion.div
+        className="absolute inset-0 bg-[radial-gradient(circle_at_20%_120%,var(--c-fx)_0%,transparent_60%),radial-gradient(circle_at_80%_-20%,var(--c-hi)_0%,transparent_60%),var(--c-bg)]"
+        initial={{ scale: 1.2, rotate: 0 }}
+        animate={{ scale: 1, rotate: 360 }}
+        transition={{ repeat: Infinity, duration: 90, ease: "linear" }}
+      />
+      {/* foreground */}
+      <div className="relative z-10 px-4 max-w-2xl">
+        <h1 className="text-5xl md:text-7xl font-extrabold leading-tight text-white drop-shadow-lg">
+          I turn <span className="text-[var(--c-hi)]">messy data</span> into
+          stories people <span className="text-[var(--c-fx)]">feel</span>.
+        </h1>
+        <p className="mt-4 text-lg md:text-2xl text-white/80">
+          Martech&nbsp;strategist · AI&nbsp;builder · relentless experimenter
+        </p>
+        <div className="mt-8 flex gap-4 justify-center flex-wrap">
+          <Link href="#work">
+            <a className="px-6 py-3 rounded-full bg-[var(--c-hi)] text-black font-semibold hover:scale-105 transition">
+              See the work →
+            </a>
+          </Link>
+          <Link href="#contact">
+            <a className="px-6 py-3 rounded-full border border-white/70 text-white hover:bg-white/10 transition">
+              Hire me
+            </a>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+
+⸻
+
+4. Centralise project data (replace hard‑coded cards)
+
+Create client/src/data/projects.ts
+
+export type Tag = "Non‑profit" | "AI" | "Web App" | "Campaign" | "Play";
+
+export interface Project {
+  id: string;
+  title: string;
+  cover: string;
+  summary: string;
+  role: string;
+  stack: string[];
+  tags: Tag[];
+  caseStudyUrl?: string;
+}
+
+export const projects: Project[] = [
+  {
+    id: "impact-wrapped",
+    title: "Impact Wrapped",
+    cover: "/img/impact.jpg",
+    summary: "Spotify‑style donor recap that lifted CTR +37 %",
+    role: "Product Owner & Dev",
+    stack: ["Next.js", "OpenAI", "Classy API"],
+    tags: ["Non‑profit", "Web App", "AI"],
+    caseStudyUrl: "/work/impact-wrapped",
+  },
+  // add more…
+];
+
+ProjectsSection.tsx
+
+- const filtered = projects.filter(…)
++ import { projects } from "@/data/projects";
+
+…and iterate over projects instead of static JSX.
+
+Now you can tag anything—even personal hack‑jobs—without changing the component.
+
+⸻
+
+5. “Playground” page
+
+pages/Playground.tsx
+
+import { projects } from "@/data/projects";
+export default () => {
+  const toys = projects.filter(p => p.tags.includes("Play"));
+  return (
+    <main className="py-20 px-6 max-w-5xl mx-auto">
+      <h1 className="text-4xl font-bold mb-8">Playground</h1>
+      <div className="grid md:grid-cols-2 gap-8">
+        {toys.map(p => <ProjectCard key={p.id} {...p} />)}
+      </div>
+    </main>
+  );
+};
+
+Tag QR‑code tracker, Lightbender animation, any quick AI prototype as "Play" and it’ll show up here.
+
+⸻
+
+6. Case‑study via MDX (bonus)
+
+Add @next/mdx (or vite-plugin-mdx, since you’re already on Vite). Then you can drop /work/impact-wrapped.mdx and render it in ProjectDetail without extra routing code.
+
+⸻
+
+7. Copy pass
+	•	Trim long paragraphs in AboutSection.tsx to 3 bullets:
+☑ 8 years shipping full‑stack MarTech
+☑ AI workshops for non‑dev teams
+☑ Raised $47 M through data‑driven campaigns
+	•	Change section headings: “Marketing Systems Integration” → “Selected Client Work”, “AI: The Essential Skill” → “AI Experiments”.
+
+⸻
+
+8. What to do next
+	1.	Merge the tailwind color tokens & Hero replacement.
+	2.	Drop the new projects.ts & adjust ProjectsSection.
+	3.	Add the Playground page + route + header link.
+	4.	Commit, push, redeploy (Replit or Vercel).
+
+Ping me once you’ve done step 1 or if you hit any TypeScript hiccups—I’ll shoot back exact fix‑ups or a full diff/patch.

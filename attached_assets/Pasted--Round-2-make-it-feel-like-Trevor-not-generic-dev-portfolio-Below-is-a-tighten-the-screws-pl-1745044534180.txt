@@ -1,0 +1,161 @@
+🔥 Round 2 — make it feel like Trevor, not “generic dev portfolio”
+
+Below is a tighten‑the‑screws plan that layers on micro‑motion, playful copy, and personal Easter eggs without adding a ton of complexity.
+
+⸻
+
+1 Vibe Board (quick gut‑check)
+
+Trait	Visual hook	Copy hook	Interaction
+Blunt honesty	High‑contrast text on deep space background	No fluff sentences; occasional “(yep, that simple)” aside	Section titles slide in fast, no slow fades
+AI tinkerer	Neon‑glow accent lines that pulse	“Built with sleepless curiosity + GPT‑4 tokens”	Toggle reveals how a component was built (AI vs manual)
+Storyteller	Parallax comic‑panel dividers	Short narrative captions under project titles	Scroll‑linked progress bar (“chapter 1 / 4”)
+Fun	Cursor‑follower particle trail	Micro‑copy like “Press the shiny button”	Konami code → Bentley dog pops up
+
+
+
+⸻
+
+2 Visual engagement upgrades
+
+a. Aurora scroll divider
+
+// components/AuroraDivider.tsx
+export default () => (
+  <div className="h-32 w-full overflow-hidden">
+    <div className="aurora absolute inset-0" />
+    <style jsx>{`
+      .aurora {
+        background: radial-gradient(ellipse at 50% 100%, var(--c-hi) 0%, transparent 70%),
+                    radial-gradient(ellipse at 0% 50%, var(--c-fx) 0%, transparent 70%);
+        filter: blur(60px) saturate(150%);
+        animation: drift 20s linear infinite;
+      }
+      @keyframes drift { from {transform:translateX(-50%);} to {transform:translateX(50%);} }
+    `}</style>
+  </div>
+);
+
+Drop <AuroraDivider /> between major sections; gives subtle motion without JS.
+
+b. Parallax “chapter” headings
+
+// components/SectionHeading.tsx
+import { motion, useScroll, useTransform } from "framer-motion";
+export default function SectionHeading({ id, title }: { id: string; title: string }) {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 600], [0, -100]);
+  return (
+    <motion.h2 id={id} style={{ y }}
+      className="text-4xl md:text-6xl font-extrabold tracking-tight mb-12">
+      {title}
+    </motion.h2>
+  );
+}
+
+Each heading drifts upward as you scroll → gives the page “chapters.”
+
+c. Cursor particle trail (tiny library)
+
+Add react-custom-cursor:
+
+import CustomCursor from 'custom-cursor-react';
+import 'custom-cursor-react/dist/index.css';
+
+<CustomCursor
+  targets={['a', 'button']}
+  customClass='cursor'
+  fill='var(--c-fx)'
+  stroke='var(--c-hi)'
+/>
+
+Small file size but instantly “fun.”
+
+d. Project card tilt
+
+Replace whileHover={{ y:-4 }} with:
+
+whileHover={{ rotateX: 6, rotateY: -6, scale: 1.03 }}
+transition={{ type: "spring", stiffness: 300, damping: 20 }}
+
+Cards feel 3‑D on hover.
+
+⸻
+
+3 Content tweaks
+
+a. About section: timeline + fun facts
+
+// components/AboutSection.tsx
+import { Timeline, TimelineItem } from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
+
+const events = [
+  { year: 2017, text: "Graduated, discovered that marketing ≠ brochures." },
+  { year: 2019, text: "Built first AI‑powered donor segmenter. It mostly worked." },
+  { year: 2023, text: "Joined Community Food Share, moved $13M of food." },
+  { year: 2025, text: "Freelancing & tinkering with Lightbender ideas." },
+];
+
+export default () => (
+  <section id="about" className="py-24">
+    <SectionHeading id="about" title="About" />
+    <Timeline lineColor="var(--c-fx)">
+      {events.map(e => (
+        <TimelineItem key={e.year} dateText={`${e.year}`} style={{ color: '#fff' }}>
+          <p>{e.text}</p>
+        </TimelineItem>
+      ))}
+    </Timeline>
+    <ul className="mt-12 grid md:grid-cols-2 gap-4 text-brandFx">
+      <li>⚡ Talks too fast when excited.</li>
+      <li>🐶 Dog named Bentley → Easter‑egg guardian.</li>
+      <li>🎸 Can still nail the “Everlong” riff.</li>
+      <li>📚 Currently reading *The Creative Act*.</li>
+    </ul>
+  </section>
+);
+
+b. Micro‑copy pass
+	•	Buttons: “Hire me” → “Book a brain‑dump”
+	•	404: “Well, that URL’s as empty as my coffee mug.”
+	•	Footer: “© Trevor Bosetti — built with Tailwind, caffeine, a whisper of GPT‑4.”
+
+⸻
+
+4 Easter eggs (optional but on‑brand)
+
+// utils/konami.ts
+export default function useKonami(cb: () => void) {
+  const sequence = [38,38,40,40,37,39,37,39,66,65];
+  let cursor = 0;
+  window.addEventListener("keydown", e => {
+    if (e.keyCode === sequence[cursor]) cursor++;
+    else cursor = 0;
+    if (cursor === sequence.length) { cb(); cursor = 0; }
+  });
+}
+
+// in App.tsx
+useKonami(() => setShowBentley(true));
+
+Then render a fixed‑position Bentley dog SVG that wiggles when hovered.
+
+⸻
+
+5 Performance check
+	•	Lazy‑load all images loading="lazy"
+	•	import('react-vertical-timeline-component') dynamically only on About page
+	•	Keep particle cursor behind a prefers-reduced-motion check.
+
+⸻
+
+6 Next tiny roadmap
+	1.	Implement Aurora divider & parallax headings – 30 min.
+	2.	Swap copy (buttons, easter egg messages) – 15 min.
+	3.	Timeline + fun facts – 45 min.
+	4.	Cursor trail / tilt – 20 min.
+
+Commit early, push, and ping me the URL. I’ll do a last‑mile polish (fonts, accessibility pass, Lighthouse).
+
+(When you want full component files or PR‑ready diff, just say the word and I’ll paste the entire code blocks.)

@@ -11,6 +11,9 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        brandBg: "#150734",   // deep space violet
+        brandHi: "#D2FF4C",   // aurora lime
+        brandFx: "#3CFBFF",   // electric cyan
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
