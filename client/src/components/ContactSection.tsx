@@ -5,18 +5,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
-import { 
-  Form, 
-  FormControl, 
-  FormField, 
-  FormItem, 
-  FormLabel, 
-  FormMessage 
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, Phone, MapPin, Linkedin, Github, Twitter } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Linkedin } from "lucide-react";
 import { contactFormSchema, type ContactForm } from "@shared/schema";
 
 const ContactSection = () => {
@@ -29,8 +29,8 @@ const ContactSection = () => {
       name: "",
       email: "",
       subject: "",
-      message: ""
-    }
+      message: "",
+    },
   });
 
   const { mutate, isPending } = useMutation({
@@ -41,7 +41,8 @@ const ContactSection = () => {
     onSuccess: () => {
       toast({
         title: "Message Sent!",
-        description: "Thank you for your message. I'll respond as soon as possible.",
+        description:
+          "Thank you for your message. I'll respond as soon as possible.",
       });
       form.reset();
       setFormSubmitted(true);
@@ -60,18 +61,21 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 bg-dark text-white">
+    <section id="contact" className="py-20 px-4">
       <div className="container mx-auto max-w-7xl">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
-          <p className="text-muted text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind or want to discuss a potential collaboration? I'd love to hear from you.
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+            Get In Touch
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Have a project in mind or want to discuss a potential collaboration?
+            I'd love to hear from you.
           </p>
           <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
         </motion.div>
@@ -83,7 +87,9 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-foreground">
+              Contact Information
+            </h3>
 
             <div className="space-y-4 mb-8">
               <div className="flex items-start">
@@ -91,21 +97,12 @@ const ContactSection = () => {
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium">Email</h4>
-                  <a href="mailto:contact@trevorbosetti.com" className="text-muted-foreground hover:text-primary transition-colors">
-                    contact@trevorbosetti.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div className="bg-primary/20 p-3 rounded-full mr-4">
-                  <Phone className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-medium">Phone</h4>
-                  <a href="tel:+11234567890" className="text-muted-foreground hover:text-primary transition-colors">
-                    +1 (123) 456-7890
+                  <h4 className="text-lg font-medium text-foreground">Email</h4>
+                  <a
+                    href="mailto:trevor@rankzone.studio"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    trevor@rankzone.studio
                   </a>
                 </div>
               </div>
@@ -115,22 +112,33 @@ const ContactSection = () => {
                   <MapPin className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium">Location</h4>
-                  <p className="text-muted-foreground">San Francisco, California</p>
+                  <h4 className="text-lg font-medium text-foreground">
+                    Location
+                  </h4>
+                  <p className="text-muted-foreground">Colorado</p>
                 </div>
               </div>
             </div>
 
-            <h3 className="text-xl font-semibold mb-4">Connect With Me</h3>
+            <h3 className="text-xl font-semibold mb-4 text-foreground">
+              Connect With Me
+            </h3>
             <div className="flex space-x-4">
-              <a href="#" className="bg-primary/20 p-3 rounded-full hover:bg-primary/30 transition-colors">
+              <a
+                href="https://www.linkedin.com/in/trevorbosetti"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary/20 p-3 rounded-full hover:bg-primary/30 transition-colors"
+                aria-label="LinkedIn"
+              >
                 <Linkedin className="h-6 w-6 text-primary" />
               </a>
-              <a href="#" className="bg-primary/20 p-3 rounded-full hover:bg-primary/30 transition-colors">
-                <Github className="h-6 w-6 text-primary" />
-              </a>
-              <a href="#" className="bg-primary/20 p-3 rounded-full hover:bg-primary/30 transition-colors">
-                <Twitter className="h-6 w-6 text-primary" />
+              <a
+                href="mailto:trevor@rankzone.studio"
+                className="bg-primary/20 p-3 rounded-full hover:bg-primary/30 transition-colors"
+                aria-label="Email"
+              >
+                <Mail className="h-6 w-6 text-primary" />
               </a>
             </div>
           </motion.div>
@@ -141,33 +149,45 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-semibold mb-6">Send Me a Message</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-foreground">
+              Send Me a Message
+            </h3>
 
             {formSubmitted ? (
-              <div className="bg-primary/10 rounded-lg p-6 text-center">
-                <h4 className="text-xl font-medium mb-2">Thank You!</h4>
-                <p className="mb-4">Your message has been sent successfully. I'll get back to you soon!</p>
-                <Button 
+              <div className="bg-primary/10 rounded-lg p-6 text-center border border-primary/20">
+                <h4 className="text-xl font-medium mb-2 text-foreground">
+                  Thank You!
+                </h4>
+                <p className="mb-4 text-muted-foreground">
+                  Your message has been sent successfully. I'll get back to you
+                  soon!
+                </p>
+                <Button
                   onClick={() => setFormSubmitted(false)}
-                  className="bg-primary hover:bg-secondary"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground"
                 >
                   Send Another Message
                 </Button>
               </div>
             ) : (
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-4"
+                >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-medium">Name</FormLabel>
+                          <FormLabel className="text-sm font-medium text-foreground">
+                            Name
+                          </FormLabel>
                           <FormControl>
                             <Input
                               placeholder="Your name"
-                              className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-white/50 focus:ring-primary"
+                              className="w-full bg-card/50 border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus-visible:ring-primary"
                               {...field}
                             />
                           </FormControl>
@@ -180,12 +200,14 @@ const ContactSection = () => {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-medium">Email</FormLabel>
+                          <FormLabel className="text-sm font-medium text-foreground">
+                            Email
+                          </FormLabel>
                           <FormControl>
                             <Input
                               type="email"
                               placeholder="Your email address"
-                              className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-white/50 focus:ring-primary"
+                              className="w-full bg-card/50 border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus-visible:ring-primary"
                               {...field}
                             />
                           </FormControl>
@@ -200,11 +222,13 @@ const ContactSection = () => {
                     name="subject"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-sm font-medium">Subject</FormLabel>
+                        <FormLabel className="text-sm font-medium text-foreground">
+                          Subject
+                        </FormLabel>
                         <FormControl>
                           <Input
                             placeholder="How can I help you?"
-                            className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-white/50 focus:ring-primary"
+                            className="w-full bg-card/50 border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus-visible:ring-primary"
                             {...field}
                           />
                         </FormControl>
@@ -218,12 +242,14 @@ const ContactSection = () => {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-sm font-medium">Message</FormLabel>
+                        <FormLabel className="text-sm font-medium text-foreground">
+                          Message
+                        </FormLabel>
                         <FormControl>
                           <Textarea
                             rows={5}
                             placeholder="Your message"
-                            className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-white/50 focus:ring-primary"
+                            className="w-full bg-card/50 border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus-visible:ring-primary"
                             {...field}
                           />
                         </FormControl>
@@ -235,7 +261,7 @@ const ContactSection = () => {
                   <Button
                     type="submit"
                     disabled={isPending}
-                    className="inline-flex items-center justify-center bg-primary hover:bg-secondary text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+                    className="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 py-3 rounded-lg transition-colors"
                   >
                     {isPending ? "Sending..." : "Send Message"}
                     {!isPending && <ArrowRight className="ml-2 h-5 w-5" />}

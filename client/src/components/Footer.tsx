@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Github, Linkedin, Twitter, Mail, ArrowRight } from "lucide-react";
+import { Linkedin, Mail, ArrowRight } from "lucide-react";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -70,16 +70,7 @@ const Footer = () => {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-full hover:bg-primary/10"
-                aria-label="GitHub"
-              >
-                <Github size={20} />
-              </a>
-              <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/trevorbosetti"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-full hover:bg-primary/10"
@@ -88,16 +79,7 @@ const Footer = () => {
                 <Linkedin size={20} />
               </a>
               <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-full hover:bg-primary/10"
-                aria-label="Twitter"
-              >
-                <Twitter size={20} />
-              </a>
-              <a
-                href="mailto:info@example.com"
+                href="mailto:trevor@rankzone.studio"
                 className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-full hover:bg-primary/10"
                 aria-label="Email"
               >
