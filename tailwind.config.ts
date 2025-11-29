@@ -11,9 +11,15 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
-        brandBg: "#150734",   // deep space violet
-        brandHi: "#D2FF4C",   // aurora lime
-        brandFx: "#3CFBFF",   // electric cyan
+        brandBg: "#1E567C",   // deep sunset blue
+        brandHi: "#E87950",   // warm coral orange
+        brandFx: "#F5C9A0",   // soft peachy glow
+        // Additional sunset gradient colors
+        sunsetBlue: "#2D6B8A",
+        sunsetSky: "#6AABCF",
+        sunsetCream: "#F5E0C9",
+        sunsetOrange: "#E89A6A",
+        sunsetCoral: "#D45A45",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

@@ -6,17 +6,31 @@ import { ArrowRight } from "lucide-react";
 const HeroSection = () => {
   return (
     <section className="relative h-[80vh] overflow-hidden flex items-center justify-center text-center">
-      {/* Animated background */}
+      {/* Animated sunset gradient background */}
       <motion.div
         className="absolute inset-0"
         style={{
-          background: `radial-gradient(circle at 20% 120%, var(--c-fx) 0%, transparent 60%), 
-                      radial-gradient(circle at 80% -20%, var(--c-hi) 0%, transparent 60%), 
-                      var(--c-bg)`,
+          background: `linear-gradient(to bottom,
+            #1E567C 0%,
+            #2D6B8A 15%,
+            #6AABCF 35%,
+            #F5E0C9 55%,
+            #E89A6A 75%,
+            #D45A45 100%)`,
         }}
-        initial={{ scale: 1.2, rotate: 0 }}
-        animate={{ scale: 1, rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 90, ease: "linear" }}
+        initial={{ opacity: 0.9 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2, ease: "easeInOut" }}
+      />
+      {/* Subtle glow overlay */}
+      <motion.div
+        className="absolute inset-0"
+        style={{
+          background: `radial-gradient(circle at 50% 70%, rgba(232, 154, 106, 0.3) 0%, transparent 50%)`,
+        }}
+        initial={{ scale: 1 }}
+        animate={{ scale: 1.1 }}
+        transition={{ repeat: Infinity, duration: 8, ease: "easeInOut", repeatType: "reverse" }}
       />
       
       {/* Foreground content */}
