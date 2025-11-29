@@ -5,7 +5,7 @@ import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 import MarketingIntegrationSection from "@/components/MarketingIntegrationSection";
 import AIExpertiseSection from "@/components/AIExpertiseSection";
-import FunAISection from "@/components/FunAISection";
+import CaseStudiesSection from "@/components/CaseStudiesSection";
 import AuroraDivider from "@/components/AuroraDivider";
 import { useEffect } from "react";
 import { useLocation } from "wouter";
@@ -53,7 +53,7 @@ const Home = () => {
       <AuroraDivider />
       <BlogSection />
       <AuroraDivider />
-      <FunAISection />
+      <CaseStudiesSection />
       <AuroraDivider />
       <ContactSection />
     </main>
