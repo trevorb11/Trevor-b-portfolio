@@ -13,15 +13,15 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({ id, title, subtitle }) 
 
   return (
     <div className="text-center mb-12">
-      <motion.h2 
-        id={id} 
+      <motion.h2
+        id={id}
         style={{ y }}
-        className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4"
+        className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-foreground"
       >
         {title}
       </motion.h2>
       {subtitle && (
-        <p className="text-lg text-gray-500 dark:text-gray-400 max-w-3xl mx-auto">
+        <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
           {subtitle}
         </p>
       )}
