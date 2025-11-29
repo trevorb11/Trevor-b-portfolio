@@ -58,19 +58,17 @@ const Header = () => {
   const navLinks = [
     { name: "Home", path: "/", id: "" },
     { name: "About", path: "/#about", id: "about" },
-    { name: "Integrations", path: "/#integrations", id: "integrations" },
-    { name: "AI Expertise", path: "/#ai-expertise", id: "ai-expertise" },
     { name: "Projects", path: "/#projects", id: "projects" },
+    { name: "Case Studies", path: "/#case-studies", id: "case-studies" },
     { name: "Blog", path: "/#blog", id: "blog" },
-    { name: "AI Play", path: "/#fun-ai", id: "fun-ai" },
     { name: "Contact", path: "/#contact", id: "contact" },
   ];
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? "backdrop-blur-md bg-black/60 shadow-lg" 
+        scrolled
+          ? "backdrop-blur-md bg-background/90 shadow-lg border-b border-border/50"
           : "bg-transparent"
       }`}
     >
@@ -78,36 +76,36 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--c-hi)] to-[var(--c-fx)] flex items-center justify-center">
-              <span className="text-black font-bold text-lg">TB</span>
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-lg">TB</span>
             </div>
             <div>
-              <span className="text-[var(--c-hi)]">Trevor</span>
-              <span className="text-white">Bosetti</span>
+              <span className="text-primary">Trevor</span>
+              <span className="text-foreground">Bosetti</span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:block">
-            <ul className="flex space-x-8">
+          <nav className="hidden lg:block">
+            <ul className="flex space-x-6">
               {navLinks.map((link) => (
                 <li key={link.path}>
                   {link.id ? (
-                    <a 
-                      href={link.path} 
+                    <a
+                      href={link.path}
                       onClick={(e) => scrollToSection(link.id, e)}
-                      className={`font-medium transition-colors text-white/80 hover:text-[var(--c-hi)] ${
-                        isActive(link.path) ? "text-[var(--c-hi)]" : ""
+                      className={`font-medium transition-colors text-foreground/80 hover:text-primary ${
+                        isActive(link.path) ? "text-primary" : ""
                       }`}
                     >
                       {link.name}
                     </a>
                   ) : (
-                    <Link 
-                      href={link.path} 
+                    <Link
+                      href={link.path}
                       onClick={closeMenu}
-                      className={`font-medium transition-colors text-white/80 hover:text-[var(--c-hi)] ${
-                        isActive(link.path) ? "text-[var(--c-hi)]" : ""
+                      className={`font-medium transition-colors text-foreground/80 hover:text-primary ${
+                        isActive(link.path) ? "text-primary" : ""
                       }`}
                     >
                       {link.name}
@@ -122,7 +120,7 @@ const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden text-white"
+            className="lg:hidden text-foreground"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
@@ -133,21 +131,21 @@ const Header = () => {
         {/* Mobile Navigation */}
         <AnimatePresence>
           {isMobileMenuOpen && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden overflow-hidden bg-black/80 backdrop-blur-md rounded-lg mt-2"
+              className="lg:hidden overflow-hidden bg-card/95 backdrop-blur-md rounded-lg mt-2 border border-border/50"
             >
-              <ul className="space-y-2 p-4">
+              <ul className="space-y-1 p-4">
                 {navLinks.map((link) => (
                   <li key={link.path}>
                     {link.id ? (
                       <a
                         href={link.path}
                         onClick={(e) => scrollToSection(link.id, e)}
-                        className={`block py-2 transition-colors text-white/80 hover:text-[var(--c-hi)] ${
-                          isActive(link.path) ? "text-[var(--c-hi)]" : ""
+                        className={`block py-2 px-3 rounded-md transition-colors text-foreground/80 hover:text-primary hover:bg-primary/10 ${
+                          isActive(link.path) ? "text-primary bg-primary/10" : ""
                         }`}
                       >
                         {link.name}
@@ -156,8 +154,8 @@ const Header = () => {
                       <Link
                         href={link.path}
                         onClick={closeMenu}
-                        className={`block py-2 transition-colors text-white/80 hover:text-[var(--c-hi)] ${
-                          isActive(link.path) ? "text-[var(--c-hi)]" : ""
+                        className={`block py-2 px-3 rounded-md transition-colors text-foreground/80 hover:text-primary hover:bg-primary/10 ${
+                          isActive(link.path) ? "text-primary bg-primary/10" : ""
                         }`}
                       >
                         {link.name}

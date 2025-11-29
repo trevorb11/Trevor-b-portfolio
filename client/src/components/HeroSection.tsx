@@ -53,27 +53,27 @@ const HeroSection = () => {
           MarTech&nbsp;strategist · AI&nbsp;builder · relentless experimenter
         </motion.p>
         
-        <motion.div 
+        <motion.div
           className="flex gap-4 justify-center flex-wrap"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <Button 
+          <Button
             asChild
             size="lg"
-            className="rounded-full bg-[var(--c-hi)] text-black font-semibold hover:scale-105 transition"
+            className="rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 hover:scale-105 transition shadow-lg"
           >
-            <Link href="#work">
+            <Link href="#projects">
               See the work <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
-          
-          <Button 
+
+          <Button
             asChild
-            variant="outline" 
+            variant="outline"
             size="lg"
-            className="rounded-full border border-white/70 text-white hover:bg-white/10 transition"
+            className="rounded-full border-2 border-white/70 text-white hover:bg-white/10 hover:border-white transition"
           >
             <Link href="#contact">
               Book a brain-dump
