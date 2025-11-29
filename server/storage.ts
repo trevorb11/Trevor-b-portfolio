@@ -541,6 +541,33 @@ export class MemStorage implements IStorage {
         technologies: ["WordPress", "Blackbaud Integration", "Custom Donation Forms", "Impact Visualization"],
         link: "https://communityfoodshare.org/14-tons",
         featured: 1
+      },
+      {
+        title: "Monthly Donor Upgrade Campaign",
+        description: "High-conversion automated campaign flows designed to move one-time donors to recurring sustainers, resulting in significant increases in monthly giving revenue.",
+        category: "automation",
+        image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        technologies: ["HubSpot", "Email Automation", "A/B Testing", "Donor Segmentation"],
+        link: null,
+        featured: 1
+      },
+      {
+        title: "Smart Video Embed Tool",
+        description: "A custom YouTube wrapper that automatically redirects viewers to a specific landing page the moment the video ends, maximizing conversion from video content.",
+        category: "automation",
+        image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        technologies: ["JavaScript", "YouTube API", "Custom Embed", "Conversion Tracking"],
+        link: null,
+        featured: 1
+      },
+      {
+        title: "Custom Event Portal",
+        description: "End-to-end ticketing and registration system tailored for complex event logic and constituent reporting, streamlining event management workflows.",
+        category: "crm-integration",
+        image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        technologies: ["React", "Node.js", "Blackbaud Integration", "Custom Forms", "Event Logic"],
+        link: null,
+        featured: 1
       }
     ];
     
