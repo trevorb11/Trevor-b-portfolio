@@ -32,11 +32,11 @@ const Footer = () => {
 
   return (
     <footer className="relative text-white py-16">
-      {/* Background gradient */}
-      <div 
-        className="absolute inset-0 opacity-30"
+      {/* Background sunset gradient */}
+      <div
+        className="absolute inset-0 opacity-40"
         style={{
-          background: "radial-gradient(circle at 50% 0%, var(--c-fx) 0%, transparent 50%)",
+          background: "linear-gradient(to bottom, #D45A45 0%, #1E567C 100%)",
           filter: "blur(40px)"
         }}
       />
