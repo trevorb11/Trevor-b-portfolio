@@ -31,7 +31,7 @@
 
     /* Muted - desaturated blue for subtle elements */
     --muted: 203 30% 30%;
-    --muted-foreground: 200 20% 65%;
+    --muted-foreground: 200 25% 80%;
 
     /* Accent - peachy glow for highlights */
     --accent: 28 70% 70%;

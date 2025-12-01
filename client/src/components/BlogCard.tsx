@@ -30,7 +30,7 @@ const BlogCard = ({ post }: BlogCardProps) => {
           <span className="mx-2">•</span>
           <span>{post.category}</span>
         </div>
-        <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
+        <h3 className="text-xl font-semibold mb-2 text-foreground">{post.title}</h3>
         <p className="text-muted-foreground mb-4 text-sm">
           {post.excerpt}
         </p>

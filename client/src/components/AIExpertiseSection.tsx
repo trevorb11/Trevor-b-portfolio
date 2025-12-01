@@ -83,7 +83,7 @@ const AIExpertiseSection = () => {
           <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
             {aiContent.title || "AI: The Essential Skill of Today"}
           </motion.h2>
-          <motion.p variants={itemVariants} className="text-gray-500 dark:text-gray-400 max-w-[800px] mb-8">
+          <motion.p variants={itemVariants} className="text-muted-foreground max-w-[800px] mb-8">
             {aiContent.subtitle || 
               "Artificial Intelligence isn't just the future—it's transforming marketing effectiveness right now."}
           </motion.p>
@@ -104,7 +104,7 @@ const AIExpertiseSection = () => {
                   <Cpu className="mr-2 text-primary" size={20} />
                   AI as a Competitive Advantage
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-muted-foreground leading-relaxed">
                   {aiContent.advantage || 
                     "In today's rapidly evolving digital landscape, proficiency in AI isn't optional—it's essential. I view AI as the most valuable skill not just for the future, but starting today. Organizations that effectively leverage AI technologies gain significant advantages in efficiency, personalization, and market insights."}
                 </p>
@@ -115,7 +115,7 @@ const AIExpertiseSection = () => {
                   <TrendingUp className="mr-2 text-primary" size={20} />
                   Strategic AI Implementation
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-muted-foreground leading-relaxed">
                   {aiContent.strategy || 
                     "My approach focuses on strategic AI implementation that aligns with your business objectives. Rather than adopting AI for its own sake, I help organizations identify specific areas where AI can solve real problems and drive measurable results, from customer experience to operational efficiency."}
                 </p>
@@ -129,7 +129,7 @@ const AIExpertiseSection = () => {
             viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
           >
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+            <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl shadow-lg p-8">
               <motion.h3 variants={itemVariants} className="text-2xl font-bold mb-6 flex items-center">
                 <Zap className="mr-2 text-primary" size={20} />
                 AI in Marketing: Practical Applications
@@ -140,12 +140,12 @@ const AIExpertiseSection = () => {
                   <motion.div 
                     key={index}
                     variants={itemVariants}
-                    className="flex items-start gap-4 border-b border-gray-200 dark:border-gray-700 pb-5 last:border-none"
+                    className="flex items-start gap-4 border-b border-border/30 pb-5 last:border-none"
                   >
                     <div className="flex-shrink-0">{app.icon}</div>
                     <div>
-                      <h4 className="font-semibold text-lg mb-1">{app.title}</h4>
-                      <p className="text-gray-600 dark:text-gray-300">{app.description}</p>
+                      <h4 className="font-semibold text-lg mb-1 text-foreground">{app.title}</h4>
+                      <p className="text-muted-foreground">{app.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -164,7 +164,7 @@ const AIExpertiseSection = () => {
           <motion.h3 variants={itemVariants} className="text-2xl font-bold mb-4">
             {aiContent.vision_title || "My AI Vision"}
           </motion.h3>
-          <motion.p variants={itemVariants} className="text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+          <motion.p variants={itemVariants} className="text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {aiContent.vision || 
               "AI is not replacing human creativity—it's augmenting it. My vision is to help organizations harness AI as a powerful tool that enhances human capabilities, enables more meaningful customer connections, and drives innovation. The organizations that thrive will be those that effectively blend human expertise with AI capabilities."}
           </motion.p>

@@ -12,7 +12,7 @@ const BlogSection = () => {
   });
 
   return (
-    <section id="blog" className="py-20 px-4 bg-white">
+    <section id="blog" className="py-20 px-4 bg-card/30">
       <div className="container mx-auto max-w-7xl">
         <motion.div 
           className="text-center mb-16"
@@ -21,7 +21,7 @@ const BlogSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Latest From My Blog</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Latest From My Blog</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Insights, tutorials, and thoughts on development, business systems, and technology.
           </p>
