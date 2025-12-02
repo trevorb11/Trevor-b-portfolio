@@ -107,17 +107,13 @@ const MarketingIntegrationSection = () => {
             className="space-y-6"
           >
             <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-bold mb-4 flex items-center text-foreground">
+              <h3 className="text-2xl font-bold mb-3 flex items-center text-foreground">
                 <LinkIcon className="mr-2 text-primary" size={20} />
                 System Integration Expertise
               </h3>
-              <p className="text-muted-foreground mb-4 leading-relaxed">
-                {integrationsContent.expertise || 
-                  "Whether your CRM is HubSpot, Salesforce, or Mailchimp, I specialize in getting the most value out of your marketing stack by creating seamless integrations that allow your systems to communicate effectively."}
-              </p>
               <p className="text-muted-foreground leading-relaxed">
-                {integrationsContent.expertise_detail || 
-                  "From data synchronization to automated workflows, I'll help you build a connected marketing ecosystem that leverages your data to engage your audience more effectively and drive better results."}
+                {integrationsContent.expertise || 
+                  "I make your marketing stack work as one unified system—seamless data sync, automated workflows, and integrations that just work."}
               </p>
             </motion.div>
 
@@ -162,17 +158,13 @@ const MarketingIntegrationSection = () => {
             className="space-y-6"
           >
             <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-bold mb-4 flex items-center text-foreground">
+              <h3 className="text-2xl font-bold mb-3 flex items-center text-foreground">
                 <Database className="mr-2 text-primary" size={20} />
                 Nonprofit Technology Specialization
               </h3>
-              <p className="text-muted-foreground mb-4 leading-relaxed">
-                {integrationsContent.nonprofit || 
-                  "I bring extensive experience with nonprofit-specific technologies, helping organizations leverage tools like Blackbaud, Raiser's Edge, Classy, and Omatic to maximize their impact."}
-              </p>
               <p className="text-muted-foreground leading-relaxed">
-                {integrationsContent.nonprofit_detail || 
-                  "Understanding the unique challenges nonprofits face, I provide specialized solutions that streamline operations, improve donor management, and enhance fundraising capabilities through strategic system integration."}
+                {integrationsContent.nonprofit || 
+                  "Deep expertise in nonprofit-specific tools. I help organizations maximize donor management, streamline operations, and boost fundraising impact."}
               </p>
             </motion.div>
 
@@ -217,12 +209,12 @@ const MarketingIntegrationSection = () => {
           variants={containerVariants}
           className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl p-8 text-center"
         >
-          <motion.h3 variants={itemVariants} className="text-2xl font-bold mb-4 text-foreground">
+          <motion.h3 variants={itemVariants} className="text-2xl font-bold mb-3 text-foreground">
             {integrationsContent.approach_title || "My Integration Approach"}
           </motion.h3>
-          <motion.p variants={itemVariants} className="text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <motion.p variants={itemVariants} className="text-muted-foreground max-w-2xl mx-auto">
             {integrationsContent.approach || 
-              "I don't just connect systems—I build strategic integration architectures that align with your business goals, ensure data integrity, and create scalable solutions that grow with your organization."}
+              "Strategic architectures that align with your goals, ensure data integrity, and scale with your organization."}
           </motion.p>
           <motion.div variants={itemVariants} className="mt-6">
             <a href="#contact" className="inline-flex items-center text-primary font-medium hover:underline">

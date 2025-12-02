@@ -121,17 +121,10 @@ const AboutSection = () => {
               What I bring to the table
             </h3>
 
-            <p className="mb-6 text-muted-foreground text-lg leading-relaxed">
-              For over 8 years, I've been the bridge between marketing dreams and
-              technical reality. I understand what marketers need and know how to
-              translate that into systems that actually deliver. Most importantly,
-              I focus on turning data into stories that connect with your audience.
-            </p>
-
             <p className="mb-8 text-muted-foreground text-lg leading-relaxed">
-              I focus on solutions that are maintained by humans—not just bolted
-              together. My approach ensures your marketing tech stack isn't just
-              impressive, but actually empowers your team.
+              <span className="text-foreground font-medium">8+ years</span> turning marketing dreams into technical reality. 
+              I build systems that <span className="text-foreground font-medium">your team can actually maintain</span>—not 
+              just impressive tech stacks, but tools that empower.
             </p>
 
             <div className="mb-8">

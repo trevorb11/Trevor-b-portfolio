@@ -44,24 +44,24 @@ const AIExpertiseSection = () => {
 
   const aiApplications = [
     {
-      title: "AI-Powered Customer Segmentation",
-      description: "Using machine learning to identify patterns and segment customers for more targeted marketing campaigns.",
-      icon: <Layers className="h-10 w-10 text-primary" />,
+      title: "Customer Segmentation",
+      description: "ML-powered patterns for targeted campaigns.",
+      icon: <Layers className="h-8 w-8 text-primary" />,
     },
     {
       title: "Conversational Marketing",
-      description: "Implementing AI chatbots and conversational interfaces to enhance customer engagement.",
-      icon: <MessageSquare className="h-10 w-10 text-primary" />,
+      description: "AI chatbots that enhance engagement.",
+      icon: <MessageSquare className="h-8 w-8 text-primary" />,
     },
     {
       title: "Predictive Analytics",
-      description: "Leveraging AI to forecast trends, customer behavior, and campaign performance.",
-      icon: <LineChart className="h-10 w-10 text-primary" />,
+      description: "Forecast trends and campaign performance.",
+      icon: <LineChart className="h-8 w-8 text-primary" />,
     },
     {
-      title: "Content Generation & Optimization",
-      description: "Using AI tools to create, optimize, and personalize marketing content at scale.",
-      icon: <Code className="h-10 w-10 text-primary" />,
+      title: "Content Optimization",
+      description: "Personalized content at scale.",
+      icon: <Code className="h-8 w-8 text-primary" />,
     },
   ];
 
@@ -100,24 +100,24 @@ const AIExpertiseSection = () => {
             <div className="absolute -top-20 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl z-0"></div>
             <div className="relative z-10">
               <motion.div variants={itemVariants} className="mb-8">
-                <h3 className="text-2xl font-bold mb-4 flex items-center">
+                <h3 className="text-2xl font-bold mb-3 flex items-center text-foreground">
                   <Cpu className="mr-2 text-primary" size={20} />
                   AI as a Competitive Advantage
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
                   {aiContent.advantage || 
-                    "In today's rapidly evolving digital landscape, proficiency in AI isn't optional—it's essential. I view AI as the most valuable skill not just for the future, but starting today. Organizations that effectively leverage AI technologies gain significant advantages in efficiency, personalization, and market insights."}
+                    "AI proficiency isn't optional—it's essential. Organizations leveraging AI gain real advantages in efficiency, personalization, and market insights."}
                 </p>
               </motion.div>
 
               <motion.div variants={itemVariants}>
-                <h3 className="text-2xl font-bold mb-4 flex items-center">
+                <h3 className="text-2xl font-bold mb-3 flex items-center text-foreground">
                   <TrendingUp className="mr-2 text-primary" size={20} />
                   Strategic AI Implementation
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
                   {aiContent.strategy || 
-                    "My approach focuses on strategic AI implementation that aligns with your business objectives. Rather than adopting AI for its own sake, I help organizations identify specific areas where AI can solve real problems and drive measurable results, from customer experience to operational efficiency."}
+                    "I focus on AI that solves real problems—not adoption for its own sake. From customer experience to operations, every implementation drives measurable results."}
                 </p>
               </motion.div>
             </div>
@@ -161,12 +161,12 @@ const AIExpertiseSection = () => {
           variants={containerVariants}
           className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent rounded-xl p-8 text-center"
         >
-          <motion.h3 variants={itemVariants} className="text-2xl font-bold mb-4">
+          <motion.h3 variants={itemVariants} className="text-2xl font-bold mb-3 text-foreground">
             {aiContent.vision_title || "My AI Vision"}
           </motion.h3>
-          <motion.p variants={itemVariants} className="text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <motion.p variants={itemVariants} className="text-muted-foreground max-w-2xl mx-auto">
             {aiContent.vision || 
-              "AI is not replacing human creativity—it's augmenting it. My vision is to help organizations harness AI as a powerful tool that enhances human capabilities, enables more meaningful customer connections, and drives innovation. The organizations that thrive will be those that effectively blend human expertise with AI capabilities."}
+              "AI augments human creativity, it doesn't replace it. The organizations that thrive blend human expertise with AI capabilities."}
           </motion.p>
           <motion.div variants={itemVariants} className="mt-6">
             <a href="#contact" className="inline-flex items-center bg-primary text-white px-5 py-2 rounded-md hover:bg-primary/90 transition-colors">
