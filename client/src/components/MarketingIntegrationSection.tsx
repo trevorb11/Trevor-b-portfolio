@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { ArrowRight, RefreshCw, Link as LinkIcon, Database, Globe, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, RefreshCw, Link as LinkIcon, Database, Lightbulb, ChevronLeft, ChevronRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { CmsContent } from "@shared/schema";
 import {
@@ -11,13 +11,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import SectionHeading from "./SectionHeading";
+import AuroraDivider from "./AuroraDivider";
 
 const MarketingIntegrationSection = () => {
   const { data: cmsContents } = useQuery<CmsContent[]>({
     queryKey: ["/api/cms"],
   });
 
-  // Filter content for this section
   const integrationsContent = React.useMemo(() => {
     if (!cmsContents) return {};
     
@@ -73,52 +74,32 @@ const MarketingIntegrationSection = () => {
   };
 
   return (
-    <section id="integrations" className="py-16 md:py-24 bg-card/30">
-      <div className="container px-4 md:px-6">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="flex flex-col items-center text-center mb-12"
-        >
-          <motion.div variants={itemVariants} className="inline-block mb-4">
-            <div className="p-2 rounded-full bg-primary/10 text-primary">
-              <RefreshCw size={24} />
-            </div>
-          </motion.div>
-          
-          <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
-            {integrationsContent.title || "Marketing Systems Integration"}
-          </motion.h2>
-          
-          <motion.p variants={itemVariants} className="text-muted-foreground max-w-[800px] mb-8">
-            {integrationsContent.subtitle || 
-              "Specialized in seamlessly connecting marketing systems to maximize your data value and audience engagement."}
-          </motion.p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+    <>
+      {/* Section 1: System Integration Expertise */}
+      <section id="integrations" className="py-16 md:py-24 bg-card/30">
+        <div className="container px-4 md:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
-            className="space-y-6"
+            className="max-w-4xl mx-auto"
           >
-            <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-bold mb-3 flex items-center text-foreground">
-                <LinkIcon className="mr-2 text-primary" size={20} />
+            <motion.div variants={itemVariants} className="text-center mb-10">
+              <div className="inline-block p-2 rounded-full bg-primary/10 text-primary mb-4">
+                <LinkIcon size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
                 System Integration Expertise
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
                 {integrationsContent.expertise || 
                   "I make your marketing stack work as one unified system—seamless data sync, automated workflows, and integrations that just work."}
               </p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="mt-8">
-              <h4 className="text-xl font-semibold mb-4 text-foreground">Integration Partners</h4>
+            <motion.div variants={itemVariants}>
+              <h4 className="text-lg font-semibold mb-4 text-center text-foreground">Platforms I Work With</h4>
               <div className="w-full relative">
                 <Carousel
                   opts={{
@@ -129,7 +110,7 @@ const MarketingIntegrationSection = () => {
                 >
                   <CarouselContent>
                     {integrationTools.map((tool, index) => (
-                      <CarouselItem key={index} className="basis-1/2 md:basis-1/3 lg:basis-1/4 pl-4">
+                      <CarouselItem key={index} className="basis-1/2 md:basis-1/4 lg:basis-1/5 pl-4">
                         <div className="p-1">
                           <Card className="border border-border bg-card/80 h-full">
                             <CardContent className="p-4 flex flex-col items-center justify-center h-full">
@@ -141,35 +122,94 @@ const MarketingIntegrationSection = () => {
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <div className="absolute -top-12 right-0 flex space-x-2">
-                    <CarouselPrevious className="h-8 w-8" />
-                    <CarouselNext className="h-8 w-8" />
-                  </div>
+                  <CarouselPrevious className="left-0" />
+                  <CarouselNext className="right-0" />
                 </Carousel>
               </div>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
 
+      <AuroraDivider />
+
+      {/* Section 2: My Integration Approach */}
+      <section id="approach" className="py-16 md:py-24">
+        <div className="container px-4 md:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
-            className="space-y-6"
+            className="max-w-4xl mx-auto text-center"
           >
-            <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-bold mb-3 flex items-center text-foreground">
-                <Database className="mr-2 text-primary" size={20} />
+            <motion.div variants={itemVariants} className="mb-8">
+              <div className="inline-block p-2 rounded-full bg-primary/10 text-primary mb-4">
+                <Lightbulb size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
+                {integrationsContent.approach_title || "My Integration Approach"}
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                {integrationsContent.approach || 
+                  "Strategic architectures that align with your goals, ensure data integrity, and scale with your organization."}
+              </p>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+              <div className="bg-card/50 border border-border/50 rounded-xl p-6 text-center">
+                <div className="text-3xl font-bold text-primary mb-2">01</div>
+                <h4 className="font-semibold text-foreground mb-2">Discover</h4>
+                <p className="text-sm text-muted-foreground">Map your current systems and identify integration opportunities</p>
+              </div>
+              <div className="bg-card/50 border border-border/50 rounded-xl p-6 text-center">
+                <div className="text-3xl font-bold text-primary mb-2">02</div>
+                <h4 className="font-semibold text-foreground mb-2">Design</h4>
+                <p className="text-sm text-muted-foreground">Create a strategic architecture aligned with your goals</p>
+              </div>
+              <div className="bg-card/50 border border-border/50 rounded-xl p-6 text-center">
+                <div className="text-3xl font-bold text-primary mb-2">03</div>
+                <h4 className="font-semibold text-foreground mb-2">Deliver</h4>
+                <p className="text-sm text-muted-foreground">Implement, test, and ensure your team is empowered</p>
+              </div>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="mt-10">
+              <a href="#contact" className="inline-flex items-center text-primary font-medium hover:underline">
+                Discuss your integration needs <ArrowRight className="ml-1" size={16} />
+              </a>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      <AuroraDivider />
+
+      {/* Section 3: Nonprofit Technology Specialization */}
+      <section id="nonprofit" className="py-16 md:py-24 bg-card/30">
+        <div className="container px-4 md:px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+            className="max-w-4xl mx-auto"
+          >
+            <motion.div variants={itemVariants} className="text-center mb-10">
+              <div className="inline-block p-2 rounded-full bg-primary/10 text-primary mb-4">
+                <Database size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
                 Nonprofit Technology Specialization
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
                 {integrationsContent.nonprofit || 
                   "Deep expertise in nonprofit-specific tools. I help organizations maximize donor management, streamline operations, and boost fundraising impact."}
               </p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="mt-8">
-              <h4 className="text-xl font-semibold mb-4 text-foreground">Nonprofit Technology Stack</h4>
+            <motion.div variants={itemVariants}>
+              <h4 className="text-lg font-semibold mb-4 text-center text-foreground">Nonprofit Technology Stack</h4>
               <div className="w-full relative">
                 <Carousel
                   opts={{
@@ -180,7 +220,7 @@ const MarketingIntegrationSection = () => {
                 >
                   <CarouselContent>
                     {nonprofitTools.map((tool, index) => (
-                      <CarouselItem key={index} className="basis-1/2 md:basis-1/3 lg:basis-1/4 pl-4">
+                      <CarouselItem key={index} className="basis-1/2 md:basis-1/4 lg:basis-1/5 pl-4">
                         <div className="p-1">
                           <Card className="border border-border bg-card/80 h-full">
                             <CardContent className="p-4 flex flex-col items-center justify-center h-full">
@@ -192,38 +232,15 @@ const MarketingIntegrationSection = () => {
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <div className="absolute -top-12 right-0 flex space-x-2">
-                    <CarouselPrevious className="h-8 w-8" />
-                    <CarouselNext className="h-8 w-8" />
-                  </div>
+                  <CarouselPrevious className="left-0" />
+                  <CarouselNext className="right-0" />
                 </Carousel>
               </div>
             </motion.div>
           </motion.div>
         </div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl p-8 text-center"
-        >
-          <motion.h3 variants={itemVariants} className="text-2xl font-bold mb-3 text-foreground">
-            {integrationsContent.approach_title || "My Integration Approach"}
-          </motion.h3>
-          <motion.p variants={itemVariants} className="text-muted-foreground max-w-2xl mx-auto">
-            {integrationsContent.approach || 
-              "Strategic architectures that align with your goals, ensure data integrity, and scale with your organization."}
-          </motion.p>
-          <motion.div variants={itemVariants} className="mt-6">
-            <a href="#contact" className="inline-flex items-center text-primary font-medium hover:underline">
-              Discuss your integration needs <ArrowRight className="ml-1" size={16} />
-            </a>
-          </motion.div>
-        </motion.div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
