@@ -26,16 +26,38 @@ const ProjectsSection = () => {
     <section id="projects" className="py-20 px-4 bg-background/50">
       <div className="container mx-auto max-w-6xl">
         <motion.div
-          className="mb-12"
+          className="mb-8 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">My Portfolio</h2>
-          <p className="text-muted-foreground max-w-2xl">
-            Results-driven builds and campaigns.
+          <h2 className="text-3xl md:text-4xl font-bold mb-2 text-primary">My Portfolio</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Taking the puzzle pieces of knowledge, expertise, tools, and resources to bring ideation to creation
           </p>
+        </motion.div>
+
+        {/* Portfolio Video */}
+        <motion.div
+          className="mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl max-w-4xl mx-auto">
+            <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl -z-10"></div>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-auto aspect-video object-cover"
+            >
+              <source src="/portfolio-video.mp4" type="video/mp4" />
+            </video>
+          </div>
         </motion.div>
 
         {/* Project Filters */}
