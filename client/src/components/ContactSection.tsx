@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, MapPin, Linkedin, Github, Twitter } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Linkedin, Github } from "lucide-react";
 import { contactFormSchema, type ContactForm } from "@shared/schema";
 
 const ContactSection = () => {
@@ -111,14 +111,11 @@ const ContactSection = () => {
 
             <h3 className="text-xl font-semibold mb-4 text-foreground">Connect With Me</h3>
             <div className="flex space-x-4">
-              <a href="#" className="bg-primary/20 p-3 rounded-full hover:bg-primary/30 transition-colors">
+              <a href="https://www.linkedin.com/in/trevor-bosetti-9a291a126/" target="_blank" rel="noopener noreferrer" className="bg-primary/20 p-3 rounded-full hover:bg-primary/30 transition-colors">
                 <Linkedin className="h-6 w-6 text-primary" />
               </a>
-              <a href="#" className="bg-primary/20 p-3 rounded-full hover:bg-primary/30 transition-colors">
+              <a href="https://github.com/trevorb11" target="_blank" rel="noopener noreferrer" className="bg-primary/20 p-3 rounded-full hover:bg-primary/30 transition-colors">
                 <Github className="h-6 w-6 text-primary" />
-              </a>
-              <a href="#" className="bg-primary/20 p-3 rounded-full hover:bg-primary/30 transition-colors">
-                <Twitter className="h-6 w-6 text-primary" />
               </a>
             </div>
           </motion.div>
