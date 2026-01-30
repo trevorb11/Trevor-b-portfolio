@@ -148,7 +148,7 @@ const MarketingIntegrationSection = () => {
                 loop
                 muted
                 playsInline
-                className="w-full h-auto aspect-video object-cover"
+                className="w-full h-auto aspect-video object-cover object-top"
               >
                 <source src="/integration-video.mp4" type="video/mp4" />
               </video>
