@@ -212,17 +212,17 @@ const MarketingIntegrationSection = () => {
                 loop
                 muted
                 playsInline
-                className="w-full h-auto aspect-video object-cover object-top"
+                className="w-full h-auto min-h-[280px] sm:min-h-0 aspect-[4/3] sm:aspect-video object-cover object-top"
               >
                 <source src="/about-video.mp4" type="video/mp4" />
               </video>
               {/* Text Overlay */}
-              <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-8 md:p-12">
+              <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-4 sm:p-8 md:p-12">
                 <div className="text-center max-w-3xl">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 drop-shadow-lg">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-4 drop-shadow-lg">
                     My AI Vision
                   </h3>
-                  <p className="text-white/90 text-sm md:text-base lg:text-lg leading-relaxed drop-shadow-md">
+                  <p className="text-white/90 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed drop-shadow-md">
                     AI is not replacing human creativity, it's elevating creative potential. My vision is to help organizations and individuals harness AI as a powerful tool that enhances human capabilities, enables more meaningful connections through expression, and drives innovation. Thriving in this new era means effectively blending human expertise with the rapid improvement of AI capabilities.
                   </p>
                 </div>
