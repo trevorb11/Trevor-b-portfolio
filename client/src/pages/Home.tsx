@@ -45,8 +45,6 @@ const Home = () => {
     <main className="bg-[var(--c-bg)]">
       <HeroSection />
       <AuroraDivider />
-      <AboutSection />
-      <AuroraDivider />
       <WhatIBringSection />
       <AuroraDivider />
       <TechStackSection />

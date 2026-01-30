@@ -1,11 +1,17 @@
 import { motion } from "framer-motion";
 import { Zap, Anchor, Code, BarChart } from "lucide-react";
+import SectionHeading from "./SectionHeading";
 
 const WhatIBringSection = () => {
   return (
-    <section id="skills" className="py-24 px-4 bg-card/30">
+    <section id="about" className="py-24 px-4 bg-card/30">
       <div className="container mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <SectionHeading
+          title="I connect systems & make data useful"
+          subtitle="Bridging the gap between marketing objectives and technical implementation"
+        />
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mt-16">
           {/* Skills Cards */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
