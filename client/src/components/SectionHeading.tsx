@@ -15,7 +15,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({ id, title, subtitle }) 
     <motion.div style={{ y }} className="text-center mb-12">
       <h2
         id={id}
-        className="text-3xl md:text-5xl font-extrabold tracking-tight mb-1 text-foreground"
+        className="text-3xl md:text-5xl font-extrabold tracking-tight mb-2.5 text-foreground"
       >
         {title}
       </h2>
