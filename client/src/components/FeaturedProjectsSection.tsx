@@ -19,6 +19,7 @@ const featuredProjects = [
     tag: "Gamification",
     tagColor: "bg-amber-500/15 text-amber-400",
     icon: <Trophy className="h-8 w-8" />,
+    link: "https://rankzone.replit.app/",
   },
   {
     title: "Corporate Challenge Leaderboard",
@@ -26,6 +27,7 @@ const featuredProjects = [
     tag: "Enterprise Dashboard",
     tagColor: "bg-indigo-500/15 text-indigo-400",
     icon: <BarChart3 className="h-8 w-8" />,
+    link: "https://msb-leaderboard.communityfoodshare.org/",
   },
 ];
 
@@ -59,7 +61,7 @@ const FeaturedProjectsSection = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
-          className="max-w-5xl mx-auto"
+          className="max-w-6xl mx-auto"
         >
           <motion.div variants={itemVariants} className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
@@ -70,7 +72,7 @@ const FeaturedProjectsSection = () => {
             </p>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-items-center">
             {featuredProjects.map((project, index) => (
               <Card 
                 key={index} 
