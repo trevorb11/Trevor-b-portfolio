@@ -7,8 +7,8 @@ const WhatIBringSection = () => {
     <section id="about" className="py-24 px-4 bg-card/30">
       <div className="container mx-auto max-w-7xl">
         <SectionHeading
-          title="I connect systems & make data useful"
-          subtitle="Bridging the gap between marketing objectives and technical implementation"
+          title="Making the most out of digital tools and resources"
+          subtitle="Building connections, systems, and stories that turn puzzle pieces into engaging, personable ecosystems."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mt-16">
