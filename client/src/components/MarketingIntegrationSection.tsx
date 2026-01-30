@@ -131,6 +131,32 @@ const MarketingIntegrationSection = () => {
         </div>
       </section>
 
+      {/* Video Section */}
+      <section className="py-16 md:py-24">
+        <div className="container px-4 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl -z-10"></div>
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto aspect-video object-cover"
+              >
+                <source src="/integration-video.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <AuroraDivider />
 
       {/* Section 3: Nonprofit Technology Specialization */}
