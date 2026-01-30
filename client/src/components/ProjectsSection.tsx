@@ -61,7 +61,7 @@ const ProjectsSection = () => {
         </motion.div>
 
         {/* Project Filters */}
-        <div className="flex flex-wrap gap-2 mb-10">
+        <div className="flex flex-wrap gap-2 mb-10 justify-center">
           <Button
             variant={activeFilter === "all" ? "default" : "ghost"}
             onClick={() => handleFilterClick("all")}

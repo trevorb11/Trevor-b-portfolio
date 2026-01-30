@@ -67,7 +67,7 @@ const AIExpertiseSection = () => {
 
   return (
     <section id="ai-expertise" className="py-16 md:py-24 overflow-hidden">
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 mx-auto max-w-6xl">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -89,7 +89,7 @@ const AIExpertiseSection = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
           <motion.div
             initial="hidden"
             whileInView="visible"
