@@ -24,7 +24,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          Impact Systems <span className="text-[var(--c-hi)]">Architect</span>
+          Building Systems for <span className="text-[var(--c-hi)]">Impact</span>
         </motion.h1>
         
         <motion.p 
@@ -33,7 +33,7 @@ const HeroSection = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          Building bridges between data and creation
+          MarTech Architect for non-profits and local businesses
         </motion.p>
         
         <motion.div
