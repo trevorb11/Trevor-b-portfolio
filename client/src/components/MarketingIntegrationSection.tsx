@@ -75,7 +75,7 @@ const MarketingIntegrationSection = () => {
 
   return (
     <>
-      {/* Section 1: System Integration Expertise */}
+      {/* Section 1: System Integration Expertise with Video */}
       <section id="integrations" className="py-16 md:py-24 bg-card/30">
         <div className="container px-4 md:px-6">
           <motion.div
@@ -83,75 +83,55 @@ const MarketingIntegrationSection = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
-            className="max-w-4xl mx-auto"
+            className="max-w-7xl mx-auto"
           >
-            <motion.div variants={itemVariants} className="text-center mb-10">
-              <div className="inline-block p-2 rounded-full bg-primary/10 text-primary mb-4">
-                <LinkIcon size={24} />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
-                System Integration Expertise
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                {integrationsContent.expertise || 
-                  "I make your marketing stack work as one unified system—seamless data sync, automated workflows, and integrations that just work."}
-              </p>
-            </motion.div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Left Column - Content */}
+              <motion.div variants={itemVariants}>
+                <div className="mb-6">
+                  <div className="inline-block p-2 rounded-full bg-primary/10 text-primary mb-4">
+                    <LinkIcon size={24} />
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
+                    System Integration Expertise
+                  </h2>
+                  <p className="text-muted-foreground">
+                    {integrationsContent.expertise || 
+                      "I make your marketing stack work as one unified system—seamless data sync, automated workflows, and integrations that just work."}
+                  </p>
+                </div>
 
-            <motion.div variants={itemVariants}>
-              <h4 className="text-lg font-semibold mb-4 text-center text-foreground">Platforms I Work With</h4>
-              <div className="w-full relative">
-                <Carousel
-                  opts={{
-                    align: "start",
-                    loop: true,
-                  }}
-                  className="w-full"
-                >
-                  <CarouselContent>
+                <div>
+                  <h4 className="text-lg font-semibold mb-4 text-foreground">Platforms I Work With</h4>
+                  <div className="flex flex-wrap gap-2">
                     {integrationTools.map((tool, index) => (
-                      <CarouselItem key={index} className="basis-1/2 md:basis-1/4 lg:basis-1/5 pl-4">
-                        <div className="p-1">
-                          <Card className="border border-border bg-card/80 h-full">
-                            <CardContent className="p-4 flex flex-col items-center justify-center h-full">
-                              <p className="font-medium text-center text-foreground">{tool.name}</p>
-                              <p className="text-xs text-muted-foreground text-center mt-1">{tool.category}</p>
-                            </CardContent>
-                          </Card>
-                        </div>
-                      </CarouselItem>
+                      <span
+                        key={index}
+                        className="px-3 py-2 bg-card/80 border border-border rounded-lg text-sm"
+                      >
+                        <span className="font-medium text-foreground">{tool.name}</span>
+                        <span className="text-muted-foreground ml-1 text-xs">· {tool.category}</span>
+                      </span>
                     ))}
-                  </CarouselContent>
-                  <CarouselPrevious className="left-0" />
-                  <CarouselNext className="right-0" />
-                </Carousel>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+                  </div>
+                </div>
+              </motion.div>
 
-      {/* Video Section */}
-      <section className="py-16 md:py-24">
-        <div className="container px-4 md:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto"
-          >
-            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl -z-10"></div>
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-auto aspect-video object-cover object-top"
-              >
-                <source src="/integration-video.mp4" type="video/mp4" />
-              </video>
+              {/* Right Column - Video */}
+              <motion.div variants={itemVariants}>
+                <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
+                  <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl -z-10"></div>
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-auto aspect-square object-cover"
+                  >
+                    <source src="/integration-video.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
