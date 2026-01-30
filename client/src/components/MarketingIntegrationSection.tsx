@@ -195,7 +195,7 @@ const MarketingIntegrationSection = () => {
         </div>
       </section>
 
-      {/* Video Section - between Nonprofit and AI */}
+      {/* Video Section with Text Overlay - between Nonprofit and AI */}
       <section className="py-16 md:py-24">
         <div className="container px-4 md:px-6">
           <motion.div
@@ -203,7 +203,7 @@ const MarketingIntegrationSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto"
+            className="max-w-5xl mx-auto"
           >
             <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
               <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl -z-10"></div>
@@ -216,6 +216,17 @@ const MarketingIntegrationSection = () => {
               >
                 <source src="/about-video.mp4" type="video/mp4" />
               </video>
+              {/* Text Overlay */}
+              <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-8 md:p-12">
+                <div className="text-center max-w-3xl">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 drop-shadow-lg">
+                    My AI Vision
+                  </h3>
+                  <p className="text-white/90 text-sm md:text-base lg:text-lg leading-relaxed drop-shadow-md">
+                    AI is not replacing human creativity—it's augmenting it. My vision is to help organizations harness AI as a powerful tool that enhances human capabilities, enables more meaningful customer connections, and drives innovation. The organizations that thrive will be those that effectively blend human expertise with AI capabilities.
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
