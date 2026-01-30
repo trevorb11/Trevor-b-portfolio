@@ -6,10 +6,12 @@ const WhatIBringSection = () => {
   return (
     <section id="about" className="py-24 px-4 bg-card/30">
       <div className="container mx-auto max-w-7xl">
-        <SectionHeading
-          title="Making the most out of digital tools and resources"
-          subtitle="Building connections, systems, and stories that turn puzzle pieces into engaging, personable ecosystems."
-        />
+        <div className="pt-2.5">
+          <SectionHeading
+            title="Making the most out of digital tools and resources"
+            subtitle="Building connections, systems, and stories that turn puzzle pieces into engaging, personable ecosystems."
+          />
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mt-16">
           {/* Skills Cards */}
