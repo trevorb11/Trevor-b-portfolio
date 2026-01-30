@@ -6,7 +6,7 @@ const WhatIBringSection = () => {
   return (
     <section id="about" className="py-24 px-4 bg-card/30">
       <div className="container mx-auto max-w-7xl">
-        <div className="pt-2.5">
+        <div className="pt-12">
           <SectionHeading
             title="Making the most out of digital tools and resources"
             subtitle="Building connections, systems, and stories that turn puzzle pieces into engaging, personable ecosystems."
