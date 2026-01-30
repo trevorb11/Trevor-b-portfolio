@@ -153,27 +153,6 @@ const AIExpertiseSection = () => {
             </div>
           </motion.div>
         </div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent rounded-xl p-8 text-center"
-        >
-          <motion.h3 variants={itemVariants} className="text-2xl font-bold mb-3 text-foreground">
-            {aiContent.vision_title || "My AI Vision"}
-          </motion.h3>
-          <motion.p variants={itemVariants} className="text-muted-foreground max-w-2xl mx-auto">
-            {aiContent.vision || 
-              "AI augments human creativity, it doesn't replace it. The organizations that thrive blend human expertise with AI capabilities."}
-          </motion.p>
-          <motion.div variants={itemVariants} className="mt-6">
-            <a href="#contact" className="inline-flex items-center bg-primary text-white px-5 py-2 rounded-md hover:bg-primary/90 transition-colors">
-              Discuss AI Solutions for Your Business
-            </a>
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   );
