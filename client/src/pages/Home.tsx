@@ -57,8 +57,6 @@ const Home = () => {
       <AuroraDivider />
       <ProjectsSection />
       <AuroraDivider />
-      <CaseStudiesSection />
-      <AuroraDivider />
       <ContactSection />
     </main>
   );
