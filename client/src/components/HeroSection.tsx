@@ -36,21 +36,21 @@ const HeroSection = () => {
       {/* Foreground content */}
       <div className="relative z-10 px-4 max-w-3xl">
         <motion.h1 
-          className="text-5xl md:text-7xl font-extrabold leading-tight text-white drop-shadow-lg mb-6"
+          className="text-5xl md:text-7xl font-extrabold leading-tight text-white drop-shadow-lg mb-4"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          I turn <span className="text-[var(--c-hi)]">messy data</span> into stories people <span className="text-[var(--c-fx)]">feel</span>.
+          Impact Systems <span className="text-[var(--c-hi)]">Architect</span>
         </motion.h1>
         
         <motion.p 
-          className="mt-4 text-lg md:text-2xl text-white/80 mb-8"
+          className="mt-2 text-xl md:text-3xl text-white/90 mb-8 font-light"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          MarTech&nbsp;strategist · AI&nbsp;builder · relentless experimenter
+          Building bridges between data and creation
         </motion.p>
         
         <motion.div
@@ -65,7 +65,7 @@ const HeroSection = () => {
             className="rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 hover:scale-105 transition shadow-lg"
           >
             <Link href="#projects">
-              See the work <ArrowRight className="ml-2 h-5 w-5" />
+              Portfolio <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
 
@@ -76,7 +76,7 @@ const HeroSection = () => {
             className="rounded-full border-2 border-white/70 text-white hover:bg-white/10 hover:border-white transition"
           >
             <Link href="#contact">
-              Book a brain-dump
+              Get in touch
             </Link>
           </Button>
         </motion.div>

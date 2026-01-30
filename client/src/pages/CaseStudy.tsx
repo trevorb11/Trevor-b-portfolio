@@ -152,36 +152,6 @@ const CaseStudy = () => {
         </div>
       </section>
 
-      {/* Results Grid */}
-      <section className="py-12 px-4 bg-card/30">
-        <div className="container mx-auto max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4"
-          >
-            {data.results.map((result, i) => (
-              <div
-                key={i}
-                className="bg-background/80 rounded-xl p-6 border border-border/50 text-center"
-              >
-                <div className="flex justify-center text-primary mb-2">
-                  {result.icon}
-                </div>
-                <p className="text-3xl font-bold text-foreground mb-1">
-                  {result.value}
-                </p>
-                <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                  {result.label}
-                </p>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* Challenge & Approach */}
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-4xl">

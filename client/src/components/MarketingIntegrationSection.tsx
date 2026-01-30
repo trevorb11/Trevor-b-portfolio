@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { ArrowRight, RefreshCw, Link as LinkIcon, Database, Lightbulb, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, RefreshCw, Link as LinkIcon, Database, ChevronLeft, ChevronRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { CmsContent } from "@shared/schema";
 import {
@@ -126,58 +126,6 @@ const MarketingIntegrationSection = () => {
                   <CarouselNext className="right-0" />
                 </Carousel>
               </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      <AuroraDivider />
-
-      {/* Section 2: My Integration Approach */}
-      <section id="approach" className="py-16 md:py-24">
-        <div className="container px-4 md:px-6">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={containerVariants}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <motion.div variants={itemVariants} className="mb-8">
-              <div className="inline-block p-2 rounded-full bg-primary/10 text-primary mb-4">
-                <Lightbulb size={24} />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
-                {integrationsContent.approach_title || "My Integration Approach"}
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                {integrationsContent.approach || 
-                  "Strategic architectures that align with your goals, ensure data integrity, and scale with your organization."}
-              </p>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
-              <div className="bg-card/50 border border-border/50 rounded-xl p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">01</div>
-                <h4 className="font-semibold text-foreground mb-2">Discover</h4>
-                <p className="text-sm text-muted-foreground">Map your current systems and identify integration opportunities</p>
-              </div>
-              <div className="bg-card/50 border border-border/50 rounded-xl p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">02</div>
-                <h4 className="font-semibold text-foreground mb-2">Design</h4>
-                <p className="text-sm text-muted-foreground">Create a strategic architecture aligned with your goals</p>
-              </div>
-              <div className="bg-card/50 border border-border/50 rounded-xl p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">03</div>
-                <h4 className="font-semibold text-foreground mb-2">Deliver</h4>
-                <p className="text-sm text-muted-foreground">Implement, test, and ensure your team is empowered</p>
-              </div>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="mt-10">
-              <a href="#contact" className="inline-flex items-center text-primary font-medium hover:underline">
-                Discuss your integration needs <ArrowRight className="ml-1" size={16} />
-              </a>
             </motion.div>
           </motion.div>
         </div>

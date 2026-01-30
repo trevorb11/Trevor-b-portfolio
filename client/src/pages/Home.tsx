@@ -1,7 +1,8 @@
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
+import WhatIBringSection from "@/components/WhatIBringSection";
+import FeaturedProjectsSection from "@/components/FeaturedProjectsSection";
 import ProjectsSection from "@/components/ProjectsSection";
-import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 import MarketingIntegrationSection from "@/components/MarketingIntegrationSection";
 import AIExpertiseSection from "@/components/AIExpertiseSection";
@@ -45,13 +46,15 @@ const Home = () => {
       <AuroraDivider />
       <AboutSection />
       <AuroraDivider />
+      <WhatIBringSection />
+      <AuroraDivider />
+      <FeaturedProjectsSection />
+      <AuroraDivider />
       <MarketingIntegrationSection />
       <AuroraDivider />
       <AIExpertiseSection />
       <AuroraDivider />
       <ProjectsSection />
-      <AuroraDivider />
-      <BlogSection />
       <AuroraDivider />
       <CaseStudiesSection />
       <AuroraDivider />
