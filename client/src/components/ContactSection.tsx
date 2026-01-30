@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, Phone, MapPin, Linkedin, Github, Twitter } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Linkedin, Github, Twitter } from "lucide-react";
 import { contactFormSchema, type ContactForm } from "@shared/schema";
 
 const ContactSection = () => {
@@ -92,20 +92,8 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="text-lg font-medium text-foreground">Email</h4>
-                  <a href="mailto:contact@trevorbosetti.com" className="text-muted-foreground hover:text-primary transition-colors">
-                    contact@trevorbosetti.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div className="bg-primary/20 p-3 rounded-full mr-4">
-                  <Phone className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-medium text-foreground">Phone</h4>
-                  <a href="tel:+11234567890" className="text-muted-foreground hover:text-primary transition-colors">
-                    +1 (123) 456-7890
+                  <a href="mailto:trevor@rankzone.studio" className="text-muted-foreground hover:text-primary transition-colors">
+                    trevor@rankzone.studio
                   </a>
                 </div>
               </div>
@@ -116,7 +104,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="text-lg font-medium text-foreground">Location</h4>
-                  <p className="text-muted-foreground">San Francisco, California</p>
+                  <p className="text-muted-foreground">Denver, Colorado</p>
                 </div>
               </div>
             </div>
