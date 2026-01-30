@@ -32,9 +32,9 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 text-primary">My Portfolio</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-2 text-primary">Portfolio</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Taking the puzzle pieces of knowledge, expertise, tools, and resources to bring ideation to creation
+            Taking the pieces and making things happen from ideation to creation
           </p>
         </motion.div>
 
