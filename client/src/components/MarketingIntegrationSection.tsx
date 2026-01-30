@@ -77,15 +77,15 @@ const MarketingIntegrationSection = () => {
     <>
       {/* Section 1: System Integration Expertise with Video */}
       <section id="integrations" className="py-16 md:py-24 bg-card/30">
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
-            className="max-w-7xl mx-auto"
+            className="max-w-6xl mx-auto"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               {/* Left Column - Content */}
               <motion.div variants={itemVariants}>
                 <div className="mb-6">
