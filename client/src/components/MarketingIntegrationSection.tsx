@@ -117,19 +117,15 @@ const MarketingIntegrationSection = () => {
                 </div>
               </motion.div>
 
-              {/* Right Column - Video */}
+              {/* Right Column - Puzzle Image */}
               <motion.div variants={itemVariants}>
                 <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
                   <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl -z-10"></div>
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
+                  <img
+                    src="/puzzle-image.png"
+                    alt="Digital puzzle pieces connecting together"
                     className="w-full h-auto aspect-square object-cover"
-                  >
-                    <source src="/integration-video.mp4" type="video/mp4" />
-                  </video>
+                  />
                 </div>
               </motion.div>
             </div>
@@ -191,6 +187,32 @@ const MarketingIntegrationSection = () => {
                 </Carousel>
               </div>
             </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Video Section - between Nonprofit and AI */}
+      <section className="py-16 md:py-24">
+        <div className="container px-4 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl -z-10"></div>
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto aspect-video object-cover object-top"
+              >
+                <source src="/integration-video.mp4" type="video/mp4" />
+              </video>
+            </div>
           </motion.div>
         </div>
       </section>
