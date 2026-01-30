@@ -1,6 +1,7 @@
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import WhatIBringSection from "@/components/WhatIBringSection";
+import TechStackSection from "@/components/TechStackSection";
 import FeaturedProjectsSection from "@/components/FeaturedProjectsSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
@@ -47,6 +48,8 @@ const Home = () => {
       <AboutSection />
       <AuroraDivider />
       <WhatIBringSection />
+      <AuroraDivider />
+      <TechStackSection />
       <AuroraDivider />
       <FeaturedProjectsSection />
       <AuroraDivider />
