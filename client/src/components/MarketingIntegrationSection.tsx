@@ -223,7 +223,7 @@ const MarketingIntegrationSection = () => {
                     My AI Vision
                   </h3>
                   <p className="text-white/90 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed drop-shadow-md">
-                    AI is not replacing human creativity, it's elevating creative potential. My vision is to help organizations and individuals harness AI as a powerful tool that enhances human capabilities, enables more meaningful connections through expression, and drives innovation. Thriving in this new era means effectively blending human expertise with the rapid improvement of AI capabilities.
+                    AI is not replacing human creativity, it's elevating creative potential. My vision is to help organizations and individuals harness AI as a powerful tool that enhances human capabilities, drives innovation, and enables more meaningful connections through new avenues of expression. Thriving in this new era means effectively blending human expertise with the rapid improvement of AI capabilities.
                   </p>
                 </div>
               </div>
