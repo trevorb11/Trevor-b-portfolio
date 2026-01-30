@@ -117,15 +117,19 @@ const MarketingIntegrationSection = () => {
                 </div>
               </motion.div>
 
-              {/* Right Column - Puzzle Image */}
+              {/* Right Column - Video */}
               <motion.div variants={itemVariants}>
                 <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
                   <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl -z-10"></div>
-                  <img
-                    src="/puzzle-image.png"
-                    alt="Digital puzzle pieces connecting together"
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
                     className="w-full h-auto aspect-square object-cover"
-                  />
+                  >
+                    <source src="/integration-video.mp4" type="video/mp4" />
+                  </video>
                 </div>
               </motion.div>
             </div>
@@ -210,7 +214,7 @@ const MarketingIntegrationSection = () => {
                 playsInline
                 className="w-full h-auto aspect-video object-cover object-top"
               >
-                <source src="/integration-video.mp4" type="video/mp4" />
+                <source src="/about-video.mp4" type="video/mp4" />
               </video>
             </div>
           </motion.div>

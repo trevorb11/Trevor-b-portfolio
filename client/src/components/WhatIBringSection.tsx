@@ -88,7 +88,7 @@ const WhatIBringSection = () => {
             </div>
           </motion.div>
 
-          {/* Video */}
+          {/* Puzzle Image */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -98,15 +98,11 @@ const WhatIBringSection = () => {
           >
             <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl"></div>
             <div className="relative z-10 rounded-2xl overflow-hidden border-2 border-border/50 shadow-2xl">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-auto aspect-video object-cover"
-              >
-                <source src="/about-video.mp4" type="video/mp4" />
-              </video>
+              <img
+                src="/puzzle-image.png"
+                alt="Digital puzzle pieces connecting together"
+                className="w-full h-auto aspect-square object-cover"
+              />
             </div>
           </motion.div>
         </div>
