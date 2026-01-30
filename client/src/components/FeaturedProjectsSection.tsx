@@ -72,13 +72,13 @@ const FeaturedProjectsSection = () => {
             </p>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-items-center">
+          <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
             {featuredProjects.map((project, index) => (
               <Card 
                 key={index} 
-                className="group border border-border bg-card/80 hover:bg-card hover:border-primary/30 transition-all duration-300 overflow-hidden"
+                className="group border border-border bg-card/80 hover:bg-card hover:border-primary/30 transition-all duration-300 overflow-hidden w-full"
               >
-                <CardContent className="p-6 flex flex-col h-full">
+                <CardContent className="p-6 lg:p-8 flex flex-col h-full">
                   <div className="flex items-start justify-between mb-4">
                     <div className="p-3 rounded-lg bg-primary/10 text-primary">
                       {project.icon}
