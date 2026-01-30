@@ -37,7 +37,7 @@ const TechStackSection = () => {
 
           <p className="mb-10 text-muted-foreground text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
             <span className="text-foreground font-medium">8+ years</span> turning marketing ideas into technical reality. 
-            I build systems that <span className="text-foreground font-medium">your team can actually maintain</span>—not 
+            I build systems that <span className="text-foreground font-medium">your team can actually maintain</span>, not 
             just impressive tech stacks, but tools that empower.
           </p>
 
