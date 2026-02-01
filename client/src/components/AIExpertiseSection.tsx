@@ -1,8 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Cpu, BrainCircuit, TrendingUp, Zap, Layers, Code, LineChart, MessageSquare } from "lucide-react";
+import { Cpu, BrainCircuit, TrendingUp, Zap, Layers, Code, LineChart, MessageSquare, ArrowRight, Sparkles } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { CmsContent } from "@shared/schema";
+import { Link } from "wouter";
 
 const AIExpertiseSection = () => {
   const { data: cmsContents } = useQuery<CmsContent[]>({
@@ -153,6 +154,38 @@ const AIExpertiseSection = () => {
             </div>
           </motion.div>
         </div>
+
+        {/* Council of Ideas Callout */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.div variants={itemVariants}>
+            <Link href="/council-of-ideas">
+              <div className="group bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl shadow-lg p-6 md:p-8 cursor-pointer hover:border-primary/30 transition-all duration-300">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 rounded-lg bg-primary/10 text-primary flex-shrink-0 mt-1">
+                      <Sparkles size={20} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
+                        The Council of Ideas
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        What happens when you assemble history's sharpest minds to pressure-test a real decision?
+                        A meta demonstration of using AI councils for structured perspective and clearer thinking.
+                      </p>
+                    </div>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0 mt-2" />
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

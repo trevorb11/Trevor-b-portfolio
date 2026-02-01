@@ -10,6 +10,7 @@ import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import Admin from "@/pages/Admin";
 import AdminDashboard from "@/pages/AdminDashboard";
+import CouncilOfIdeas from "@/pages/CouncilOfIdeas";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -38,6 +39,7 @@ function Router() {
         <Route path="/case-study/:id" component={CaseStudy} />
         <Route path="/blog" component={Blog} />
         <Route path="/blog/:slug" component={BlogPost} />
+        <Route path="/council-of-ideas" component={CouncilOfIdeas} />
         <Route component={NotFound} />
       </Switch>
       <Footer />
