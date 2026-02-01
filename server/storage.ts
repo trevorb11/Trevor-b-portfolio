@@ -568,6 +568,15 @@ export class MemStorage implements IStorage {
         technologies: ["React", "Node.js", "Blackbaud Integration", "Custom Forms", "Event Logic"],
         link: null,
         featured: 1
+      },
+      {
+        title: "HomeBuilder Studio",
+        description: "An AI-first, home builder CRM upgrade that modernizes how home builders manage leads, customers, and the sales process with intelligent automation.",
+        category: "ai-marketing",
+        image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        technologies: ["AI", "CRM", "React", "Node.js", "Automation"],
+        link: "https://app.homebuilder.studio",
+        featured: 1
       }
     ];
     
