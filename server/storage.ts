@@ -480,6 +480,15 @@ export class MemStorage implements IStorage {
         featured: 1
       },
       {
+        title: "HomeBuilder Studio",
+        description: "An AI-first, home builder CRM upgrade that modernizes how home builders manage leads, customers, and the sales process with intelligent automation.",
+        category: "ai-marketing",
+        image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        technologies: ["AI", "CRM", "React", "Node.js", "Automation"],
+        link: "https://app.homebuilder.studio",
+        featured: 1
+      },
+      {
         title: "Double the Donation Integration",
         description: "A custom donation matching platform that integrates with nonprofit CRMs to automatically identify matching gift opportunities and maximize fundraising potential.",
         category: "crm-integration",
@@ -567,15 +576,6 @@ export class MemStorage implements IStorage {
         image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["React", "Node.js", "Blackbaud Integration", "Custom Forms", "Event Logic"],
         link: null,
-        featured: 1
-      },
-      {
-        title: "HomeBuilder Studio",
-        description: "An AI-first, home builder CRM upgrade that modernizes how home builders manage leads, customers, and the sales process with intelligent automation.",
-        category: "ai-marketing",
-        image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-        technologies: ["AI", "CRM", "React", "Node.js", "Automation"],
-        link: "https://app.homebuilder.studio",
         featured: 1
       }
     ];
