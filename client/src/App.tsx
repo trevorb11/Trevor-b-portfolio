@@ -11,6 +11,7 @@ import BlogPost from "@/pages/BlogPost";
 import Admin from "@/pages/Admin";
 import AdminDashboard from "@/pages/AdminDashboard";
 import CouncilOfIdeas from "@/pages/CouncilOfIdeas";
+import WorkflowDemo from "@/pages/WorkflowDemo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -40,6 +41,7 @@ function Router() {
         <Route path="/blog" component={Blog} />
         <Route path="/blog/:slug" component={BlogPost} />
         <Route path="/council-of-ideas" component={CouncilOfIdeas} />
+        <Route path="/workflow-demo" component={WorkflowDemo} />
         <Route component={NotFound} />
       </Switch>
       <Footer />

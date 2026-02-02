@@ -135,9 +135,7 @@ function CouncilResponse({
         className="w-full text-left p-5 md:p-6 flex items-center justify-between group cursor-pointer"
       >
         <div className="flex items-center gap-3">
-          <div
-            className={`p-2 rounded-lg bg-background/30 ${member.color}`}
-          >
+          <div className={`p-2 rounded-lg bg-background/30 ${member.color}`}>
             {member.icon}
           </div>
           <div>
@@ -252,8 +250,7 @@ const CouncilOfIdeas = () => {
         "This signals restraint and seriousness. You're not shouting competence; you're demonstrating judgment. That earns trust with people who matter.",
       worries:
         "Fragmentation. Too many clever ideas can make a portfolio feel unfocused, like a commander spreading forces thin.",
-      question:
-        "Does this strengthen your core narrative — or dilute it?",
+      question: "Does this strengthen your core narrative — or dilute it?",
     },
     {
       member: councilMembers[1], // Marcus Aurelius
@@ -277,19 +274,17 @@ const CouncilOfIdeas = () => {
       member: councilMembers[3], // Douglas Adams
       likes:
         "It's clever without being self-important. Humor plus rigor is rare and disarming. Also: people will actually remember this.",
-      worries:
-        "Over-explaining. Kill the joke and you kill the magic.",
+      worries: "Over-explaining. Kill the joke and you kill the magic.",
       question:
         "Can this be experienced in under five minutes without a manual?",
     },
     {
       member: councilMembers[4], // Catherine
       likes:
-        "This positions you above \"tool operators.\" It implies taste, discernment, and leadership — qualities that attract serious collaborators.",
+        'This positions you above "tool operators." It implies taste, discernment, and leadership — qualities that attract serious collaborators.',
       worries:
         "Audience mismatch. Some visitors won't get it. That's fine — unless they're the ones you actually need.",
-      question:
-        "Who is this for — and who are you comfortable alienating?",
+      question: "Who is this for — and who are you comfortable alienating?",
     },
   ];
 
@@ -300,10 +295,8 @@ const CouncilOfIdeas = () => {
       position: "Demo first",
       likes:
         "A demo lets you control the narrative. You establish intent, tone, and boundaries. That's how trust is earned. A live tool invites interpretation before context. Some visitors will misuse it, rush it, or miss the point entirely.",
-      worries:
-        "Authority is fragile. Don't hand it away too early.",
-      question:
-        "Can you establish intent before granting interaction?",
+      worries: "Authority is fragile. Don't hand it away too early.",
+      question: "Can you establish intent before granting interaction?",
       verdict: "Lead with example. Let others follow later.",
     },
     {
@@ -314,8 +307,7 @@ const CouncilOfIdeas = () => {
       worries: "Tools without context become toys.",
       question:
         "Does this teach how to think, or just offer another distraction?",
-      verdict:
-        "Show how it should be used before allowing it to be used.",
+      verdict: "Show how it should be used before allowing it to be used.",
     },
     {
       member: councilMembers[2],
@@ -324,8 +316,7 @@ const CouncilOfIdeas = () => {
         "The demo is a story. Stories open minds. Once someone gets it, then interaction becomes meaningful instead of performative.",
       worries:
         "If people start with interaction, they may mistake novelty for insight.",
-      question:
-        "Can you reveal the pattern before inviting play?",
+      question: "Can you reveal the pattern before inviting play?",
       verdict: "First, reveal the pattern. Then invite play.",
     },
     {
@@ -333,20 +324,16 @@ const CouncilOfIdeas = () => {
       position: "Demo (with a twist)",
       likes:
         "A polished demo lets you be clever once, precisely. A feature requires being clever every time — and that's where things break.",
-      worries:
-        "The internet will always find the dumbest way to use a thing.",
-      question:
-        "If it can be misunderstood, will you have designed for that?",
-      verdict:
-        "If it can be misunderstood, it will be. Design accordingly.",
+      worries: "The internet will always find the dumbest way to use a thing.",
+      question: "If it can be misunderstood, will you have designed for that?",
+      verdict: "If it can be misunderstood, it will be. Design accordingly.",
     },
     {
       member: councilMembers[4],
       position: "Demo first, feature later — if earned",
       likes:
         'A live feature implies commitment, maintenance, and endorsement. A demo implies capability, not obligation. She\'s thinking positioning: Demo = "I can build this." Feature = "This defines me."',
-      worries:
-        "Don't let an experiment define your brand prematurely.",
+      worries: "Don't let an experiment define your brand prematurely.",
       question: "Are you proving value or making a promise?",
       verdict: "Prove value before granting access.",
     },
@@ -356,11 +343,7 @@ const CouncilOfIdeas = () => {
     <div className="pt-24 pb-20 px-4 min-h-screen">
       <div className="container mx-auto max-w-4xl">
         {/* Back button */}
-        <Button
-          asChild
-          variant="ghost"
-          className="mb-8 hover:bg-primary/10"
-        >
+        <Button asChild variant="ghost" className="mb-8 hover:bg-primary/10">
           <Link href="/">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Portfolio
@@ -385,8 +368,7 @@ const CouncilOfIdeas = () => {
             variants={fadeInUp}
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight"
           >
-            The Council of{" "}
-            <span className="text-gradient-sunset">Ideas</span>
+            The Council of <span className="text-gradient-sunset">Ideas</span>
           </motion.h1>
 
           <motion.p
@@ -412,11 +394,11 @@ const CouncilOfIdeas = () => {
               and push back on your ideas the way they might have.
             </p>
             <p className="text-foreground/90 leading-relaxed mb-4">
-              You can take this further — assemble a{" "}
-              <strong>council</strong>. Five or six minds with different
-              frameworks. Give them a real decision you're facing. Watch where
-              they agree, where they clash, and — most importantly — what
-              questions they force you to answer that you hadn't considered.
+              You can take this further — assemble a <strong>council</strong>.
+              Five or six minds with different frameworks. Give them a real
+              decision you're facing. Watch where they agree, where they clash,
+              and — most importantly — what questions they force you to answer
+              that you hadn't considered.
             </p>
             <p className="text-muted-foreground leading-relaxed">
               To showcase this concept, I did something a little meta: I asked
@@ -441,10 +423,7 @@ const CouncilOfIdeas = () => {
           >
             The Five Confidants
           </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-muted-foreground mb-8"
-          >
+          <motion.p variants={fadeInUp} className="text-muted-foreground mb-8">
             Each chosen not for agreement, but for the distinct lens they bring
             to a problem.
           </motion.p>
@@ -591,9 +570,7 @@ const CouncilOfIdeas = () => {
           >
             <div className="flex items-center gap-3 mb-3">
               <Lightbulb className="w-5 h-5 text-accent" />
-              <h4 className="font-bold text-foreground">
-                Final Handback
-              </h4>
+              <h4 className="font-bold text-foreground">Final Handback</h4>
             </div>
             <p className="text-foreground/90 leading-relaxed mb-3">
               This idea belongs on your portfolio if your portfolio's thesis is:
@@ -638,8 +615,8 @@ const CouncilOfIdeas = () => {
             <p className="text-muted-foreground leading-relaxed">
               Council reconvened. Same five voices. New decision: Do you show
               the Idea Council as a crafted demo, or make it a live, usable
-              feature visitors can try themselves? This is a real fork — and
-              the council is not split down the middle.
+              feature visitors can try themselves? This is a real fork — and the
+              council is not split down the middle.
             </p>
           </motion.div>
 
