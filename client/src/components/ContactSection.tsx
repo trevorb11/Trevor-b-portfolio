@@ -16,7 +16,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, MapPin, Linkedin, Github } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { ArrowRight, Mail, MapPin, Linkedin, Github, Phone } from "lucide-react";
 import { contactFormSchema, type ContactForm } from "@shared/schema";
 
 const ContactSection = () => {
@@ -28,8 +29,10 @@ const ContactSection = () => {
     defaultValues: {
       name: "",
       email: "",
+      phone: "",
       subject: "",
-      message: ""
+      message: "",
+      marketingConsent: false
     }
   });
 
@@ -182,6 +185,25 @@ const ContactSection = () => {
 
                   <FormField
                     control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm font-medium text-foreground">Phone Number (optional)</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="tel"
+                            placeholder="Your phone number"
+                            className="w-full bg-card/50 border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground/60 focus:ring-primary"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
                     name="subject"
                     render={({ field }) => (
                       <FormItem>
@@ -213,6 +235,29 @@ const ContactSection = () => {
                           />
                         </FormControl>
                         <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="marketingConsent"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border border-border p-4 bg-card/30">
+                        <FormControl>
+                          <Checkbox
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                          />
+                        </FormControl>
+                        <div className="space-y-1 leading-none">
+                          <FormLabel className="text-sm font-medium text-foreground cursor-pointer">
+                            I agree to receive marketing materials via email and SMS
+                          </FormLabel>
+                          <p className="text-xs text-muted-foreground">
+                            You can unsubscribe at any time. By checking this box, you consent to receiving promotional communications.
+                          </p>
+                        </div>
                       </FormItem>
                     )}
                   />

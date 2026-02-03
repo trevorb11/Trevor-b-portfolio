@@ -70,8 +70,10 @@ export const contacts = pgTable("contacts", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 100 }).notNull(),
   email: varchar("email", { length: 255 }).notNull(),
+  phone: varchar("phone", { length: 20 }),
   subject: varchar("subject", { length: 255 }).notNull(),
   message: text("message").notNull(),
+  marketingConsent: boolean("marketing_consent").default(false),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
@@ -87,8 +89,10 @@ export type Contact = typeof contacts.$inferSelect;
 export const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters").max(100),
   email: z.string().email("Please enter a valid email address"),
+  phone: z.string().optional(),
   subject: z.string().min(5, "Subject must be at least 5 characters").max(255),
   message: z.string().min(10, "Message must be at least 10 characters"),
+  marketingConsent: z.boolean().default(false),
 });
 
 export type ContactForm = z.infer<typeof contactFormSchema>;
