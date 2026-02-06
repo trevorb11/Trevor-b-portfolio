@@ -66,7 +66,7 @@ const HeroSection = () => {
         >
           Building Systems
           <br />
-          for <span className="text-gradient-sunset">Impact</span>
+          for <span className="text-gradient-impact">Impact</span>
         </motion.h1>
 
         <motion.p
