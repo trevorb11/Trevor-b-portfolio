@@ -7,12 +7,12 @@ interface SystemNode {
 }
 
 const tools: SystemNode[] = [
-  { name: "HubSpot", color: "hsl(16 78% 63%)" },
-  { name: "Salesforce", color: "hsl(200 50% 50%)" },
-  { name: "Mailchimp", color: "hsl(45 80% 55%)" },
-  { name: "Analytics", color: "hsl(140 45% 50%)" },
-  { name: "Zapier", color: "hsl(28 83% 65%)" },
-  { name: "Segment", color: "hsl(280 50% 55%)" },
+  { name: "Website", color: "hsl(200 50% 50%)" },
+  { name: "Social Media", color: "hsl(280 50% 55%)" },
+  { name: "Blog", color: "hsl(140 45% 50%)" },
+  { name: "Paid Media", color: "hsl(16 78% 63%)" },
+  { name: "Email", color: "hsl(45 80% 55%)" },
+  { name: "SEO", color: "hsl(28 83% 65%)" },
 ];
 
 // Scattered positions for "before" state

@@ -47,10 +47,10 @@ const Home = () => {
       <FeaturedProjectsSection />
       <AuroraDivider />
       <MarketingIntegrationSection />
+      <WorkflowDemoSection />
       <LiveTerminal />
       <AIExpertiseSection />
       <AuroraDivider />
-      <WorkflowDemoSection />
       <ProjectsSection />
       <AuroraDivider />
       <ContactSection />
