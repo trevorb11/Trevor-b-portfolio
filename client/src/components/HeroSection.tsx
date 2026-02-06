@@ -1,9 +1,19 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
+  const [imgLoaded, setImgLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = "/hero-bg.webp";
+    img.onload = () => setImgLoaded(true);
+    // If already cached, fire immediately
+    if (img.complete) setImgLoaded(true);
+  }, []);
   const scrollToNext = () => {
     const aboutSection = document.getElementById("about");
     if (aboutSection) {
@@ -15,12 +25,14 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center justify-center text-center">
-      {/* Background image */}
+      {/* Background image — tiny placeholder blur-up, then swap to full WebP */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
-        style={{
-          backgroundImage: `url('/hero-bg.png')`,
-        }}
+        className={`absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 transition-opacity duration-700 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
+        style={{ backgroundImage: `url('/hero-bg.webp')` }}
+      />
+      <div
+        className={`absolute inset-0 bg-cover bg-center bg-no-repeat scale-110 transition-opacity duration-700 ${imgLoaded ? "opacity-0" : "opacity-100"}`}
+        style={{ backgroundImage: `url('/hero-bg-placeholder.webp')`, filter: "blur(20px)" }}
       />
 
       {/* Gradient overlays for depth and seamless transition to page bg */}
