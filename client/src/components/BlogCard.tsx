@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { BlogPost } from "@shared/schema";
 import { format } from "date-fns";
 
@@ -17,7 +17,7 @@ const BlogCard = ({ post }: BlogCardProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4 }}
-      className="bg-background rounded-xl overflow-hidden shadow-sm transition-transform hover:-translate-y-1"
+      className="premium-card group overflow-hidden"
     >
       <img
         src={post.image}
@@ -25,21 +25,23 @@ const BlogCard = ({ post }: BlogCardProps) => {
         className="w-full h-48 object-cover"
       />
       <div className="p-6">
-        <div className="flex items-center text-xs text-muted-foreground mb-3">
+        <div className="flex items-center text-xs text-muted-foreground/60 mb-3">
           <span>{formattedDate}</span>
-          <span className="mx-2">•</span>
+          <span className="mx-2">&middot;</span>
           <span>{post.category}</span>
         </div>
-        <h3 className="text-xl font-semibold mb-2 text-foreground">{post.title}</h3>
-        <p className="text-muted-foreground mb-4 text-sm">
+        <h3 className="text-lg font-semibold mb-2 text-foreground group-hover:text-primary transition-colors leading-snug">
+          {post.title}
+        </h3>
+        <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
           {post.excerpt}
         </p>
         <Link
           href={`/blog/${post.slug}`}
-          className="inline-flex items-center text-primary hover:text-secondary font-medium text-sm"
+          className="inline-flex items-center text-primary/80 hover:text-primary font-medium text-sm transition-colors group/link"
         >
           Read Article
-          <ArrowRight className="h-4 w-4 ml-1" />
+          <ArrowUpRight className="h-3.5 w-3.5 ml-1 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
         </Link>
       </div>
     </motion.article>

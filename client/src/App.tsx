@@ -14,6 +14,7 @@ import CouncilOfIdeas from "@/pages/CouncilOfIdeas";
 import WorkflowDemo from "@/pages/WorkflowDemo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CursorGlow from "@/components/CursorGlow";
 
 function Router() {
   const [location] = useLocation();
@@ -52,6 +53,7 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <CursorGlow />
       <Router />
       <Toaster />
     </QueryClientProvider>

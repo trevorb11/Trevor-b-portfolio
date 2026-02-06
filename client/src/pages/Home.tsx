@@ -1,5 +1,4 @@
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
 import WhatIBringSection from "@/components/WhatIBringSection";
 import TechStackSection from "@/components/TechStackSection";
 import FeaturedProjectsSection from "@/components/FeaturedProjectsSection";
@@ -7,29 +6,26 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import MarketingIntegrationSection from "@/components/MarketingIntegrationSection";
 import AIExpertiseSection from "@/components/AIExpertiseSection";
-import CaseStudiesSection from "@/components/CaseStudiesSection";
 import WorkflowDemoSection from "@/components/WorkflowDemoSection";
 import AuroraDivider from "@/components/AuroraDivider";
 import { useEffect } from "react";
 import { useLocation } from "wouter";
 
 const Home = () => {
-  const [location, setLocation] = useLocation();
-  
+  const [location] = useLocation();
+
   // Handle hash links for direct navigation to sections
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
-      // Remove the # symbol to get just the id
       const id = hash.substring(1);
       const element = document.getElementById(id);
       if (element) {
-        // Add a slight delay to ensure the page is fully loaded
         setTimeout(() => {
           const headerOffset = 80;
           const elementPosition = element.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          
+
           window.scrollTo({
             top: offsetPosition,
             behavior: "smooth",
@@ -37,27 +33,22 @@ const Home = () => {
         }, 100);
       }
     } else {
-      // Scroll to top if no hash
       window.scrollTo(0, 0);
     }
   }, [location]);
 
   return (
-    <main className="bg-[var(--c-bg)]">
+    <main>
       <HeroSection />
-      <AuroraDivider />
       <WhatIBringSection />
       <AuroraDivider />
       <TechStackSection />
-      <AuroraDivider />
       <FeaturedProjectsSection />
       <AuroraDivider />
       <MarketingIntegrationSection />
-      <AuroraDivider />
       <AIExpertiseSection />
       <AuroraDivider />
       <WorkflowDemoSection />
-      <AuroraDivider />
       <ProjectsSection />
       <AuroraDivider />
       <ContactSection />

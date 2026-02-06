@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Github, Linkedin, Twitter, Mail, ArrowRight } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -21,7 +21,6 @@ const Footer = () => {
       return;
     }
 
-    // In a real application, this would send the email to the server
     toast({
       title: "Nicely done!",
       description: "Your inbox just got a bit more interesting.",
@@ -34,89 +33,61 @@ const Footer = () => {
     { name: "Home", path: "/" },
     { name: "About", path: "/#about" },
     { name: "Projects", path: "/#projects" },
-    { name: "Case Studies", path: "/#case-studies" },
-    { name: "Blog", path: "/#blog" },
     { name: "Contact", path: "/#contact" },
   ];
 
-  return (
-    <footer className="relative bg-card/50 border-t border-border/50 py-16">
-      {/* Subtle gradient overlay */}
-      <div
-        className="absolute inset-0 opacity-20 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 100%, hsl(16 78% 63% / 0.15) 0%, transparent 70%)",
-        }}
-      />
+  const socialLinks = [
+    { icon: Github, href: "https://github.com/trevorb11", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/trevor-bosetti-9a291a126/", label: "LinkedIn" },
+    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+    { icon: Mail, href: "mailto:trevor@rankzone.studio", label: "Email" },
+  ];
 
+  return (
+    <footer className="relative border-t border-white/[0.04] py-16">
       <div className="container relative z-10 mx-auto px-4 max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-10">
           {/* Brand */}
           <div className="md:col-span-5">
-            <Link href="/" className="flex items-center gap-2 mb-4 inline-block">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">TB</span>
+            <Link href="/" className="flex items-center gap-2.5 mb-5 inline-block">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                <span className="text-primary-foreground font-bold text-xs">TB</span>
               </div>
-              <div className="text-xl font-bold">
-                <span className="text-primary">Trevor</span>
-                <span className="text-foreground">Bosetti</span>
-              </div>
+              <span className="text-base font-semibold tracking-tight text-foreground">
+                Trevor<span className="text-primary">Bosetti</span>
+              </span>
             </Link>
-            <p className="text-muted-foreground mb-6 max-w-md leading-relaxed">
+            <p className="text-sm text-muted-foreground/70 mb-6 max-w-sm leading-relaxed">
               Your go-to resource for marketing technology insights, creative AI
               applications, and bridging the gap between marketing objectives and
               technical implementation.
             </p>
-            <div className="flex gap-4">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-full hover:bg-primary/10"
-                aria-label="GitHub"
-              >
-                <Github size={20} />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-full hover:bg-primary/10"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-full hover:bg-primary/10"
-                aria-label="Twitter"
-              >
-                <Twitter size={20} />
-              </a>
-              <a
-                href="mailto:info@example.com"
-                className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-full hover:bg-primary/10"
-                aria-label="Email"
-              >
-                <Mail size={20} />
-              </a>
+            <div className="flex gap-2">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("mailto") ? undefined : "_blank"}
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg bg-white/[0.03] border border-white/[0.04] text-muted-foreground/60 hover:text-primary hover:border-primary/20 transition-all"
+                  aria-label={label}
+                >
+                  <Icon size={16} />
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Navigation */}
           <div className="md:col-span-3">
-            <h4 className="text-primary font-semibold mb-4 text-lg">Navigation</h4>
-            <ul className="space-y-2">
+            <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-4">Navigation</p>
+            <ul className="space-y-2.5">
               {footerLinks.map((link) => (
                 <li key={link.path}>
                   <Link
                     href={link.path}
-                    className="text-muted-foreground hover:text-primary transition-colors inline-flex items-center group"
+                    className="text-sm text-muted-foreground/60 hover:text-foreground transition-colors"
                   >
-                    <ArrowRight className="w-3 h-3 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                     {link.name}
                   </Link>
                 </li>
@@ -126,8 +97,8 @@ const Footer = () => {
 
           {/* Newsletter */}
           <div className="md:col-span-4">
-            <h4 className="text-primary font-semibold mb-4 text-lg">Stay Updated</h4>
-            <p className="text-muted-foreground mb-4">
+            <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-4">Stay Updated</p>
+            <p className="text-sm text-muted-foreground/60 mb-4 leading-relaxed">
               Get fresh MarTech insights straight to your inbox. No fluff, just
               useful stuff.
             </p>
@@ -135,13 +106,13 @@ const Footer = () => {
               <Input
                 type="email"
                 placeholder="your@email.com"
-                className="flex-1 bg-background/50 border-border rounded-l-full text-foreground placeholder:text-muted-foreground/50 focus-visible:ring-primary"
+                className="flex-1 bg-white/[0.03] border border-white/[0.06] rounded-l-full text-foreground text-sm placeholder:text-muted-foreground/40 focus-visible:ring-primary/20 focus-visible:border-primary/30"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
               <Button
                 type="submit"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-r-full rounded-l-none"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-medium rounded-r-full rounded-l-none px-5"
               >
                 Subscribe
               </Button>
@@ -149,8 +120,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-border/50 mt-10 pt-6 text-center text-muted-foreground text-sm">
-          <p>
+        <div className="border-t border-white/[0.04] pt-6 text-center">
+          <p className="text-xs text-muted-foreground/40">
             &copy; {new Date().getFullYear()} Trevor Bosetti. Turning data into
             stories that stick.
           </p>
