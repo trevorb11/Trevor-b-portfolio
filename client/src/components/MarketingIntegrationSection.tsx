@@ -63,7 +63,7 @@ const MarketingIntegrationSection = () => {
             variants={containerVariants}
             className="max-w-6xl mx-auto"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-10 lg:gap-12 items-center">
               <motion.div variants={itemVariants}>
                 <div className="mb-8">
                   <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary mb-5">
