@@ -7,6 +7,8 @@ import ContactSection from "@/components/ContactSection";
 import MarketingIntegrationSection from "@/components/MarketingIntegrationSection";
 import AIExpertiseSection from "@/components/AIExpertiseSection";
 import WorkflowDemoSection from "@/components/WorkflowDemoSection";
+import LiveTerminal from "@/components/LiveTerminal";
+import BeforeAfterToggle from "@/components/BeforeAfterToggle";
 import AuroraDivider from "@/components/AuroraDivider";
 import { useEffect } from "react";
 import { useLocation } from "wouter";
@@ -46,9 +48,11 @@ const Home = () => {
       <FeaturedProjectsSection />
       <AuroraDivider />
       <MarketingIntegrationSection />
+      <LiveTerminal />
       <AIExpertiseSection />
       <AuroraDivider />
       <WorkflowDemoSection />
+      <BeforeAfterToggle />
       <ProjectsSection />
       <AuroraDivider />
       <ContactSection />
