@@ -139,7 +139,7 @@ const MarketingIntegrationSection = () => {
                 <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30 bg-card/50 aspect-video">
                   <iframe
                     className="absolute inset-0 w-full h-full"
-                    src="https://www.youtube.com/embed/cEJ-nh2QSig?si=PE5wJ6E5WSQXTeR7"
+                    src="https://www.youtube.com/embed/TUVw5t0TC18?si=RuRg718V1Z10C09K"
                     title="Community Food Share campaign video"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"

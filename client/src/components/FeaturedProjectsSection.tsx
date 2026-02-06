@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Sparkles, Trophy, BarChart3, ArrowUpRight } from "lucide-react";
@@ -35,13 +35,28 @@ const ROTATE_INTERVAL = 5000;
 
 const FeaturedProjectsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Only start rotating once the section scrolls into view
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.4 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
+    if (!isInView) return;
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % featuredProjects.length);
     }, ROTATE_INTERVAL);
     return () => clearInterval(timer);
-  }, []);
+  }, [isInView]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -63,7 +78,7 @@ const FeaturedProjectsSection = () => {
   const project = featuredProjects[activeIndex];
 
   return (
-    <section id="featured" className="py-20 md:py-28 relative overflow-hidden">
+    <section ref={sectionRef} id="featured" className="py-20 md:py-28 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-card/15 to-transparent pointer-events-none" />
 
       <div className="container px-4 md:px-6 relative">
