@@ -154,24 +154,26 @@ const AIExpertiseSection = () => {
         >
           <motion.div variants={itemVariants}>
             <Link href="/council-of-ideas">
-              <div className="premium-card group relative overflow-hidden p-6 md:p-8 cursor-pointer">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-accent/[0.03] pointer-events-none" />
+              <div className="group relative overflow-hidden rounded-2xl p-6 md:p-8 cursor-pointer border border-primary/20 transition-all duration-500 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10"
+                style={{ background: "linear-gradient(135deg, hsl(16 78% 55% / 0.15), hsl(28 83% 62% / 0.10))" }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.06] to-transparent pointer-events-none" />
                 <div className="relative flex items-start justify-between gap-4">
                   <div className="flex items-start gap-4">
-                    <div className="p-2.5 rounded-xl bg-primary/10 text-primary flex-shrink-0">
+                    <div className="p-2.5 rounded-xl bg-[hsl(203,61%,20%,0.5)] text-primary flex-shrink-0">
                       <Sparkles size={18} />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold mb-1.5 text-foreground group-hover:text-primary transition-colors">
+                      <h3 className="text-lg font-bold mb-1.5 text-foreground group-hover:text-[hsl(203,61%,30%)] transition-colors">
                         The Council of Ideas
                       </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-foreground/70 text-sm leading-relaxed">
                         What happens when you assemble history's sharpest minds to pressure-test a real decision?
                         A meta demonstration of using AI councils for structured perspective and clearer thinking.
                       </p>
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0 mt-1.5" />
+                  <ArrowRight className="w-4 h-4 text-foreground/40 group-hover:text-[hsl(203,61%,30%)] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1.5" />
                 </div>
               </div>
             </Link>

@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Sparkles, Trophy, BarChart3, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -30,14 +31,23 @@ const featuredProjects = [
   },
 ];
 
+const ROTATE_INTERVAL = 5000;
+
 const FeaturedProjectsSection = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % featuredProjects.length);
+    }, ROTATE_INTERVAL);
+    return () => clearInterval(timer);
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-      },
+      transition: { staggerChildren: 0.12 },
     },
   };
 
@@ -46,15 +56,14 @@ const FeaturedProjectsSection = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        duration: 0.5,
-      },
+      transition: { duration: 0.5 },
     },
   };
 
+  const project = featuredProjects[activeIndex];
+
   return (
     <section id="featured" className="py-20 md:py-28 relative overflow-hidden">
-      {/* Background accent */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-card/15 to-transparent pointer-events-none" />
 
       <div className="container px-4 md:px-6 relative">
@@ -74,43 +83,89 @@ const FeaturedProjectsSection = () => {
             </p>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 max-w-5xl mx-auto">
-            {featuredProjects.map((project, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="premium-card group p-6 flex flex-col"
-              >
-                <div className="flex items-start justify-between mb-5">
-                  <div className="p-2.5 rounded-xl bg-primary/10 text-primary">
-                    {project.icon}
+          <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto items-center">
+            {/* Left column — rotating project card */}
+            <div className="relative min-h-[280px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.4 }}
+                  className="premium-card group p-7 flex flex-col"
+                >
+                  <div className="flex items-start justify-between mb-5">
+                    <div className="p-2.5 rounded-xl bg-primary/10 text-primary">
+                      {project.icon}
+                    </div>
+                    <span className={`text-[11px] px-3 py-1 rounded-full font-semibold uppercase tracking-wider ${project.tagColor}`}>
+                      {project.tag}
+                    </span>
                   </div>
-                  <span className={`text-[11px] px-3 py-1 rounded-full font-semibold uppercase tracking-wider ${project.tagColor}`}>
-                    {project.tag}
-                  </span>
+
+                  <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-muted-foreground text-sm flex-1 mb-6 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-primary/80 hover:text-primary font-medium text-sm transition-colors group/link"
+                    >
+                      View Project
+                      <ArrowUpRight className="h-3.5 w-3.5 ml-1 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                    </a>
+                  )}
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Progress dots */}
+              <div className="flex items-center justify-center gap-2 mt-5">
+                {featuredProjects.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveIndex(i)}
+                    className={`h-1.5 rounded-full transition-all duration-500 ${
+                      i === activeIndex
+                        ? "w-6 bg-primary"
+                        : "w-1.5 bg-white/20 hover:bg-white/30"
+                    }`}
+                    aria-label={`Show project ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Right column — video with overlay */}
+            <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30 bg-card/50">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                className="w-full h-auto min-h-[280px] sm:min-h-0 aspect-[4/3] object-cover object-top"
+              >
+                <source src="/about-video.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-black/20 flex items-center justify-center p-4 sm:p-8">
+                <div className="text-center max-w-md">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                    My AI Vision
+                  </h3>
+                  <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
+                    AI is not replacing human creativity &mdash; it's elevating creative potential. My vision is to help organizations harness AI as a tool that enhances human capabilities and drives innovation.
+                  </p>
                 </div>
-
-                <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-
-                <p className="text-muted-foreground text-sm flex-1 mb-5 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-primary/80 hover:text-primary font-medium text-sm transition-colors group/link"
-                  >
-                    View Project
-                    <ArrowUpRight className="h-3.5 w-3.5 ml-1 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                  </a>
-                )}
-              </motion.div>
-            ))}
+              </div>
+            </div>
           </motion.div>
 
           <motion.div variants={itemVariants} className="text-center mt-12">
