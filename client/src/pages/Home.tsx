@@ -45,6 +45,8 @@ const Home = () => {
       <WhatIBringSection />
       <AuroraDivider />
       <TechStackSection />
+      <BeforeAfterToggle />
+      <AuroraDivider />
       <FeaturedProjectsSection />
       <AuroraDivider />
       <MarketingIntegrationSection />
@@ -52,7 +54,6 @@ const Home = () => {
       <AIExpertiseSection />
       <AuroraDivider />
       <WorkflowDemoSection />
-      <BeforeAfterToggle />
       <ProjectsSection />
       <AuroraDivider />
       <ContactSection />
