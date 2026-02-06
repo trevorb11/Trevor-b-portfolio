@@ -183,7 +183,7 @@ const MarketingIntegrationSection = () => {
                   />
                 </div>
                 <p className="text-center text-muted-foreground/50 text-xs mt-3 font-mono tracking-wide">
-                  Community Food Share &mdash; Campaign I led the creation of
+                  Community Food Share &mdash; Making Spirits Bright
                 </p>
               </motion.div>
             </div>
