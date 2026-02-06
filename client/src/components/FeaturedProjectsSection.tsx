@@ -85,7 +85,7 @@ const FeaturedProjectsSection = () => {
 
           <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto items-center">
             {/* Left column — rotating project card */}
-            <div className="relative min-h-[280px]">
+            <div className="relative min-h-[380px] md:min-h-[420px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
@@ -93,22 +93,22 @@ const FeaturedProjectsSection = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
                   transition={{ duration: 0.4 }}
-                  className="premium-card group p-7 flex flex-col"
+                  className="premium-card group p-8 md:p-10 flex flex-col min-h-[340px] md:min-h-[380px]"
                 >
-                  <div className="flex items-start justify-between mb-5">
-                    <div className="p-2.5 rounded-xl bg-primary/10 text-primary">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="p-3 rounded-xl bg-primary/10 text-primary">
                       {project.icon}
                     </div>
-                    <span className={`text-[11px] px-3 py-1 rounded-full font-semibold uppercase tracking-wider ${project.tagColor}`}>
+                    <span className={`text-xs px-3.5 py-1.5 rounded-full font-semibold uppercase tracking-wider ${project.tagColor}`}>
                       {project.tag}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
 
-                  <p className="text-muted-foreground text-sm flex-1 mb-6 leading-relaxed">
+                  <p className="text-muted-foreground text-base flex-1 mb-8 leading-relaxed">
                     {project.description}
                   </p>
 
