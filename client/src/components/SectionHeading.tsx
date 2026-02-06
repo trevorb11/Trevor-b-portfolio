@@ -1,5 +1,5 @@
 import React from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface SectionHeadingProps {
   id?: string;
@@ -8,19 +8,22 @@ interface SectionHeadingProps {
 }
 
 const SectionHeading: React.FC<SectionHeadingProps> = ({ id, title, subtitle }) => {
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 600], [0, -100]);
-
   return (
-    <motion.div style={{ y }} className="text-center mb-12">
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="text-center mb-14"
+    >
       <h2
         id={id}
-        className="text-3xl md:text-5xl font-extrabold tracking-tight mb-2.5 text-foreground"
+        className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-foreground"
       >
         {title}
       </h2>
       {subtitle && (
-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+        <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
           {subtitle}
         </p>
       )}

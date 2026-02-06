@@ -9,7 +9,6 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Track scroll for transparent header effect
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
@@ -36,10 +35,10 @@ const Header = () => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80; // Header height offset
+      const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
-      
+
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth"
@@ -64,65 +63,80 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "backdrop-blur-md bg-background/90 shadow-lg border-b border-border/50"
+          ? "backdrop-blur-xl bg-background/80 shadow-[0_1px_0_0_hsl(var(--border)/0.5),0_4px_20px_-4px_hsl(203_61%_10%/0.3)]"
           : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">TB</span>
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md shadow-primary/20 group-hover:shadow-primary/30 transition-shadow">
+              <span className="text-primary-foreground font-bold text-sm">TB</span>
             </div>
-            <div>
-              <span className="text-primary">Trevor</span>
-              <span className="text-foreground">Bosetti</span>
-            </div>
+            <span className="text-lg font-semibold tracking-tight text-foreground">
+              Trevor<span className="text-primary">Bosetti</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:block">
-            <ul className="flex space-x-6">
-              {navLinks.map((link) => (
-                <li key={link.path}>
-                  {link.id ? (
-                    <a
-                      href={link.path}
-                      onClick={(e) => scrollToSection(link.id, e)}
-                      className={`font-medium transition-colors text-foreground/80 hover:text-primary ${
-                        isActive(link.path) ? "text-primary" : ""
-                      }`}
-                    >
-                      {link.name}
-                    </a>
-                  ) : (
-                    <Link
-                      href={link.path}
-                      onClick={closeMenu}
-                      className={`font-medium transition-colors text-foreground/80 hover:text-primary ${
-                        isActive(link.path) ? "text-primary" : ""
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
+          <nav className="hidden lg:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <div key={link.path}>
+                {link.id ? (
+                  <a
+                    href={link.path}
+                    onClick={(e) => scrollToSection(link.id, e)}
+                    className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:text-foreground ${
+                      isActive(link.path)
+                        ? "text-primary"
+                        : "text-foreground/60 hover:bg-white/[0.04]"
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link
+                    href={link.path}
+                    onClick={closeMenu}
+                    className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:text-foreground ${
+                      isActive(link.path)
+                        ? "text-primary"
+                        : "text-foreground/60 hover:bg-white/[0.04]"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                )}
+              </div>
+            ))}
+            <div className="ml-2 pl-3 border-l border-border/50">
+              <Button
+                asChild
+                size="sm"
+                className="rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all text-sm font-medium px-5 h-9"
+              >
+                <a
+                  href="/#contact"
+                  onClick={(e) => scrollToSection("contact", e)}
+                >
+                  Hire Me
+                </a>
+              </Button>
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}
           <Button
             variant="ghost"
             size="icon"
-            className="lg:hidden text-foreground"
+            className="lg:hidden text-foreground/70 hover:text-foreground h-9 w-9"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
 
@@ -133,35 +147,42 @@ const Header = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden overflow-hidden bg-card/95 backdrop-blur-md rounded-lg mt-2 border border-border/50"
+              transition={{ duration: 0.2 }}
+              className="lg:hidden overflow-hidden"
             >
-              <ul className="space-y-1 p-4">
-                {navLinks.map((link) => (
-                  <li key={link.path}>
-                    {link.id ? (
-                      <a
-                        href={link.path}
-                        onClick={(e) => scrollToSection(link.id, e)}
-                        className={`block py-2 px-3 rounded-md transition-colors text-foreground/80 hover:text-primary hover:bg-primary/10 ${
-                          isActive(link.path) ? "text-primary bg-primary/10" : ""
-                        }`}
-                      >
-                        {link.name}
-                      </a>
-                    ) : (
-                      <Link
-                        href={link.path}
-                        onClick={closeMenu}
-                        className={`block py-2 px-3 rounded-md transition-colors text-foreground/80 hover:text-primary hover:bg-primary/10 ${
-                          isActive(link.path) ? "text-primary bg-primary/10" : ""
-                        }`}
-                      >
-                        {link.name}
-                      </Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
+              <div className="bg-card/95 backdrop-blur-xl rounded-xl mb-3 border border-white/[0.06] shadow-xl shadow-black/20">
+                <ul className="space-y-0.5 p-2">
+                  {navLinks.map((link) => (
+                    <li key={link.path}>
+                      {link.id ? (
+                        <a
+                          href={link.path}
+                          onClick={(e) => scrollToSection(link.id, e)}
+                          className={`block py-2.5 px-4 rounded-lg text-sm font-medium transition-colors ${
+                            isActive(link.path)
+                              ? "text-primary bg-primary/10"
+                              : "text-foreground/70 hover:text-foreground hover:bg-white/[0.04]"
+                          }`}
+                        >
+                          {link.name}
+                        </a>
+                      ) : (
+                        <Link
+                          href={link.path}
+                          onClick={closeMenu}
+                          className={`block py-2.5 px-4 rounded-lg text-sm font-medium transition-colors ${
+                            isActive(link.path)
+                              ? "text-primary bg-primary/10"
+                              : "text-foreground/70 hover:text-foreground hover:bg-white/[0.04]"
+                          }`}
+                        >
+                          {link.name}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

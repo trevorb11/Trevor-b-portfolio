@@ -5,6 +5,14 @@ import { useQuery } from "@tanstack/react-query";
 import ProjectCard from "./ProjectCard";
 import { Project } from "@shared/schema";
 
+const filters = [
+  { key: "all", label: "All" },
+  { key: "crm-integration", label: "CRM Integration" },
+  { key: "automation", label: "Automation" },
+  { key: "lead-generation", label: "Lead Generation" },
+  { key: "ai-marketing", label: "AI Marketing" },
+];
+
 const ProjectsSection = () => {
   const [activeFilter, setActiveFilter] = useState("all");
 
@@ -12,42 +20,39 @@ const ProjectsSection = () => {
     queryKey: ["/api/projects"],
   });
 
-  const handleFilterClick = (filter: string) => {
-    setActiveFilter(filter);
-  };
-
-  const filteredProjects = projects ? 
-    (activeFilter === 'all' 
-      ? projects 
-      : projects.filter(project => project.category === activeFilter)
-    ) : [];
+  const filteredProjects = projects
+    ? activeFilter === "all"
+      ? projects
+      : projects.filter((project) => project.category === activeFilter)
+    : [];
 
   return (
-    <section id="projects" className="py-20 px-4 bg-background/50">
-      <div className="container mx-auto max-w-6xl">
+    <section id="projects" className="py-20 md:py-28 px-4 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-card/10 to-transparent pointer-events-none" />
+
+      <div className="container mx-auto max-w-6xl relative">
         <motion.div
-          className="mb-8 text-center"
+          className="mb-10 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 text-primary">Portfolio</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-foreground">Portfolio</h2>
+          <p className="text-muted-foreground max-w-xl mx-auto text-base">
             Taking the pieces and making things happen from ideation to creation
           </p>
         </motion.div>
 
         {/* Portfolio Video */}
         <motion.div
-          className="mb-12"
+          className="mb-14"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl max-w-4xl mx-auto">
-            <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl -z-10"></div>
+          <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30 max-w-4xl mx-auto">
             <video
               autoPlay
               loop
@@ -61,58 +66,33 @@ const ProjectsSection = () => {
         </motion.div>
 
         {/* Project Filters */}
-        <div className="flex flex-wrap gap-2 mb-10 justify-center">
-          <Button
-            variant={activeFilter === "all" ? "default" : "ghost"}
-            onClick={() => handleFilterClick("all")}
-            className="px-4 py-2 rounded-lg font-medium text-sm"
-            size="sm"
-          >
-            All
-          </Button>
-          <Button
-            variant={activeFilter === "crm-integration" ? "default" : "ghost"}
-            onClick={() => handleFilterClick("crm-integration")}
-            className="px-4 py-2 rounded-lg font-medium text-sm"
-            size="sm"
-          >
-            CRM Integration
-          </Button>
-          <Button
-            variant={activeFilter === "automation" ? "default" : "ghost"}
-            onClick={() => handleFilterClick("automation")}
-            className="px-4 py-2 rounded-lg font-medium text-sm"
-            size="sm"
-          >
-            Automation
-          </Button>
-          <Button
-            variant={activeFilter === "lead-generation" ? "default" : "ghost"}
-            onClick={() => handleFilterClick("lead-generation")}
-            className="px-4 py-2 rounded-lg font-medium text-sm"
-            size="sm"
-          >
-            Lead Generation
-          </Button>
-          <Button
-            variant={activeFilter === "ai-marketing" ? "default" : "ghost"}
-            onClick={() => handleFilterClick("ai-marketing")}
-            className="px-4 py-2 rounded-lg font-medium text-sm"
-            size="sm"
-          >
-            AI Marketing
-          </Button>
+        <div className="flex flex-wrap gap-1.5 mb-10 justify-center">
+          {filters.map((filter) => (
+            <Button
+              key={filter.key}
+              variant="ghost"
+              onClick={() => setActiveFilter(filter.key)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                activeFilter === filter.key
+                  ? "bg-primary/15 text-primary border border-primary/20"
+                  : "text-muted-foreground hover:text-foreground hover:bg-white/[0.04] border border-transparent"
+              }`}
+              size="sm"
+            >
+              {filter.label}
+            </Button>
+          ))}
         </div>
 
-        {/* Projects Grid - 2 column layout like Rank Zone */}
+        {/* Projects Grid */}
         {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="bg-card/50 border border-border/50 rounded-xl h-48 animate-pulse"></div>
+              <div key={i} className="premium-card h-48 animate-pulse"></div>
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {filteredProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
