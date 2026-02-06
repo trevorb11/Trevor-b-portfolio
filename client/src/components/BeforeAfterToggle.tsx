@@ -86,7 +86,7 @@ const BeforeAfterToggle = () => {
 
       {/* Visualization Area */}
       <div className="premium-card p-5 md:p-8">
-        <div className="relative w-full aspect-square">
+        <div className="relative w-full aspect-[3/4] md:aspect-square">
           {/* SVG for connection lines */}
           <svg
             className="absolute inset-0 w-full h-full"

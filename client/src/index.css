@@ -111,6 +111,21 @@
     background-image: linear-gradient(135deg, hsl(16 78% 55%), hsl(28 83% 62%));
   }
 
+  /* Shimmering gradient text for hero "Impact" */
+  .text-gradient-impact {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      120deg,
+      hsl(16 78% 55%) 0%,
+      hsl(28 83% 68%) 30%,
+      hsl(30 90% 82%) 50%,
+      hsl(28 83% 68%) 70%,
+      hsl(16 78% 55%) 100%
+    );
+    background-size: 250% 100%;
+    animation: impact-shine 6s ease-in-out infinite;
+  }
+
   /* Glassmorphism card style - refined */
   .glass-card {
     @apply backdrop-blur-xl border border-white/[0.08] rounded-2xl;
@@ -175,11 +190,11 @@
   }
 
   .animate-ticker {
-    animation: ticker 30s linear infinite;
+    animation: ticker 45s linear infinite;
   }
 
   .animate-ticker-reverse {
-    animation: ticker-reverse 35s linear infinite;
+    animation: ticker-reverse 50s linear infinite;
   }
 
   /* Fade edges so pills dissolve at the viewport edges */
@@ -201,6 +216,11 @@
   }
 
   /* Animations */
+  @keyframes impact-shine {
+    0%, 100% { background-position: 100% 50%; }
+    50% { background-position: 0% 50%; }
+  }
+
   @keyframes drift {
     from { transform: translateX(-50%); }
     to { transform: translateX(50%); }
