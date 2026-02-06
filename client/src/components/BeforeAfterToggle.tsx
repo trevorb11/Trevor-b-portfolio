@@ -7,12 +7,12 @@ interface SystemNode {
 }
 
 const tools: SystemNode[] = [
-  { name: "HubSpot", color: "hsl(16 78% 63%)" },
-  { name: "Salesforce", color: "hsl(200 50% 50%)" },
-  { name: "Mailchimp", color: "hsl(45 80% 55%)" },
-  { name: "Analytics", color: "hsl(140 45% 50%)" },
-  { name: "Zapier", color: "hsl(28 83% 65%)" },
-  { name: "Segment", color: "hsl(280 50% 55%)" },
+  { name: "Website", color: "hsl(200 50% 50%)" },
+  { name: "Social Media", color: "hsl(280 50% 55%)" },
+  { name: "Blog", color: "hsl(140 45% 50%)" },
+  { name: "Paid Media", color: "hsl(16 78% 63%)" },
+  { name: "Email", color: "hsl(45 80% 55%)" },
+  { name: "SEO", color: "hsl(28 83% 65%)" },
 ];
 
 // Scattered positions for "before" state
@@ -49,9 +49,9 @@ const BeforeAfterToggle = () => {
   return (
     <div>
       {/* Toggle Switch */}
-      <div className="flex items-center justify-center gap-3 mb-4">
+      <div className="flex items-center justify-center gap-3 mb-5">
         <span
-          className={`text-xs font-medium transition-colors ${
+          className={`text-sm font-semibold transition-colors ${
             !isUnified ? "text-red-400" : "text-muted-foreground/50"
           }`}
         >
@@ -59,7 +59,7 @@ const BeforeAfterToggle = () => {
         </span>
         <button
           onClick={() => setIsUnified(!isUnified)}
-          className={`relative w-14 h-7 rounded-full transition-colors duration-500 border ${
+          className={`relative w-16 h-8 rounded-full transition-colors duration-500 border ${
             isUnified
               ? "bg-emerald-500/20 border-emerald-500/30"
               : "bg-red-500/15 border-red-500/25"
@@ -70,13 +70,13 @@ const BeforeAfterToggle = () => {
             className={`absolute top-0.5 w-5.5 h-5.5 rounded-full shadow-lg ${
               isUnified ? "bg-emerald-400" : "bg-red-400"
             }`}
-            style={{ width: 22, height: 22 }}
-            animate={{ left: isUnified ? 28 : 3 }}
+            style={{ width: 24, height: 24 }}
+            animate={{ left: isUnified ? 32 : 3 }}
             transition={{ type: "spring", stiffness: 500, damping: 30 }}
           />
         </button>
         <span
-          className={`text-xs font-medium transition-colors ${
+          className={`text-sm font-semibold transition-colors ${
             isUnified ? "text-emerald-400" : "text-muted-foreground/50"
           }`}
         >
@@ -85,7 +85,7 @@ const BeforeAfterToggle = () => {
       </div>
 
       {/* Visualization Area */}
-      <div className="premium-card p-4 md:p-6">
+      <div className="premium-card p-5 md:p-8">
         <div className="relative w-full aspect-square">
           {/* SVG for connection lines */}
           <svg
@@ -102,9 +102,9 @@ const BeforeAfterToggle = () => {
                     y1={centerY}
                     x2={pos.x}
                     y2={pos.y}
-                    stroke="hsl(16 78% 63% / 0.3)"
-                    strokeWidth="0.3"
-                    strokeDasharray="1 1"
+                    stroke="hsl(16 78% 63% / 0.5)"
+                    strokeWidth="0.5"
+                    strokeDasharray="1.5 1"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     exit={{ pathLength: 0, opacity: 0 }}
@@ -124,9 +124,9 @@ const BeforeAfterToggle = () => {
                       y1={pos.y + 3}
                       x2={(pos.x + next.x) / 2}
                       y2={(pos.y + next.y) / 2}
-                      stroke="hsl(0 70% 55% / 0.2)"
-                      strokeWidth="0.3"
-                      strokeDasharray="0.8 1.5"
+                      stroke="hsl(0 70% 55% / 0.4)"
+                      strokeWidth="0.5"
+                      strokeDasharray="1 1.5"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -148,8 +148,8 @@ const BeforeAfterToggle = () => {
                 exit={{ scale: 0, opacity: 0 }}
                 transition={{ type: "spring", stiffness: 300, damping: 25, delay: 0.2 }}
               >
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-primary/20 border border-primary/30 flex items-center justify-center shadow-lg shadow-primary/10">
-                  <span className="text-primary font-bold text-xs font-mono">HUB</span>
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-primary/20 border border-primary/40 flex items-center justify-center shadow-lg shadow-primary/15">
+                  <span className="text-primary font-bold text-sm font-mono">HUB</span>
                 </div>
               </motion.div>
             )}
@@ -173,10 +173,10 @@ const BeforeAfterToggle = () => {
               style={{ transform: "translate(-50%, -50%)" }}
             >
               <motion.div
-                className={`px-2.5 py-1.5 md:px-3 md:py-2 rounded-xl border text-[11px] md:text-xs font-medium whitespace-nowrap ${
+                className={`px-3 py-2 md:px-4 md:py-2.5 rounded-xl border text-xs md:text-sm font-semibold whitespace-nowrap ${
                   isUnified
-                    ? "bg-card/80 border-white/[0.12] text-foreground shadow-lg"
-                    : "bg-card/40 border-white/[0.05] text-muted-foreground/70"
+                    ? "bg-card/90 border-white/[0.15] text-foreground shadow-lg"
+                    : "bg-card/60 border-white/[0.08] text-muted-foreground/80"
                 }`}
                 animate={{
                   scale: isUnified ? 1 : 0.92,
@@ -185,9 +185,9 @@ const BeforeAfterToggle = () => {
                 transition={{ type: "spring", stiffness: 300, damping: 25 }}
               >
                 <span
-                  className="inline-block w-1.5 h-1.5 rounded-full mr-1.5"
+                  className="inline-block w-2 h-2 rounded-full mr-2"
                   style={{
-                    background: isUnified ? tool.color : "hsl(0 0% 40%)",
+                    background: isUnified ? tool.color : "hsl(0 0% 45%)",
                     transition: "background 0.5s ease",
                   }}
                 />
@@ -198,7 +198,7 @@ const BeforeAfterToggle = () => {
               <AnimatePresence>
                 {!isUnified && i % 2 === 0 && (
                   <motion.div
-                    className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-red-500/80 border border-red-400/50"
+                    className="absolute -top-1.5 -right-1.5 w-3 h-3 rounded-full bg-red-500/90 border border-red-400/60"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     exit={{ scale: 0 }}
@@ -211,13 +211,13 @@ const BeforeAfterToggle = () => {
               <AnimatePresence>
                 {isUnified && (
                   <motion.div
-                    className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-500/80 border border-emerald-400/50 flex items-center justify-center"
+                    className="absolute -top-1.5 -right-1.5 w-3 h-3 rounded-full bg-emerald-500/90 border border-emerald-400/60 flex items-center justify-center"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     exit={{ scale: 0 }}
                     transition={{ delay: 0.4 + i * 0.08 }}
                   >
-                    <svg width="6" height="6" viewBox="0 0 10 10" className="text-white">
+                    <svg width="7" height="7" viewBox="0 0 10 10" className="text-white">
                       <path d="M2 5 L4.5 7.5 L8 3" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </motion.div>
@@ -237,14 +237,14 @@ const BeforeAfterToggle = () => {
               transition={{ duration: 0.3 }}
             >
               <span
-                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] md:text-xs font-mono ${
+                className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs md:text-sm font-mono ${
                   isUnified
                     ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
                     : "bg-red-500/10 text-red-400 border border-red-500/20"
                 }`}
               >
                 <span
-                  className={`w-1.5 h-1.5 rounded-full ${
+                  className={`w-2 h-2 rounded-full ${
                     isUnified ? "bg-emerald-400 animate-pulse" : "bg-red-400"
                   }`}
                 />

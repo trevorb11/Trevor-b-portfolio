@@ -63,7 +63,7 @@ const MarketingIntegrationSection = () => {
             variants={containerVariants}
             className="max-w-6xl mx-auto"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-10 lg:gap-12 items-center">
               <motion.div variants={itemVariants}>
                 <div className="mb-8">
                   <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary mb-5">
@@ -104,6 +104,42 @@ const MarketingIntegrationSection = () => {
         </div>
       </section>
 
+      {/* Video Section with Text Overlay — My AI Vision */}
+      <section className="py-16 md:py-24">
+        <div className="container px-4 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-5xl mx-auto"
+          >
+            <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30 bg-card/50">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                className="w-full h-auto min-h-[280px] sm:min-h-0 aspect-[4/3] sm:aspect-video object-cover object-top"
+              >
+                <source src="/about-video.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-black/20 flex items-center justify-center p-4 sm:p-8 md:p-12">
+                <div className="text-center max-w-3xl">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
+                    My AI Vision
+                  </h3>
+                  <p className="text-white/80 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                    AI is not replacing human creativity &mdash; it's elevating creative potential. My vision is to help organizations and individuals harness AI as a powerful tool that enhances human capabilities, drives innovation, and enables more meaningful connections through new avenues of expression.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <AuroraDivider />
 
       {/* Humanity in the Digital Age */}
@@ -139,7 +175,7 @@ const MarketingIntegrationSection = () => {
                 <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30 bg-card/50 aspect-video">
                   <iframe
                     className="absolute inset-0 w-full h-full"
-                    src="https://www.youtube.com/embed/cEJ-nh2QSig?si=PE5wJ6E5WSQXTeR7"
+                    src="https://www.youtube.com/embed/TUVw5t0TC18?si=RuRg718V1Z10C09K"
                     title="Community Food Share campaign video"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
@@ -150,42 +186,6 @@ const MarketingIntegrationSection = () => {
                   Community Food Share &mdash; Campaign I led the creation of
                 </p>
               </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Video Section with Text Overlay */}
-      <section className="py-16 md:py-24">
-        <div className="container px-4 md:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-5xl mx-auto"
-          >
-            <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30 bg-card/50">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                className="w-full h-auto min-h-[280px] sm:min-h-0 aspect-[4/3] sm:aspect-video object-cover object-top"
-              >
-                <source src="/about-video.mp4" type="video/mp4" />
-              </video>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-black/20 flex items-center justify-center p-4 sm:p-8 md:p-12">
-                <div className="text-center max-w-3xl">
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
-                    My AI Vision
-                  </h3>
-                  <p className="text-white/80 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
-                    AI is not replacing human creativity &mdash; it's elevating creative potential. My vision is to help organizations and individuals harness AI as a powerful tool that enhances human capabilities, drives innovation, and enables more meaningful connections through new avenues of expression.
-                  </p>
-                </div>
-              </div>
             </div>
           </motion.div>
         </div>
