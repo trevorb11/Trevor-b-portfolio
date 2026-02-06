@@ -45,11 +45,10 @@ const Home = () => {
       <WhatIBringSection />
       <AuroraDivider />
       <TechStackSection />
-      <BeforeAfterToggle />
-      <AuroraDivider />
       <FeaturedProjectsSection />
       <AuroraDivider />
       <MarketingIntegrationSection />
+      <BeforeAfterToggle />
       <LiveTerminal />
       <AIExpertiseSection />
       <AuroraDivider />
