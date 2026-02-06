@@ -1,16 +1,8 @@
 import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Link as LinkIcon, Database } from "lucide-react";
+import { Link as LinkIcon, Heart } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { CmsContent } from "@shared/schema";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import AuroraDivider from "./AuroraDivider";
 
 const MarketingIntegrationSection = () => {
@@ -38,17 +30,6 @@ const MarketingIntegrationSection = () => {
     { name: "Zapier", category: "Integration Platform" },
     { name: "Segment", category: "Customer Data Platform" },
     { name: "ActiveCampaign", category: "Marketing Automation" },
-  ];
-
-  const nonprofitTools = [
-    { name: "Blackbaud", category: "Nonprofit Management" },
-    { name: "Raiser's Edge", category: "Fundraising" },
-    { name: "Classy", category: "Fundraising Platform" },
-    { name: "Omatic", category: "Data Integration" },
-    { name: "DonorPerfect", category: "Donor Management" },
-    { name: "Kindful", category: "Nonprofit CRM" },
-    { name: "NeonCRM", category: "Constituent Management" },
-    { name: "Bloomerang", category: "Donor Management" },
   ];
 
   const containerVariants = {
@@ -135,8 +116,8 @@ const MarketingIntegrationSection = () => {
 
       <AuroraDivider />
 
-      {/* Nonprofit Technology Specialization */}
-      <section id="nonprofit" className="py-20 md:py-28 relative overflow-hidden">
+      {/* Humanity in the Digital Age */}
+      <section id="humanity" className="py-20 md:py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-card/15 to-transparent pointer-events-none" />
         <div className="container px-4 md:px-6 relative">
           <motion.div
@@ -144,49 +125,42 @@ const MarketingIntegrationSection = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
-            className="max-w-4xl mx-auto"
+            className="max-w-5xl mx-auto"
           >
-            <motion.div variants={itemVariants} className="text-center mb-12">
-              <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary mb-5">
-                <Database size={20} />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
-                Nonprofit Technology Specialization
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
-                {integrationsContent.nonprofit ||
-                  "Deep expertise in nonprofit-specific tools. I help organizations maximize donor management, streamline operations, and boost fundraising impact."}
-              </p>
-            </motion.div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+              <motion.div variants={itemVariants}>
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary mb-5">
+                  <Heart size={20} />
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
+                  Keeping the Human in the Machine
+                </h2>
+                <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-4">
+                  Automation and AI are powerful, but the best systems never lose sight of the people they serve. I believe technology should amplify human connection, not replace it.
+                </p>
+                <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+                  From leading the creation of this campaign for Community Food Share to building
+                  data pipelines that help nonprofits reach more donors &mdash; every system I build
+                  starts with one question: <span className="text-foreground font-medium">how does this make someone's life better?</span>
+                </p>
+              </motion.div>
 
-            <motion.div variants={itemVariants}>
-              <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-5 text-center">
-                Nonprofit Technology Stack
-              </p>
-              <div className="w-full relative">
-                <Carousel
-                  opts={{ align: "start", loop: true }}
-                  className="w-full"
-                >
-                  <CarouselContent>
-                    {nonprofitTools.map((tool, index) => (
-                      <CarouselItem key={index} className="basis-1/2 md:basis-1/4 lg:basis-1/5 pl-4">
-                        <div className="p-1">
-                          <Card className="premium-card h-full border-0">
-                            <CardContent className="p-4 flex flex-col items-center justify-center h-full">
-                              <p className="font-medium text-center text-foreground text-sm">{tool.name}</p>
-                              <p className="text-xs text-muted-foreground/60 text-center mt-1">{tool.category}</p>
-                            </CardContent>
-                          </Card>
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CarouselPrevious className="left-0" />
-                  <CarouselNext className="right-0" />
-                </Carousel>
-              </div>
-            </motion.div>
+              <motion.div variants={itemVariants}>
+                <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30 bg-card/50 aspect-video">
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src="https://www.youtube.com/embed/cEJ-nh2QSig?si=PE5wJ6E5WSQXTeR7"
+                    title="Community Food Share campaign video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+                <p className="text-center text-muted-foreground/50 text-xs mt-3 font-mono tracking-wide">
+                  Community Food Share &mdash; Campaign I led the creation of
+                </p>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
