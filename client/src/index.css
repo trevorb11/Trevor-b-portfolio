@@ -108,7 +108,7 @@
   /* Sunset gradient text utility */
   .text-gradient-sunset {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--c-hi)), hsl(var(--c-fx)));
+    background-image: linear-gradient(135deg, hsl(16 78% 55%), hsl(28 83% 62%));
   }
 
   /* Glassmorphism card style - refined */
@@ -163,6 +163,43 @@
 }
 
 @layer utilities {
+  /* Ticker / marquee animations */
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes ticker-reverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  .animate-ticker {
+    animation: ticker 30s linear infinite;
+  }
+
+  .animate-ticker-reverse {
+    animation: ticker-reverse 35s linear infinite;
+  }
+
+  /* Fade edges so pills dissolve at the viewport edges */
+  .ticker-mask {
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
+  }
+
   /* Animations */
   @keyframes drift {
     from { transform: translateX(-50%); }

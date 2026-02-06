@@ -48,11 +48,11 @@ const Home = () => {
       <FeaturedProjectsSection />
       <AuroraDivider />
       <MarketingIntegrationSection />
+      <BeforeAfterToggle />
       <LiveTerminal />
       <AIExpertiseSection />
       <AuroraDivider />
       <WorkflowDemoSection />
-      <BeforeAfterToggle />
       <ProjectsSection />
       <AuroraDivider />
       <ContactSection />

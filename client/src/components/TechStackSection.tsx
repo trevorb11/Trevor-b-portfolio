@@ -22,6 +22,9 @@ const technologies = [
 ];
 
 const TechStackSection = () => {
+  // Duplicate the list so the second copy seamlessly follows the first
+  const tickerItems = [...technologies, ...technologies];
+
   return (
     <section id="tech-stack" className="py-24 md:py-32 px-4">
       <div className="container mx-auto max-w-3xl text-center">
@@ -40,38 +43,54 @@ const TechStackSection = () => {
             I build systems that <span className="text-foreground font-medium">your team can actually maintain</span> &mdash; not
             just impressive tech stacks, but tools that empower.
           </p>
+        </motion.div>
+      </div>
 
-          <div className="mb-12">
-            <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-6">
-              Tech I Work With
-            </p>
-            <div className="flex flex-wrap gap-2.5 justify-center">
-              {technologies.map((tech, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: index * 0.03 }}
-                  className="px-4 py-2 bg-white/[0.03] border border-white/[0.06] rounded-full text-sm text-foreground/70 hover:bg-primary/10 hover:text-foreground hover:border-primary/20 transition-all duration-300 cursor-default"
-                >
-                  {tech}
-                </motion.span>
-              ))}
-            </div>
+      {/* Scrolling ticker — full bleed */}
+      <div className="mb-14">
+        <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-6 text-center">
+          Tech I Work With
+        </p>
+
+        {/* Ticker container with fade masks on edges */}
+        <div className="relative overflow-hidden ticker-mask">
+          {/* Row 1 — scrolls left */}
+          <div className="flex w-max animate-ticker">
+            {tickerItems.map((tech, i) => (
+              <span
+                key={`a-${i}`}
+                className="mx-2 shrink-0 px-5 py-2.5 bg-white/[0.04] border border-white/[0.08] rounded-full text-sm text-foreground/70 whitespace-nowrap select-none"
+              >
+                {tech}
+              </span>
+            ))}
           </div>
 
-          <Button
-            asChild
-            size="lg"
-            className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-lg shadow-primary/20 px-8 h-12"
-          >
-            <Link href="#contact">
-              Let's build something great
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </motion.div>
+          {/* Row 2 — scrolls right (reversed, slight delay feel) */}
+          <div className="flex w-max animate-ticker-reverse mt-3">
+            {[...tickerItems].reverse().map((tech, i) => (
+              <span
+                key={`b-${i}`}
+                className="mx-2 shrink-0 px-5 py-2.5 bg-white/[0.04] border border-white/[0.08] rounded-full text-sm text-foreground/70 whitespace-nowrap select-none"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="text-center">
+        <Button
+          asChild
+          size="lg"
+          className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-lg shadow-primary/20 px-8 h-12"
+        >
+          <Link href="#contact">
+            Let's build something great
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
+        </Button>
       </div>
     </section>
   );
