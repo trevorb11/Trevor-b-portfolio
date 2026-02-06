@@ -65,10 +65,11 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4 }}
+      layout
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.3, layout: { duration: 0.3 } }}
       className="premium-card group p-6 flex flex-col"
     >
       <div className="flex items-start justify-between mb-4">

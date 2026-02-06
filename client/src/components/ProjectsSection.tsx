@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
 import ProjectCard from "./ProjectCard";
@@ -52,12 +52,13 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30 max-w-4xl mx-auto">
+          <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30 max-w-4xl mx-auto bg-card/50">
             <video
               autoPlay
               loop
               muted
               playsInline
+              preload="metadata"
               className="w-full h-auto aspect-video object-cover"
             >
               <source src="/portfolio-video.mp4" type="video/mp4" />
@@ -92,11 +93,15 @@ const ProjectsSection = () => {
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {filteredProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
+          <LayoutGroup>
+            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <AnimatePresence mode="popLayout">
+                {filteredProjects.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          </LayoutGroup>
         )}
       </div>
     </section>

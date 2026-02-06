@@ -115,12 +115,13 @@ const MarketingIntegrationSection = () => {
               </motion.div>
 
               <motion.div variants={itemVariants}>
-                <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30">
+                <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30 bg-card/50">
                   <video
                     autoPlay
                     loop
                     muted
                     playsInline
+                    preload="metadata"
                     className="w-full h-auto aspect-square object-cover"
                   >
                     <source src="/integration-video.mp4" type="video/mp4" />
@@ -200,12 +201,13 @@ const MarketingIntegrationSection = () => {
             transition={{ duration: 0.6 }}
             className="max-w-5xl mx-auto"
           >
-            <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30">
+            <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30 bg-card/50">
               <video
                 autoPlay
                 loop
                 muted
                 playsInline
+                preload="metadata"
                 className="w-full h-auto min-h-[280px] sm:min-h-0 aspect-[4/3] sm:aspect-video object-cover object-top"
               >
                 <source src="/about-video.mp4" type="video/mp4" />
