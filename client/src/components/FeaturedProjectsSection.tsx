@@ -143,7 +143,7 @@ const FeaturedProjectsSection = () => {
               </div>
             </div>
 
-            {/* Right column — video with overlay */}
+            {/* Right column — integration video */}
             <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30 bg-card/50">
               <video
                 autoPlay
@@ -151,20 +151,10 @@ const FeaturedProjectsSection = () => {
                 muted
                 playsInline
                 preload="metadata"
-                className="w-full h-auto min-h-[280px] sm:min-h-0 aspect-[4/3] object-cover object-top"
+                className="w-full h-auto min-h-[280px] sm:min-h-0 aspect-square object-cover"
               >
-                <source src="/about-video.mp4" type="video/mp4" />
+                <source src="/integration-video.mp4" type="video/mp4" />
               </video>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-black/20 flex items-center justify-center p-4 sm:p-8">
-                <div className="text-center max-w-md">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
-                    My AI Vision
-                  </h3>
-                  <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
-                    AI is not replacing human creativity &mdash; it's elevating creative potential. My vision is to help organizations harness AI as a tool that enhances human capabilities and drives innovation.
-                  </p>
-                </div>
-              </div>
             </div>
           </motion.div>
 
