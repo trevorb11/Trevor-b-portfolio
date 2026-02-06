@@ -190,11 +190,11 @@
   }
 
   .animate-ticker {
-    animation: ticker 30s linear infinite;
+    animation: ticker 45s linear infinite;
   }
 
   .animate-ticker-reverse {
-    animation: ticker-reverse 35s linear infinite;
+    animation: ticker-reverse 50s linear infinite;
   }
 
   /* Fade edges so pills dissolve at the viewport edges */
