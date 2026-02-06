@@ -108,7 +108,7 @@
   /* Sunset gradient text utility */
   .text-gradient-sunset {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--c-hi)), hsl(var(--c-fx)));
+    background-image: linear-gradient(135deg, hsl(16 78% 55%), hsl(28 83% 62%));
   }
 
   /* Glassmorphism card style - refined */
