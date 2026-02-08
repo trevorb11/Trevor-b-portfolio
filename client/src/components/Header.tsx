@@ -76,7 +76,7 @@ const Header = () => {
             <img 
               src="/tb-logo.png" 
               alt="Trevor Bosetti Logo" 
-              className="h-10 w-auto object-contain group-hover:brightness-110 transition-all"
+              className="h-14 w-auto object-contain group-hover:brightness-110 transition-all -my-2"
             />
             <span className="text-lg font-semibold tracking-tight bg-gradient-to-r from-amber-300 via-pink-300 to-purple-300 bg-clip-text text-transparent">
               Trevor Bosetti
