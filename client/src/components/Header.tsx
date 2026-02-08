@@ -80,7 +80,7 @@ const Header = () => {
             />
             <span className="text-lg font-semibold tracking-tight">
               <span className="text-white">Trevor</span>
-              <span className="text-[#FCD34D]">Bosetti</span>
+              <span className="text-[#FDE68A]">Bosetti</span>
             </span>
           </Link>
 
