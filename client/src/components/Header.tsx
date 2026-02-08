@@ -78,8 +78,8 @@ const Header = () => {
               alt="Trevor Bosetti Logo" 
               className="h-10 w-auto object-contain group-hover:brightness-110 transition-all"
             />
-            <span className="text-lg font-semibold tracking-tight text-foreground">
-              Trevor<span className="text-primary">Bosetti</span>
+            <span className="text-lg font-semibold tracking-tight bg-gradient-to-r from-amber-300 via-pink-300 to-purple-300 bg-clip-text text-transparent">
+              Trevor Bosetti
             </span>
           </Link>
 
