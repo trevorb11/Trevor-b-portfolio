@@ -73,9 +73,11 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md shadow-primary/20 group-hover:shadow-primary/30 transition-shadow">
-              <span className="text-primary-foreground font-bold text-sm">TB</span>
-            </div>
+            <img 
+              src="/tb-logo.png" 
+              alt="Trevor Bosetti Logo" 
+              className="h-10 w-auto object-contain group-hover:brightness-110 transition-all"
+            />
             <span className="text-lg font-semibold tracking-tight text-foreground">
               Trevor<span className="text-primary">Bosetti</span>
             </span>
