@@ -63,11 +63,7 @@ const MarketingIntegrationSection = () => {
             variants={containerVariants}
             className="max-w-6xl mx-auto"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-[7fr_5fr] gap-10 lg:gap-12 items-center">
-              <motion.div variants={itemVariants}>
-                <BeforeAfterToggle />
-              </motion.div>
-
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
               <motion.div variants={itemVariants}>
                 <div className="mb-8">
                   <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary mb-5">
@@ -78,7 +74,7 @@ const MarketingIntegrationSection = () => {
                   </h2>
                   <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
                     {integrationsContent.expertise ||
-                      "I make your marketing stack work as one unified system\u2014seamless data sync, automated workflows, and integrations that just work."}
+                      "Whether your CRM is HubSpot, Salesforce, or Mailchimp, I specialize in getting the most value out of your marketing stack by creating seamless integrations that allow your systems to communicate effectively."}
                   </p>
                 </div>
 
@@ -98,6 +94,10 @@ const MarketingIntegrationSection = () => {
                     ))}
                   </div>
                 </div>
+              </motion.div>
+
+              <motion.div variants={itemVariants}>
+                <BeforeAfterToggle />
               </motion.div>
             </div>
           </motion.div>
