@@ -40,7 +40,7 @@ const ProjectsSection = () => {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-3 text-foreground">Portfolio</h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-base">
-            Taking the pieces and making things happen from ideation to creation
+            When the pieces come together to create something impactful
           </p>
         </motion.div>
 
