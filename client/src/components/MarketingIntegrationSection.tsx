@@ -121,17 +121,17 @@ const MarketingIntegrationSection = () => {
                 muted
                 playsInline
                 preload="metadata"
-                className="w-full h-auto min-h-[280px] sm:min-h-0 aspect-[4/3] sm:aspect-video object-cover object-top"
+                className="w-full h-auto min-h-[280px] sm:min-h-0 aspect-[4/3] sm:aspect-video object-cover object-top opacity-60"
               >
                 <source src="/about-video.mp4" type="video/mp4" />
               </video>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-black/20 flex items-center justify-center p-4 sm:p-8 md:p-12">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/40 flex items-center justify-center p-4 sm:p-8 md:p-12">
                 <div className="text-center max-w-3xl">
                   <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
                     My AI Vision
                   </h3>
-                  <p className="text-white/80 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
-                    AI is not replacing human creativity &mdash; it's elevating creative potential. My vision is to help organizations and individuals harness AI as a powerful tool that enhances human capabilities, drives innovation, and enables more meaningful connections through new avenues of expression.
+                  <p className="text-white text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed font-medium drop-shadow-lg">
+                    AI is not replacing human creativity, it's elevating creative potential. My vision is to help organizations and individuals harness AI as a powerful tool that enhances human capabilities, drives innovation, and enables more meaningful connections through new avenues of expression.
                   </p>
                 </div>
               </div>
