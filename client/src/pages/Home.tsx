@@ -41,9 +41,9 @@ const Home = () => {
   return (
     <main>
       <HeroSection />
-      <WhatIBringSection />
       <AuroraDivider />
       <TechStackSection />
+      <WhatIBringSection />
       <FeaturedProjectsSection />
       <AuroraDivider />
       <MarketingIntegrationSection />
