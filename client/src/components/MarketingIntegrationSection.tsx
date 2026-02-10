@@ -77,44 +77,10 @@ const MarketingIntegrationSection = () => {
                       "Whether your CRM is HubSpot, Salesforce, or Mailchimp, I specialize in getting the most value out of your marketing stack by creating seamless integrations that allow your systems to communicate effectively."}
                   </p>
                 </div>
-
-                <div className="hidden lg:block">
-                  <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-4">
-                    Platforms I Work With
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {integrationTools.map((tool, index) => (
-                      <span
-                        key={index}
-                        className="px-3 py-1.5 bg-white/[0.03] border border-white/[0.06] rounded-lg text-sm transition-colors hover:border-primary/20"
-                      >
-                        <span className="font-medium text-foreground/90">{tool.name}</span>
-                        <span className="text-muted-foreground/60 ml-1.5 text-xs">{tool.category}</span>
-                      </span>
-                    ))}
-                  </div>
-                </div>
               </motion.div>
 
               <motion.div variants={itemVariants} className="flex flex-col gap-8">
                 <BeforeAfterToggle />
-                
-                <div className="lg:hidden">
-                  <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-4">
-                    Platforms I Work With
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {integrationTools.map((tool, index) => (
-                      <span
-                        key={index}
-                        className="px-3 py-1.5 bg-white/[0.03] border border-white/[0.06] rounded-lg text-sm transition-colors hover:border-primary/20"
-                      >
-                        <span className="font-medium text-foreground/90">{tool.name}</span>
-                        <span className="text-muted-foreground/60 ml-1.5 text-xs">{tool.category}</span>
-                      </span>
-                    ))}
-                  </div>
-                </div>
               </motion.div>
             </div>
           </motion.div>

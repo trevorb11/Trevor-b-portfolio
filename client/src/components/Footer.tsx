@@ -43,9 +43,35 @@ const Footer = () => {
     { icon: Mail, href: "mailto:trevor@rankzone.studio", label: "Email" },
   ];
 
+  const integrationTools = [
+    { name: "HubSpot", category: "CRM & Marketing" },
+    { name: "Salesforce", category: "CRM" },
+    { name: "Mailchimp", category: "Email Marketing" },
+    { name: "Marketo", category: "Marketing Automation" },
+    { name: "Google Analytics", category: "Analytics" },
+    { name: "Zapier", category: "Integration Platform" },
+    { name: "Segment", category: "Customer Data Platform" },
+    { name: "ActiveCampaign", category: "Marketing Automation" },
+  ];
+
   return (
     <footer className="relative border-t border-white/[0.04] py-16">
       <div className="container relative z-10 mx-auto px-4 max-w-7xl">
+        <div className="mb-12">
+          <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-6">Platforms I Work With</p>
+          <div className="flex flex-wrap gap-3">
+            {integrationTools.map((tool, index) => (
+              <span
+                key={index}
+                className="px-4 py-2 bg-white/[0.03] border border-white/[0.06] rounded-xl text-sm transition-all hover:border-primary/30 hover:bg-white/[0.05]"
+              >
+                <span className="font-medium text-foreground/90">{tool.name}</span>
+                <span className="text-muted-foreground/50 ml-2 text-xs">{tool.category}</span>
+              </span>
+            ))}
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-10">
           {/* Brand */}
           <div className="md:col-span-5">
