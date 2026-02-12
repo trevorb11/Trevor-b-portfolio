@@ -250,12 +250,12 @@ const CouncilOfIdeas = () => {
         "This signals restraint and seriousness. You're not shouting competence; you're demonstrating judgment. That earns trust with people who matter.",
       worries:
         "Fragmentation. Too many clever ideas can make a portfolio feel unfocused, like a commander spreading forces thin.",
-      question: "Does this strengthen your core narrative — or dilute it?",
+      question: "Does this strengthen your core narrative, or dilute it?",
     },
     {
       member: councilMembers[1], // Marcus Aurelius
       likes:
-        "This tool encourages reflection, humility, and perspective. It doesn't promise certainty — only clarity. That's aligned with wisdom, not ego.",
+        "This tool encourages reflection, humility, and perspective. It doesn't promise certainty, only clarity. That's aligned with wisdom, not ego.",
       worries:
         "Vanity. If this becomes about showing off intelligence instead of serving clarity, it corrupts its own purpose.",
       question:
@@ -264,7 +264,7 @@ const CouncilOfIdeas = () => {
     {
       member: councilMembers[2], // Alan Watts
       likes:
-        "You're externalizing inner dialogue. This is playful seriousness — exactly where insight lives. It invites curiosity rather than instruction.",
+        "You're externalizing inner dialogue. This is playful seriousness, exactly where insight lives. It invites curiosity rather than instruction.",
       worries:
         "People mistaking the council for authority. The illusion of borrowed certainty is seductive.",
       question:
@@ -281,10 +281,10 @@ const CouncilOfIdeas = () => {
     {
       member: councilMembers[4], // Catherine
       likes:
-        'This positions you above "tool operators." It implies taste, discernment, and leadership — qualities that attract serious collaborators.',
+        'This positions you above "tool operators." It implies taste, discernment, and leadership: qualities that attract serious collaborators.',
       worries:
-        "Audience mismatch. Some visitors won't get it. That's fine — unless they're the ones you actually need.",
-      question: "Who is this for — and who are you comfortable alienating?",
+        "Audience mismatch. Some visitors won't get it. That's fine, unless they're the ones you actually need.",
+      question: "Who is this for, and who are you comfortable alienating?",
     },
   ];
 
@@ -323,14 +323,14 @@ const CouncilOfIdeas = () => {
       member: councilMembers[3],
       position: "Demo (with a twist)",
       likes:
-        "A polished demo lets you be clever once, precisely. A feature requires being clever every time — and that's where things break.",
+        "A polished demo lets you be clever once, precisely. A feature requires being clever every time, and that's where things break.",
       worries: "The internet will always find the dumbest way to use a thing.",
       question: "If it can be misunderstood, will you have designed for that?",
       verdict: "If it can be misunderstood, it will be. Design accordingly.",
     },
     {
       member: councilMembers[4],
-      position: "Demo first, feature later — if earned",
+      position: "Demo first, feature later (if earned)",
       likes:
         'A live feature implies commitment, maintenance, and endorsement. A demo implies capability, not obligation. She\'s thinking positioning: Demo = "I can build this." Feature = "This defines me."',
       worries: "Don't let an experiment define your brand prematurely.",
@@ -376,7 +376,7 @@ const CouncilOfIdeas = () => {
             className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-3xl"
           >
             What if you could sit down with history's sharpest minds and bounce
-            an idea off them? Not to get the "right answer" — but to see your
+            an idea off them? Not to get the "right answer," but to see your
             blind spots, test your assumptions, and think more clearly under
             uncertainty?
           </motion.p>
@@ -389,22 +389,22 @@ const CouncilOfIdeas = () => {
               LLMs have unlocked something genuinely new: the ability to have a
               structured dialogue with perspectives modeled after the greatest
               thinkers in history. Not because the AI <em>is</em> George
-              Washington or Marcus Aurelius — but because it can adopt their{" "}
+              Washington or Marcus Aurelius, but because it can adopt their{" "}
               <strong>lens</strong>, their priorities, their style of reasoning,
               and push back on your ideas the way they might have.
             </p>
             <p className="text-foreground/90 leading-relaxed mb-4">
-              You can take this further — assemble a <strong>council</strong>.
+              You can take this further: assemble a <strong>council</strong>.
               Five or six minds with different frameworks. Give them a real
               decision you're facing. Watch where they agree, where they clash,
-              and — most importantly — what questions they force you to answer
+              and, most importantly, what questions they force you to answer
               that you hadn't considered.
             </p>
             <p className="text-muted-foreground leading-relaxed">
               To showcase this concept, I did something a little meta: I asked
               the council whether I should add this very feature to my
               portfolio. Then I asked them <em>how</em> I should present it.
-              What follows is that real exchange — unedited, tensions and all.
+              What follows is that real exchange, unedited, tensions and all.
             </p>
           </motion.div>
         </motion.div>
@@ -482,7 +482,7 @@ const CouncilOfIdeas = () => {
             </div>
             <p className="text-muted-foreground leading-relaxed">
               The pitch: does the "Council of Ideas" belong on
-              trevorbosetti.com? I convened all five and kept it disciplined —
+              trevorbosetti.com? I convened all five and kept it disciplined:
               each voice has a lens, not cosplay.
             </p>
           </motion.div>
@@ -545,7 +545,7 @@ const CouncilOfIdeas = () => {
                 </h4>
               </div>
               <p className="text-foreground font-medium text-lg mb-3">
-                Yes — add it. But only if you frame it correctly.
+                Yes, add it. But only if you frame it correctly.
               </p>
               <div className="space-y-2 text-sm text-foreground/80">
                 <p>
@@ -580,7 +580,7 @@ const CouncilOfIdeas = () => {
             </blockquote>
             <p className="text-muted-foreground text-sm leading-relaxed">
               If your thesis were "I build cool tech," I'd say no. But that's
-              not actually your lane. The council advises: include it — clean,
+              not actually your lane. The council advises: include it. Clean,
               restrained, and unapologetically thoughtful. Now you decide.
             </p>
           </motion.div>
@@ -615,7 +615,7 @@ const CouncilOfIdeas = () => {
             <p className="text-muted-foreground leading-relaxed">
               Council reconvened. Same five voices. New decision: Do you show
               the Idea Council as a crafted demo, or make it a live, usable
-              feature visitors can try themselves? This is a real fork — and the
+              feature visitors can try themselves? This is a real fork, and the
               council is not split down the middle.
             </p>
           </motion.div>
@@ -682,13 +682,13 @@ const CouncilOfIdeas = () => {
                   </span>
                   <div>
                     <p className="text-foreground font-medium text-base mb-1">
-                      Optional upgrade — later
+                      Optional upgrade (later)
                     </p>
                     <p className="text-muted-foreground">
                       After the demo: "Curious how this would look for you?"
                       Then a limited, guided version with clear constraints and
                       an explicit reminder: the council advises, you decide. But
-                      that's Phase 2 — not the foundation.
+                      that's Phase 2, not the foundation.
                     </p>
                   </div>
                 </div>
@@ -761,7 +761,7 @@ const CouncilOfIdeas = () => {
               </p>
               <p>
                 None of that is "AI wisdom." It's{" "}
-                <strong>structured perspective</strong> — the kind of thinking
+                <strong>structured perspective</strong>: the kind of thinking
                 framework that happens to be dramatically more accessible now
                 that we can model different viewpoints on demand.
               </p>
