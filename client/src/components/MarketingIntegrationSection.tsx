@@ -89,7 +89,7 @@ const MarketingIntegrationSection = () => {
 
       {/* Video Section with Text Overlay — My AI Vision */}
       <section className="py-16 md:py-24">
-        <div className="container px-4 md:px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ const MarketingIntegrationSection = () => {
       {/* Humanity in the Digital Age */}
       <section id="humanity" className="py-20 md:py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-card/15 to-transparent pointer-events-none" />
-        <div className="container px-4 md:px-6 relative">
+        <div className="container mx-auto px-4 md:px-6 relative">
           <motion.div
             initial="hidden"
             whileInView="visible"
