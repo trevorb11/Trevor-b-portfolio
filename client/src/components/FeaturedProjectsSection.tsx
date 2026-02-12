@@ -100,16 +100,13 @@ const FeaturedProjectsSection = () => {
           </motion.div>
 
           <div className="max-w-5xl mx-auto">
-            {/* Desktop and Mobile Carousel */}
-            <div className="relative overflow-hidden group/carousel">
-              <div 
-                className="flex transition-transform duration-500 ease-in-out cursor-grab active:cursor-grabbing select-none"
-                style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              <div
+                className="relative overflow-hidden cursor-grab active:cursor-grabbing select-none"
                 onMouseDown={(e) => setDragStart(e.clientX)}
                 onMouseUp={(e) => {
                   if (dragStart === null) return;
-                  const dragEnd = e.clientX;
-                  const diff = dragStart - dragEnd;
+                  const diff = dragStart - e.clientX;
                   if (Math.abs(diff) > 50) {
                     if (diff > 0) setActiveIndex((prev) => (prev + 1) % featuredProjects.length);
                     else setActiveIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
@@ -119,8 +116,7 @@ const FeaturedProjectsSection = () => {
                 onTouchStart={(e) => setDragStart(e.touches[0].clientX)}
                 onTouchEnd={(e) => {
                   if (dragStart === null) return;
-                  const dragEnd = e.changedTouches[0].clientX;
-                  const diff = dragStart - dragEnd;
+                  const diff = dragStart - e.changedTouches[0].clientX;
                   if (Math.abs(diff) > 50) {
                     if (diff > 0) setActiveIndex((prev) => (prev + 1) % featuredProjects.length);
                     else setActiveIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
@@ -128,68 +124,72 @@ const FeaturedProjectsSection = () => {
                   setDragStart(null);
                 }}
               >
-                {featuredProjects.map((proj, i) => (
-                  <div key={i} className="w-full flex-shrink-0 px-4 md:px-0">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                      <div className="premium-card group p-8 md:p-10 flex flex-col min-h-[340px] md:min-h-[380px]">
-                        <div className="flex items-start justify-between mb-6">
-                          <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                            {proj.icon}
-                          </div>
-                          <span className={`text-xs px-3.5 py-1.5 rounded-full font-semibold uppercase tracking-wider ${proj.tagColor}`}>
-                            {proj.tag}
-                          </span>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeIndex}
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -30 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <div className="premium-card group p-8 md:p-10 flex flex-col min-h-[340px] md:min-h-[380px]">
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="p-3 rounded-xl bg-primary/10 text-primary">
+                          {project.icon}
                         </div>
-                        <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4 group-hover:text-primary transition-colors">
-                          {proj.title}
-                        </h3>
-                        <p className="text-muted-foreground text-base flex-1 mb-8 leading-relaxed">
-                          {proj.description}
-                        </p>
-                        {proj.link && (
-                          <a
-                            href={proj.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center text-primary/80 hover:text-primary font-medium text-sm transition-colors group/link"
-                          >
-                            View Project
-                            <ArrowUpRight className="h-3.5 w-3.5 ml-1 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                          </a>
-                        )}
+                        <span className={`text-xs px-3.5 py-1.5 rounded-full font-semibold uppercase tracking-wider ${project.tagColor}`}>
+                          {project.tag}
+                        </span>
                       </div>
-                      <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30 bg-card/50">
-                        <video
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          preload="metadata"
-                          className="w-full h-auto min-h-[280px] sm:min-h-0 aspect-square object-cover"
+                      <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4 group-hover:text-primary transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-muted-foreground text-base flex-1 mb-8 leading-relaxed">
+                        {project.description}
+                      </p>
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-primary/80 hover:text-primary font-medium text-sm transition-colors group/link"
                         >
-                          <source src="/integration-video.mp4" type="video/mp4" />
-                        </video>
-                      </div>
+                          View Project
+                          <ArrowUpRight className="h-3.5 w-3.5 ml-1 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                        </a>
+                      )}
                     </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+                  </motion.div>
+                </AnimatePresence>
 
-            {/* Progress dots */}
-            <div className="flex items-center justify-center gap-2 mt-8">
-              {featuredProjects.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveIndex(i)}
-                  className={`h-1.5 rounded-full transition-all duration-500 ${
-                    i === activeIndex
-                      ? "w-6 bg-primary"
-                      : "w-1.5 bg-white/20 hover:bg-white/30"
-                  }`}
-                  aria-label={`Show project ${i + 1}`}
-                />
-              ))}
+                <div className="flex items-center justify-center gap-2 mt-6">
+                  {featuredProjects.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveIndex(i)}
+                      className={`h-1.5 rounded-full transition-all duration-500 ${
+                        i === activeIndex
+                          ? "w-6 bg-primary"
+                          : "w-1.5 bg-white/20 hover:bg-white/30"
+                      }`}
+                      aria-label={`Show project ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30 bg-card/50">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-auto min-h-[280px] sm:min-h-0 aspect-square object-cover"
+                >
+                  <source src="/integration-video.mp4" type="video/mp4" />
+                </video>
+              </div>
             </div>
           </div>
 
