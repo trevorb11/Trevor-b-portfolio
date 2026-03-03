@@ -494,7 +494,7 @@ export class MemStorage implements IStorage {
         category: "ai-marketing",
         image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["React", "TypeScript", "OpenAI", "Google Maps API", "Firebase"],
-        link: "https://travel-mate-ai.replit.app/",
+        link: "https://travel-mate.replit.app/auth",
         featured: 1
       },
       {
@@ -548,7 +548,7 @@ export class MemStorage implements IStorage {
         category: "crm-integration",
         image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["React", "Node.js", "Blackbaud Integration", "Custom Forms", "Event Logic"],
-        link: null,
+        link: "https://events-rr.communityfoodshare.org/",
         featured: 1
       }
     ];

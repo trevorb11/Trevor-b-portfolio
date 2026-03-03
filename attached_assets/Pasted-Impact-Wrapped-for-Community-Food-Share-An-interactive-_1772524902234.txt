@@ -1,0 +1,60 @@
+Impact Wrapped for Community Food Share
+An interactive Spotify-inspired 'Year in Review' experience for nonprofit donors, showcasing their impact through personalized data visualizations of their contributions.
+
+View Project
+Marketing Automation
+RankZone - Competitive League Tracker
+A platform for tracking wins, losses, and leaderboards in competitive games. Enables local groups like pool leagues to maintain Elo-based rankings, record match history, and create customized leaderboards for their community.
+
+View Project
+AI Marketing
+HomeBuilder Studio
+An AI-first, home builder CRM upgrade that modernizes how home builders manage leads, customers, and the sales process with intelligent automation.
+
+View Project
+CRM Integration
+Double the Donation Integration
+A custom donation matching platform that integrates with nonprofit CRMs to automatically identify matching gift opportunities and maximize fundraising potential.
+
+View Project
+Lead Generation
+QR Code Generator & Analytics
+A custom QR code generator with tracking and analytics capabilities, allowing marketers to create branded QR codes and monitor engagement across campaigns.
+
+View Project
+AI Marketing
+Travel Mate AI
+An intelligent travel planning assistant that uses AI to help users plan personalized trips, suggest itineraries, and provide real-time recommendations based on preferences.
+
+View Project
+AI Marketing
+Lindy Chat - AI Customer Engagement
+A real-time chat solution enhanced with AI for marketing and sales teams to better engage with prospects, featuring smart response suggestions and lead scoring.
+
+View Project
+Lead Generation
+AI Trivia Generator
+An engagement tool for marketers to create customized, industry-specific trivia games for lead generation and brand awareness campaigns.
+
+View Project
+Lead Generation
+Corporate Challenge Campaign Platform
+A gamified corporate fundraising platform for nonprofit organizations to engage corporate partners in friendly competition while tracking donations and impact.
+
+View Project
+Lead Generation
+Community Food Share - 14 Tons
+A specialized campaign microsite for Community Food Share's 14 Tons fundraising initiative, highlighting donor impact and facilitating online donations.
+
+View Project
+Marketing Automation
+Monthly Donor Upgrade Campaign
+High-conversion automated campaign flows designed to move one-time donors to recurring sustainers, resulting in significant increases in monthly giving revenue.
+
+Marketing Automation
+Smart Video Embed Tool
+A custom YouTube wrapper that automatically redirects viewers to a specific landing page the moment the video ends, maximizing conversion from video content.
+
+CRM Integration
+Custom Event Portal
+End-to-end ticketing and registration system tailored for complex event logic
