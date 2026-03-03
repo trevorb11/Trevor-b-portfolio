@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube Redirect Page Generator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      padding: 40px;
+      max-width: 600px;
+      width: 100%;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+    
+    .form-group {
+      margin-bottom: 25px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #555;
+    }
+    
+    input[type="url"], input[type="number"] {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e1e5e9;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+    
+    input[type="url"]:focus, input[type="number"]:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    
+    .help-text {
+      font-size: 14px;
+      color: #666;
+      margin-top: 5px;
+    }
+    
+    button {
+      width: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    
+    button:hover {
+      transform: translateY(-1px);
+    }
+    
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .preview {
+      display: none;
+      margin-top: 30px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border: 2px solid #e9ecef;
+    }
+    
+    .preview h3 {
+      color: #333;
+      margin-bottom: 15px;
+    }
+    
+    .preview-info {
+      background: white;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+    
+    .download-btn {
+      background: #28a745;
+      margin-top: 15px;
+    }
+    
+    .download-btn:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>YouTube Redirect Page Generator</h1>
+    
+    <form id="generatorForm">
+      <div class="form-group">
+        <label for="youtubeUrl">YouTube Video URL</label>
+        <input type="url" id="youtubeUrl" required placeholder="https://www.youtube.com/watch?v=VIDEO_ID">
+        <div class="help-text">Paste the full YouTube video URL</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="redirectUrl">Redirect URL</label>
+        <input type="url" id="redirectUrl" required placeholder="https://your-website.com/target-page">
+        <div class="help-text">Where users should be redirected after the video</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="triggerTime">Redirect Time (seconds)</label>
+        <input type="number" id="triggerTime" min="1" value="32" required>
+        <div class="help-text">When to redirect (in seconds from video start)</div>
+      </div>
+      
+      <button type="submit">Generate Page</button>
+    </form>
+    
+    <div id="preview" class="preview">
+      <h3>✅ Page Generated Successfully!</h3>
+      <div class="preview-info">
+        <strong>Video:</strong> <span id="previewVideo"></span><br>
+        <strong>Redirect:</strong> <span id="previewRedirect"></span><br>
+        <strong>Trigger Time:</strong> <span id="previewTime"></span> seconds
+      </div>
+      <button id="downloadBtn" class="download-btn">Download ZIP File</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script>
+    function extractVideoId(url) {
+      const regex = /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/v\/|youtube\.com\/shorts\/)([^&\n?#]+)/;
+      const match = url.match(regex);
+      return match ? match[1] : null;
+    }
+
+    function generateHTMLContent(videoId, redirectUrl, triggerTime) {
+      return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirect After YouTube Ends</title>
+  <style>
+    html, body {height:100%;margin:0;}
+    #player {position:fixed;inset:0;width:100%;height:100%;border:0;background:#000;}
+  </style>
+</head>
+<body>
+  <div id="player"></div>
+
+  <!-- Load the Iframe Player API asynchronously -->
+  <script src="https://www.youtube.com/iframe_api"><\/script>
+
+  <script>
+    const VIDEO_ID   = "${videoId}";
+    const TARGET_URL = "${redirectUrl}";
+    const TRIGGER_AT    = ${triggerTime};
+    const POLL_INTERVAL = 250;
+    let pollId = null, player;
+
+    // YouTube calls this when the API script is ready
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player("player", {
+        videoId: VIDEO_ID,
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          rel: 0,
+          playsinline: 1,
+          enablejsapi: 1
+        },
+        events: {
+          onStateChange: handleStateChange
+        }
+      });
+    }
+
+    // Redirect when the video finishes or reaches trigger time
+    function handleStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        pollId = setInterval(() => {
+          const currentTime = player.getCurrentTime();
+          if (currentTime >= TRIGGER_AT) {
+            clearInterval(pollId);
+            window.location.href = TARGET_URL;
+          }
+        }, POLL_INTERVAL);
+      } else if (event.data === YT.PlayerState.ENDED) {
+        clearInterval(pollId);
+        window.location.href = TARGET_URL;
+      } else {
+        clearInterval(pollId);
+      }
+    }
+  <\/script>
+</body>
+</html>`;
+    }
+
+    function generateReadme(youtubeUrl, redirectUrl, triggerTime) {
+      return `# YouTube Redirect Page
+
+This page automatically redirects users after a YouTube video ends or reaches a specified time.
+
+## Configuration
+- **YouTube Video**: ${youtubeUrl}
+- **Redirect URL**: ${redirectUrl}
+- **Trigger Time**: ${triggerTime} seconds
+
+## Installation
+1. Upload the \`index.html\` file to your web server
+2. Access the page via your website URL
+3. The video will play automatically and redirect users when complete
+
+## Notes
+- The video starts muted to comply with browser autoplay policies
+- Users can unmute the video if desired
+- The redirect happens at ${triggerTime} seconds OR when the video ends (whichever comes first)
+
+Generated by YouTube Redirect Page Generator
+`;
+    }
+
+    document.getElementById('generatorForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const youtubeUrl = document.getElementById('youtubeUrl').value;
+      const redirectUrl = document.getElementById('redirectUrl').value;
+      const triggerTime = document.getElementById('triggerTime').value;
+      
+      const videoId = extractVideoId(youtubeUrl);
+      
+      if (!videoId) {
+        alert('Please enter a valid YouTube URL');
+        return;
+      }
+      
+      // Show preview
+      document.getElementById('previewVideo').textContent = youtubeUrl;
+      document.getElementById('previewRedirect').textContent = redirectUrl;
+      document.getElementById('previewTime').textContent = triggerTime;
+      document.getElementById('preview').style.display = 'block';
+      
+      // Store data for download
+      window.generatedData = {
+        videoId,
+        youtubeUrl,
+        redirectUrl,
+        triggerTime
+      };
+    });
+
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+      if (!window.generatedData) return;
+      
+      const { videoId, youtubeUrl, redirectUrl, triggerTime } = window.generatedData;
+      
+      const zip = new JSZip();
+      
+      // Add HTML file
+      const htmlContent = generateHTMLContent(videoId, redirectUrl, triggerTime);
+      zip.file("index.html", htmlContent);
+      
+      // Add README file
+      const readmeContent = generateReadme(youtubeUrl, redirectUrl, triggerTime);
+      zip.file("README.md", readmeContent);
+      
+      // Generate and download ZIP
+      zip.generateAsync({type:"blob"}).then(function(content) {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(content);
+        link.download = 'youtube-redirect-page.zip';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+    });
+  </script>
+</body>
+</html>

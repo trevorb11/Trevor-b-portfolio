@@ -12,6 +12,7 @@ import Admin from "@/pages/Admin";
 import AdminDashboard from "@/pages/AdminDashboard";
 import CouncilOfIdeas from "@/pages/CouncilOfIdeas";
 import WorkflowDemo from "@/pages/WorkflowDemo";
+import YoutubeRedirect from "@/pages/YoutubeRedirect";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CursorGlow from "@/components/CursorGlow";
@@ -43,6 +44,7 @@ function Router() {
         <Route path="/blog/:slug" component={BlogPost} />
         <Route path="/council-of-ideas" component={CouncilOfIdeas} />
         <Route path="/workflow-demo" component={WorkflowDemo} />
+        <Route path="/youtube-redirect" component={YoutubeRedirect} />
         <Route component={NotFound} />
       </Switch>
       <Footer />

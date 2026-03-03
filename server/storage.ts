@@ -467,7 +467,7 @@ export class MemStorage implements IStorage {
         category: "crm-integration",
         image: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["React", "Chart.js", "Node.js", "HubSpot Integration"],
-        link: "https://cfs-impact.replit.app/",
+        link: "https://iw-fy25.communityfoodshare.org/impact?data=VTJGc2RHVmtYMTlCV3duVWNraTN5MDFLY2JTQ2ZJNS8wNkpSWlR1eVlJZFZYdUE5clhjbk5nZUlxYUxlZUUyT2ZuMWVHRUNTRzdUUDlmcm1KMTVyYUtKMzJTNHRsQnNsMEw1amtQT1NzbDltTWRIOC9yVWpsSnZUWi9CQ1BySWFRSmRzSFlaa2hLL3JsUXJHV3pkQVVDTUxUb2l0NU5udGg1dEt6VUxzVTFJQ1VSZ3M5YnVETHFWdWlVejNWU0dlM09XRzFCS1owMmp6MHZRbHhSdDR6alQwUlMxcXN0aVBDS1B3V0RDSWMxWWJqRVUreFkzczR6YW5nMTc4eG9iUWtLbEpvTEZlWHE1YmhDSUNVYW5uL2FqTFhVWGxlY094alZpYURteHJTSnhHYUFVbFc5N3huaVMrN0thRE5QRGVzd2hHemhiWldiZndtb1NLYmpxMkdlVXRIUXJCWUdJN250NWRvUEsvYWE4PQ%3D%3D",
         featured: 1
       },
       {
@@ -476,7 +476,7 @@ export class MemStorage implements IStorage {
         category: "automation",
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["Vue.js", "Node.js", "Express", "MongoDB", "Elo Rating Algorithm"],
-        link: "https://league-ranker.replit.app/auth",
+        link: "https://rankzone.replit.app",
         featured: 1
       },
       {
@@ -485,7 +485,7 @@ export class MemStorage implements IStorage {
         category: "ai-marketing",
         image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["AI", "CRM", "React", "Node.js", "Automation"],
-        link: "https://app.homebuilder.studio",
+        link: "https://vitale-ci.homebuilder.studio/",
         featured: 1
       },
       {
@@ -512,7 +512,7 @@ export class MemStorage implements IStorage {
         category: "lead-generation",
         image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["React", "Node.js", "MongoDB", "Stripe", "Blackbaud Integration"],
-        link: "https://corporate-challenge.replit.app/",
+        link: "https://msb-cc.communityfoodshare.org/",
         featured: 1
       },
       {
@@ -521,7 +521,7 @@ export class MemStorage implements IStorage {
         category: "lead-generation",
         image: "https://images.unsplash.com/photo-1590507621108-433608c97823?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["WordPress", "Blackbaud Integration", "Custom Donation Forms", "Impact Visualization"],
-        link: "https://communityfoodshare.org/14-tons",
+        link: "https://communityfoodshare.org/14-tons/",
         featured: 1
       },
       {
