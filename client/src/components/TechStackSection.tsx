@@ -8,17 +8,19 @@ const technologies = [
   "Salesforce",
   "Mailchimp",
   "Blackbaud",
-  "Marketo",
+  "HTML",
   "Zapier",
-  "Airtable",
+  "Classy",
   "Make",
   "Google Analytics",
   "GTM",
   "Tableau",
   "Python",
-  "R",
+  "Javascript",
   "OpenAI",
   "Anthropic",
+  "Go High Level",
+  "WordPress",
 ];
 
 const TechStackSection = () => {
@@ -87,7 +89,7 @@ const TechStackSection = () => {
           className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-lg shadow-primary/20 px-8 h-12"
         >
           <Link href="#contact">
-            Let's build something great
+            Let's Build Something
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>

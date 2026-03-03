@@ -489,39 +489,12 @@ export class MemStorage implements IStorage {
         featured: 1
       },
       {
-        title: "Double the Donation Integration",
-        description: "A custom donation matching platform that integrates with nonprofit CRMs to automatically identify matching gift opportunities and maximize fundraising potential.",
-        category: "crm-integration",
-        image: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-        technologies: ["React", "Blackbaud Integration", "Stripe", "Double the Donation API"],
-        link: "https://double-the-donation-cfs.replit.app/",
-        featured: 1
-      },
-      {
-        title: "QR Code Generator & Analytics",
-        description: "A custom QR code generator with tracking and analytics capabilities, allowing marketers to create branded QR codes and monitor engagement across campaigns.",
-        category: "lead-generation",
-        image: "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-        technologies: ["React", "Node.js", "MongoDB", "Chart.js", "QR Code API"],
-        link: "https://qr-code-tracker-march-25-th-2025-trevorbosetti.replit.app/",
-        featured: 1
-      },
-      {
         title: "Travel Mate AI",
         description: "An intelligent travel planning assistant that uses AI to help users plan personalized trips, suggest itineraries, and provide real-time recommendations based on preferences.",
         category: "ai-marketing",
         image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         technologies: ["React", "TypeScript", "OpenAI", "Google Maps API", "Firebase"],
         link: "https://travel-mate-ai.replit.app/",
-        featured: 1
-      },
-      {
-        title: "Lindy Chat - AI Customer Engagement",
-        description: "A real-time chat solution enhanced with AI for marketing and sales teams to better engage with prospects, featuring smart response suggestions and lead scoring.",
-        category: "ai-marketing",
-        image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-        technologies: ["React", "Socket.io", "Node.js", "OpenAI", "Salesforce Integration"],
-        link: "https://web-chat-test.replit.app/",
         featured: 1
       },
       {
