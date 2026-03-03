@@ -41,9 +41,8 @@ const TechStackSection = () => {
           </h2>
 
           <p className="mb-12 text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-            <span className="text-foreground font-medium">8+ years</span> turning marketing ideas into technical reality.
-            I build systems that <span className="text-foreground font-medium">your team can actually maintain</span> &mdash; not
-            just impressive tech stacks, but tools that empower.
+            <span className="text-foreground font-medium">8+ years</span> turning marketing ideas into systems with impact.
+            I build systems that <span className="text-foreground font-medium">your team can use</span> to get the most out of your time, resources, and strategies.
           </p>
         </motion.div>
       </div>
