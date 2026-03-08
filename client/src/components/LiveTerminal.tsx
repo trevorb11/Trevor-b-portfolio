@@ -77,13 +77,13 @@ const LiveTerminal = () => {
 
     const line = terminalSequence[currentLineIndex];
     if (!line) {
-      // Sequence complete — restart after delay
+      // Sequence complete - restart after delay
       const timeout = setTimeout(resetTerminal, RESTART_DELAY);
       return () => clearTimeout(timeout);
     }
 
     if (line.type === "blank") {
-      // Blank line — add immediately and move on
+      // Blank line - add immediately and move on
       const timeout = setTimeout(() => {
         setDisplayedLines((prev) => [...prev, { text: "", type: "blank" }]);
         setCurrentLineIndex((prev) => prev + 1);

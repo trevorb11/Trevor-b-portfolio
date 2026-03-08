@@ -36,7 +36,7 @@ const organizedPositions = [
 ];
 
 /**
- * Inline visualization — toggle + node diagram, no section wrapper.
+ * Inline visualization - toggle + node diagram, no section wrapper.
  * Can be embedded inside any parent layout.
  */
 const BeforeAfterToggle = () => {
@@ -250,7 +250,7 @@ const BeforeAfterToggle = () => {
                 />
                 {isUnified
                   ? "All systems connected"
-                  : "6 tools — 0 connections"}
+                  : "6 tools, 0 connections"}
               </span>
             </motion.div>
           </AnimatePresence>
