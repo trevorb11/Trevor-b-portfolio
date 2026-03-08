@@ -1,33 +1,33 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Sparkles, Trophy, BarChart3, ArrowUpRight } from "lucide-react";
+import { ArrowRight, Sparkles, Utensils, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const featuredProjects = [
+const featuredCaseStudies = [
   {
+    slug: "impact-wrapped",
     title: "Impact Wrapped",
-    description: "A personalized annual impact report inspired by Spotify Wrapped, showing donors exactly how their contributions made a difference.",
+    description: "A Spotify Wrapped-inspired experience that turns donor data into personalized, animated impact stories, showing each supporter exactly how their contributions made a difference.",
     tag: "Data Visualization",
     tagColor: "bg-rose-500/10 text-rose-400",
     icon: <Sparkles className="h-6 w-6" />,
-    link: "https://cfs-impact.replit.app/",
   },
   {
-    title: "Rank Zone",
-    description: "Interactive leaderboard system for competitive fundraising campaigns with real-time updates and gamification elements.",
-    tag: "Gamification",
+    slug: "community-food-share",
+    title: "Community Food Share",
+    description: "A full suite of custom MarTech tools built for Colorado's largest food bank, from donor engagement campaigns to event portals and impact storytelling.",
+    tag: "Nonprofit MarTech",
+    tagColor: "bg-emerald-500/10 text-emerald-400",
+    icon: <Utensils className="h-6 w-6" />,
+  },
+  {
+    slug: "home-builder-studio",
+    title: "HomeBuilder Studio",
+    description: "An AI-first CRM platform that modernizes how home builders manage leads, customers, and the sales process with intelligent automation and a clean interface.",
+    tag: "AI & CRM",
     tagColor: "bg-amber-500/10 text-amber-400",
-    icon: <Trophy className="h-6 w-6" />,
-    link: "https://rankzone.replit.app/",
-  },
-  {
-    title: "Corporate Challenge Leaderboard",
-    description: "Enterprise-grade dashboard tracking corporate team performance in fundraising challenges with live rankings.",
-    tag: "Enterprise Dashboard",
-    tagColor: "bg-indigo-500/10 text-indigo-400",
-    icon: <BarChart3 className="h-6 w-6" />,
-    link: "https://msb-leaderboard.communityfoodshare.org/",
+    icon: <Building2 className="h-6 w-6" />,
   },
 ];
 
@@ -54,7 +54,7 @@ const FeaturedProjectsSection = () => {
   useEffect(() => {
     if (!isInView) return;
     const timer = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % featuredProjects.length);
+      setActiveIndex((prev) => (prev + 1) % featuredCaseStudies.length);
     }, ROTATE_INTERVAL);
     return () => clearInterval(timer);
   }, [isInView]);
@@ -76,7 +76,7 @@ const FeaturedProjectsSection = () => {
     },
   };
 
-  const project = featuredProjects[activeIndex];
+  const study = featuredCaseStudies[activeIndex];
 
   return (
     <section ref={sectionRef} id="featured" className="py-20 md:py-28 relative overflow-hidden">
@@ -108,8 +108,8 @@ const FeaturedProjectsSection = () => {
                   if (dragStart === null) return;
                   const diff = dragStart - e.clientX;
                   if (Math.abs(diff) > 50) {
-                    if (diff > 0) setActiveIndex((prev) => (prev + 1) % featuredProjects.length);
-                    else setActiveIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
+                    if (diff > 0) setActiveIndex((prev) => (prev + 1) % featuredCaseStudies.length);
+                    else setActiveIndex((prev) => (prev - 1 + featuredCaseStudies.length) % featuredCaseStudies.length);
                   }
                   setDragStart(null);
                 }}
@@ -118,8 +118,8 @@ const FeaturedProjectsSection = () => {
                   if (dragStart === null) return;
                   const diff = dragStart - e.changedTouches[0].clientX;
                   if (Math.abs(diff) > 50) {
-                    if (diff > 0) setActiveIndex((prev) => (prev + 1) % featuredProjects.length);
-                    else setActiveIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
+                    if (diff > 0) setActiveIndex((prev) => (prev + 1) % featuredCaseStudies.length);
+                    else setActiveIndex((prev) => (prev - 1 + featuredCaseStudies.length) % featuredCaseStudies.length);
                   }
                   setDragStart(null);
                 }}
@@ -132,38 +132,33 @@ const FeaturedProjectsSection = () => {
                     exit={{ opacity: 0, x: -30 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <div className="premium-card group p-8 md:p-10 flex flex-col min-h-[340px] md:min-h-[380px]">
-                      <div className="flex items-start justify-between mb-6">
-                        <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                          {project.icon}
+                    <Link href={`/case-study/${study.slug}`}>
+                      <div className="premium-card group p-8 md:p-10 flex flex-col min-h-[340px] md:min-h-[380px] cursor-pointer">
+                        <div className="flex items-start justify-between mb-6">
+                          <div className="p-3 rounded-xl bg-primary/10 text-primary">
+                            {study.icon}
+                          </div>
+                          <span className={`text-xs px-3.5 py-1.5 rounded-full font-semibold uppercase tracking-wider ${study.tagColor}`}>
+                            {study.tag}
+                          </span>
                         </div>
-                        <span className={`text-xs px-3.5 py-1.5 rounded-full font-semibold uppercase tracking-wider ${project.tagColor}`}>
-                          {project.tag}
+                        <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4 group-hover:text-primary transition-colors">
+                          {study.title}
+                        </h3>
+                        <p className="text-muted-foreground text-base flex-1 mb-8 leading-relaxed">
+                          {study.description}
+                        </p>
+                        <span className="inline-flex items-center text-primary/80 group-hover:text-primary font-medium text-sm transition-colors">
+                          View Case Study
+                          <ArrowRight className="h-3.5 w-3.5 ml-1.5 transition-transform group-hover:translate-x-1" />
                         </span>
                       </div>
-                      <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4 group-hover:text-primary transition-colors">
-                        {project.title}
-                      </h3>
-                      <p className="text-muted-foreground text-base flex-1 mb-8 leading-relaxed">
-                        {project.description}
-                      </p>
-                      {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center text-primary/80 hover:text-primary font-medium text-sm transition-colors group/link"
-                        >
-                          View Project
-                          <ArrowUpRight className="h-3.5 w-3.5 ml-1 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                        </a>
-                      )}
-                    </div>
+                    </Link>
                   </motion.div>
                 </AnimatePresence>
 
                 <div className="flex items-center justify-center gap-2 mt-6">
-                  {featuredProjects.map((_, i) => (
+                  {featuredCaseStudies.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setActiveIndex(i)}

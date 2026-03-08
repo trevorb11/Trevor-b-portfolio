@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useParams } from "wouter";
 import {
@@ -404,6 +405,16 @@ const CaseStudy = () => {
   const { id } = useParams();
 
   const data = caseStudies.find((cs) => cs.slug === id);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (data) {
+      document.title = `${data.title} | Trevor Bosetti`;
+    }
+    return () => {
+      document.title = "Trevor Bosetti | Portfolio";
+    };
+  }, [id, data]);
 
   if (!data) {
     return (
