@@ -17,7 +17,7 @@ const categories: PortfolioCategory[] = [
     id: "impact-wrapped",
     title: "Impact Wrapped",
     description:
-      "A Spotify Wrapped-inspired experience that turns donor data into personalized, animated impact stories — showing each supporter exactly how their contributions made a difference.",
+      "A Spotify Wrapped-inspired experience that turns donor data into personalized, animated impact stories, showing each supporter exactly how their contributions made a difference.",
     icon: <Sparkles className="h-6 w-6" />,
     tagColor: "bg-rose-500/10 text-rose-400",
     tag: "Data Visualization",
@@ -27,7 +27,7 @@ const categories: PortfolioCategory[] = [
     id: "community-food-share",
     title: "Community Food Share",
     description:
-      "A full suite of custom MarTech tools built for Colorado's largest food bank — from donor engagement campaigns to event portals and impact storytelling.",
+      "A full suite of custom MarTech tools built for Colorado's largest food bank, from donor engagement campaigns to event portals and impact storytelling.",
     icon: <Utensils className="h-6 w-6" />,
     tagColor: "bg-emerald-500/10 text-emerald-400",
     tag: "Nonprofit MarTech",
@@ -47,7 +47,7 @@ const categories: PortfolioCategory[] = [
     id: "nonprofit-tools",
     title: "Nonprofit Tools & Workflows",
     description:
-      "Purpose-built tools for nonprofit operations — smart video embeds that drive conversions, gamified fundraising leaderboards, and custom event registration portals.",
+      "Purpose-built tools for nonprofit operations: smart video embeds that drive conversions, gamified fundraising leaderboards, and custom event registration portals.",
     icon: <Wrench className="h-6 w-6" />,
     tagColor: "bg-indigo-500/10 text-indigo-400",
     tag: "Custom Development",
@@ -57,7 +57,7 @@ const categories: PortfolioCategory[] = [
     id: "fun-projects",
     title: "Fun Projects",
     description:
-      "Side projects and creative experiments — from AI-powered travel planning and trivia generators to competitive league tracking systems.",
+      "Side projects and creative experiments, from AI-powered travel planning and trivia generators to competitive league tracking systems.",
     icon: <Gamepad2 className="h-6 w-6" />,
     tagColor: "bg-sky-500/10 text-sky-400",
     tag: "Experiments",

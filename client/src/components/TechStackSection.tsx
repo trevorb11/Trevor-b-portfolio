@@ -47,7 +47,7 @@ const TechStackSection = () => {
         </motion.div>
       </div>
 
-      {/* Scrolling ticker — full bleed */}
+      {/* Scrolling ticker - full bleed */}
       <div className="mb-14">
         <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-6 text-center">
           Tech I Work With
@@ -55,7 +55,7 @@ const TechStackSection = () => {
 
         {/* Ticker container with fade masks on edges */}
         <div className="relative overflow-hidden ticker-mask">
-          {/* Row 1 — scrolls left */}
+          {/* Row 1 - scrolls left */}
           <div className="flex w-max animate-ticker">
             {tickerItems.map((tech, i) => (
               <span
@@ -67,7 +67,7 @@ const TechStackSection = () => {
             ))}
           </div>
 
-          {/* Row 2 — scrolls right (reversed, slight delay feel) */}
+          {/* Row 2 - scrolls right (reversed, slight delay feel) */}
           <div className="flex w-max animate-ticker-reverse mt-3">
             {[...tickerItems].reverse().map((tech, i) => (
               <span

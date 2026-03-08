@@ -112,7 +112,7 @@ const WorkflowDemo = () => {
       undefined,
       1000
     );
-    await addBotMessage("First up — what do you enjoy doing in your free time?", [
+    await addBotMessage("First up: what do you enjoy doing in your free time?", [
       { label: "Getting outdoors", value: "outdoors", emoji: "🏔️" },
       { label: "Entertainment", value: "entertainment", emoji: "🎮" },
       { label: "Socializing", value: "social", emoji: "🎉" },
@@ -130,7 +130,7 @@ const WorkflowDemo = () => {
       entertainment: "A person of culture! Love it. 🎮",
       social: "The more the merrier! Great choice. 🎉",
       music: "Live experiences hit different. Great taste! 🎵",
-      family: "Family first — I respect that. 👨‍👩‍👧",
+      family: "Family first, I respect that. 👨‍👩‍👧",
       peace: "Sometimes you just need to recharge. 🧘",
     };
 
@@ -152,14 +152,14 @@ const WorkflowDemo = () => {
 
     const responses: Record<string, string> = {
       weekends: "Weekend warrior! Gotta make those two days count. 💪",
-      mornings: "Up with the sun — I respect the discipline! 🌅",
+      mornings: "Up with the sun! I respect the discipline. 🌅",
       midday: "A nice midday reset. Smart move. ☀️",
       evenings: "There's something special about evening hours. 🌙",
     };
 
     await addBotMessage(responses[value] || "Great timing!", undefined, 600);
     await addBotMessage(
-      "We're down to **4 possible paths** now. One more question locks it in.\n\nWhat does this activity do for you — is it more of...",
+      "We're down to **4 possible paths** now. One more question locks it in.\n\nWhat does this activity do for you? Is it more of...",
       [
         { label: "An escape", value: "escape", emoji: "🚀" },
         { label: "Gets me energized", value: "energize", emoji: "⚡" },
@@ -182,7 +182,7 @@ const WorkflowDemo = () => {
     const rep = reps[Math.floor(Math.random() * reps.length)];
 
     await addBotMessage(
-      `**Path locked!** 🎯\n\nBased on your answers, I've matched you with:\n\n**${rep.emoji} ${rep.name}** — ${rep.title}\n\nThey share similar interests and would be a great fit for a conversation.`,
+      `**Path locked!** 🎯\n\nBased on your answers, I've matched you with:\n\n**${rep.emoji} ${rep.name}**, ${rep.title}\n\nThey share similar interests and would be a great fit for a conversation.`,
       undefined,
       1000
     );
@@ -278,7 +278,7 @@ const WorkflowDemo = () => {
                   <h3 className="font-semibold text-foreground">Workflow Bot</h3>
                   <p className="text-xs text-muted-foreground flex items-center gap-1">
                     <span className="w-2 h-2 rounded-full bg-green-500"></span>
-                    Online — Demo Mode
+                    Online - Demo Mode
                   </p>
                 </div>
                 <div className="ml-auto flex gap-1">
@@ -448,7 +448,7 @@ const WorkflowDemo = () => {
                       : state.currentStep === 1
                       ? "Great! We've eliminated 80 paths already"
                       : state.currentStep === 2
-                      ? "Almost there — 12 more paths eliminated"
+                      ? "Almost there, 12 more paths eliminated"
                       : "Path locked! Perfect match found."}
                   </p>
                 </div>
@@ -467,19 +467,19 @@ const WorkflowDemo = () => {
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Activity:</span>
                     <span className="text-foreground">
-                      {state.activity || "—"}
+                      {state.activity || "-"}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Timing:</span>
                     <span className="text-foreground">
-                      {state.timing || "—"}
+                      {state.timing || "-"}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Motivation:</span>
                     <span className="text-foreground">
-                      {state.motivation || "—"}
+                      {state.motivation || "-"}
                     </span>
                   </div>
                 </div>
