@@ -36,6 +36,11 @@ const Footer = () => {
     { name: "Contact", path: "/#contact" },
   ];
 
+  const legalLinks = [
+    { name: "Privacy Policy", path: "/privacy-policy" },
+    { name: "Terms & Conditions", path: "/terms-and-conditions" },
+  ];
+
   const socialLinks = [
     { icon: Github, href: "https://github.com/trevorb11", label: "GitHub" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/trevor-bosetti-9a291a126/", label: "LinkedIn" },
@@ -119,6 +124,19 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+            <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-4 mt-6">Legal</p>
+            <ul className="space-y-2.5">
+              {legalLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    href={link.path}
+                    className="text-sm text-muted-foreground/60 hover:text-foreground transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Newsletter */}
@@ -146,10 +164,13 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/[0.04] pt-6 text-center">
+        <div className="border-t border-white/[0.04] pt-6 text-center space-y-1">
           <p className="text-xs text-muted-foreground/40">
             &copy; {new Date().getFullYear()} Trevor Bosetti. Turning data into
             stories that stick.
+          </p>
+          <p className="text-xs text-muted-foreground/30">
+            Trevor Bosetti operates professionally through RankZone Studio. All inquiries and communications are managed by Trevor Bosetti.
           </p>
         </div>
       </div>

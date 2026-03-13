@@ -13,6 +13,8 @@ import AdminDashboard from "@/pages/AdminDashboard";
 import CouncilOfIdeas from "@/pages/CouncilOfIdeas";
 import WorkflowDemo from "@/pages/WorkflowDemo";
 import YoutubeRedirect from "@/pages/YoutubeRedirect";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import TermsAndConditions from "@/pages/TermsAndConditions";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CursorGlow from "@/components/CursorGlow";
@@ -45,6 +47,8 @@ function Router() {
         <Route path="/council-of-ideas" component={CouncilOfIdeas} />
         <Route path="/workflow-demo" component={WorkflowDemo} />
         <Route path="/youtube-redirect" component={YoutubeRedirect} />
+        <Route path="/privacy-policy" component={PrivacyPolicy} />
+        <Route path="/terms-and-conditions" component={TermsAndConditions} />
         <Route component={NotFound} />
       </Switch>
       <Footer />

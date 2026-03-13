@@ -18,6 +18,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowRight, Mail, MapPin, Linkedin, Github } from "lucide-react";
+import { Link } from "wouter";
 import { contactFormSchema, type ContactForm } from "@shared/schema";
 
 const inputClasses = "w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-3 text-foreground placeholder:text-muted-foreground/40 focus:border-primary/30 focus:ring-primary/20 transition-colors";
@@ -243,11 +244,19 @@ const ContactSection = () => {
                           />
                         </FormControl>
                         <div className="space-y-1 leading-none">
-                          <FormLabel className="text-sm text-foreground/80 cursor-pointer">
-                            I agree to receive marketing materials via email and SMS
+                          <FormLabel className="text-sm text-foreground/80 cursor-pointer leading-relaxed">
+                            I agree to receive SMS messages from Trevor Bosetti related to my inquiry, scheduling, project discussion, and follow-up communication. Message frequency varies. Message and data rates may apply. Reply STOP to opt out and HELP for help. Consent is not a condition of purchase.
                           </FormLabel>
-                          <p className="text-xs text-muted-foreground/60">
-                            You can unsubscribe at any time.
+                          <p className="text-xs text-muted-foreground/60 pt-1">
+                            View our{" "}
+                            <Link href="/privacy-policy" className="text-primary hover:underline">
+                              Privacy Policy
+                            </Link>
+                            {" "}and{" "}
+                            <Link href="/terms-and-conditions" className="text-primary hover:underline">
+                              Terms and Conditions
+                            </Link>
+                            .
                           </p>
                         </div>
                       </FormItem>
