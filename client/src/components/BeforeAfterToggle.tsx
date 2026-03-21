@@ -48,6 +48,10 @@ const BeforeAfterToggle = () => {
 
   return (
     <div>
+      {/* Caption */}
+      <p className="text-xs text-muted-foreground/60 text-center mb-3 font-medium">
+        Toggle to see what unified systems look like
+      </p>
       {/* Toggle Switch */}
       <div className="flex items-center justify-center gap-3 mb-5">
         <span

@@ -1,4 +1,5 @@
 import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
 import TechStackSection from "@/components/TechStackSection";
 import FeaturedProjectsSection from "@/components/FeaturedProjectsSection";
 import ProjectsSection from "@/components/ProjectsSection";
@@ -40,6 +41,8 @@ const Home = () => {
   return (
     <main>
       <HeroSection />
+      <AuroraDivider />
+      <AboutSection />
       <AuroraDivider />
       <TechStackSection />
       <FeaturedProjectsSection />

@@ -89,9 +89,8 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-sm text-muted-foreground/70 mb-6 max-w-sm leading-relaxed">
-              Your go-to resource for marketing technology insights, creative AI
-              applications, and bridging the gap between marketing objectives and
-              technical implementation.
+              I help small teams get more from their marketing tools&mdash;less
+              busywork, more impact.
             </p>
             <div className="flex gap-2">
               {socialLinks.map(({ icon: Icon, href, label }) => (
