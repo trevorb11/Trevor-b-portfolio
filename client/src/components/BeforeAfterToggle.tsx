@@ -30,7 +30,7 @@ const organizedPositions = [
   { x: 50, y: 10 },
   { x: 82, y: 32 },
   { x: 82, y: 68 },
-  { x: 50, y: 90 },
+  { x: 50, y: 82 },
   { x: 18, y: 68 },
   { x: 18, y: 32 },
 ];
@@ -89,7 +89,7 @@ const BeforeAfterToggle = () => {
       </div>
 
       {/* Visualization Area */}
-      <div className="premium-card p-5 md:p-8">
+      <div className="premium-card p-5 pb-12 md:p-8 md:pb-14">
         <div className="relative w-full aspect-[3/4] md:aspect-square">
           {/* SVG for connection lines */}
           <svg
@@ -234,7 +234,7 @@ const BeforeAfterToggle = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={isUnified ? "unified" : "scattered"}
-              className="absolute bottom-1 left-0 right-0 text-center"
+              className="absolute -bottom-6 left-0 right-0 text-center"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
