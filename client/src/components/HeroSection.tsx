@@ -123,7 +123,7 @@ const HeroSection = () => {
               }}
             >
               Get in touch
-            </Link>
+            </a>
           </Button>
         </motion.div>
       </div>
