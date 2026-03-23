@@ -115,20 +115,6 @@ const Header = () => {
                 )}
               </div>
             ))}
-            <div className="ml-2 pl-3 border-l border-border/50">
-              <Button
-                asChild
-                size="sm"
-                className="rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all text-sm font-medium px-5 h-9"
-              >
-                <a
-                  href="/#contact"
-                  onClick={(e) => scrollToSection("contact", e)}
-                >
-                  Hire Me
-                </a>
-              </Button>
-            </div>
           </nav>
 
           {/* Mobile Menu Button */}

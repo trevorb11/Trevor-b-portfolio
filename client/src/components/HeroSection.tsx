@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Link } from "wouter";
+
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronDown } from "lucide-react";
 
@@ -90,9 +90,19 @@ const HeroSection = () => {
             size="lg"
             className="rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 hover:scale-[1.03] transition-all shadow-lg shadow-primary/20 px-8 h-12"
           >
-            <Link href="#projects">
+            <a
+              href="#projects"
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById("projects");
+                if (el) {
+                  const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+                  window.scrollTo({ top, behavior: "smooth" });
+                }
+              }}
+            >
               View Portfolio <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
+            </a>
           </Button>
 
           <Button
@@ -101,7 +111,17 @@ const HeroSection = () => {
             size="lg"
             className="rounded-full border border-white/20 text-white bg-white/[0.05] backdrop-blur-sm hover:bg-white/10 hover:border-white/30 transition-all px-8 h-12"
           >
-            <Link href="#contact">
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById("contact");
+                if (el) {
+                  const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+                  window.scrollTo({ top, behavior: "smooth" });
+                }
+              }}
+            >
               Get in touch
             </Link>
           </Button>

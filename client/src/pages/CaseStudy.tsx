@@ -3,25 +3,17 @@ import { Link, useParams } from "wouter";
 import {
   ArrowLeft,
   ExternalLink,
-  TrendingUp,
-  Users,
-  Zap,
-  Calendar,
   Database,
   Video,
   Mail,
   Ticket,
   Sparkles,
   Building2,
-  Home,
-  Bot,
   Map,
   Brain,
   Trophy,
   BarChart3,
   Globe,
-  Wrench,
-  Gamepad2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -44,7 +36,6 @@ interface CaseStudyData {
   tagColor: string;
   challenge: string;
   approach: string;
-  results?: { icon: React.ReactNode; label: string; value: string; description: string }[];
   projects: ProjectItem[];
   testimonial?: {
     quote: string;
@@ -69,12 +60,6 @@ const caseStudies: CaseStudyData[] = [
       "Nonprofits pour effort into fundraising but often struggle to close the loop with donors. Generic thank-you emails fail to convey the real-world impact of individual gifts, leading to donor fatigue and lower retention. Community Food Share needed a way to make every donor feel personally connected to the mission.",
     approach:
       "I built a fully personalized, interactive web experience that pulls each donor's giving history from the Blackbaud CRM and translates it into meaningful, animated metrics: meals provided, families served, pounds of food rescued. The experience is mobile-first, shareable on social media, and designed to create an emotional connection that a PDF receipt never could.",
-    results: [
-      { icon: <TrendingUp className="h-5 w-5" />, label: "Engagement", value: "4x", description: "Higher open rates vs. standard annual reports" },
-      { icon: <Users className="h-5 w-5" />, label: "Social Shares", value: "300+", description: "Organic shares in the first month" },
-      { icon: <Sparkles className="h-5 w-5" />, label: "Donor Sentiment", value: "92%", description: "Positive feedback score from donor survey" },
-      { icon: <Database className="h-5 w-5" />, label: "Data Points", value: "12+", description: "Personalized metrics per donor" },
-    ],
     projects: [
       {
         title: "Impact Wrapped FY25",
@@ -111,12 +96,6 @@ const caseStudies: CaseStudyData[] = [
       "Like many nonprofits, Community Food Share faced the challenge of donor retention and engagement. Their existing tools were disconnected, making it difficult to create personalized experiences, track donor journeys, and demonstrate individual impact. They needed a cohesive technology strategy that would work within their Blackbaud ecosystem while pushing the boundaries of what's possible in nonprofit marketing.",
     approach:
       "Rather than recommending expensive off-the-shelf solutions, I worked closely with the CFS team to identify specific pain points and build custom tools that integrated seamlessly with their existing CRM. Each solution was designed to be maintainable, scalable, and focused on measurable outcomes.",
-    results: [
-      { icon: <TrendingUp className="h-5 w-5" />, label: "Donor Retention", value: "+32%", description: "Year-over-year improvement in donor retention rates" },
-      { icon: <Users className="h-5 w-5" />, label: "Monthly Donors", value: "+45%", description: "Increase in recurring monthly donor conversions" },
-      { icon: <Zap className="h-5 w-5" />, label: "Custom Tools", value: "6", description: "Purpose-built solutions deployed" },
-      { icon: <Calendar className="h-5 w-5" />, label: "Event Efficiency", value: "60%", description: "Reduction in event management overhead" },
-    ],
     projects: [
       {
         title: "Impact Wrapped",
@@ -236,12 +215,6 @@ const caseStudies: CaseStudyData[] = [
       "Home builders rely on CRMs designed for generic sales pipelines. These tools don't understand the nuances of the home buying journey: long sales cycles, community-specific inventory, design center selections, and construction milestones. Sales teams end up fighting their tools instead of focusing on buyers.",
     approach:
       "I designed and built HomeBuilder Studio as an AI-first platform purpose-built for the residential construction industry. Every feature, from lead scoring to follow-up automation, was designed around how home builders actually sell, not how generic CRMs think they should.",
-    results: [
-      { icon: <Bot className="h-5 w-5" />, label: "AI Automation", value: "Smart", description: "Intelligent lead scoring and follow-up suggestions" },
-      { icon: <Home className="h-5 w-5" />, label: "Industry-Specific", value: "100%", description: "Built exclusively for home builders" },
-      { icon: <Zap className="h-5 w-5" />, label: "Time Saved", value: "10hrs", description: "Average weekly time savings per sales rep" },
-      { icon: <Users className="h-5 w-5" />, label: "User Experience", value: "Modern", description: "Clean, intuitive interface that teams actually use" },
-    ],
     projects: [
       {
         title: "HomeBuilder Studio Platform",
@@ -487,50 +460,6 @@ const CaseStudy = () => {
           </div>
         </div>
       </section>
-
-      {/* Results (if provided) */}
-      {data.results && (
-        <section className="py-16 px-4">
-          <div className="container mx-auto max-w-4xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="mb-8"
-            >
-              <h2 className="text-2xl font-bold text-foreground mb-2">
-                Results
-              </h2>
-            </motion.div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {data.results.map((result, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className="bg-white/[0.02] rounded-xl p-5 border border-white/[0.04]"
-                >
-                  <div className="flex items-center gap-2 text-primary mb-2">
-                    {result.icon}
-                    <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-                      {result.label}
-                    </span>
-                  </div>
-                  <p className="text-2xl font-bold text-foreground mb-1">
-                    {result.value}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    {result.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Projects Built */}
       <section className="py-16 px-4 bg-card/30">

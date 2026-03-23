@@ -1,4 +1,5 @@
 import { Switch, Route, useLocation } from "wouter";
+import { useEffect } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -18,6 +19,18 @@ import TermsAndConditions from "@/pages/TermsAndConditions";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CursorGlow from "@/components/CursorGlow";
+
+/** Redirects bare paths like /about to /#about so the home page scrolls to the right section */
+function HashRedirect({ hash }: { hash: string }) {
+  const [, setLocation] = useLocation();
+  useEffect(() => {
+    setLocation("/");
+    setTimeout(() => {
+      window.location.hash = hash;
+    }, 50);
+  }, [hash, setLocation]);
+  return <Home />;
+}
 
 function Router() {
   const [location] = useLocation();
@@ -49,6 +62,9 @@ function Router() {
         <Route path="/youtube-redirect" component={YoutubeRedirect} />
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/terms-and-conditions" component={TermsAndConditions} />
+        <Route path="/about">{() => <HashRedirect hash="about" />}</Route>
+        <Route path="/projects">{() => <HashRedirect hash="projects" />}</Route>
+        <Route path="/contact">{() => <HashRedirect hash="contact" />}</Route>
         <Route component={NotFound} />
       </Switch>
       <Footer />
