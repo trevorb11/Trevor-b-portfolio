@@ -7,10 +7,25 @@ interface PortfolioCategory {
   title: string;
   description: string;
   icon: React.ReactNode;
-  tagColor: string;
-  tag: string;
+  tags: { label: string; color: string }[];
   projectCount: number;
 }
+
+const TAG_STYLES: Record<string, string> = {
+  Systems: "bg-indigo-500/10 text-indigo-400",
+  Storytelling: "bg-rose-500/10 text-rose-400",
+  AI: "bg-violet-500/10 text-violet-400",
+  Personalization: "bg-pink-500/10 text-pink-400",
+  Automation: "bg-sky-500/10 text-sky-400",
+  Nonprofit: "bg-emerald-500/10 text-emerald-400",
+  CRM: "bg-amber-500/10 text-amber-400",
+  Growth: "bg-teal-500/10 text-teal-400",
+};
+
+const tag = (label: keyof typeof TAG_STYLES) => ({
+  label,
+  color: TAG_STYLES[label],
+});
 
 const categories: PortfolioCategory[] = [
   {
@@ -19,8 +34,7 @@ const categories: PortfolioCategory[] = [
     description:
       "A Spotify Wrapped-inspired experience that turns donor data into personalized, animated impact stories, showing each supporter exactly how their contributions made a difference.",
     icon: <Sparkles className="h-6 w-6" />,
-    tagColor: "bg-rose-500/10 text-rose-400",
-    tag: "Data Visualization",
+    tags: [tag("Storytelling"), tag("Personalization"), tag("Nonprofit")],
     projectCount: 1,
   },
   {
@@ -29,8 +43,7 @@ const categories: PortfolioCategory[] = [
     description:
       "A full suite of custom MarTech tools built for Colorado's largest food bank, from donor engagement campaigns to event portals and impact storytelling.",
     icon: <Utensils className="h-6 w-6" />,
-    tagColor: "bg-emerald-500/10 text-emerald-400",
-    tag: "Nonprofit MarTech",
+    tags: [tag("Systems"), tag("Nonprofit"), tag("Storytelling")],
     projectCount: 6,
   },
   {
@@ -39,8 +52,7 @@ const categories: PortfolioCategory[] = [
     description:
       "An AI-first CRM platform that modernizes how home builders manage leads, customers, and the sales process with intelligent automation and a clean interface.",
     icon: <Building2 className="h-6 w-6" />,
-    tagColor: "bg-amber-500/10 text-amber-400",
-    tag: "AI & CRM",
+    tags: [tag("AI"), tag("CRM"), tag("Growth")],
     projectCount: 1,
   },
   {
@@ -49,8 +61,7 @@ const categories: PortfolioCategory[] = [
     description:
       "Purpose-built tools for nonprofit operations: smart video embeds that drive conversions, gamified fundraising leaderboards, and custom event registration portals.",
     icon: <Wrench className="h-6 w-6" />,
-    tagColor: "bg-indigo-500/10 text-indigo-400",
-    tag: "Custom Development",
+    tags: [tag("Automation"), tag("Nonprofit"), tag("Systems")],
     projectCount: 3,
   },
   {
@@ -59,8 +70,7 @@ const categories: PortfolioCategory[] = [
     description:
       "Side projects and creative experiments, from AI-powered travel planning and trivia generators to competitive league tracking systems.",
     icon: <Gamepad2 className="h-6 w-6" />,
-    tagColor: "bg-sky-500/10 text-sky-400",
-    tag: "Experiments",
+    tags: [tag("AI"), tag("Automation")],
     projectCount: 3,
   },
 ];
@@ -78,9 +88,11 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-foreground">Portfolio</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-base">
-            When the pieces come together to create something impactful
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-foreground">More work</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-base">
+            A mix of systems, campaigns, concepts, and tools built across
+            nonprofits, growth-stage businesses, and automation-heavy
+            environments.
           </p>
         </motion.div>
 
@@ -119,15 +131,20 @@ const ProjectsSection = () => {
             >
               <Link href={`/case-study/${category.id}`}>
                 <div className="premium-card group p-7 flex flex-col h-full cursor-pointer">
-                  <div className="flex items-start justify-between mb-5">
-                    <div className="p-3 rounded-xl bg-primary/10 text-primary">
+                  <div className="flex items-start justify-between gap-3 mb-5">
+                    <div className="p-3 rounded-xl bg-primary/10 text-primary flex-shrink-0">
                       {category.icon}
                     </div>
-                    <span
-                      className={`${category.tagColor} text-[11px] px-3 py-1 rounded-full font-semibold uppercase tracking-wider`}
-                    >
-                      {category.tag}
-                    </span>
+                    <div className="flex flex-wrap justify-end gap-1.5">
+                      {category.tags.map((t) => (
+                        <span
+                          key={t.label}
+                          className={`${t.color} text-[10px] px-2.5 py-1 rounded-full font-semibold uppercase tracking-wider`}
+                        >
+                          {t.label}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                   <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">

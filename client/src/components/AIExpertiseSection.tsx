@@ -40,23 +40,23 @@ const AIExpertiseSection = () => {
 
   const aiApplications = [
     {
-      title: "Customer Segmentation",
-      description: "ML-powered patterns for targeted campaigns.",
+      title: "Adaptive systems",
+      description: "Workflows that respond to context, not just rules.",
       icon: <Layers className="h-5 w-5 text-primary" />,
     },
     {
-      title: "Conversational Marketing",
-      description: "AI chatbots that enhance engagement.",
+      title: "Relevant communication",
+      description: "Messaging shaped by data, timing, and intent.",
       icon: <MessageSquare className="h-5 w-5 text-primary" />,
     },
     {
-      title: "Predictive Analytics",
-      description: "Forecast trends and campaign performance.",
+      title: "Smarter decisions",
+      description: "Less friction between information and action.",
       icon: <LineChart className="h-5 w-5 text-primary" />,
     },
     {
-      title: "Content Optimization",
-      description: "Personalized content at scale.",
+      title: "Connective tissue",
+      description: "Platforms that finally speak the same language.",
       icon: <Code className="h-5 w-5 text-primary" />,
     },
   ];
@@ -75,11 +75,11 @@ const AIExpertiseSection = () => {
             <BrainCircuit size={20} />
           </motion.div>
           <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            {aiContent.title || "AI: The Essential Skill of Today"}
+            {aiContent.title || "AI as a force multiplier"}
           </motion.h2>
           <motion.p variants={itemVariants} className="text-muted-foreground max-w-2xl text-sm md:text-base">
             {aiContent.subtitle ||
-              "Artificial Intelligence isn't just the future \u2014 it's transforming marketing effectiveness right now."}
+              "We\u2019re at an inflection point. AI is going to reshape the digital landscape at a scale we\u2019re still underestimating \u2014 and the teams that lean in now will shape what comes next."}
           </motion.p>
         </motion.div>
 
@@ -94,22 +94,22 @@ const AIExpertiseSection = () => {
             <motion.div variants={itemVariants}>
               <h3 className="text-xl font-bold mb-3 flex items-center text-foreground">
                 <Cpu className="mr-2.5 text-primary" size={18} />
-                AI as a Competitive Advantage
+                Connective tissue, not another tool
               </h3>
               <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
                 {aiContent.advantage ||
-                  "AI proficiency isn't optional \u2014 it's essential. Organizations leveraging AI gain real advantages in efficiency, personalization, and market insights."}
+                  "AI isn\u2019t just another item in the stack. More and more, it\u2019s becoming the connective tissue between systems, information, and people \u2014 interpreting data, personalizing communication, and reducing the friction between platforms that were never built to speak naturally to each other."}
               </p>
             </motion.div>
 
             <motion.div variants={itemVariants}>
               <h3 className="text-xl font-bold mb-3 flex items-center text-foreground">
                 <TrendingUp className="mr-2.5 text-primary" size={18} />
-                Strategic AI Implementation
+                Real utility over hype
               </h3>
               <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
                 {aiContent.strategy ||
-                  "I focus on AI that solves real problems \u2014 not adoption for its own sake. From customer experience to operations, every implementation drives measurable results."}
+                  "I\u2019m most interested in applying AI where it creates real utility: making systems more adaptive, workflows more intelligent, and communication more relevant \u2014 without forcing hype into places it doesn\u2019t belong."}
               </p>
             </motion.div>
           </motion.div>

@@ -69,12 +69,25 @@ const MarketingIntegrationSection = () => {
                     <LinkIcon size={20} />
                   </div>
                   <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
-                    System Integration Expertise
+                    Turning disconnected tools into working systems
                   </h2>
-                  <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-                    {integrationsContent.expertise ||
-                      "Whether your CRM is HubSpot, Salesforce, or Mailchimp, I specialize in getting the most value out of your marketing stack by creating seamless integrations that allow your systems to communicate effectively."}
-                  </p>
+                  <div className="space-y-4 text-muted-foreground text-sm md:text-base leading-relaxed">
+                    <p>
+                      Most teams do not need more tools. They need the tools they
+                      already have to work together better.
+                    </p>
+                    <p>
+                      I help connect CRMs, automation platforms, analytics,
+                      content systems, and outreach channels so information moves
+                      where it should, work stops getting lost in the gaps, and
+                      people can spend less time patching together processes by
+                      hand.
+                    </p>
+                    <p className="text-foreground/80 font-medium">
+                      The goal is not complexity. It's flow. Systems that flow
+                      make all the difference in the world.
+                    </p>
+                  </div>
                 </div>
               </motion.div>
 

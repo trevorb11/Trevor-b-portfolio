@@ -1,33 +1,41 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Sparkles, Trophy, BarChart3, ArrowUpRight } from "lucide-react";
+import { ArrowRight, Sparkles, Utensils, Building2, Workflow, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const featuredProjects = [
   {
     title: "Impact Wrapped",
-    description: "A personalized annual impact report inspired by Spotify Wrapped, showing donors exactly how their contributions made a difference.",
-    tag: "Data Visualization",
+    description: "Personalized donor storytelling powered by data, design, and mission-driven strategy.",
+    tag: "Storytelling",
     tagColor: "bg-rose-500/10 text-rose-400",
     icon: <Sparkles className="h-6 w-6" />,
     link: "https://cfs-impact.replit.app/",
   },
   {
-    title: "Rank Zone",
-    description: "Interactive leaderboard system for competitive fundraising campaigns with real-time updates and gamification elements.",
-    tag: "Gamification",
-    tagColor: "bg-amber-500/10 text-amber-400",
-    icon: <Trophy className="h-6 w-6" />,
-    link: "https://rankzone.replit.app/",
+    title: "Community Food Share",
+    description: "Integrated campaigns, digital tools, and storytelling systems built to support real community impact.",
+    tag: "Nonprofit MarTech",
+    tagColor: "bg-emerald-500/10 text-emerald-400",
+    icon: <Utensils className="h-6 w-6" />,
+    link: "/case-study/community-food-share",
   },
   {
-    title: "Corporate Challenge Leaderboard",
-    description: "Enterprise-grade dashboard tracking corporate team performance in fundraising challenges with live rankings.",
-    tag: "Enterprise Dashboard",
+    title: "Financial Services Automation",
+    description: "Lead routing, outreach systems, and workflow infrastructure built for speed, consistency, and scale.",
+    tag: "Automation",
     tagColor: "bg-indigo-500/10 text-indigo-400",
-    icon: <BarChart3 className="h-6 w-6" />,
-    link: "https://msb-leaderboard.communityfoodshare.org/",
+    icon: <Workflow className="h-6 w-6" />,
+    link: "",
+  },
+  {
+    title: "HomeBuilder Studio",
+    description: "An AI-forward CRM and sales workflow concept built to modernize the builder marketing experience.",
+    tag: "AI & CRM",
+    tagColor: "bg-amber-500/10 text-amber-400",
+    icon: <Building2 className="h-6 w-6" />,
+    link: "/case-study/home-builder-studio",
   },
 ];
 
@@ -92,10 +100,11 @@ const FeaturedProjectsSection = () => {
         >
           <motion.div variants={itemVariants} className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
-              Featured Work
+              Selected work
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-base">
-              Projects at the intersection of marketing strategy and technical innovation.
+              A few projects that show how I approach connected systems,
+              storytelling, automation, and impact in practice.
             </p>
           </motion.div>
 
@@ -148,15 +157,25 @@ const FeaturedProjectsSection = () => {
                         {project.description}
                       </p>
                       {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center text-primary/80 hover:text-primary font-medium text-sm transition-colors group/link"
-                        >
-                          View Project
-                          <ArrowUpRight className="h-3.5 w-3.5 ml-1 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                        </a>
+                        project.link.startsWith("/") ? (
+                          <Link
+                            href={project.link}
+                            className="inline-flex items-center text-primary/80 hover:text-primary font-medium text-sm transition-colors group/link"
+                          >
+                            View Project
+                            <ArrowUpRight className="h-3.5 w-3.5 ml-1 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                          </Link>
+                        ) : (
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center text-primary/80 hover:text-primary font-medium text-sm transition-colors group/link"
+                          >
+                            View Project
+                            <ArrowUpRight className="h-3.5 w-3.5 ml-1 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                          </a>
+                        )
                       )}
                     </div>
                   </motion.div>
