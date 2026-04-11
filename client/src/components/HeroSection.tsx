@@ -1,11 +1,21 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronDown } from "lucide-react";
 
+const ROTATING_PHRASES = [
+  "Building systems",
+  "Telling stories",
+  "Connecting tools",
+  "Designing flow",
+  "Scaling personalization",
+];
+const PHRASE_INTERVAL = 2800;
+
 const HeroSection = () => {
   const [imgLoaded, setImgLoaded] = useState(false);
+  const [phraseIndex, setPhraseIndex] = useState(0);
 
   useEffect(() => {
     const img = new Image();
@@ -13,6 +23,13 @@ const HeroSection = () => {
     img.onload = () => setImgLoaded(true);
     // If already cached, fire immediately
     if (img.complete) setImgLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setPhraseIndex((prev) => (prev + 1) % ROTATING_PHRASES.length);
+    }, PHRASE_INTERVAL);
+    return () => clearInterval(timer);
   }, []);
   const scrollToNext = () => {
     const aboutSection = document.getElementById("about");
@@ -44,7 +61,7 @@ const HeroSection = () => {
       <div className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-accent/10 blur-[100px] pointer-events-none" />
 
       {/* Foreground content */}
-      <div className="relative z-10 px-4 max-w-4xl">
+      <div className="relative z-10 px-4 max-w-5xl">
         {/* Eyebrow tag */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -59,14 +76,28 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.h1
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.95] text-white mb-6 tracking-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95] text-white mb-6 tracking-tight"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
         >
-          Building Systems
-          <br />
-          for <span className="text-gradient-impact">Impact</span>
+          <span className="relative block h-[1.05em] overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={phraseIndex}
+                className="absolute inset-0 flex items-center justify-center whitespace-nowrap"
+                initial={{ y: "100%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                exit={{ y: "-100%", opacity: 0 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {ROTATING_PHRASES[phraseIndex]}
+              </motion.span>
+            </AnimatePresence>
+          </span>
+          <span className="block">
+            for <span className="text-gradient-impact">impact</span>
+          </span>
         </motion.h1>
 
         <motion.p
@@ -75,8 +106,8 @@ const HeroSection = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
         >
-          I help non-profits and local businesses turn disconnected tools into
-          unified systems that drive real, measurable results.
+          Getting more from tools, time, and message through connected systems,
+          sharper storytelling, and human-centered technology.
         </motion.p>
 
         <motion.div
@@ -101,7 +132,7 @@ const HeroSection = () => {
                 }
               }}
             >
-              View Portfolio <ArrowRight className="ml-2 h-4 w-4" />
+              View Work <ArrowRight className="ml-2 h-4 w-4" />
             </a>
           </Button>
 
@@ -122,7 +153,7 @@ const HeroSection = () => {
                 }
               }}
             >
-              Get in touch
+              Let's Connect
             </a>
           </Button>
         </motion.div>

@@ -39,12 +39,21 @@ const HumanitySection = () => {
                 Keeping the Human in the Machine
               </h2>
               <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-4">
-                Automation and AI are powerful, but the best systems never lose sight of the people they serve. I believe technology should amplify human connection, not replace it.
+                As AI and automation make more communication faster, they also
+                make sameness easier. More output does not automatically create
+                more connection.
+              </p>
+              <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-4">
+                The people and organizations that use these tools best will be
+                the ones who know how to keep the humanity in everything they do
+                &mdash; the ones who bring judgment, voice, warmth, and intention
+                into what they share with the world.
               </p>
               <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-                From leading the creation of this campaign for Community Food Share to building
-                data pipelines that help nonprofits reach more donors &mdash; every system I build
-                starts with one question: <span className="text-foreground font-medium">how does this make someone's life better?</span>
+                The best technology should not replace humanity.{" "}
+                <span className="text-foreground font-medium">
+                  It should make more room for it.
+                </span>
               </p>
             </motion.div>
 
