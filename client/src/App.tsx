@@ -21,6 +21,14 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CursorGlow from "@/components/CursorGlow";
 
+function ScrollToTop() {
+  const [location] = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+  return null;
+}
+
 /** Redirects bare paths like /about to /#about so the home page scrolls to the right section */
 function HashRedirect({ hash }: { hash: string }) {
   const [, setLocation] = useLocation();
@@ -51,6 +59,7 @@ function Router() {
   // Regular site routes with header and footer
   return (
     <>
+      <ScrollToTop />
       <Header />
       <Switch>
         <Route path="/" component={Home} />
