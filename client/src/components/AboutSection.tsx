@@ -15,24 +15,12 @@ const AboutSection = () => {
           >
             <div className="relative">
               <div className="absolute -inset-3 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl blur-xl" />
-              <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden border border-white/[0.08] shadow-2xl shadow-black/30 bg-card/50 flex items-center justify-center">
+              <div className="relative w-64 h-72 md:w-72 md:h-80 rounded-2xl overflow-hidden border border-white/[0.08] shadow-2xl shadow-black/30 bg-card/50">
                 <img
-                  src="/headshot.webp"
+                  src="/about-photo.jpeg"
                   alt="Trevor Bosetti"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none";
-                  }}
+                  className="w-full h-full object-cover object-center"
                 />
-                {/* Fallback initials shown behind the image */}
-                <div className="absolute inset-0 flex items-center justify-center -z-10">
-                  <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-3 rounded-full bg-primary/20 flex items-center justify-center">
-                      <span className="text-3xl font-bold text-primary">TB</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Trevor Bosetti</p>
-                  </div>
-                </div>
               </div>
             </div>
           </motion.div>
