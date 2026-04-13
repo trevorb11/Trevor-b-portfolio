@@ -11,7 +11,7 @@ const ROTATING_PHRASES = [
   "Designing flow",
   "Scaling reach",
 ];
-const PHRASE_INTERVAL = 3000;
+const PHRASE_INTERVAL = 4500;
 
 const HeroSection = () => {
   const [imgLoaded, setImgLoaded] = useState(false);
