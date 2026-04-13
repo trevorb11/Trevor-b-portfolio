@@ -9,9 +9,9 @@ const ROTATING_PHRASES = [
   "Telling stories",
   "Connecting tools",
   "Designing flow",
-  "Scaling personalization",
+  "Scaling reach",
 ];
-const PHRASE_INTERVAL = 2800;
+const PHRASE_INTERVAL = 3000;
 
 const HeroSection = () => {
   const [imgLoaded, setImgLoaded] = useState(false);
@@ -86,10 +86,10 @@ const HeroSection = () => {
               <motion.span
                 key={phraseIndex}
                 className="absolute inset-0 flex items-center justify-center whitespace-nowrap"
-                initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: "0%", opacity: 1 }}
-                exit={{ y: "-100%", opacity: 0 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                initial={{ x: "-60%", opacity: 0 }}
+                animate={{ x: "0%", opacity: 1 }}
+                exit={{ x: "60%", opacity: 0 }}
+                transition={{ duration: 0.75, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
                 {ROTATING_PHRASES[phraseIndex]}
               </motion.span>
