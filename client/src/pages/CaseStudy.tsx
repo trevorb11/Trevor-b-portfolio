@@ -14,6 +14,9 @@ import {
   Trophy,
   BarChart3,
   Globe,
+  Phone,
+  Users,
+  Workflow,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -236,6 +239,128 @@ const caseStudies: CaseStudyData[] = [
     ],
     ctaTitle: "Building a Product or Platform?",
     ctaDescription: "I can help you design and build AI-powered tools that solve real industry problems.",
+  },
+
+  // ── Financial Services Automation ───────────────────────────────
+  {
+    slug: "financial-services-automation",
+    client: "Multi-lender business funding brokerage (40+ funder network)",
+    title: "Sales & Marketing Infrastructure for a Multi-Lender Business Funding Brokerage",
+    heroDescription:
+      "The full sales and marketing infrastructure for a high-volume alternative lending brokerage. From cold lead sourcing to funded outcome to post-close client support, every step was built into a single connected system spanning CRM architecture, multi-channel outreach, custom technology, and compliance.",
+    tagLabel: "Sales Infrastructure",
+    tagColor: "bg-indigo-500/15 text-indigo-400",
+    challenge:
+      "A high-volume alternative lending brokerage needed sales and marketing infrastructure that could match the right business with the right funding option at the right moment. With a 40+ funder network and small business clients (revenue $500K–$5M) seeking $100K–$500K in working capital, the operation had to source and enrich leads, move them through a multi-stage pipeline, submit deals to lenders, and support funded clients afterward, all without anything falling through the cracks across CRM, outreach, technology, and compliance.",
+    approach:
+      "I designed and built the full sales and marketing infrastructure end to end as Marketing & Operations Lead. The work spanned CRM architecture, multi-channel outreach, custom technology builds, and compliance, all oriented around a single objective: match the right business with the right funding option at the right moment. Every component was built to function as part of a single connected system rather than as isolated tools that happen to coexist.",
+    projects: [
+      {
+        title: "Lead Management Architecture",
+        tag: "CRM Stack",
+        tagColor: "bg-indigo-500/15 text-indigo-400",
+        description:
+          "A tightly integrated lead management stack spanning GoHighLevel (GHL), a custom-built deal lifecycle platform, and Salesforce. Each platform serves a distinct function across the sales cycle, with leads flowing from cold contact to funded outcome through a documented, visible, and auditable path across all three systems.",
+        features: [
+          "GoHighLevel as the operational CRM for inbound capture, outbound sequencing, pipeline tracking, and call dispositions",
+          "Custom React/TypeScript deal lifecycle platform managing application flow, document collection, underwriting, and offers",
+          "Salesforce as the reporting layer for rep performance, portfolio health, funding volume, and lender relationships",
+          "Tagged and scored contact routing based on source, engagement, and product fit",
+          "Structured deal-status visibility so reps see exactly where a deal stands without piecing it together from notes",
+          "Cross-platform sync ensuring every step is documented and auditable",
+        ],
+        icon: <Database className="h-6 w-6" />,
+      },
+      {
+        title: "Industry-Specific, Stage-Aware Nurture Sequences",
+        tag: "Multi-Channel Outreach",
+        tagColor: "bg-emerald-500/15 text-emerald-400",
+        description:
+          "Generic nurture sequences fail in business lending because a seasonal trucking company, a growing medical practice, and a restaurant chain are not the same contact. They have different cash flow patterns, different capital needs, and different reasons to say yes or no. Multi-channel email and SMS sequences are organized across two primary axes: industry vertical and business stage.",
+        features: [
+          "Trucking and transportation: fleet expansion, equipment financing, fuel and operating capital",
+          "Construction: project-based working capital, equipment, seasonal bridge financing",
+          "Healthcare: equipment upgrades, practice growth, payroll stabilization",
+          "Restaurants and retail: renovation, expansion, inventory, seasonal scaling",
+          "Early-stage growth companies: revenue-based credit lines and flexibility-forward messaging",
+          "Established operators with expensive existing positions: consolidation and refinancing framing",
+          "Hard-asset businesses: equipment financing with tangible ROI framing",
+          "Larger multi-location operators: SBA positioning and relationship-focused outreach",
+        ],
+        icon: <Mail className="h-6 w-6" />,
+      },
+      {
+        title: "Lead Enrichment and Personalization Pipeline",
+        tag: "Data & AI",
+        tagColor: "bg-amber-500/15 text-amber-400",
+        description:
+          "Raw lead data is not sufficient for a rep to have a credible first conversation. The enrichment layer normalizes, scores, and classifies every contact before it ever reaches a rep, then layers AI-assisted personalization on top for high-priority outbound segments. Reps spend less time researching before a call and more time in conversations with context already in hand.",
+        features: [
+          "Python-based processing pipeline for normalization, scoring, and classification",
+          "Lead evaluation based on funding history, business activity, product fit, and outreach priority",
+          "Direct GHL CSV import format with no manual reformatting required",
+          "Color-coded rep-facing prioritization views built in Excel",
+          "Browser-based AI personalization tool for company-level message customization at scale",
+          "5,000+ contact referral partner campaign delivered through the personalization tool",
+        ],
+        icon: <Brain className="h-6 w-6" />,
+      },
+      {
+        title: "Custom Dialer, SMS Middleware, and AI Sales Tooling",
+        tag: "Telephony & AI",
+        tagColor: "bg-rose-500/15 text-rose-400",
+        description:
+          "The sales team runs high-volume outbound cold calling. Every component supporting that process was custom-built to eliminate the friction points that erode rep productivity at scale, from answer-gap latency on dialers to compliance gaps on SMS to admin overhead on call notes.",
+        features: [
+          "Custom power dialer architected on a Twilio conference bridge to eliminate answer-gap latency",
+          "Compliant SMS middleware rebuilt to meet 10DLC/A2P carrier registration requirements",
+          "Native opt-in consent page and character-limit-aware copy standards",
+          "Full Twilio integration through GHL for warm follow-up and appointment confirmation",
+          "AI-generated sales notes after every call disposition to reduce rep admin time",
+          "AI research summaries on inbound and outbound leads so reps open every record with context",
+          "List-level AI lead research for higher-priority outbound segments",
+        ],
+        icon: <Phone className="h-6 w-6" />,
+      },
+      {
+        title: "Merchant Portal for Funded Clients",
+        tag: "Post-Funding Experience",
+        tagColor: "bg-violet-500/15 text-violet-400",
+        description:
+          "Most brokerage relationships end at funding. This engagement included scoping and prototyping a merchant-facing portal designed to extend that relationship, giving funded business owners a resource they can actually use once capital is in hand. The portal positions the brokerage as a long-term partner, not a one-time transaction.",
+        features: [
+          "Curated business operations resources organized by industry vertical",
+          "Vendor management, hiring, and operational efficiency guides and templates",
+          "Built-in financial monitoring for expense tracking and revenue trends",
+          "Payoff schedules, advance balance visibility, and forward-looking cash flow indicators",
+          "Business growth resources covering goal-setting, scaling, and additional capital decisions",
+          "Magic-link authentication with no username or password friction",
+          "Mobile-responsive interface designed for business owners who check things on their phone",
+        ],
+        icon: <Users className="h-6 w-6" />,
+      },
+      {
+        title: "End-to-End System Integration",
+        tag: "Connected Operations",
+        tagColor: "bg-sky-500/15 text-sky-400",
+        description:
+          "Every component above was built to function as part of a single connected system, not as isolated tools that happen to coexist. A lead can enter cold through a UCC-sourced list and run through enrichment, outreach, qualification, lender submission, funding, and post-close engagement without a rep ever re-entering information that already exists upstream.",
+        features: [
+          "Defined lifecycle path from cold UCC list to funded client using merchant portal resources",
+          "Python pipeline enrichment and scoring with direct GHL import",
+          "Tag-based routing into industry- and stage-specific nurture sequences",
+          "Outreach via the custom power dialer or compliant SMS middleware",
+          "Disposition capture feeding automated AI notes",
+          "Deal platform progression for lender submission and offer management",
+          "Salesforce sync at close for reporting and accountability",
+          "Post-funding access to merchant portal resources",
+        ],
+        icon: <Workflow className="h-6 w-6" />,
+      },
+    ],
+    ctaTitle: "Need Sales Infrastructure That Connects?",
+    ctaDescription:
+      "I help operators build connected sales and marketing systems where data and context flow at every handoff, so high-volume outbound, active deal flow, and post-funding support can run simultaneously without anything falling through the cracks.",
   },
 
   // ── Nonprofit Tools & Workflows ─────────────────────────────────
