@@ -27,7 +27,7 @@ const featuredProjects = [
     tag: "Automation",
     tagColor: "bg-indigo-500/10 text-indigo-400",
     icon: <Workflow className="h-6 w-6" />,
-    link: "",
+    link: "/case-study/financial-services-automation",
   },
   {
     title: "HomeBuilder Studio",
