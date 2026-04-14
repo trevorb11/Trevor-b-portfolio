@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Sparkles, Utensils, Building2, Workflow, ArrowUpRight } from "lucide-react";
+import { ArrowRight, Sparkles, Utensils, Building2, Workflow, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const featuredProjects = [
@@ -110,90 +110,110 @@ const FeaturedProjectsSection = () => {
 
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-              <div
-                className="relative overflow-hidden cursor-grab active:cursor-grabbing select-none"
-                onMouseDown={(e) => setDragStart(e.clientX)}
-                onMouseUp={(e) => {
-                  if (dragStart === null) return;
-                  const diff = dragStart - e.clientX;
-                  if (Math.abs(diff) > 50) {
-                    if (diff > 0) setActiveIndex((prev) => (prev + 1) % featuredProjects.length);
-                    else setActiveIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
-                  }
-                  setDragStart(null);
-                }}
-                onTouchStart={(e) => setDragStart(e.touches[0].clientX)}
-                onTouchEnd={(e) => {
-                  if (dragStart === null) return;
-                  const diff = dragStart - e.changedTouches[0].clientX;
-                  if (Math.abs(diff) > 50) {
-                    if (diff > 0) setActiveIndex((prev) => (prev + 1) % featuredProjects.length);
-                    else setActiveIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
-                  }
-                  setDragStart(null);
-                }}
-              >
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeIndex}
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -30 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <div className="premium-card group p-8 md:p-10 flex flex-col min-h-[340px] md:min-h-[380px]">
-                      <div className="flex items-start justify-between mb-6">
-                        <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                          {project.icon}
-                        </div>
-                        <span className={`text-xs px-3.5 py-1.5 rounded-full font-semibold uppercase tracking-wider ${project.tagColor}`}>
-                          {project.tag}
-                        </span>
-                      </div>
-                      <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4 group-hover:text-primary transition-colors">
-                        {project.title}
-                      </h3>
-                      <p className="text-muted-foreground text-base flex-1 mb-8 leading-relaxed">
-                        {project.description}
-                      </p>
-                      {project.link && (
-                        project.link.startsWith("/") ? (
-                          <Link
-                            href={project.link}
-                            className="inline-flex items-center text-primary/80 hover:text-primary font-medium text-sm transition-colors group/link"
-                          >
-                            View Project
-                            <ArrowUpRight className="h-3.5 w-3.5 ml-1 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                          </Link>
-                        ) : (
-                          <a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center text-primary/80 hover:text-primary font-medium text-sm transition-colors group/link"
-                          >
-                            View Project
-                            <ArrowUpRight className="h-3.5 w-3.5 ml-1 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                          </a>
-                        )
-                      )}
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
+              <div className="relative">
+                {/* Prev arrow */}
+                <button
+                  onClick={() => setActiveIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length)}
+                  className="absolute left-0 top-[45%] -translate-y-1/2 -translate-x-5 z-10 w-8 h-8 items-center justify-center rounded-full bg-white/[0.04] border border-white/[0.08] text-white/30 hover:text-white/60 hover:bg-white/[0.08] hover:border-white/20 transition-all duration-200 hidden lg:flex"
+                  aria-label="Previous project"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
 
-                <div className="flex items-center justify-center gap-2 mt-6">
-                  {featuredProjects.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setActiveIndex(i)}
-                      className={`h-1.5 rounded-full transition-all duration-500 ${
-                        i === activeIndex
-                          ? "w-6 bg-primary"
-                          : "w-1.5 bg-white/20 hover:bg-white/30"
-                      }`}
-                      aria-label={`Show project ${i + 1}`}
-                    />
-                  ))}
+                {/* Next arrow */}
+                <button
+                  onClick={() => setActiveIndex((prev) => (prev + 1) % featuredProjects.length)}
+                  className="absolute right-0 top-[45%] -translate-y-1/2 translate-x-5 z-10 w-8 h-8 items-center justify-center rounded-full bg-white/[0.04] border border-white/[0.08] text-white/30 hover:text-white/60 hover:bg-white/[0.08] hover:border-white/20 transition-all duration-200 hidden lg:flex"
+                  aria-label="Next project"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+
+                <div
+                  className="relative overflow-hidden cursor-grab active:cursor-grabbing select-none"
+                  onMouseDown={(e) => setDragStart(e.clientX)}
+                  onMouseUp={(e) => {
+                    if (dragStart === null) return;
+                    const diff = dragStart - e.clientX;
+                    if (Math.abs(diff) > 50) {
+                      if (diff > 0) setActiveIndex((prev) => (prev + 1) % featuredProjects.length);
+                      else setActiveIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
+                    }
+                    setDragStart(null);
+                  }}
+                  onTouchStart={(e) => setDragStart(e.touches[0].clientX)}
+                  onTouchEnd={(e) => {
+                    if (dragStart === null) return;
+                    const diff = dragStart - e.changedTouches[0].clientX;
+                    if (Math.abs(diff) > 50) {
+                      if (diff > 0) setActiveIndex((prev) => (prev + 1) % featuredProjects.length);
+                      else setActiveIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
+                    }
+                    setDragStart(null);
+                  }}
+                >
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeIndex}
+                      initial={{ opacity: 0, x: 30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -30 }}
+                      transition={{ duration: 0.4 }}
+                    >
+                      <div className="premium-card group p-8 md:p-10 flex flex-col min-h-[340px] md:min-h-[380px]">
+                        <div className="flex items-start justify-between mb-6">
+                          <div className="p-3 rounded-xl bg-primary/10 text-primary">
+                            {project.icon}
+                          </div>
+                          <span className={`text-xs px-3.5 py-1.5 rounded-full font-semibold uppercase tracking-wider ${project.tagColor}`}>
+                            {project.tag}
+                          </span>
+                        </div>
+                        <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4 group-hover:text-primary transition-colors">
+                          {project.title}
+                        </h3>
+                        <p className="text-muted-foreground text-base flex-1 mb-8 leading-relaxed">
+                          {project.description}
+                        </p>
+                        {project.link && (
+                          project.link.startsWith("/") ? (
+                            <Link
+                              href={project.link}
+                              className="inline-flex items-center text-primary/80 hover:text-primary font-medium text-sm transition-colors group/link"
+                            >
+                              View Project
+                              <ArrowUpRight className="h-3.5 w-3.5 ml-1 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                            </Link>
+                          ) : (
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center text-primary/80 hover:text-primary font-medium text-sm transition-colors group/link"
+                            >
+                              View Project
+                              <ArrowUpRight className="h-3.5 w-3.5 ml-1 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                            </a>
+                          )
+                        )}
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+
+                  <div className="flex items-center justify-center gap-2 mt-6">
+                    {featuredProjects.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setActiveIndex(i)}
+                        className={`h-1.5 rounded-full transition-all duration-500 ${
+                          i === activeIndex
+                            ? "w-6 bg-primary"
+                            : "w-1.5 bg-white/20 hover:bg-white/30"
+                        }`}
+                        aria-label={`Show project ${i + 1}`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
 
