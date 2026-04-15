@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Cpu, BrainCircuit, Zap, Sparkles, ChevronLeft, ChevronRight, Users, GitBranch, ArrowRight, ExternalLink } from "lucide-react";
+import { Cpu, BrainCircuit, Zap, Sparkles, ChevronLeft, ChevronRight, ChevronDown, Users, GitBranch, ArrowRight, ExternalLink } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { CmsContent } from "@shared/schema";
 import { Link } from "wouter";
@@ -69,7 +69,8 @@ const AIExpertiseSection = () => {
     <div key="council" className="py-12 md:py-16 px-4">
       <div className="container mx-auto max-w-4xl">
         <Link href="/council-of-ideas">
-          <div className="group relative overflow-hidden rounded-2xl p-8 md:p-12 cursor-pointer border border-primary/20 transition-all duration-500 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10"
+          <div
+            className="group relative overflow-hidden rounded-2xl p-8 md:p-12 cursor-pointer border border-primary/20 transition-all duration-500 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10"
             style={{ background: "linear-gradient(135deg, hsl(16 78% 55% / 0.12), hsl(28 83% 62% / 0.08))" }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] to-transparent pointer-events-none" />
@@ -128,12 +129,14 @@ const AIExpertiseSection = () => {
   return (
     <section id="ai-expertise" className="py-20 md:py-28 overflow-hidden">
       <div className="container px-4 md:px-6 mx-auto max-w-6xl">
+
+        {/* Section header */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
-          className="flex flex-col items-center text-center mb-14"
+          className="flex flex-col items-center text-center mb-10"
         >
           <motion.div variants={itemVariants} className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary mb-5">
             <BrainCircuit size={20} />
@@ -146,107 +149,118 @@ const AIExpertiseSection = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-0">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={containerVariants}
-            className="space-y-8"
-          >
-            <motion.div variants={itemVariants}>
-              <h3 className="text-xl font-bold mb-3 flex items-center text-foreground">
-                <Cpu className="mr-2.5 text-primary" size={18} />
-                AI as a Competitive Advantage
-              </h3>
-              <div className="text-muted-foreground leading-relaxed text-sm md:text-base space-y-3">
-                {(aiContent.advantage || "In today\u2019s rapidly evolving technological landscape, proficiency in AI isn\u2019t optional, it\u2019s essential. Learning how to leverage AI is the most valuable skill not just for the future, but today. Organizations that effectively leverage AI gain significant advantages in efficiency, capability, personalization, and market insights.\n\nIt\u2019s not hyperbole to say that learning how to use these tools is like equipping yourself with knowledge and creation superpowers.")
-                  .split("\n\n")
-                  .map((para, i) => <p key={i}>{para}</p>)}
+        {/* Intro text */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="max-w-2xl mx-auto text-center mb-10"
+        >
+          <motion.div variants={itemVariants} className="flex items-center justify-center gap-2 mb-3">
+            <Cpu className="text-primary" size={16} />
+            <span className="text-sm font-semibold uppercase tracking-widest text-primary/80">AI as a Competitive Advantage</span>
+          </motion.div>
+          <motion.div variants={itemVariants} className="text-muted-foreground leading-relaxed text-sm md:text-base space-y-3">
+            {(aiContent.advantage || "In today\u2019s rapidly evolving technological landscape, proficiency in AI isn\u2019t optional, it\u2019s essential. Learning how to leverage AI is the most valuable skill not just for the future, but today. Organizations that effectively leverage AI gain significant advantages in efficiency, capability, personalization, and market insights.\n\nIt\u2019s not hyperbole to say that learning how to use these tools is like equipping yourself with knowledge and creation superpowers.")
+              .split("\n\n")
+              .map((para, i) => <p key={i}>{para}</p>)}
+          </motion.div>
+        </motion.div>
+
+        {/* Carousel — centered, max-w-xl */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="max-w-xl mx-auto"
+        >
+          <div className="premium-card p-7 rounded-b-none border-b-0">
+            <motion.div variants={itemVariants} className="mb-5">
+              <div className="flex items-center gap-2 mb-1.5">
+                <Zap className="text-primary" size={16} />
+                <span className="text-lg font-bold">Novel Use Cases</span>
               </div>
+              <p className="text-muted-foreground text-xs leading-relaxed">
+                Everyone knows AI can draft emails or create images. Here are some more practical and novel applications.
+              </p>
             </motion.div>
 
-          </motion.div>
+            <div className="relative">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeApp}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex items-start gap-4 min-h-[100px]"
+                >
+                  <div className="p-2.5 rounded-lg bg-primary/10 flex-shrink-0 mt-0.5">
+                    {aiApplications[activeApp].icon}
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-base mb-1.5 text-foreground">
+                      {aiApplications[activeApp].title}
+                    </h4>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {aiApplications[activeApp].description}
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={containerVariants}
-          >
-            <div className="premium-card p-7">
-              <motion.div variants={itemVariants} className="mb-5">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <Zap className="text-primary" size={16} />
-                  <span className="text-lg font-bold">Novel Use Cases</span>
+              <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/[0.06]">
+                <div className="flex gap-1.5">
+                  {aiApplications.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveApp(i)}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        i === activeApp ? "w-5 bg-primary" : "w-1.5 bg-white/20 hover:bg-white/35"
+                      }`}
+                      aria-label={`Go to ${aiApplications[i].title}`}
+                    />
+                  ))}
                 </div>
-                <p className="text-muted-foreground text-xs leading-relaxed">
-                  Everyone knows AI can draft emails or create images. Here are some more practical and novel applications.
-                </p>
-              </motion.div>
-
-              <div className="relative">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeApp}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex items-start gap-4 min-h-[100px]"
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setActiveApp((prev) => (prev - 1 + aiApplications.length) % aiApplications.length)}
+                    className="w-8 h-8 flex items-center justify-center rounded-full bg-white/[0.04] border border-white/[0.08] text-white/50 hover:text-white/80 hover:bg-white/[0.08] transition-all duration-200"
+                    aria-label="Previous"
                   >
-                    <div className="p-2.5 rounded-lg bg-primary/10 flex-shrink-0 mt-0.5">
-                      {aiApplications[activeApp].icon}
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-base mb-1.5 text-foreground">
-                        {aiApplications[activeApp].title}
-                      </h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {aiApplications[activeApp].description}
-                      </p>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-
-                <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/[0.06]">
-                  <div className="flex gap-1.5">
-                    {aiApplications.map((_, i) => (
-                      <button
-                        key={i}
-                        onClick={() => setActiveApp(i)}
-                        className={`h-1.5 rounded-full transition-all duration-300 ${
-                          i === activeApp ? "w-5 bg-primary" : "w-1.5 bg-white/20 hover:bg-white/35"
-                        }`}
-                        aria-label={`Go to ${aiApplications[i].title}`}
-                      />
-                    ))}
-                  </div>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => setActiveApp((prev) => (prev - 1 + aiApplications.length) % aiApplications.length)}
-                      className="w-8 h-8 flex items-center justify-center rounded-full bg-white/[0.04] border border-white/[0.08] text-white/50 hover:text-white/80 hover:bg-white/[0.08] transition-all duration-200"
-                      aria-label="Previous"
-                    >
-                      <ChevronLeft className="h-4 w-4" />
-                    </button>
-                    <button
-                      onClick={() => setActiveApp((prev) => (prev + 1) % aiApplications.length)}
-                      className="w-8 h-8 flex items-center justify-center rounded-full bg-white/[0.04] border border-white/[0.08] text-white/50 hover:text-white/80 hover:bg-white/[0.08] transition-all duration-200"
-                      aria-label="Next"
-                    >
-                      <ChevronRight className="h-4 w-4" />
-                    </button>
-                  </div>
+                    <ChevronLeft className="h-4 w-4" />
+                  </button>
+                  <button
+                    onClick={() => setActiveApp((prev) => (prev + 1) % aiApplications.length)}
+                    className="w-8 h-8 flex items-center justify-center rounded-full bg-white/[0.04] border border-white/[0.08] text-white/50 hover:text-white/80 hover:bg-white/[0.08] transition-all duration-200"
+                    aria-label="Next"
+                  >
+                    <ChevronRight className="h-4 w-4" />
+                  </button>
                 </div>
               </div>
             </div>
-          </motion.div>
-        </div>
+          </div>
+
+          {/* Connector bar */}
+          <div className="max-w-xl mx-auto flex items-center justify-center py-2 bg-primary/[0.06] border border-t-0 border-white/[0.08] rounded-b-xl">
+            <motion.div
+              animate={{ y: [0, 4, 0] }}
+              transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+              className="flex items-center gap-1.5 text-primary/60 text-xs font-medium"
+            >
+              <ChevronDown className="h-3.5 w-3.5" />
+              <span>Live demo below</span>
+              <ChevronDown className="h-3.5 w-3.5" />
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
 
-      {/* Demo area — synced to carousel */}
-      <div className="mt-8 border-t border-white/[0.04]">
+      {/* Demo area — directly below carousel */}
+      <div className="border-t border-white/[0.06]">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeApp}
