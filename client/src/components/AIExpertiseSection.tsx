@@ -102,14 +102,9 @@ const AIExpertiseSection = () => {
                 AI as a Competitive Advantage
               </h3>
               <div className="text-muted-foreground leading-relaxed text-sm md:text-base space-y-3">
-                {aiContent.advantage ? (
-                  <p>{aiContent.advantage}</p>
-                ) : (
-                  <>
-                    <p>In today&apos;s rapidly evolving technological landscape, proficiency in AI isn&apos;t optional, it&apos;s essential. Learning how to leverage AI is the most valuable skill not just for the future, but today. Organizations that effectively leverage AI gain significant advantages in efficiency, capability, personalization, and market insights.</p>
-                    <p>It&apos;s not hyperbole to say that learning how to use these tools is like equipping yourself with knowledge and creation superpowers.</p>
-                  </>
-                )}
+                {(aiContent.advantage || "In today\u2019s rapidly evolving technological landscape, proficiency in AI isn\u2019t optional, it\u2019s essential. Learning how to leverage AI is the most valuable skill not just for the future, but today. Organizations that effectively leverage AI gain significant advantages in efficiency, capability, personalization, and market insights.\n\nIt\u2019s not hyperbole to say that learning how to use these tools is like equipping yourself with knowledge and creation superpowers.")
+                  .split("\n\n")
+                  .map((para, i) => <p key={i}>{para}</p>)}
               </div>
             </motion.div>
 
@@ -119,14 +114,9 @@ const AIExpertiseSection = () => {
                 Strategic AI Implementation
               </h3>
               <div className="text-muted-foreground leading-relaxed text-sm md:text-base space-y-3">
-                {aiContent.strategy ? (
-                  <p>{aiContent.strategy}</p>
-                ) : (
-                  <>
-                    <p>My approach focuses on implementation that aligns with your business objectives. Rather than adopting AI for its own sake, I help organizations identify specific areas where AI can solve real problems and drive measurable results. However on a base level, I implore everyone to familiarize yourself with these tools in whatever way possible.</p>
-                    <p>A few examples of how almost any business can utilize these tools:</p>
-                  </>
-                )}
+                {(aiContent.strategy || "My approach focuses on implementation that aligns with your business objectives. Rather than adopting AI for its own sake, I help organizations identify specific areas where AI can solve real problems and drive measurable results. However on a base level, I implore everyone to familiarize yourself with these tools in whatever way possible.\n\nA few examples of how almost any business can utilize these tools:")
+                  .split("\n\n")
+                  .map((para, i) => <p key={i}>{para}</p>)}
               </div>
             </motion.div>
           </motion.div>

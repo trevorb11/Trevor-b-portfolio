@@ -413,13 +413,13 @@ export class MemStorage implements IStorage {
       {
         section: "ai",
         key: "advantage",
-        value: "AI proficiency isn't optional anymore. It's a defining competitive edge. Learning to use these tools well is the single most valuable skill you can build right now, not for the future, for today. Organizations that adopt AI thoughtfully pull ahead on efficiency, capability, personalization, and the depth of insight they can extract from their own operations. These tools are a genuine set of knowledge and creation superpowers, and the gap between teams that use them fluently and teams that don't is widening every quarter.",
+        value: "In today's rapidly evolving technological landscape, proficiency in AI isn't optional, it's essential. Learning how to leverage AI is the most valuable skill not just for the future, but today. Organizations that effectively leverage AI gain significant advantages in efficiency, capability, personalization, and market insights.\n\nIt's not hyperbole to say that learning how to use these tools is like equipping yourself with knowledge and creation superpowers.",
         type: "richtext",
       },
       {
         section: "ai",
         key: "strategy",
-        value: "My approach focuses on implementation that actually maps to business objectives. Rather than adopting AI for its own sake, I help organizations pinpoint the specific places where AI can solve a real problem and produce measurable results. Underneath all of that, there's a more basic point: get hands-on with these tools in whatever way makes sense for your role. Familiarity comes before strategy. The teams with the best AI playbooks are almost always the ones whose people actually use AI every day.",
+        value: "My approach focuses on implementation that aligns with your business objectives. Rather than adopting AI for its own sake, I help organizations identify specific areas where AI can solve real problems and drive measurable results. However on a base level, I implore everyone to familiarize yourself with these tools in whatever way possible.\n\nA few examples of how almost any business can utilize these tools:",
         type: "richtext",
       },
       {
