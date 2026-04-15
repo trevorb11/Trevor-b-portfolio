@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Sparkles, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -83,13 +82,15 @@ const PersonalizationSection = () => {
               </a>
             </Button>
 
-            <Link
-              href="/workflow-demo"
+            <a
+              href="https://Tb-workflow-demo.replit.app"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center text-primary/80 hover:text-primary font-medium text-sm transition-colors group/link"
             >
               View AI personalization workflows
               <ArrowUpRight className="h-3.5 w-3.5 ml-1 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-            </Link>
+            </a>
           </motion.div>
         </motion.div>
       </div>
