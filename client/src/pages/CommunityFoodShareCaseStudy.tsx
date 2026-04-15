@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import {
   ArrowLeft, ArrowRight, Video, Megaphone, Palette,
-  Cpu, Users, Globe, ChevronRight, ExternalLink,
+  Cpu, Users, Globe, ChevronRight, ExternalLink, Trophy,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -15,6 +15,20 @@ const fadeUp = {
   }),
 };
 
+function YTEmbed({ id, title }: { id: string; title: string }) {
+  return (
+    <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-black/40 mt-5">
+      <iframe
+        src={`https://www.youtube.com/embed/${id}`}
+        title={title}
+        className="absolute inset-0 w-full h-full"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    </div>
+  );
+}
+
 const tags = [
   "Nonprofit",
   "Campaigns & Storytelling",
@@ -22,24 +36,6 @@ const tags = [
   "MarTech",
   "Personalization",
   "2021–Present",
-];
-
-const campaigns = [
-  {
-    name: "Making Spirits Bright",
-    body: "A narrative-driven holiday campaign centered on the voices of shoppers across Community Food Share's primary programs, including Feeding Families, Mobile Pantries, and Blue Spruce Neighbors. We interviewed shoppers from each program and turned those conversations into videos used throughout a broader campaign across digital ads, email, direct mail, and social media. Still photography ran alongside the video content to create a cohesive visual and emotional identity across channels. This campaign was about more than seasonal messaging. It was about helping supporters hear directly from the people and communities at the heart of the work.",
-    cta: null,
-  },
-  {
-    name: "Retail to the Rescue",
-    body: "A campaign built around Community Food Share's retail rescue program, where drivers collect food from local retail partners and bring it back to the warehouse to be distributed into the community. The campaign included interview-based video, interactive blog landing pages, and a follow-the-journey direct mail and email experience that allowed supporters to move step by step through the path rescued food takes from pickup to impact. The challenge here was turning logistics into narrative without losing the operational reality underneath it. The result was a campaign that made an often overlooked part of the food system feel visible, tangible, and worth following.",
-    cta: { label: "Explore the Retail to the Rescue journey", href: "https://communityfoodshare.org" },
-  },
-  {
-    name: "Fuel Their Summer",
-    body: "A summer hunger campaign focused on feeding children during school break, anchored by a series of videos featuring Ximena, an 11-year-old volunteer and shopper at Community Food Share. Ximena became the face of the campaign, helping ground the work in a real voice and lived perspective rather than generic seasonal messaging. The campaign also included a Fuel Their Summer corporate challenge leaderboard platform designed to increase engagement and participation. What made this campaign work was that it centered a real person, not just a theme. That gave the message warmth, specificity, and a stronger emotional center.",
-    cta: { label: "Watch the Fuel Their Summer video", href: "https://communityfoodshare.org" },
-  },
 ];
 
 const techStack = [
@@ -146,30 +142,105 @@ export default function CommunityFoodShareCaseStudy() {
               A major part of the work involved helping shape and execute campaigns across video, email, direct mail, social media, and digital experiences. The goal was never just to push information out. It was to build campaigns that felt connected, intentional, and rooted in real stories.
             </motion.p>
 
-            <div className="space-y-8">
-              {campaigns.map((c, i) => (
-                <motion.div
-                  key={c.name}
-                  custom={i}
-                  variants={fadeUp}
-                  className="premium-card p-6 md:p-8"
+            <div className="space-y-10">
+
+              {/* Making Spirits Bright */}
+              <motion.div custom={0} variants={fadeUp} className="premium-card p-6 md:p-8">
+                <h3 className="text-lg md:text-xl font-bold mb-4 text-foreground">Making Spirits Bright</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                  A narrative-driven holiday campaign centered on the voices of shoppers across Community Food Share's primary programs, including Feeding Families, Mobile Pantries, and Blue Spruce Neighbors. We interviewed shoppers from each program and turned those conversations into videos used throughout a broader campaign across digital ads, email, direct mail, and social media. Still photography ran alongside the video content to create a cohesive visual and emotional identity across channels. This campaign was about more than seasonal messaging. It was about helping supporters hear directly from the people and communities at the heart of the work.
+                </p>
+                <YTEmbed id="TUVw5t0TC18" title="Making Spirits Bright" />
+              </motion.div>
+
+              {/* Faces of Nourishment */}
+              <motion.div custom={1} variants={fadeUp} className="premium-card p-6 md:p-8">
+                <h3 className="text-lg md:text-xl font-bold mb-4 text-foreground">The Faces of Nourishment</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                  A video-first storytelling piece built to show the real breadth of people served by Community Food Share. Rather than a single profile, the project wove together multiple voices to reflect that food insecurity does not look one way, and that the community showing up to address it is just as diverse.
+                </p>
+                <YTEmbed id="r2qKdpcmv1I" title="The Faces of Nourishment" />
+              </motion.div>
+
+              {/* Retail to the Rescue */}
+              <motion.div custom={2} variants={fadeUp} className="premium-card p-6 md:p-8">
+                <h3 className="text-lg md:text-xl font-bold mb-4 text-foreground">Retail to the Rescue</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-5">
+                  A campaign built around Community Food Share's retail rescue program, where drivers collect food from local retail partners and bring it back to the warehouse to be distributed into the community. The campaign included interview-based video, interactive blog landing pages, and a follow-the-journey direct mail and email experience that allowed supporters to move step by step through the path rescued food takes from pickup to impact. The challenge here was turning logistics into narrative without losing the operational reality underneath it. The result was a campaign that made an often overlooked part of the food system feel visible, tangible, and worth following.
+                </p>
+                <a
+                  href="https://communityfoodshare.org/rr-ana/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
                 >
-                  <h3 className="text-lg md:text-xl font-bold mb-4 text-foreground">{c.name}</h3>
-                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-4">{c.body}</p>
-                  {c.cta && (
-                    <a
-                      href={c.cta.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-                    >
-                      {c.cta.label}
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
-                  )}
-                </motion.div>
-              ))}
+                  Explore the Retail to the Rescue journey
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </motion.div>
+
+              {/* Fuel Their Summer */}
+              <motion.div custom={3} variants={fadeUp} className="premium-card p-6 md:p-8">
+                <h3 className="text-lg md:text-xl font-bold mb-4 text-foreground">Fuel Their Summer</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                  A summer hunger campaign focused on feeding children during school break, anchored by a series of videos featuring Ximena, an 11-year-old volunteer and shopper at Community Food Share. Ximena became the face of the campaign, helping ground the work in a real voice and lived perspective rather than generic seasonal messaging. The campaign also included a Fuel Their Summer corporate challenge leaderboard platform designed to increase engagement and participation. What made this campaign work was that it centered a real person, not just a theme. That gave the message warmth, specificity, and a stronger emotional center.
+                </p>
+              </motion.div>
+
+              {/* Holiday Office Parody */}
+              <motion.div custom={4} variants={fadeUp} className="premium-card p-6 md:p-8">
+                <h3 className="text-lg md:text-xl font-bold mb-2 text-foreground">Holiday Creative: The Office Parody</h3>
+                <p className="text-xs text-muted-foreground/60 uppercase tracking-widest mb-4">Fun Creative</p>
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                  Not every piece of content needs to be earnest. This holiday video leaned into humor with an Office-style parody format, giving the organization a chance to show personality and connect with supporters in a lighter register. Strong mission-driven organizations still need to be human, and sometimes human means funny.
+                </p>
+                <YTEmbed id="Droc3hJ4cEA" title="CFS Holiday Office Parody" />
+              </motion.div>
+
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stakeholder Engagement */}
+      <section className="border-t border-white/[0.06] py-16 md:py-20">
+        <div className="container max-w-4xl mx-auto px-4 md:px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
+          >
+            <motion.div variants={fadeUp} className="flex items-center gap-3 mb-2">
+              <div className="p-2 rounded-lg bg-primary/10">
+                <Trophy className="h-4 w-4 text-primary" />
+              </div>
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">Stakeholder Engagement</span>
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-2xl md:text-3xl font-bold mb-6">
+              Turning corporate giving into a competitive experience
+            </motion.h2>
+
+            <motion.div variants={fadeUp} className="space-y-4 text-muted-foreground leading-relaxed mb-8">
+              <p>
+                Corporate partners represent a significant portion of Community Food Share's fundraising. To increase engagement and participation, a custom leaderboard platform was built around the corporate challenge campaign, turning what would otherwise be passive giving into something supporters could follow in real time.
+              </p>
+              <p>
+                The platform tracked donations, displayed team standings, and gave corporate participants a reason to promote the campaign internally, turning each company's giving into a team effort rather than a line item. The result was stronger participation, higher visibility, and a more invested group of corporate donors.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeUp}>
+              <a
+                href="https://msb-cc.communityfoodshare.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium hover:bg-primary/20 transition-colors"
+              >
+                View the Corporate Challenge Leaderboard
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -201,11 +272,11 @@ export default function CommunityFoodShareCaseStudy() {
                 This included leading a website redesign and helping develop sub-brands for key programs such as Feeding Families, Mobile Pantries, Blue Spruce Neighbors, and the 303 Sustainers program. The goal was not just visual differentiation. It was to help each program feel distinct, recognizable, and intentional while still fitting within a cohesive larger Community Food Share identity.
               </p>
               <p>
-                Strong brand architecture makes it easier for people to understand what an organization offers, how its programs relate to one another, and where they fit into the broader mission.
+                Strong brand architecture makes it easier for people to understand what an organization offers, how its programs relate to one another, and where they fit into the broader mission. This work extended to developing an External Partners Brand Guide, giving the broader partner ecosystem clear standards for how to represent the organization accurately across their own materials.
               </p>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <motion.div variants={fadeUp} className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
               {["Feeding Families", "Mobile Pantries", "Blue Spruce Neighbors", "303 Sustainers"].map(prog => (
                 <div
                   key={prog}
@@ -215,7 +286,7 @@ export default function CommunityFoodShareCaseStudy() {
                 </div>
               ))}
             </motion.div>
-            <motion.p variants={fadeUp} className="mt-4 text-xs text-muted-foreground/60 text-center">
+            <motion.p variants={fadeUp} className="text-xs text-muted-foreground/60 text-center">
               Program identity marks developed to help Community Food Share communicate more clearly across key service areas and supporter pathways.
             </motion.p>
           </motion.div>
@@ -298,7 +369,7 @@ export default function CommunityFoodShareCaseStudy() {
                 {
                   title: "Impact Wrapped",
                   body: "Impact Wrapped was built around the idea that donor communication can be more meaningful when it helps individuals clearly see the difference their support made. By creating personalized impact reports for individual donors, the project moved beyond generic gratitude and toward a more personal, story-driven expression of impact.",
-                  link: { label: "View Impact Wrapped", href: "https://iw-fy25.communityfoodshare.org/impact?data=VTJGc2RHVmtYMTlCV3duVWNraTN5MDFLY2JTQ2ZJNS8wNkpSWlR1eVlJZFZYdUE5clhjbk5nZUlxYUxlZUUyT2ZuMWVHRUNTRzdUUDlmcm1KMTVyYUtKMzJTNHRsQnNsMEw1amtQT1NzbDltTWRIOC9yVWpsSnZUWi9CQ1BySWFRSmRzSFlaa2hLL3JsUXJHV3pkQVVDTUxUb2l0NU5udGg1dEt6VUxzVTFJQ1VSZ3M5YnVETHFWdWlVejNWU0dlM09XRzFCS1owMmp6MHZRbHhSdDR6alQwUlMxcXN0aVBDS1B3V0RDSWMxWWJqRVUreFkzczR6YW5nMTc4eG9iUWtLbEpvTEZlWHE1YmhDSUNVYW5uL2FqTFhVWGxlY094alZpYURteHJTSnhHYUFVbFc5N3huaVMrN0thRE5QRGVzd2hHemhiWldiZndtb1NLYmpxMkdlVXRIUXJCWUdJN250NWRvUEsvYWE4PQ%3D%3D" },
+                  link: { label: "View a sample Impact Wrapped experience", href: "https://iw-fy25.communityfoodshare.org/impact?data=VTJGc2RHVmtYMTlCV3duVWNraTN5MDFLY2JTQ2ZJNS8wNkpSWlR1eVlJZFZYdUE5clhjbk5nZUlxYUxlZUUyT2ZuMWVHRUNTRzdUUDlmcm1KMTVyYUtKMzJTNHRsQnNsMEw1amtQT1NzbDltTWRIOC9yVWpsSnZUWi9CQ1BySWFRSmRzSFlaa2hLL3JsUXJHV3pkQVVDTUxUb2l0NU5udGg1dEt6VUxzVTFJQ1VSZ3M5YnVETHFWdWlVejNWU0dlM09XRzFCS1owMmp6MHZRbHhSdDR6alQwUlMxcXN0aVBDS1B3V0RDSWMxWWJqRVUreFkzczR6YW5nMTc4eG9iUWtLbEpvTEZlWHE1YmhDSUNVYW5uL2FqTFhVWGxlY094alZpYURteHJTSnhHYUFVbFc5N3huaVMrN0thRE5QRGVzd2hHemhiWldiZndtb1NLYmpxMkdlVXRIUXJCWUdJN250NWRvUEsvYWE4PQ%3D%3D" },
                 },
                 {
                   title: "Audience-Based Lead Nurturing",
