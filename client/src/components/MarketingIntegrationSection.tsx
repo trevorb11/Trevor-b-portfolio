@@ -111,7 +111,7 @@ const MarketingIntegrationSection = () => {
                 muted
                 playsInline
                 preload="metadata"
-                className="w-[calc(100%+4px)] -ml-[2px] -mb-[5px] h-auto block"
+                className="w-full h-auto block scale-[1.06] origin-center"
               >
                 <source src="/flow-animation.mp4" type="video/mp4" />
               </video>
