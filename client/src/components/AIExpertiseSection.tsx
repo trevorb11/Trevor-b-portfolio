@@ -40,24 +40,29 @@ const AIExpertiseSection = () => {
 
   const aiApplications = [
     {
-      title: "Adaptive systems",
-      description: "Workflows that respond to context, not just rules.",
-      icon: <Layers className="h-5 w-5 text-primary" />,
-    },
-    {
-      title: "Relevant communication",
-      description: "Messaging shaped by data, timing, and intent.",
+      title: "Personalized outreach",
+      description: "Turn a blank page into polished emails, proposals, and follow-ups in a fraction of the time.",
       icon: <MessageSquare className="h-5 w-5 text-primary" />,
     },
     {
-      title: "Smarter decisions",
-      description: "Less friction between information and action.",
+      title: "Meeting and call summaries",
+      description: "Pull clear takeaways, action items, and sentiment from long recordings and transcripts.",
+      icon: <Layers className="h-5 w-5 text-primary" />,
+    },
+    {
+      title: "Internal knowledge assistants",
+      description: "Train a chatbot on your SOPs, documentation, and past projects so your team gets answers instantly.",
+      icon: <Code className="h-5 w-5 text-primary" />,
+    },
+    {
+      title: "Research on demand",
+      description: "Automate background on prospects, competitors, and market trends before the next conversation.",
       icon: <LineChart className="h-5 w-5 text-primary" />,
     },
     {
-      title: "Connective tissue",
-      description: "Platforms that finally speak the same language.",
-      icon: <Code className="h-5 w-5 text-primary" />,
+      title: "First-draft creative",
+      description: "Generate copy, images, and video your team refines rather than builds from scratch.",
+      icon: <Sparkles className="h-5 w-5 text-primary" />,
     },
   ];
 
@@ -94,22 +99,22 @@ const AIExpertiseSection = () => {
             <motion.div variants={itemVariants}>
               <h3 className="text-xl font-bold mb-3 flex items-center text-foreground">
                 <Cpu className="mr-2.5 text-primary" size={18} />
-                Connective tissue, not another tool
+                AI as a Competitive Advantage
               </h3>
               <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
                 {aiContent.advantage ||
-                  "AI isn\u2019t just another item in the stack. More and more, it\u2019s becoming the connective tissue between systems, information, and people \u2014 interpreting data, personalizing communication, and reducing the friction between platforms that were never built to speak naturally to each other."}
+                  "AI proficiency isn\u2019t optional anymore. It\u2019s a defining competitive edge. Learning to use these tools well is the single most valuable skill you can build right now, not for the future, for today. Organizations that adopt AI thoughtfully pull ahead on efficiency, capability, personalization, and the depth of insight they can extract from their own operations. These tools are a genuine set of knowledge and creation superpowers, and the gap between teams that use them fluently and teams that don\u2019t is widening every quarter."}
               </p>
             </motion.div>
 
             <motion.div variants={itemVariants}>
               <h3 className="text-xl font-bold mb-3 flex items-center text-foreground">
                 <TrendingUp className="mr-2.5 text-primary" size={18} />
-                Real utility over hype
+                Strategic AI Implementation
               </h3>
               <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
                 {aiContent.strategy ||
-                  "I\u2019m most interested in applying AI where it creates real utility: making systems more adaptive, workflows more intelligent, and communication more relevant \u2014 without forcing hype into places it doesn\u2019t belong."}
+                  "My approach focuses on implementation that actually maps to business objectives. Rather than adopting AI for its own sake, I help organizations pinpoint the specific places where AI can solve a real problem and produce measurable results. Underneath all of that, there\u2019s a more basic point: get hands-on with these tools in whatever way makes sense for your role. Familiarity comes before strategy. The teams with the best AI playbooks are almost always the ones whose people actually use AI every day."}
               </p>
             </motion.div>
           </motion.div>

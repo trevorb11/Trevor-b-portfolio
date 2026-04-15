@@ -51,7 +51,7 @@ const MarketingIntegrationSection = () => {
 
   return (
     <>
-      {/* System Integration Expertise with Video */}
+      {/* Making Things Flow with Video */}
       <section id="integrations" className="py-20 md:py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-card/15 to-transparent pointer-events-none" />
         <div className="container px-4 md:px-6 mx-auto relative">
@@ -69,7 +69,7 @@ const MarketingIntegrationSection = () => {
                     <LinkIcon size={20} />
                   </div>
                   <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
-                    Turning disconnected tools into working systems
+                    Making Things Flow
                   </h2>
                   <div className="space-y-4 text-muted-foreground text-sm md:text-base leading-relaxed">
                     <p>

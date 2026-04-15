@@ -39,21 +39,22 @@ const HumanitySection = () => {
                 Keeping the Human in the Machine
               </h2>
               <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-4">
-                As AI and automation make more communication faster, they also
-                make sameness easier. More output does not automatically create
-                more connection.
+                As AI and automation make the act of creation faster, they also
+                make sameness easier. Because of that, the value of authenticity
+                and human connection is skyrocketing.
               </p>
               <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-4">
                 The people and organizations that use these tools best will be
-                the ones who know how to keep the humanity in everything they do
-                &mdash; the ones who bring judgment, voice, warmth, and intention
-                into what they share with the world.
+                the ones who know how to keep the humanity in everything they
+                do. At its best, AI democratizes access to knowledge and
+                methods of creative expression.
               </p>
               <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-                The best technology should not replace humanity.{" "}
                 <span className="text-foreground font-medium">
-                  It should make more room for it.
-                </span>
+                  However, nothing beats real human connection.
+                </span>{" "}
+                The video included here is from a campaign during my time at
+                Community Food Share that makes that point abundantly clear.
               </p>
             </motion.div>
 

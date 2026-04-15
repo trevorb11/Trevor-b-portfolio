@@ -413,13 +413,13 @@ export class MemStorage implements IStorage {
       {
         section: "ai",
         key: "advantage",
-        value: "In today's rapidly evolving digital landscape, proficiency in AI isn't optional, it's essential. I view AI as the most valuable skill not just for the future, but starting today. Organizations that effectively leverage AI technologies gain significant advantages in efficiency, personalization, and market insights.",
+        value: "AI proficiency isn't optional anymore. It's a defining competitive edge. Learning to use these tools well is the single most valuable skill you can build right now, not for the future, for today. Organizations that adopt AI thoughtfully pull ahead on efficiency, capability, personalization, and the depth of insight they can extract from their own operations. These tools are a genuine set of knowledge and creation superpowers, and the gap between teams that use them fluently and teams that don't is widening every quarter.",
         type: "richtext",
       },
       {
         section: "ai",
         key: "strategy",
-        value: "My approach focuses on strategic AI implementation that aligns with your business objectives. Rather than adopting AI for its own sake, I help organizations identify specific areas where AI can solve real problems and drive measurable results, from customer experience to operational efficiency.",
+        value: "My approach focuses on implementation that actually maps to business objectives. Rather than adopting AI for its own sake, I help organizations pinpoint the specific places where AI can solve a real problem and produce measurable results. Underneath all of that, there's a more basic point: get hands-on with these tools in whatever way makes sense for your role. Familiarity comes before strategy. The teams with the best AI playbooks are almost always the ones whose people actually use AI every day.",
         type: "richtext",
       },
       {

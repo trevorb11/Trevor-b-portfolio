@@ -7,7 +7,7 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-center">
           {/* Headshot */}
           <motion.div
-            className="md:col-span-4 flex justify-center"
+            className="order-2 md:order-1 md:col-span-4 flex justify-center"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -27,7 +27,7 @@ const AboutSection = () => {
 
           {/* Bio */}
           <motion.div
-            className="md:col-span-8"
+            className="order-1 md:order-2 md:col-span-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

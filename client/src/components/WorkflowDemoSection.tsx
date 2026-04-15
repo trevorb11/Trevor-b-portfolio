@@ -1,4 +1,3 @@
-import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Bot, ArrowRight, GitBranch, MessageSquare } from "lucide-react";
@@ -48,10 +47,14 @@ const WorkflowDemoSection = () => {
                   asChild
                   className="group rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-lg shadow-primary/20 px-6 h-10"
                 >
-                  <Link href="/workflow-demo">
+                  <a
+                    href="https://Tb-workflow-demo.replit.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Try the Demo
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </div>
