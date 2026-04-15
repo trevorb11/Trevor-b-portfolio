@@ -1,11 +1,12 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Cpu, BrainCircuit, TrendingUp, Zap, Layers, Code, LineChart, MessageSquare, ArrowRight, Sparkles } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Cpu, BrainCircuit, TrendingUp, Zap, Layers, Code, LineChart, MessageSquare, ArrowRight, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { CmsContent } from "@shared/schema";
 import { Link } from "wouter";
 
 const AIExpertiseSection = () => {
+  const [activeApp, setActiveApp] = useState(0);
   const { data: cmsContents } = useQuery<CmsContent[]>({
     queryKey: ["/api/cms"],
   });
@@ -133,20 +134,60 @@ const AIExpertiseSection = () => {
                 Practical Applications
               </motion.h3>
 
-              <div className="space-y-5">
-                {aiApplications.map((app, index) => (
+              <div className="relative">
+                <AnimatePresence mode="wait">
                   <motion.div
-                    key={index}
-                    variants={itemVariants}
-                    className="flex items-start gap-4 border-b border-white/[0.04] pb-5 last:border-none last:pb-0"
+                    key={activeApp}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex items-start gap-4 min-h-[80px]"
                   >
-                    <div className="p-2 rounded-lg bg-primary/10 flex-shrink-0">{app.icon}</div>
+                    <div className="p-2.5 rounded-lg bg-primary/10 flex-shrink-0 mt-0.5">
+                      {aiApplications[activeApp].icon}
+                    </div>
                     <div>
-                      <h4 className="font-semibold text-base mb-0.5 text-foreground">{app.title}</h4>
-                      <p className="text-muted-foreground text-sm">{app.description}</p>
+                      <h4 className="font-semibold text-base mb-1.5 text-foreground">
+                        {aiApplications[activeApp].title}
+                      </h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {aiApplications[activeApp].description}
+                      </p>
                     </div>
                   </motion.div>
-                ))}
+                </AnimatePresence>
+
+                <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/[0.06]">
+                  <div className="flex gap-1.5">
+                    {aiApplications.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setActiveApp(i)}
+                        className={`h-1.5 rounded-full transition-all duration-300 ${
+                          i === activeApp ? "w-5 bg-primary" : "w-1.5 bg-white/20 hover:bg-white/35"
+                        }`}
+                        aria-label={`Go to ${aiApplications[i].title}`}
+                      />
+                    ))}
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setActiveApp((prev) => (prev - 1 + aiApplications.length) % aiApplications.length)}
+                      className="w-8 h-8 flex items-center justify-center rounded-full bg-white/[0.04] border border-white/[0.08] text-white/50 hover:text-white/80 hover:bg-white/[0.08] transition-all duration-200"
+                      aria-label="Previous"
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                    </button>
+                    <button
+                      onClick={() => setActiveApp((prev) => (prev + 1) % aiApplications.length)}
+                      className="w-8 h-8 flex items-center justify-center rounded-full bg-white/[0.04] border border-white/[0.08] text-white/50 hover:text-white/80 hover:bg-white/[0.08] transition-all duration-200"
+                      aria-label="Next"
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
