@@ -101,10 +101,16 @@ const AIExpertiseSection = () => {
                 <Cpu className="mr-2.5 text-primary" size={18} />
                 AI as a Competitive Advantage
               </h3>
-              <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                {aiContent.advantage ||
-                  "AI proficiency isn\u2019t optional anymore. It\u2019s a defining competitive edge. Learning to use these tools well is the single most valuable skill you can build right now, not for the future, for today. Organizations that adopt AI thoughtfully pull ahead on efficiency, capability, personalization, and the depth of insight they can extract from their own operations. These tools are a genuine set of knowledge and creation superpowers, and the gap between teams that use them fluently and teams that don\u2019t is widening every quarter."}
-              </p>
+              <div className="text-muted-foreground leading-relaxed text-sm md:text-base space-y-3">
+                {aiContent.advantage ? (
+                  <p>{aiContent.advantage}</p>
+                ) : (
+                  <>
+                    <p>In today&apos;s rapidly evolving technological landscape, proficiency in AI isn&apos;t optional, it&apos;s essential. Learning how to leverage AI is the most valuable skill not just for the future, but today. Organizations that effectively leverage AI gain significant advantages in efficiency, capability, personalization, and market insights.</p>
+                    <p>It&apos;s not hyperbole to say that learning how to use these tools is like equipping yourself with knowledge and creation superpowers.</p>
+                  </>
+                )}
+              </div>
             </motion.div>
 
             <motion.div variants={itemVariants}>
@@ -112,10 +118,16 @@ const AIExpertiseSection = () => {
                 <TrendingUp className="mr-2.5 text-primary" size={18} />
                 Strategic AI Implementation
               </h3>
-              <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                {aiContent.strategy ||
-                  "My approach focuses on implementation that actually maps to business objectives. Rather than adopting AI for its own sake, I help organizations pinpoint the specific places where AI can solve a real problem and produce measurable results. Underneath all of that, there\u2019s a more basic point: get hands-on with these tools in whatever way makes sense for your role. Familiarity comes before strategy. The teams with the best AI playbooks are almost always the ones whose people actually use AI every day."}
-              </p>
+              <div className="text-muted-foreground leading-relaxed text-sm md:text-base space-y-3">
+                {aiContent.strategy ? (
+                  <p>{aiContent.strategy}</p>
+                ) : (
+                  <>
+                    <p>My approach focuses on implementation that aligns with your business objectives. Rather than adopting AI for its own sake, I help organizations identify specific areas where AI can solve real problems and drive measurable results. However on a base level, I implore everyone to familiarize yourself with these tools in whatever way possible.</p>
+                    <p>A few examples of how almost any business can utilize these tools:</p>
+                  </>
+                )}
+              </div>
             </motion.div>
           </motion.div>
 
