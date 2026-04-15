@@ -54,16 +54,6 @@ const AboutSection = () => {
                 through technology, storytelling, and smarter systems.
               </p>
             </div>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {["Strategy", "Systems", "Story"].map((pill) => (
-                <span
-                  key={pill}
-                  className="inline-flex items-center px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.04] text-xs font-semibold uppercase tracking-wider text-foreground/80"
-                >
-                  {pill}
-                </span>
-              ))}
-            </div>
           </motion.div>
         </div>
       </div>
