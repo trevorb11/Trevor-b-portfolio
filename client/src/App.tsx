@@ -8,6 +8,7 @@ import Home from "@/pages/Home";
 import ProjectDetail from "@/pages/ProjectDetail";
 import CaseStudy from "@/pages/CaseStudy";
 import BuilderStudioCaseStudy from "@/pages/BuilderStudioCaseStudy";
+import CommunityFoodShareCaseStudy from "@/pages/CommunityFoodShareCaseStudy";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import Admin from "@/pages/Admin";
@@ -65,6 +66,7 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/projects/:id" component={ProjectDetail} />
         <Route path="/case-study/home-builder-studio" component={BuilderStudioCaseStudy} />
+        <Route path="/case-study/community-food-share" component={CommunityFoodShareCaseStudy} />
         <Route path="/case-study/:id" component={CaseStudy} />
         <Route path="/blog" component={Blog} />
         <Route path="/blog/:slug" component={BlogPost} />
