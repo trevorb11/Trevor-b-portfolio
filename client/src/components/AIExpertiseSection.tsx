@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Cpu, BrainCircuit, TrendingUp, Zap, Sparkles, ChevronLeft, ChevronRight, Users, GitBranch, ArrowRight, ExternalLink, Bot, MessageSquare } from "lucide-react";
+import { Cpu, BrainCircuit, Zap, Sparkles, ChevronLeft, ChevronRight, Users, GitBranch, ArrowRight, ExternalLink } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { CmsContent } from "@shared/schema";
 import { Link } from "wouter";
@@ -166,17 +166,6 @@ const AIExpertiseSection = () => {
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants}>
-              <h3 className="text-xl font-bold mb-3 flex items-center text-foreground">
-                <TrendingUp className="mr-2.5 text-primary" size={18} />
-                Strategic AI Implementation
-              </h3>
-              <div className="text-muted-foreground leading-relaxed text-sm md:text-base space-y-3">
-                {(aiContent.strategy || "My approach focuses on implementation that aligns with your business objectives. Rather than adopting AI for its own sake, I help organizations identify specific areas where AI can solve real problems and drive measurable results. However on a base level, I implore everyone to familiarize yourself with these tools in whatever way possible.")
-                  .split("\n\n")
-                  .map((para, i) => <p key={i}>{para}</p>)}
-              </div>
-            </motion.div>
           </motion.div>
 
           <motion.div
