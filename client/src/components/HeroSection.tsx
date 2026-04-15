@@ -41,7 +41,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden flex items-center justify-center text-center">
+    <section className="relative min-h-screen overflow-hidden flex items-start sm:items-center justify-center text-center">
       {/* Background image - tiny placeholder blur-up, then swap to full WebP */}
       <div
         className={`absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 transition-opacity duration-700 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
@@ -61,7 +61,7 @@ const HeroSection = () => {
       <div className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-accent/10 blur-[100px] pointer-events-none" />
 
       {/* Foreground content */}
-      <div className="relative z-10 px-4 max-w-5xl">
+      <div className="relative z-10 px-4 max-w-5xl pt-28 sm:pt-0">
         {/* Eyebrow tag */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
