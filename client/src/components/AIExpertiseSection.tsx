@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Cpu, BrainCircuit, TrendingUp, Zap, Layers, Code, LineChart, MessageSquare, ArrowRight, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import { Cpu, BrainCircuit, TrendingUp, Zap, Layers, MessageSquare, ArrowRight, Sparkles, ChevronLeft, ChevronRight, ExternalLink, Users, GitBranch } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { CmsContent } from "@shared/schema";
 import { Link } from "wouter";
@@ -41,29 +41,54 @@ const AIExpertiseSection = () => {
 
   const aiApplications = [
     {
-      title: "Personalized outreach",
-      description: "Turn a blank page into polished emails, proposals, and follow-ups in a fraction of the time.",
-      icon: <MessageSquare className="h-5 w-5 text-primary" />,
+      title: "Personalization at scale",
+      description: "Giving every person a unique, data-driven experience used to require a massive team. Now it's a design and data problem. AI makes individual feel scalable.",
+      icon: <Users className="h-5 w-5 text-primary" />,
+      demo: {
+        label: "See it live: Impact Wrapped",
+        href: "https://iw-fy25.communityfoodshare.org/impact?data=VTJGc2RHVmtYMTlCV3duVWNraTN5MDFLY2JTQ2ZJNS8wNkpSWlR1eVlJZFZYdUE5clhjbk5nZUlxYUxlZUUyT2ZuMWVHRUNTRzdUUDlmcm1KMTVyYUtKMzJTNHRsQnNsMEw1amtQT1NzbDltTWRIOC9yVWpsSnZUWi9CQ1BySWFRSmRzSFlaa2hLL3JsUXJHV3pkQVVDTUxUb2l0NU5udGg1dEt6VUxzVTFJQ1VSZ3M5YnVETHFWdWlVejNWU0dlM09XRzFCS1owMmp6MHZRbHhSdDR6alQwUlMxcXN0aVBDS1B3V0RDSWMxWWJqRVUreFkzczR6YW5nMTc4eG9iUWtLbEpvTEZlWHE1YmhDSUNVYW5uL2FqTFhVWGxlY094alZpYURteHJTSnhHYUFVbFc5N3huaVMrN0thRE5QRGVzd2hHemhiWldiZndtb1NLYmpxMkdlVXRIUXJCWUdJN250NWRvUEsvYWE4PQ%3D%3D",
+        external: true,
+      },
     },
     {
-      title: "Meeting and call summaries",
-      description: "Pull clear takeaways, action items, and sentiment from long recordings and transcripts.",
-      icon: <Layers className="h-5 w-5 text-primary" />,
+      title: "Hyper custom conversion channels",
+      description: "AI-powered conversations that branch across 96+ decision paths, qualifying each lead with language tailored to their responses. Not a generic chatbot — a structured funnel that adapts.",
+      icon: <GitBranch className="h-5 w-5 text-primary" />,
+      demo: {
+        label: "Try the Interactive Workflow Demo",
+        href: "/workflow-demo",
+        external: false,
+      },
     },
     {
-      title: "Internal knowledge assistants",
-      description: "Train a chatbot on your SOPs, documentation, and past projects so your team gets answers instantly.",
-      icon: <Code className="h-5 w-5 text-primary" />,
+      title: "AI as a Thought Partner",
+      description: "Pressure-test your strategy by assembling a council of distinct AI personas — each bringing different perspectives, challenging assumptions, and surfacing angles you hadn't considered.",
+      icon: <BrainCircuit className="h-5 w-5 text-primary" />,
+      demo: {
+        label: "Try the Council of Ideas",
+        href: "/council-of-ideas",
+        external: false,
+      },
     },
     {
-      title: "Research on demand",
-      description: "Automate background on prospects, competitors, and market trends before the next conversation.",
-      icon: <LineChart className="h-5 w-5 text-primary" />,
+      title: "AI as an orchestrator",
+      description: "AI doesn't just answer questions — it can manage sequences, trigger workflows, sync data across platforms, and generate reports without you touching each system individually.",
+      icon: <Cpu className="h-5 w-5 text-primary" />,
+      demo: {
+        label: "Watch it run live ↓",
+        href: "#live-terminal",
+        external: false,
+      },
     },
     {
-      title: "First-draft creative",
-      description: "Generate copy, images, and video your team refines rather than builds from scratch.",
+      title: "AI for Fun Creative",
+      description: "AI as the engine behind engaging experiences. Generate branded trivia, creative campaigns, and interactive content that feels handcrafted but scales instantly.",
       icon: <Sparkles className="h-5 w-5 text-primary" />,
+      demo: {
+        label: "Try the AI Trivia Generator",
+        href: "https://trivia-forge.replit.app/",
+        external: true,
+      },
     },
   ];
 
@@ -115,7 +140,7 @@ const AIExpertiseSection = () => {
                 Strategic AI Implementation
               </h3>
               <div className="text-muted-foreground leading-relaxed text-sm md:text-base space-y-3">
-                {(aiContent.strategy || "My approach focuses on implementation that aligns with your business objectives. Rather than adopting AI for its own sake, I help organizations identify specific areas where AI can solve real problems and drive measurable results. However on a base level, I implore everyone to familiarize yourself with these tools in whatever way possible.\n\nA few examples of how almost any business can utilize these tools:")
+                {(aiContent.strategy || "My approach focuses on implementation that aligns with your business objectives. Rather than adopting AI for its own sake, I help organizations identify specific areas where AI can solve real problems and drive measurable results. However on a base level, I implore everyone to familiarize yourself with these tools in whatever way possible.")
                   .split("\n\n")
                   .map((para, i) => <p key={i}>{para}</p>)}
               </div>
@@ -129,10 +154,15 @@ const AIExpertiseSection = () => {
             variants={containerVariants}
           >
             <div className="premium-card p-7">
-              <motion.h3 variants={itemVariants} className="text-lg font-bold mb-6 flex items-center">
-                <Zap className="mr-2 text-primary" size={18} />
-                Practical Applications
-              </motion.h3>
+              <motion.div variants={itemVariants} className="mb-5">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Zap className="text-primary" size={16} />
+                  <span className="text-lg font-bold">Novel Use Cases</span>
+                </div>
+                <p className="text-muted-foreground text-xs leading-relaxed">
+                  Everyone knows AI can draft emails or create images. Here are some more practical and novel applications.
+                </p>
+              </motion.div>
 
               <div className="relative">
                 <AnimatePresence mode="wait">
@@ -142,19 +172,47 @@ const AIExpertiseSection = () => {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.3 }}
-                    className="flex items-start gap-4 min-h-[80px]"
+                    className="flex flex-col gap-4 min-h-[140px]"
                   >
-                    <div className="p-2.5 rounded-lg bg-primary/10 flex-shrink-0 mt-0.5">
-                      {aiApplications[activeApp].icon}
+                    <div className="flex items-start gap-4">
+                      <div className="p-2.5 rounded-lg bg-primary/10 flex-shrink-0 mt-0.5">
+                        {aiApplications[activeApp].icon}
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-base mb-1.5 text-foreground">
+                          {aiApplications[activeApp].title}
+                        </h4>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                          {aiApplications[activeApp].description}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-base mb-1.5 text-foreground">
-                        {aiApplications[activeApp].title}
-                      </h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {aiApplications[activeApp].description}
-                      </p>
-                    </div>
+
+                    {aiApplications[activeApp].demo && (() => {
+                      const { href, label, external } = aiApplications[activeApp].demo;
+                      const cls = "inline-flex items-center gap-2 text-xs font-medium text-primary/80 hover:text-primary border border-primary/20 hover:border-primary/40 bg-primary/[0.06] hover:bg-primary/[0.10] rounded-lg px-3.5 py-2.5 transition-all duration-200 self-start";
+                      if (external) {
+                        return (
+                          <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
+                            {label} <ExternalLink className="h-3 w-3" />
+                          </a>
+                        );
+                      }
+                      if (href.startsWith("#")) {
+                        return (
+                          <a href={href} onClick={(e) => { e.preventDefault(); document.querySelector(href)?.scrollIntoView({ behavior: "smooth" }); }} className={cls}>
+                            {label} <ArrowRight className="h-3 w-3" />
+                          </a>
+                        );
+                      }
+                      return (
+                        <Link href={href}>
+                          <span className={cls + " cursor-pointer"}>
+                            {label} <ArrowRight className="h-3 w-3" />
+                          </span>
+                        </Link>
+                      );
+                    })()}
                   </motion.div>
                 </AnimatePresence>
 
@@ -192,41 +250,6 @@ const AIExpertiseSection = () => {
             </div>
           </motion.div>
         </div>
-
-        {/* Council of Ideas Callout */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-        >
-          <motion.div variants={itemVariants}>
-            <Link href="/council-of-ideas">
-              <div className="group relative overflow-hidden rounded-2xl p-6 md:p-8 cursor-pointer border border-primary/20 transition-all duration-500 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10"
-                style={{ background: "linear-gradient(135deg, hsl(16 78% 55% / 0.15), hsl(28 83% 62% / 0.10))" }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.06] to-transparent pointer-events-none" />
-                <div className="relative flex items-start justify-between gap-4">
-                  <div className="flex items-start gap-4">
-                    <div className="p-2.5 rounded-xl bg-[hsl(203,61%,20%,0.5)] text-primary flex-shrink-0">
-                      <Sparkles size={18} />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold mb-1.5 text-foreground group-hover:text-[hsl(203,61%,30%)] transition-colors">
-                        The Council of Ideas
-                      </h3>
-                      <p className="text-foreground/70 text-sm leading-relaxed">
-                        What happens when you assemble history's sharpest minds to pressure-test a real decision?
-                        A meta demonstration of using AI councils for structured perspective and clearer thinking.
-                      </p>
-                    </div>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-foreground/40 group-hover:text-[hsl(203,61%,30%)] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1.5" />
-                </div>
-              </div>
-            </Link>
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   );

@@ -419,7 +419,7 @@ export class MemStorage implements IStorage {
       {
         section: "ai",
         key: "strategy",
-        value: "My approach focuses on implementation that aligns with your business objectives. Rather than adopting AI for its own sake, I help organizations identify specific areas where AI can solve real problems and drive measurable results. However on a base level, I implore everyone to familiarize yourself with these tools in whatever way possible.\n\nA few examples of how almost any business can utilize these tools:",
+        value: "My approach focuses on implementation that aligns with your business objectives. Rather than adopting AI for its own sake, I help organizations identify specific areas where AI can solve real problems and drive measurable results. However on a base level, I implore everyone to familiarize yourself with these tools in whatever way possible.",
         type: "richtext",
       },
       {

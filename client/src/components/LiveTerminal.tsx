@@ -140,7 +140,7 @@ const LiveTerminal = () => {
   }, [isInView, currentLineIndex, currentCharIndex, resetTerminal]);
 
   return (
-    <section className="py-16 md:py-24 px-4 relative" ref={containerRef}>
+    <section id="live-terminal" className="py-16 md:py-24 px-4 relative" ref={containerRef}>
       <div className="container mx-auto max-w-3xl relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
