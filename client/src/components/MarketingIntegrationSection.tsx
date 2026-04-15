@@ -47,10 +47,10 @@ const MarketingIntegrationSection = () => {
             {/* Left: text header + video */}
             <motion.div variants={itemVariants} className="flex flex-col gap-8">
               <div>
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary mb-5">
-                  <LinkIcon size={20} />
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground flex items-center gap-3">
+                  <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-primary/10 text-primary flex-shrink-0">
+                    <LinkIcon size={18} />
+                  </span>
                   Making Things Flow
                 </h2>
                 <div className="space-y-4 text-muted-foreground text-sm md:text-base leading-relaxed">
