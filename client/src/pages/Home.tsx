@@ -6,10 +6,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import MarketingIntegrationSection from "@/components/MarketingIntegrationSection";
 import AIExpertiseSection from "@/components/AIExpertiseSection";
-import WorkflowDemoSection from "@/components/WorkflowDemoSection";
-import LiveTerminal from "@/components/LiveTerminal";
 import HumanitySection from "@/components/HumanitySection";
-import PersonalizationSection from "@/components/PersonalizationSection";
 import AuroraDivider from "@/components/AuroraDivider";
 import { useEffect } from "react";
 import { useLocation } from "wouter";
@@ -17,7 +14,6 @@ import { useLocation } from "wouter";
 const Home = () => {
   const [location] = useLocation();
 
-  // Handle hash links for direct navigation to sections
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
@@ -28,11 +24,7 @@ const Home = () => {
           const headerOffset = 80;
           const elementPosition = element.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth",
-          });
+          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
         }, 100);
       }
     } else {
@@ -50,13 +42,10 @@ const Home = () => {
       <FeaturedProjectsSection />
       <AuroraDivider />
       <MarketingIntegrationSection />
-      <LiveTerminal />
+      <AuroraDivider />
       <AIExpertiseSection />
-      <WorkflowDemoSection />
       <AuroraDivider />
       <HumanitySection />
-      <AuroraDivider />
-      <PersonalizationSection />
       <AuroraDivider />
       <ProjectsSection />
       <AuroraDivider />
