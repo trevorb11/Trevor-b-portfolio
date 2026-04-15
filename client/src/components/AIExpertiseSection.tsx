@@ -192,7 +192,7 @@ const AIExpertiseSection = () => {
       </div>
 
       {/* ── DESKTOP: sticky carousel left, demo right ── */}
-      <div className="hidden lg:block border-t border-white/[0.06]">
+      <div className="hidden border-t border-white/[0.06]">
         <div className="container px-4 md:px-6 mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-[2fr_3fr] items-start">
 
@@ -295,8 +295,8 @@ const AIExpertiseSection = () => {
         </div>
       </div>
 
-      {/* ── MOBILE: accordion ── */}
-      <div className="lg:hidden border-t border-white/[0.06]">
+      {/* ── ACCORDION (all screen sizes) ── */}
+      <div className="border-t border-white/[0.06]">
         <motion.div
           initial="hidden"
           whileInView="visible"
