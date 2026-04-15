@@ -38,30 +38,35 @@ const AIExpertiseSection = () => {
   const aiApplications = [
     {
       title: "Personalization at scale",
+      summary: "Tailored experiences for every contact, without a massive team behind it.",
       description: "Giving every person a unique experience no longer requires a massive team. Now it's a design and data problem, and AI makes it scalable.",
       mobileIntro: "Giving every person a unique experience no longer requires a massive team. It's a design and data problem, and these tools make it achievable.",
       icon: <Users className="h-5 w-5 text-primary" />,
     },
     {
       title: "Hyper custom conversion channels",
+      summary: "AI-powered funnels that branch and adapt to each lead's responses.",
       description: "AI-powered conversations that branch across 96+ decision paths, qualifying each lead with language tailored to their responses. Not a generic chatbot, but a structured funnel that adapts.",
       mobileIntro: "AI-powered conversations that branch across dozens of decision paths, qualifying each lead with language tailored to their specific responses.",
       icon: <GitBranch className="h-5 w-5 text-primary" />,
     },
     {
       title: "AI as a Thought Partner",
+      summary: "Bring genuinely different perspectives to any decision before you commit.",
       description: "Everyone has blind spots, and the people closest to a problem are often the last to see it clearly. AI gives you a way to bring genuinely different perspectives to any decision, on demand, before you commit to a direction.",
       mobileIntro: "The people closest to a problem are often the last to see it clearly. AI gives you a way to stress-test ideas from genuinely different angles before you commit.",
       icon: <BrainCircuit className="h-5 w-5 text-primary" />,
     },
     {
       title: "AI as an orchestrator",
+      summary: "Let AI manage your sequences, workflows, and cross-platform data sync.",
       description: "AI can manage sequences, trigger workflows, sync data across platforms, and generate reports without you touching each system individually.",
       mobileIntro: "AI can manage sequences, trigger workflows, and sync data across platforms without you touching each system manually.",
       icon: <Cpu className="h-5 w-5 text-primary" />,
     },
     {
       title: "AI for Fun Creative",
+      summary: "From images to interactive apps, a prompt can replace a production team.",
       description: "AI has dramatically lowered the production floor for creative work. Images, videos, interactive experiences, games. Things that once required a full team to build can now start with a prompt and a clear vision.",
       mobileIntro: "Images, videos, interactive experiences, games. Things that once took a full team can now start with a prompt and a clear vision.",
       icon: <Sparkles className="h-5 w-5 text-primary" />,
@@ -322,9 +327,14 @@ const AIExpertiseSection = () => {
                     <div className={`p-2 rounded-lg flex-shrink-0 transition-colors duration-200 ${isOpen ? "bg-primary/20" : "bg-primary/10"}`}>
                       {app.icon}
                     </div>
-                    <span className={`flex-1 font-semibold md:text-base text-sm transition-colors duration-200 ${isOpen ? "text-foreground" : "text-foreground/80"}`}>
-                      {app.title}
-                    </span>
+                    <div className="flex-1 min-w-0">
+                      <span className={`block font-semibold md:text-base text-sm transition-colors duration-200 ${isOpen ? "text-foreground" : "text-foreground/80"}`}>
+                        {app.title}
+                      </span>
+                      <span className={`block text-xs leading-snug mt-0.5 transition-colors duration-200 ${isOpen ? "text-primary/70" : "text-muted-foreground/60"}`}>
+                        {app.summary}
+                      </span>
+                    </div>
                     <motion.div
                       animate={{ rotate: isOpen ? 180 : 0 }}
                       transition={{ duration: 0.25 }}
