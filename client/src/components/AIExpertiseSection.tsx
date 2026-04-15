@@ -296,66 +296,69 @@ const AIExpertiseSection = () => {
       </div>
 
       {/* ── ACCORDION (all screen sizes) ── */}
-      <div className="border-t border-white/[0.06]">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          variants={containerVariants}
-        >
-          {aiApplications.map((app, i) => {
-            const isOpen = openAccordion === i;
-            return (
-              <motion.div
-                key={i}
-                variants={itemVariants}
-                className="border-b border-white/[0.06]"
-              >
-                {/* Accordion header — always visible */}
-                <button
-                  onClick={() => toggleAccordion(i)}
-                  className="w-full flex items-center gap-3 px-4 py-5 text-left"
-                  aria-expanded={isOpen}
+      <div className="py-4">
+        <div className="max-w-3xl mx-auto px-4 md:px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={containerVariants}
+            className="border-t border-white/[0.06]"
+          >
+            {aiApplications.map((app, i) => {
+              const isOpen = openAccordion === i;
+              return (
+                <motion.div
+                  key={i}
+                  variants={itemVariants}
+                  className="border-b border-white/[0.06]"
                 >
-                  <div className={`p-2 rounded-lg flex-shrink-0 transition-colors duration-200 ${isOpen ? "bg-primary/20" : "bg-primary/10"}`}>
-                    {app.icon}
-                  </div>
-                  <span className={`flex-1 font-semibold text-sm transition-colors duration-200 ${isOpen ? "text-foreground" : "text-foreground/80"}`}>
-                    {app.title}
-                  </span>
-                  <motion.div
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="flex-shrink-0"
+                  {/* Accordion header — always visible */}
+                  <button
+                    onClick={() => toggleAccordion(i)}
+                    className="w-full flex items-center gap-4 py-5 text-left"
+                    aria-expanded={isOpen}
                   >
-                    <ChevronDown className={`h-4 w-4 transition-colors duration-200 ${isOpen ? "text-primary" : "text-muted-foreground/50"}`} />
-                  </motion.div>
-                </button>
-
-                {/* Accordion body — slides open */}
-                <AnimatePresence initial={false}>
-                  {isOpen && (
+                    <div className={`p-2 rounded-lg flex-shrink-0 transition-colors duration-200 ${isOpen ? "bg-primary/20" : "bg-primary/10"}`}>
+                      {app.icon}
+                    </div>
+                    <span className={`flex-1 font-semibold md:text-base text-sm transition-colors duration-200 ${isOpen ? "text-foreground" : "text-foreground/80"}`}>
+                      {app.title}
+                    </span>
                     <motion.div
-                      key="content"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                      style={{ overflow: "hidden" }}
+                      animate={{ rotate: isOpen ? 180 : 0 }}
+                      transition={{ duration: 0.25 }}
+                      className="flex-shrink-0"
                     >
-                      {/* Short intro */}
-                      <p className="px-4 pb-5 text-sm text-muted-foreground leading-relaxed">
-                        {app.mobileIntro}
-                      </p>
-                      {/* Full demo */}
-                      {mobileDemos[i]}
+                      <ChevronDown className={`h-4 w-4 transition-colors duration-200 ${isOpen ? "text-primary" : "text-muted-foreground/50"}`} />
                     </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+                  </button>
+
+                  {/* Accordion body — slides open */}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        key="content"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                        style={{ overflow: "hidden" }}
+                      >
+                        {/* Short intro */}
+                        <p className="pb-5 text-sm text-muted-foreground leading-relaxed">
+                          {app.mobileIntro}
+                        </p>
+                        {/* Full demo */}
+                        {mobileDemos[i]}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
