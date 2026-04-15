@@ -35,35 +35,105 @@ const AIExpertiseSection = () => {
     visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
   };
 
+  // Used in the desktop sticky carousel
   const aiApplications = [
     {
       title: "Personalization at scale",
-      description: "Giving every person a unique, data-driven experience used to require a massive team. Now it's a design and data problem. AI makes individual feel scalable.",
+      description: "Giving every person a unique experience no longer requires a massive team. Now it's a design and data problem, and AI makes it scalable.",
       icon: <Users className="h-5 w-5 text-primary" />,
     },
     {
       title: "Hyper custom conversion channels",
-      description: "AI-powered conversations that branch across 96+ decision paths, qualifying each lead with language tailored to their responses. Not a generic chatbot — a structured funnel that adapts.",
+      description: "AI-powered conversations that branch across 96+ decision paths, qualifying each lead with language tailored to their responses. Not a generic chatbot, but a structured funnel that adapts.",
       icon: <GitBranch className="h-5 w-5 text-primary" />,
     },
     {
       title: "AI as a Thought Partner",
-      description: "Pressure-test your strategy by assembling a council of distinct AI personas — each bringing different perspectives, challenging assumptions, and surfacing angles you hadn't considered.",
+      description: "Pressure-test your strategy by assembling a council of distinct AI personas, each bringing different perspectives and surfacing blind spots.",
       icon: <BrainCircuit className="h-5 w-5 text-primary" />,
     },
     {
       title: "AI as an orchestrator",
-      description: "AI doesn't just answer questions — it can manage sequences, trigger workflows, sync data across platforms, and generate reports without you touching each system individually.",
+      description: "AI can manage sequences, trigger workflows, sync data across platforms, and generate reports without you touching each system individually.",
       icon: <Cpu className="h-5 w-5 text-primary" />,
     },
     {
       title: "AI for Fun Creative",
-      description: "AI as the engine behind engaging experiences. Generate branded trivia, creative campaigns, and interactive content that feels handcrafted but scales instantly.",
+      description: "AI as the engine behind engaging experiences. Generate branded trivia and interactive content that feels handcrafted but scales instantly.",
       icon: <Sparkles className="h-5 w-5 text-primary" />,
     },
   ];
 
-  const demos = [
+  // Mobile-only: one short sentence per use case that flows into the demo below
+  const mobileIntros = [
+    "Giving every person a unique experience no longer requires a massive team. It's a design and data problem, and these tools make it achievable.",
+    "AI-powered conversations that branch across dozens of decision paths, qualifying each lead with language tailored to their specific responses.",
+    "Assembling a council of distinct AI personas lets you pressure-test strategy from multiple angles at once.",
+    "AI can manage sequences, trigger workflows, and sync data across platforms without you touching each system manually.",
+    "Branded trivia and interactive content that feels handcrafted but scales as fast as you need it to.",
+  ];
+
+  const councilDemo = (
+    <div className="px-4 pb-12">
+      <div className="max-w-2xl mx-auto">
+        <Link href="/council-of-ideas">
+          <div
+            className="group relative overflow-hidden rounded-2xl p-8 cursor-pointer border border-primary/20 transition-all duration-500 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10"
+            style={{ background: "linear-gradient(135deg, hsl(16 78% 55% / 0.12), hsl(28 83% 62% / 0.08))" }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] to-transparent pointer-events-none" />
+            <div className="relative flex flex-col gap-5">
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <BrainCircuit className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-foreground mb-2">The Council of Ideas</h3>
+                <p className="text-muted-foreground leading-relaxed mb-5 text-sm">
+                  What happens when you assemble history's sharpest minds to pressure-test a real business decision? A live demonstration of using multi-persona AI for structured perspective and clearer thinking.
+                </p>
+                <Button asChild className="group/btn rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-lg shadow-primary/20 px-6 h-10">
+                  <span>
+                    Enter the Council
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                  </span>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Link>
+      </div>
+    </div>
+  );
+
+  const triviaDemo = (
+    <div className="px-4 pb-12">
+      <div className="max-w-2xl mx-auto">
+        <div className="premium-card relative overflow-hidden p-8">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] to-accent/[0.04] pointer-events-none" />
+          <div className="relative flex flex-col gap-5">
+            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+              <Sparkles className="w-6 h-6 text-primary" />
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-foreground mb-2">AI Trivia Generator</h3>
+              <p className="text-muted-foreground leading-relaxed mb-5 text-sm">
+                Generate customized, industry-specific trivia games on demand. Input your topic, audience, and tone, and AI builds a fully branded quiz experience your team refines rather than builds from scratch.
+              </p>
+              <Button asChild className="group rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-lg shadow-primary/20 px-6 h-10">
+                <a href="https://trivia-forge.replit.app/" target="_blank" rel="noopener noreferrer">
+                  Try the Generator
+                  <ExternalLink className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  // Desktop demo panels (full section components, shown in right column)
+  const desktopDemos = [
     <PersonalizationSection key="personalization" />,
     <WorkflowDemoSection key="workflow" />,
     <div key="council" className="py-12 md:py-16 px-4">
@@ -81,7 +151,7 @@ const AIExpertiseSection = () => {
               <div>
                 <h3 className="text-xl font-bold text-foreground mb-2">The Council of Ideas</h3>
                 <p className="text-muted-foreground leading-relaxed mb-5 text-sm">
-                  What happens when you assemble history's sharpest minds — Darwin, Socrates, Feynman — to pressure-test a real business decision? A live demonstration of using multi-persona AI for structured perspective and clearer thinking.
+                  What happens when you assemble history's sharpest minds to pressure-test a real business decision? A live demonstration of using multi-persona AI for structured perspective and clearer thinking.
                 </p>
                 <Button asChild className="group/btn rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-lg shadow-primary/20 px-6 h-10">
                   <span>
@@ -107,7 +177,7 @@ const AIExpertiseSection = () => {
             <div>
               <h3 className="text-xl font-bold text-foreground mb-2">AI Trivia Generator</h3>
               <p className="text-muted-foreground leading-relaxed mb-5 text-sm">
-                Generate customized, industry-specific trivia games on demand. Input your topic, audience, and tone — AI builds a fully branded quiz experience your team refines rather than builds from scratch.
+                Generate customized, industry-specific trivia games on demand. Input your topic, audience, and tone, and AI builds a fully branded quiz experience your team refines rather than builds from scratch.
               </p>
               <Button asChild className="group rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-lg shadow-primary/20 px-6 h-10">
                 <a href="https://trivia-forge.replit.app/" target="_blank" rel="noopener noreferrer">
@@ -120,6 +190,15 @@ const AIExpertiseSection = () => {
         </div>
       </div>
     </div>,
+  ];
+
+  // Mobile demo panels (same content, rendered inline below each intro)
+  const mobileDemos = [
+    <PersonalizationSection key="m-personalization" />,
+    <WorkflowDemoSection key="m-workflow" />,
+    councilDemo,
+    <LiveTerminal key="m-terminal" />,
+    triviaDemo,
   ];
 
   return (
@@ -141,7 +220,7 @@ const AIExpertiseSection = () => {
             {aiContent.title || "AI as a force multiplier"}
           </motion.h2>
           <motion.p variants={itemVariants} className="text-muted-foreground max-w-2xl text-sm md:text-base">
-            {aiContent.subtitle || "We\u2019re at an inflection point. AI is going to reshape the digital landscape at a scale we\u2019re still underestimating \u2014 and the teams that lean in now will shape what comes next."}
+            {aiContent.subtitle || "We\u2019re at an inflection point. AI is going to reshape the digital landscape at a scale we\u2019re still underestimating, and the teams that lean in now will shape what comes next."}
           </motion.p>
         </motion.div>
 
@@ -165,13 +244,13 @@ const AIExpertiseSection = () => {
         </motion.div>
       </div>
 
-      {/* Two-column: carousel left (sticky) + demo right */}
-      <div className="border-t border-white/[0.06]">
+      {/* ── DESKTOP: sticky carousel left, demo right ── */}
+      <div className="hidden lg:block border-t border-white/[0.06]">
         <div className="container px-4 md:px-6 mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] items-start">
+          <div className="grid lg:grid-cols-[2fr_3fr] items-start">
 
             {/* Left: sticky carousel */}
-            <div className="lg:sticky lg:top-24 py-10 lg:py-14 lg:pr-10 border-b lg:border-b-0 lg:border-r border-white/[0.06]">
+            <div className="lg:sticky lg:top-24 py-14 lg:pr-10 lg:border-r border-white/[0.06]">
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -244,7 +323,6 @@ const AIExpertiseSection = () => {
                   </div>
                 </div>
 
-                {/* Slide index label */}
                 <p className="text-center text-xs text-muted-foreground/50 mt-3">
                   {activeApp + 1} / {aiApplications.length}
                 </p>
@@ -252,7 +330,7 @@ const AIExpertiseSection = () => {
             </div>
 
             {/* Right: demo panel */}
-            <div className="lg:pl-0 min-h-[400px]">
+            <div className="min-h-[400px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeApp}
@@ -261,13 +339,49 @@ const AIExpertiseSection = () => {
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.35 }}
                 >
-                  {demos[activeApp]}
+                  {desktopDemos[activeApp]}
                 </motion.div>
               </AnimatePresence>
             </div>
 
           </div>
         </div>
+      </div>
+
+      {/* ── MOBILE: stacked combined sections ── */}
+      <div className="lg:hidden border-t border-white/[0.06]">
+        {aiApplications.map((app, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5 }}
+          >
+            {/* Use case intro */}
+            <div className="container px-4 mx-auto pt-10 pb-2">
+              <div className="flex items-center gap-2.5 mb-3">
+                <div className="p-2 rounded-lg bg-primary/10 flex-shrink-0">
+                  {app.icon}
+                </div>
+                <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">
+                  {app.title}
+                </span>
+              </div>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {mobileIntros[i]}
+              </p>
+            </div>
+
+            {/* Demo content flows directly below */}
+            {mobileDemos[i]}
+
+            {/* Divider between units (not after last) */}
+            {i < aiApplications.length - 1 && (
+              <div className="border-t border-white/[0.06] mx-4" />
+            )}
+          </motion.div>
+        ))}
       </div>
     </section>
   );
