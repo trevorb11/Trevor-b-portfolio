@@ -61,7 +61,7 @@ const HeroSection = () => {
       <div className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-accent/10 blur-[100px] pointer-events-none" />
 
       {/* Foreground content */}
-      <div className="relative z-10 px-4 max-w-5xl pt-28 sm:pt-0">
+      <div className="relative z-10 px-4 max-w-5xl pt-40 sm:pt-0">
         {/* Eyebrow tag */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
