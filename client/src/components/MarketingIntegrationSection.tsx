@@ -96,6 +96,27 @@ const MarketingIntegrationSection = () => {
               </motion.div>
             </div>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="mt-14 max-w-3xl mx-auto"
+          >
+            <div className="rounded-2xl overflow-hidden border border-white/[0.08] shadow-2xl shadow-black/30">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                className="w-full h-auto block"
+              >
+                <source src="/flow-animation.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </motion.div>
         </div>
       </section>
     </>
