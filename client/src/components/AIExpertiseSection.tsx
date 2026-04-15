@@ -50,8 +50,8 @@ const AIExpertiseSection = () => {
     },
     {
       title: "AI as a Thought Partner",
-      description: "Pressure-test your strategy by assembling a council of distinct AI personas, each bringing different perspectives and surfacing blind spots.",
-      mobileIntro: "Assembling a council of distinct AI personas lets you pressure-test strategy from multiple angles at once.",
+      description: "Everyone has blind spots, and the people closest to a problem are often the last to see it clearly. AI gives you a way to bring genuinely different perspectives to any decision, on demand, before you commit to a direction.",
+      mobileIntro: "The people closest to a problem are often the last to see it clearly. AI gives you a way to stress-test ideas from genuinely different angles before you commit.",
       icon: <BrainCircuit className="h-5 w-5 text-primary" />,
     },
     {
@@ -62,8 +62,8 @@ const AIExpertiseSection = () => {
     },
     {
       title: "AI for Fun Creative",
-      description: "AI as the engine behind engaging experiences. Generate branded trivia and interactive content that feels handcrafted but scales instantly.",
-      mobileIntro: "Branded trivia and interactive content that feels handcrafted but scales as fast as you need it to.",
+      description: "AI has dramatically lowered the production floor for creative work. Images, videos, interactive experiences, games. Things that once required a full team to build can now start with a prompt and a clear vision.",
+      mobileIntro: "Images, videos, interactive experiences, games. Things that once took a full team can now start with a prompt and a clear vision.",
       icon: <Sparkles className="h-5 w-5 text-primary" />,
     },
   ];
