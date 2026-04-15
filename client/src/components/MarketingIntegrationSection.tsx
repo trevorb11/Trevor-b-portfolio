@@ -45,7 +45,7 @@ const MarketingIntegrationSection = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
             {/* Left: text header + video */}
-            <motion.div variants={itemVariants} className="flex flex-col gap-8">
+            <motion.div variants={itemVariants} className="flex flex-col gap-8 lg:-mt-6">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground flex items-center gap-3">
                   <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-primary/10 text-primary flex-shrink-0">
