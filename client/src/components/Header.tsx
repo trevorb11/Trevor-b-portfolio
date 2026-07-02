@@ -74,9 +74,10 @@ const Header = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-1 group">
             <img 
-              src="/tb-logo.png" 
+              src="/tb-paint-logo.png" 
               alt="Trevor Bosetti Logo" 
-              className="h-14 w-auto object-contain group-hover:brightness-110 transition-all -my-2"
+              className="h-10 w-10 object-contain group-hover:brightness-110 transition-all"
+              style={{ mixBlendMode: "screen" }}
             />
             <span className="text-lg font-semibold tracking-tight">
               <span className="text-white">Trevor</span>
