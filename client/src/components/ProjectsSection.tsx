@@ -1,3 +1,4 @@
+import DeferredVideo from "./DeferredVideo";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Sparkles, Building2, Utensils, Wrench, Gamepad2 } from "lucide-react";
@@ -105,16 +106,7 @@ const ProjectsSection = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30 max-w-4xl mx-auto bg-card/50">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              className="w-full h-auto aspect-video object-cover"
-            >
-              <source src="/portfolio-video.mp4" type="video/mp4" />
-            </video>
+            <DeferredVideo src="/portfolio-video.mp4" label="Portfolio showcase" className="w-full h-auto aspect-video object-cover" />
           </div>
         </motion.div>
 

@@ -1,31 +1,31 @@
 import { Switch, Route, useLocation } from "wouter";
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
+import { MotionConfig } from "framer-motion";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
-import NotFound from "@/pages/not-found";
+const NotFound = lazy(() => import("@/pages/not-found"));
 import Home from "@/pages/Home";
-import ProjectDetail from "@/pages/ProjectDetail";
-import CaseStudy from "@/pages/CaseStudy";
-import BuilderStudioCaseStudy from "@/pages/BuilderStudioCaseStudy";
-import CommunityFoodShareCaseStudy from "@/pages/CommunityFoodShareCaseStudy";
-import Blog from "@/pages/Blog";
-import BlogPost from "@/pages/BlogPost";
-import Admin from "@/pages/Admin";
-import AdminDashboard from "@/pages/AdminDashboard";
-import CouncilOfIdeas from "@/pages/CouncilOfIdeas";
-import WorkflowDemo from "@/pages/WorkflowDemo";
-import YoutubeRedirect from "@/pages/YoutubeRedirect";
-import PrivacyPolicy from "@/pages/PrivacyPolicy";
-import TermsAndConditions from "@/pages/TermsAndConditions";
+const ProjectDetail = lazy(() => import("@/pages/ProjectDetail"));
+const CaseStudy = lazy(() => import("@/pages/CaseStudy"));
+const BuilderStudioCaseStudy = lazy(() => import("@/pages/BuilderStudioCaseStudy"));
+const CommunityFoodShareCaseStudy = lazy(() => import("@/pages/CommunityFoodShareCaseStudy"));
+const Blog = lazy(() => import("@/pages/Blog"));
+const BlogPost = lazy(() => import("@/pages/BlogPost"));
+const CouncilOfIdeas = lazy(() => import("@/pages/CouncilOfIdeas"));
+const WorkflowDemo = lazy(() => import("@/pages/WorkflowDemo"));
+const YoutubeRedirect = lazy(() => import("@/pages/YoutubeRedirect"));
+const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
+const TermsAndConditions = lazy(() => import("@/pages/TermsAndConditions"));
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CursorGlow from "@/components/CursorGlow";
+import PageMetadata from "@/components/PageMetadata";
 
 function ScrollToTop() {
   const [location] = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (!window.location.hash) window.scrollTo({ top: 0, behavior: "instant" });
   }, [location]);
   return null;
 }
@@ -43,25 +43,14 @@ function HashRedirect({ hash }: { hash: string }) {
 }
 
 function Router() {
-  const [location] = useLocation();
-  const isAdminRoute = location.startsWith("/admin");
-
-  // For admin routes, we don't want to show the regular header and footer
-  if (isAdminRoute) {
-    return (
-      <Switch>
-        <Route path="/admin" component={Admin} />
-        <Route path="/admin/dashboard" component={AdminDashboard} />
-        <Route component={NotFound} />
-      </Switch>
-    );
-  }
-
   // Regular site routes with header and footer
   return (
     <>
       <ScrollToTop />
+      <PageMetadata />
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <Header />
+      <div id="main-content" tabIndex={-1}>
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/projects/:id" component={ProjectDetail} />
@@ -80,6 +69,7 @@ function Router() {
         <Route path="/contact">{() => <HashRedirect hash="contact" />}</Route>
         <Route component={NotFound} />
       </Switch>
+      </div>
       <Footer />
     </>
   );
@@ -88,8 +78,12 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <CursorGlow />
-      <Router />
+      <MotionConfig reducedMotion="user">
+        <CursorGlow />
+        <Suspense fallback={<div role="status" className="min-h-screen px-6 py-32 text-center">Loading page…</div>}>
+          <Router />
+        </Suspense>
+      </MotionConfig>
       <Toaster />
     </QueryClientProvider>
   );

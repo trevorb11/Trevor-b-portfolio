@@ -1,31 +1,9 @@
-import { pgTable, text, serial, integer, varchar, timestamp, boolean } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, integer, varchar, timestamp, boolean, uniqueIndex } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-// User schema (keeping original for reference)
-export const users = pgTable("users", {
-  id: serial("id").primaryKey(),
-  username: text("username").notNull().unique(),
-  password: text("password").notNull(),
-  isAdmin: boolean("is_admin").default(false),
-});
-
-export const insertUserSchema = createInsertSchema(users).pick({
-  username: true,
-  password: true,
-  isAdmin: true,
-});
-
-export type InsertUser = z.infer<typeof insertUserSchema>;
-export type User = typeof users.$inferSelect;
-
-// Admin login schema
-export const adminLoginSchema = z.object({
-  username: z.string().min(3, "Username must be at least 3 characters"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
-
-export type AdminLogin = z.infer<typeof adminLoginSchema>;
+// Browser administration has been retired. Legacy user rows are disabled by
+// the migration; this application never stores or accepts login credentials.
 
 // Project schema
 export const projects = pgTable("projects", {
@@ -87,11 +65,11 @@ export type Contact = typeof contacts.$inferSelect;
 
 // Create a validator for contact form submissions
 export const contactFormSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters").max(100),
-  email: z.string().email("Please enter a valid email address"),
-  phone: z.string().optional(),
-  subject: z.string().min(5, "Subject must be at least 5 characters").max(255),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  name: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
+  email: z.string().trim().email("Please enter a valid email address").max(255),
+  phone: z.string().trim().max(20).optional(),
+  subject: z.string().trim().min(5, "Subject must be at least 5 characters").max(255),
+  message: z.string().trim().min(10, "Message must be at least 10 characters").max(10000),
   marketingConsent: z.boolean().default(false),
 });
 
@@ -105,13 +83,7 @@ export const cmsContents = pgTable("cms_contents", {
   value: text("value").notNull(),
   type: varchar("type", { length: 50 }).notNull(), // "text", "richtext", "image", "json"
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
-});
-
-// Create a composite unique constraint on section and key
-// This ensures each section-key pair is unique
-export const uniqueSectionKey = pgTable("unique_section_key", {
-  sectionKey: varchar("section_key", { length: 210 }).primaryKey(),
-});
+}, table => [uniqueIndex("cms_contents_section_key_unique").on(table.section, table.key)]);
 
 export const insertCmsContentSchema = createInsertSchema(cmsContents).omit({ 
   id: true,
@@ -123,8 +95,8 @@ export type CmsContent = typeof cmsContents.$inferSelect;
 
 // CMS content update schema
 export const updateCmsContentSchema = z.object({
-  id: z.number(),
-  value: z.string(),
+  id: z.number().int().positive(),
+  value: z.string().max(50000),
 });
 
 export type UpdateCmsContent = z.infer<typeof updateCmsContentSchema>;

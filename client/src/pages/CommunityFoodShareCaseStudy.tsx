@@ -19,6 +19,7 @@ function YTEmbed({ id, title }: { id: string; title: string }) {
   return (
     <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-black/40 mt-5">
       <iframe
+        loading="lazy"
         src={`https://www.youtube.com/embed/${id}`}
         title={title}
         className="absolute inset-0 w-full h-full"
@@ -74,13 +75,13 @@ export default function CommunityFoodShareCaseStudy() {
     <div className="min-h-screen">
 
       {/* Back nav */}
-      <div className="container max-w-4xl mx-auto px-4 md:px-6 pt-8">
-        <Link href="/#projects">
+      <div className="container max-w-4xl mx-auto px-4 md:px-6 pt-24">
+        <a href="/#projects">
           <button className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 group">
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
             Back to projects
           </button>
-        </Link>
+        </a>
       </div>
 
       {/* Hero */}
@@ -569,15 +570,15 @@ export default function CommunityFoodShareCaseStudy() {
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4 justify-center">
               <Button asChild className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-lg shadow-primary/20 px-7">
-                <Link href="/#contact">
+                <a href="/#contact">
                   Get in touch
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+                </a>
               </Button>
               <Button asChild variant="outline" className="rounded-full border-white/20 hover:bg-white/5 px-7">
-                <Link href="/#projects">
+                <a href="/#projects">
                   View more work
-                </Link>
+                </a>
               </Button>
             </motion.div>
           </motion.div>

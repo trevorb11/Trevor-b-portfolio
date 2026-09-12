@@ -31,22 +31,6 @@ const Header = () => {
     }
   };
 
-  const scrollToSection = (id: string, e: React.MouseEvent) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-      closeMenu();
-    }
-  };
-
   const isActive = (path: string) => {
     if (path === "/") {
       return location === path;
@@ -63,6 +47,7 @@ const Header = () => {
 
   return (
     <header
+      onKeyDown={(event) => { if (event.key === "Escape") setIsMobileMenuOpen(false); }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "backdrop-blur-xl bg-background/80 shadow-[0_1px_0_0_hsl(var(--border)/0.5),0_4px_20px_-4px_hsl(203_61%_10%/0.3)]"
@@ -74,8 +59,10 @@ const Header = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-1 group">
             <img 
-              src="/tb-paint-logo.png" 
-              alt="Trevor Bosetti Logo" 
+              src="/tb-paint-logo.webp"
+              alt=""
+              width={40}
+              height={40}
               className="h-10 w-10 object-contain group-hover:brightness-110 transition-all"
               style={{ mixBlendMode: "screen" }}
             />
@@ -86,13 +73,13 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <div key={link.path}>
                 {link.id ? (
                   <a
                     href={link.path}
-                    onClick={(e) => scrollToSection(link.id, e)}
+                    onClick={closeMenu}
                     className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:text-foreground ${
                       isActive(link.path)
                         ? "text-primary"
@@ -124,7 +111,9 @@ const Header = () => {
             size="icon"
             className="lg:hidden text-foreground/70 hover:text-foreground h-9 w-9"
             onClick={toggleMobileMenu}
-            aria-label="Toggle menu"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
@@ -134,6 +123,7 @@ const Header = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
+              id="mobile-navigation"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
@@ -147,7 +137,7 @@ const Header = () => {
                       {link.id ? (
                         <a
                           href={link.path}
-                          onClick={(e) => scrollToSection(link.id, e)}
+                          onClick={closeMenu}
                           className={`block py-2.5 px-4 rounded-lg text-sm font-medium transition-colors ${
                             isActive(link.path)
                               ? "text-primary bg-primary/10"

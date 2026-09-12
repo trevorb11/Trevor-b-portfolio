@@ -73,6 +73,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -93,8 +94,8 @@
   /* Improved focus styles for accessibility */
   *:focus-visible {
     @apply outline-none ring-2 ring-offset-2;
-    ring-color: hsl(var(--ring));
-    ring-offset-color: hsl(var(--background));
+    --tw-ring-color: hsl(var(--ring));
+    --tw-ring-offset-color: hsl(var(--background));
   }
 
   /* Better text selection */
@@ -267,4 +268,29 @@
     animation: gradient-shift 8s ease infinite;
     background-size: 200% 200%;
   }
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+.skip-link:focus { transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .ticker-mask { mask-image: none; -webkit-mask-image: none; }
+  .animate-ticker { width: auto; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+  .animate-ticker > span:nth-child(n + 18), .animate-ticker-reverse { display: none; }
 }

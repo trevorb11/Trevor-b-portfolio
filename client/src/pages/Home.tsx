@@ -15,21 +15,12 @@ const Home = () => {
   const [location] = useLocation();
 
   useEffect(() => {
-    const hash = window.location.hash;
-    if (hash) {
-      const id = hash.substring(1);
-      const element = document.getElementById(id);
-      if (element) {
-        setTimeout(() => {
-          const headerOffset = 80;
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-        }, 100);
-      }
-    } else {
-      window.scrollTo(0, 0);
-    }
+    if (!window.location.hash) return;
+    const frame = requestAnimationFrame(() => {
+      const element = document.getElementById(window.location.hash.slice(1));
+      element?.scrollIntoView({ behavior: "instant", block: "start" });
+    });
+    return () => cancelAnimationFrame(frame);
   }, [location]);
 
   return (

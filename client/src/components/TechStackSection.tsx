@@ -54,7 +54,8 @@ const TechStackSection = () => {
         </p>
 
         {/* Ticker container with fade masks on edges */}
-        <div className="relative overflow-hidden ticker-mask">
+        <p className="sr-only">{technologies.join(", ")}</p>
+        <div aria-hidden="true" className="relative overflow-hidden ticker-mask">
           {/* Row 1 - scrolls left */}
           <div className="flex w-max animate-ticker">
             {tickerItems.map((tech, i) => (
@@ -87,10 +88,10 @@ const TechStackSection = () => {
           size="lg"
           className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-lg shadow-primary/20 px-8 h-12"
         >
-          <Link href="#contact">
+          <a href="#contact">
             Let's Build Something
             <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
+          </a>
         </Button>
       </div>
     </section>

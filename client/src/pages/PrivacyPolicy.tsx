@@ -13,6 +13,10 @@ const PrivacyPolicy = () => {
         <h1 className="text-3xl md:text-4xl font-bold mb-2 text-foreground">Privacy Policy</h1>
         <p className="text-sm text-muted-foreground mb-10">Last updated: March 13, 2026</p>
 
+        <p className="mb-8 rounded-xl border border-border bg-card/50 p-4 text-sm text-foreground/80">
+          Contact update: New website inquiries currently use direct email. The online contact form and new SMS opt-in are unavailable. Emailing Trevor does not opt you into text messages.
+        </p>
+
         <div className="space-y-8 text-sm text-foreground/80 leading-relaxed">
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-3">1. Introduction</h2>

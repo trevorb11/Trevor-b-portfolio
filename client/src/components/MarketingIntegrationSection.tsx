@@ -1,3 +1,4 @@
+import DeferredVideo from "./DeferredVideo";
 import React from "react";
 import { motion } from "framer-motion";
 import { Link as LinkIcon } from "lucide-react";
@@ -73,16 +74,7 @@ const MarketingIntegrationSection = () => {
               </div>
 
               <div className="rounded-2xl overflow-hidden border border-white/[0.08] shadow-2xl shadow-black/30">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="w-full h-auto block scale-[1.11] origin-center"
-                >
-                  <source src="/flow-animation.mp4" type="video/mp4" />
-                </video>
+                <DeferredVideo src="/flow-animation.mp4" label="Marketing systems flow animation" className="w-full h-auto aspect-video block" />
               </div>
             </motion.div>
 

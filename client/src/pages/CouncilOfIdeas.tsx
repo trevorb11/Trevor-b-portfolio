@@ -791,7 +791,7 @@ const CouncilOfIdeas = () => {
             Curious about the other AI capabilities I'm building?
           </p>
           <Button asChild className="bg-primary hover:bg-primary/90">
-            <Link href="/#ai-expertise">Explore AI Expertise</Link>
+            <a href="/#ai-expertise">Explore AI Expertise</a>
           </Button>
         </motion.div>
       </div>

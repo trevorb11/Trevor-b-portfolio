@@ -526,12 +526,12 @@ const CaseStudy = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Link href="/#projects">
+            <a href="/#projects">
               <Button variant="ghost" size="sm" className="mb-8 -ml-2">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Portfolio
               </Button>
-            </Link>
+            </a>
 
             <span
               className={`inline-block text-xs px-3 py-1.5 rounded-full font-bold uppercase tracking-wider mb-4 ${data.tagColor}`}
@@ -713,7 +713,7 @@ const CaseStudy = () => {
               {data.ctaDescription}
             </p>
             <Button asChild size="lg">
-              <Link href="/#contact">Get in Touch</Link>
+              <a href="/#contact">Get in Touch</a>
             </Button>
           </motion.div>
         </div>

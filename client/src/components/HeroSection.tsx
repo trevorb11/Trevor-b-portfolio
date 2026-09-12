@@ -1,5 +1,6 @@
+import { useIsMobile } from "@/hooks/use-mobile";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronDown } from "lucide-react";
@@ -14,6 +15,8 @@ const ROTATING_PHRASES = [
 const PHRASE_INTERVAL = 4500;
 
 const HeroSection = () => {
+  const reducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
   const [imgLoaded, setImgLoaded] = useState(false);
   const [phraseIndex, setPhraseIndex] = useState(0);
 
@@ -26,17 +29,18 @@ const HeroSection = () => {
   }, []);
 
   useEffect(() => {
+    if (reducedMotion || isMobile) return;
     const timer = setInterval(() => {
       setPhraseIndex((prev) => (prev + 1) % ROTATING_PHRASES.length);
     }, PHRASE_INTERVAL);
     return () => clearInterval(timer);
-  }, []);
+  }, [reducedMotion, isMobile]);
   const scrollToNext = () => {
     const aboutSection = document.getElementById("about");
     if (aboutSection) {
       const offset = 80;
       const top = aboutSection.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top, behavior: "smooth" });
+      window.scrollTo({ top, behavior: reducedMotion ? "instant" : "smooth" });
     }
   };
 
@@ -53,7 +57,7 @@ const HeroSection = () => {
       />
 
       {/* Gradient overlays for depth and seamless transition to page bg */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-[hsl(203,61%,20%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-[hsl(203,61%,20%)]" />
       <div className="absolute inset-0 bg-gradient-to-r from-[hsl(203,61%,20%,0.3)] via-transparent to-[hsl(203,61%,20%,0.3)]" />
 
       {/* Decorative gradient orbs */}
@@ -82,7 +86,7 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.1 }}
         >
           <span className="relative block h-[1.05em] overflow-hidden">
-            <AnimatePresence mode="wait">
+            {reducedMotion || isMobile ? <span className="absolute inset-0 flex items-center justify-center">Building systems</span> : <AnimatePresence mode="wait">
               <motion.span
                 key={phraseIndex}
                 className="absolute inset-0 flex items-center justify-center whitespace-nowrap"
@@ -93,7 +97,7 @@ const HeroSection = () => {
               >
                 {ROTATING_PHRASES[phraseIndex]}
               </motion.span>
-            </AnimatePresence>
+            </AnimatePresence>}
           </span>
           <span className="block">
             for <span className="text-gradient-impact">impact</span>
@@ -101,7 +105,7 @@ const HeroSection = () => {
         </motion.h1>
 
         <motion.p
-          className="mt-2 text-lg md:text-xl text-white/70 mb-10 max-w-2xl mx-auto leading-relaxed font-light"
+          className="mt-2 text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed font-light"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
@@ -128,7 +132,7 @@ const HeroSection = () => {
                 const el = document.getElementById("projects");
                 if (el) {
                   const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
-                  window.scrollTo({ top, behavior: "smooth" });
+                  window.scrollTo({ top, behavior: reducedMotion ? "instant" : "smooth" });
                 }
               }}
             >
@@ -149,7 +153,7 @@ const HeroSection = () => {
                 const el = document.getElementById("contact");
                 if (el) {
                   const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
-                  window.scrollTo({ top, behavior: "smooth" });
+                  window.scrollTo({ top, behavior: reducedMotion ? "instant" : "smooth" });
                 }
               }}
             >
@@ -169,7 +173,7 @@ const HeroSection = () => {
         aria-label="Scroll to content"
       >
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={{ y: reducedMotion ? 0 : [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
           <ChevronDown className="w-6 h-6" />

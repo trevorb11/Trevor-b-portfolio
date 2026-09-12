@@ -148,12 +148,12 @@ const BuilderStudioCaseStudy = () => {
     <main className="bg-background min-h-screen">
       <div className="max-w-[820px] mx-auto px-5 pt-32 pb-28">
         {/* Back */}
-        <Link href="/#projects">
+        <a href="/#projects">
           <Button variant="ghost" size="sm" className="mb-8 -ml-2">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Portfolio
           </Button>
-        </Link>
+        </a>
 
         {/* ─── Hero ─────────────────────────────────────────── */}
         <motion.div {...fadeUp}>
@@ -459,7 +459,7 @@ const BuilderStudioCaseStudy = () => {
               industry problems.
             </p>
             <Button asChild size="lg">
-              <Link href="/#contact">Get in Touch</Link>
+              <a href="/#contact">Get in Touch</a>
             </Button>
           </motion.div>
         </div>

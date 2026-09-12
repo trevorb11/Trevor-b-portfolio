@@ -194,7 +194,7 @@ const WorkflowDemo = () => {
   };
 
   const handleOptionClick = async (value: string, label: string) => {
-    if (usedOptions.has(value)) return;
+    if (isTyping || state.completed || usedOptions.has(value)) return;
     setUsedOptions((prev) => new Set(prev).add(value));
     addUserMessage(label);
 
@@ -319,14 +319,13 @@ const WorkflowDemo = () => {
                           {message.sender === "bot" ? (
                             <>
                               <div className="bg-muted/50 border border-border/50 rounded-2xl rounded-bl-md px-4 py-3">
-                                <p
-                                  className="text-foreground text-sm leading-relaxed"
-                                  dangerouslySetInnerHTML={{
-                                    __html: message.text
-                                      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-                                      .replace(/\n/g, "<br />"),
-                                  }}
-                                />
+                                <p className="text-foreground text-sm leading-relaxed whitespace-pre-line">
+                                  {message.text.split(/(\*\*.*?\*\*)/g).map((part, index) =>
+                                    part.startsWith("**") && part.endsWith("**")
+                                      ? <strong key={index}>{part.slice(2, -2)}</strong>
+                                      : part
+                                  )}
+                                </p>
                               </div>
                               {message.options && (
                                 <div className="flex flex-wrap gap-2 pl-2">
@@ -338,7 +337,7 @@ const WorkflowDemo = () => {
                                         onClick={() =>
                                           handleOptionClick(option.value, option.label)
                                         }
-                                        disabled={isUsed || state.completed}
+                                        disabled={isTyping || isUsed || state.completed || message !== messages.filter((item) => item.options).at(-1)}
                                         className={`px-3 py-1.5 text-sm rounded-full border transition-all ${
                                           isUsed
                                             ? "bg-primary/20 border-primary text-primary"

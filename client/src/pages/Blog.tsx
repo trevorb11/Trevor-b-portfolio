@@ -19,10 +19,10 @@ const Blog = () => {
           variant="ghost"
           className="mb-6 hover:bg-gray-100"
         >
-          <Link href="/#blog">
+          <a href="/">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Home
-          </Link>
+          </a>
         </Button>
 
         <motion.div 

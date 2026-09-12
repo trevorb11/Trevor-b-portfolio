@@ -17,8 +17,12 @@ const AboutSection = () => {
               <div className="absolute -inset-3 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl blur-xl" />
               <div className="relative w-64 h-72 md:w-72 md:h-80 rounded-2xl overflow-hidden border border-white/[0.08] shadow-2xl shadow-black/30 bg-card/50">
                 <img
-                  src="/about-photo.jpeg"
+                  src="/about-photo.webp"
                   alt="Trevor Bosetti"
+                  loading="lazy"
+                  decoding="async"
+                  width={576}
+                  height={640}
                   className="w-full h-full object-cover object-center"
                 />
               </div>

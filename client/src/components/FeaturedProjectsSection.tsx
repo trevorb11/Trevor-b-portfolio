@@ -1,5 +1,6 @@
+import DeferredVideo from "./DeferredVideo";
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Sparkles, Utensils, Building2, Workflow, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -42,6 +43,8 @@ const featuredProjects = [
 const ROTATE_INTERVAL = 5000;
 
 const FeaturedProjectsSection = () => {
+  const reducedMotion = useReducedMotion();
+  const [isPaused, setIsPaused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isInView, setIsInView] = useState(false);
   const [dragStart, setDragStart] = useState<number | null>(null);
@@ -60,12 +63,12 @@ const FeaturedProjectsSection = () => {
   }, []);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || isPaused || reducedMotion) return;
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % featuredProjects.length);
     }, ROTATE_INTERVAL);
     return () => clearInterval(timer);
-  }, [isInView]);
+  }, [isInView, isPaused, reducedMotion]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -108,7 +111,7 @@ const FeaturedProjectsSection = () => {
             </p>
           </motion.div>
 
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-5xl mx-auto" onMouseEnter={() => setIsPaused(true)} onFocusCapture={() => setIsPaused(true)}>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div className="relative">
                 {/* Prev arrow */}
@@ -201,16 +204,18 @@ const FeaturedProjectsSection = () => {
                   </AnimatePresence>
 
                   <div className="flex items-center justify-center gap-2 mt-6">
+                    {!reducedMotion && <button type="button" className="text-sm text-muted-foreground px-3 py-2" onClick={() => setIsPaused((paused) => !paused)}>{isPaused ? "Play slideshow" : "Pause slideshow"}</button>}
                     {featuredProjects.map((_, i) => (
                       <button
                         key={i}
                         onClick={() => setActiveIndex(i)}
-                        className={`h-1.5 rounded-full transition-all duration-500 ${
+                        className={`min-h-6 min-w-6 rounded-full transition-all duration-500 ${
                           i === activeIndex
                             ? "w-6 bg-primary"
                             : "w-1.5 bg-white/20 hover:bg-white/30"
                         }`}
-                        aria-label={`Show project ${i + 1}`}
+                        aria-label={`Show ${featuredProjects[i].title}`}
+                        aria-pressed={i === activeIndex}
                       />
                     ))}
                   </div>
@@ -218,16 +223,7 @@ const FeaturedProjectsSection = () => {
               </div>
 
               <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/30 bg-card/50">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="w-full h-auto min-h-[280px] sm:min-h-0 aspect-square object-cover"
-                >
-                  <source src="/integration-video.mp4" type="video/mp4" />
-                </video>
+                <DeferredVideo src="/integration-video.mp4" label="Connected systems animation" className="w-full h-auto min-h-[280px] sm:min-h-0 aspect-square object-cover" />
               </div>
             </div>
           </div>
@@ -239,9 +235,9 @@ const FeaturedProjectsSection = () => {
               size="lg"
               className="rounded-full border-white/10 hover:border-white/20 hover:bg-white/[0.04] px-8 h-11"
             >
-              <Link href="#projects">
+              <a href="#projects">
                 View Full Portfolio <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              </a>
             </Button>
           </motion.div>
         </motion.div>

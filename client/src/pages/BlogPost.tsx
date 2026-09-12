@@ -51,10 +51,10 @@ const BlogPost = () => {
           variant="ghost"
           className="mb-6 hover:bg-gray-100"
         >
-          <Link href="/#blog">
+          <a href="/blog">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Blog
-          </Link>
+          </a>
         </Button>
 
         <motion.article
@@ -83,7 +83,7 @@ const BlogPost = () => {
             />
           </div>
 
-          <div className="prose prose-lg max-w-none">
+          <div className="prose prose-invert prose-lg max-w-none">
             <p className="lead text-xl mb-6">{post.excerpt}</p>
             
             <div className="mb-6 blog-content">
@@ -135,22 +135,8 @@ const BlogPost = () => {
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-gray-200">
-            <h3 className="text-xl font-semibold mb-4">Related Articles</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-background rounded-lg overflow-hidden shadow-sm">
-                <div className="p-4">
-                  <h4 className="font-medium mb-2">Modern Development Practices for Enterprise Systems</h4>
-                  <Link href="#" className="text-primary text-sm">Read Article →</Link>
-                </div>
-              </div>
-              <div className="bg-background rounded-lg overflow-hidden shadow-sm">
-                <div className="p-4">
-                  <h4 className="font-medium mb-2">Microservices vs. Monoliths: When to Choose What</h4>
-                  <Link href="#" className="text-primary text-sm">Read Article →</Link>
-                </div>
-              </div>
-            </div>
+          <div className="mt-12 pt-8 border-t border-border">
+            <Link href="/blog" className="text-primary hover:underline">Browse all articles →</Link>
           </div>
         </motion.article>
       </div>

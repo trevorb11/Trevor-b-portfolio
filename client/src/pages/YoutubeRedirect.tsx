@@ -1,3 +1,4 @@
+import { extractVideoId, generateHTMLContent, isWebUrl } from "@/lib/youtube-redirect";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -5,76 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Download, CheckCircle, Youtube, Link2, Clock } from "lucide-react";
-
-function extractVideoId(url: string): string | null {
-  const regex =
-    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/v\/|youtube\.com\/shorts\/)([^&\n?#]+)/;
-  const match = url.match(regex);
-  return match ? match[1] : null;
-}
-
-function generateHTMLContent(
-  videoId: string,
-  redirectUrl: string,
-  triggerTime: number
-) {
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Redirect After YouTube Ends</title>
-  <style>
-    html, body {height:100%;margin:0;}
-    #player {position:fixed;inset:0;width:100%;height:100%;border:0;background:#000;}
-  </style>
-</head>
-<body>
-  <div id="player"></div>
-  <script src="https://www.youtube.com/iframe_api"><\/script>
-  <script>
-    const VIDEO_ID   = "${videoId}";
-    const TARGET_URL = "${redirectUrl}";
-    const TRIGGER_AT    = ${triggerTime};
-    const POLL_INTERVAL = 250;
-    let pollId = null, player;
-
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player("player", {
-        videoId: VIDEO_ID,
-        playerVars: {
-          autoplay: 1,
-          mute: 1,
-          rel: 0,
-          playsinline: 1,
-          enablejsapi: 1
-        },
-        events: {
-          onStateChange: handleStateChange
-        }
-      });
-    }
-
-    function handleStateChange(event) {
-      if (event.data === YT.PlayerState.PLAYING) {
-        pollId = setInterval(() => {
-          const currentTime = player.getCurrentTime();
-          if (currentTime >= TRIGGER_AT) {
-            clearInterval(pollId);
-            window.location.href = TARGET_URL;
-          }
-        }, POLL_INTERVAL);
-      } else if (event.data === YT.PlayerState.ENDED) {
-        clearInterval(pollId);
-        window.location.href = TARGET_URL;
-      } else {
-        clearInterval(pollId);
-      }
-    }
-  <\/script>
-</body>
-</html>`;
-}
 
 function generateReadme(
   youtubeUrl: string,
@@ -121,6 +52,10 @@ export default function YoutubeRedirect() {
       return;
     }
 
+    if (!isWebUrl(redirectUrl) || !Number.isFinite(triggerTime) || triggerTime < 0) {
+      setError("Enter an http or https destination and a non-negative time.");
+      return;
+    }
     setGenerated(true);
   };
 
@@ -142,11 +77,13 @@ export default function YoutubeRedirect() {
 
     const content = await zip.generateAsync({ type: "blob" });
     const link = document.createElement("a");
-    link.href = URL.createObjectURL(content);
+    const objectUrl = URL.createObjectURL(content);
+    link.href = objectUrl;
     link.download = "youtube-redirect-page.zip";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
   };
 
   return (

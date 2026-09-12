@@ -1,91 +1,14 @@
 import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
-import { insertContactSchema, contactFormSchema, adminLoginSchema, updateCmsContentSchema } from "@shared/schema";
+import { storage as defaultStorage, type IStorage } from "./storage";
+import { contactFormSchema } from "@shared/schema";
 import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
-import session from "express-session";
-
-// Extending express session with our user object
-declare module "express-session" {
-  interface SessionData {
-    user?: {
-      id: number;
-      username: string;
-      isAdmin: boolean;
-    };
-  }
-}
-
-// Middleware to check if user is authenticated
-const isAuthenticated = (req: Request, res: Response, next: NextFunction) => {
-  if (req.session && req.session.user) {
-    return next();
-  }
-  return res.status(401).json({ error: "Not authenticated" });
-};
-
-export async function registerRoutes(app: Express): Promise<Server> {
-  // API routes
-  
-  // Admin authentication routes
-  app.post("/api/admin/login", async (req, res) => {
-    try {
-      const loginData = adminLoginSchema.parse(req.body);
-      const user = await storage.validateAdminCredentials(loginData.username, loginData.password);
-      
-      if (!user) {
-        return res.status(401).json({ error: "Invalid username or password" });
-      }
-      
-      // Set user in session
-      req.session.user = {
-        id: user.id,
-        username: user.username,
-        isAdmin: user.isAdmin
-      };
-      
-      return res.json({ 
-        success: true,
-        message: "Login successful"
-      });
-    } catch (error) {
-      if (error instanceof ZodError) {
-        const validationError = fromZodError(error);
-        return res.status(400).json({ error: validationError.message });
-      }
-      
-      console.error("Login error:", error);
-      return res.status(500).json({ error: "Login failed" });
-    }
-  });
-  
-  app.post("/api/admin/logout", (req, res) => {
-    if (req.session) {
-      req.session.destroy((err) => {
-        if (err) {
-          return res.status(500).json({ error: "Logout failed" });
-        }
-        return res.json({ success: true, message: "Logged out successfully" });
-      });
-    } else {
-      return res.json({ success: true, message: "Already logged out" });
-    }
-  });
-  
-  app.get("/api/admin/check-auth", (req, res) => {
-    if (req.session && req.session.user) {
-      return res.json({ 
-        authenticated: true, 
-        user: {
-          username: req.session.user.username,
-          isAdmin: req.session.user.isAdmin
-        }
-      });
-    }
-    return res.json({ authenticated: false });
-  });
-  
+export async function registerRoutes(app: Express, storage: IStorage = defaultStorage): Promise<Server> {
+  // Administration now uses the private Replit/SSH workspace. No public login,
+  // session, or write endpoint is exposed by this portfolio.
+  app.use("/api/admin", (_req, res) => res.status(410).set("Cache-Control", "no-store").json({ error: "Browser administration is no longer available." }));
+  app.all("/api/cms/update", (_req, res) => res.status(410).json({ error: "Browser administration is no longer available." }));
   // CMS Content routes
   app.get("/api/cms", async (req, res) => {
     try {
@@ -105,30 +28,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error(`Error fetching CMS contents for section ${req.params.section}:`, error);
       return res.status(500).json({ error: "Failed to fetch CMS contents by section" });
-    }
-  });
-  
-  app.post("/api/cms/update", isAuthenticated, async (req, res) => {
-    try {
-      const updateData = updateCmsContentSchema.parse(req.body);
-      const updated = await storage.updateCmsContent(updateData.id, updateData.value);
-      
-      if (!updated) {
-        return res.status(404).json({ error: "CMS content not found" });
-      }
-      
-      return res.json({
-        success: true,
-        content: updated
-      });
-    } catch (error) {
-      if (error instanceof ZodError) {
-        const validationError = fromZodError(error);
-        return res.status(400).json({ error: validationError.message });
-      }
-      
-      console.error("Error updating CMS content:", error);
-      return res.status(500).json({ error: "Failed to update content" });
     }
   });
   
@@ -158,8 +57,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get project by ID
   app.get("/api/projects/:id", async (req, res) => {
     try {
-      const id = parseInt(req.params.id);
-      if (isNaN(id)) {
+      const id = Number(req.params.id);
+      if (!/^[1-9]\d*$/.test(req.params.id) || !Number.isSafeInteger(id)) {
         return res.status(400).json({ error: "Invalid project ID" });
       }
       
@@ -207,14 +106,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/contact", async (req, res) => {
     try {
       // Validate form data
-      const contactData = contactFormSchema.parse(req.body);
+      contactFormSchema.parse(req.body);
       
-      // Create contact entry
-      const contact = await storage.createContact(contactData);
-      
-      return res.status(201).json({ 
-        success: true, 
-        message: "Your message has been sent successfully!" 
+      // Contact delivery is not configured. Do not acknowledge a message that
+      // would only live in process memory and disappear on restart.
+      return res.status(503).json({
+        success: false,
+        error: "Please email trevor@rankzone.studio directly. Online message delivery is not currently available."
       });
     } catch (error) {
       if (error instanceof ZodError) {
@@ -232,6 +130,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     }
   });
+
+  app.use("/api", (_req, res) => res.status(404).json({ error: "API route not found" }));
 
   const httpServer = createServer(app);
   return httpServer;

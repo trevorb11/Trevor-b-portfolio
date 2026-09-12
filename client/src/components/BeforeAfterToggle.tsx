@@ -68,6 +68,7 @@ const BeforeAfterToggle = () => {
               ? "bg-emerald-500/20 border-emerald-500/30"
               : "bg-red-500/15 border-red-500/25"
           }`}
+          aria-pressed={isUnified}
           aria-label={isUnified ? "Show disconnected state" : "Show unified state"}
         >
           <motion.div

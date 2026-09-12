@@ -1,34 +1,8 @@
 import { Link } from "wouter";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast";
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
-  const [email, setEmail] = useState("");
-  const { toast } = useToast();
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!email || !email.includes("@")) {
-      toast({
-        title: "Invalid email",
-        description: "Please enter a valid email address.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    toast({
-      title: "Nicely done!",
-      description: "Your inbox just got a bit more interesting.",
-    });
-
-    setEmail("");
-  };
-
   const footerLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/#about" },
@@ -44,7 +18,6 @@ const Footer = () => {
   const socialLinks = [
     { icon: Github, href: "https://github.com/trevorb11", label: "GitHub" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/trevor-bosetti-9a291a126/", label: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
     { icon: Mail, href: "mailto:trevor@rankzone.studio", label: "Email" },
   ];
 
@@ -114,12 +87,12 @@ const Footer = () => {
             <ul className="space-y-2.5">
               {footerLinks.map((link) => (
                 <li key={link.path}>
-                  <Link
+                  <a
                     href={link.path}
                     className="text-sm text-muted-foreground/60 hover:text-foreground transition-colors"
                   >
                     {link.name}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -127,39 +100,27 @@ const Footer = () => {
             <ul className="space-y-2.5">
               {legalLinks.map((link) => (
                 <li key={link.path}>
-                  <Link
+                  <a
                     href={link.path}
                     className="text-sm text-muted-foreground/60 hover:text-foreground transition-colors"
                   >
                     {link.name}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Newsletter */}
           <div className="md:col-span-4">
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-4">Stay Updated</p>
-            <p className="text-sm text-muted-foreground/60 mb-4 leading-relaxed">
-              Get fresh MarTech insights straight to your inbox. No fluff, just
-              useful stuff.
+            <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-4">Keep in touch</p>
+            <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+              Connect with me on LinkedIn for new projects and ideas about marketing technology.
             </p>
-            <form className="flex" onSubmit={handleSubscribe}>
-              <Input
-                type="email"
-                placeholder="your@email.com"
-                className="flex-1 bg-white/[0.03] border border-white/[0.06] rounded-l-full text-foreground text-sm placeholder:text-muted-foreground/40 focus-visible:ring-primary/20 focus-visible:border-primary/30"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <Button
-                type="submit"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-medium rounded-r-full rounded-l-none px-5"
-              >
-                Subscribe
-              </Button>
-            </form>
+            <Button asChild className="rounded-full">
+              <a href="https://www.linkedin.com/in/trevor-bosetti-9a291a126/" target="_blank" rel="noopener noreferrer">
+                Connect on LinkedIn
+              </a>
+            </Button>
           </div>
         </div>
 
